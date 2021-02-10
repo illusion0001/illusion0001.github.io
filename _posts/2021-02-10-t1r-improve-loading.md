@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Improved loading for The Last of Us Remastered"
-subheading: "Make long loading screens a thing of the past."
+excerpt: "Make long loading screens a thing of the past."
 categories: Patches
 tags: tlou ps4 patches
 ---
@@ -24,11 +24,11 @@ Finding out where this adaptive sync or "Allow Screen Tear" as it's named in the
 
 The Uncharted Collection developed by Bluepoint Games used "Allow Screen Tear" during it's load screen so searching for Byte `0` and `1` got me to the address I needed.
 
-![](\assets\img\t1r-fast-load\ps4ch-uc3-1.png)
+![](\assets\images\t1r-fast-load\ps4ch-uc3-1.png)
 
 Setting this byte to 1 during gameplay allows for Unlocked FPS!
 
-![](\assets\img\t1r-fast-load\UC3-tear.png)
+![](\assets\images\t1r-fast-load\UC3-tear.png)
 
 Sweet.
 
@@ -36,7 +36,7 @@ During the loading screen another option gets disabled. It's called Main Draw.
 
 Main Draw draws 3D scene. When Disabled it gives us a black screen. This is used during load screen to reduce rendering load.
 
-![](\assets\img\t1r-fast-load\T1R-maindraw0.png)
+![](\assets\images\t1r-fast-load\T1R-maindraw0.png)
 
 300+ FPS! Not so exciting huh.
 
@@ -44,7 +44,7 @@ Main Draw draws 3D scene. When Disabled it gives us a black screen. This is used
 
 Using Ghidra, I was able to find out where this main draw byte is disabled during load screen
 
-![](\assets\img\t1r-fast-load\ghidra-maindraw-ref.png)
+![](\assets\images\t1r-fast-load\ghidra-maindraw-ref.png)
 
 Going to 0x647631 gives us what we need.
 
@@ -102,7 +102,7 @@ Done!
 
 Let's test this change in game. The following video showcases this change aswell as a timer on screen.
 
-[The Last of Us Remastered 1.10 - Improved Loading Times](https://youtu.be/tZjIuAdALhE?t=10)
+<iframe width="640" height="360" src="https://www.youtube.com/embed/tZjIuAdALhE?start=9" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Download
 

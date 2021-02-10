@@ -25,9 +25,9 @@
 # in the templates via {{ site.myvariable }}.
 
 title: illusion's Blog
-email: your-email@domain.com
-author: GitHub User
-copyright: Copyright © 1970-2010
+email: illusion3185@gmail.com
+author: illusion
+copyright: Copyright © 2020-2021
 description: >- # this means to ignore newlines until "baseurl:"
   Write an awesome description for your new site here. You can edit this
   line in _config.yml. It will appear in your document head meta (for
@@ -49,7 +49,7 @@ yat:
 # header_transparent: true
 
 # Google analytics
-# google_analytics: [Tracking ID]
+google_analytics: UA-189385610-1
 
 # If you want to generate website sitemap, you can set true
 # sitemap: false
@@ -109,7 +109,7 @@ yat:
 # it will be always kept on every visit (i.e. no matter
 # the browser is closed or not)
 #
-# night_mode: "auto"
+night_mode: "on"
 
 # Code badge setting
 # You can enable or disable the code badge and so on
