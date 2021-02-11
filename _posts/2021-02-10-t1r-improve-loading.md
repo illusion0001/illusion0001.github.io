@@ -1,14 +1,20 @@
 ---
 layout: post
 title: "Improved loading for The Last of Us Remastered"
-excerpt: "Make long loading screens a thing of the past."
+subtitles: "Long loading screens are things of the past."
 categories: Patches
 tags: tlou ps4 patches
 ---
 
+Long loading screens are things of the past.
+
+***
+
 *TL;DR - if you are not interested in an in-depth overview of how the patch was made, scroll down to the [**Download**](https://illusion0001.github.io/patches/2021/02/10/t1r-improve-loading.html#download) section for a download link.*
 
 ***
+
+## Curiosity
 
 It's been a while since The Last of Us Remastered was released for the PlayStation 4 since then I have been wondering why is the loading so slow when using the 30FPS mode. So I decided to investegate.
 
