@@ -31,6 +31,7 @@ copyright: Copyright © 2020-2021
 description: >- # this means to ignore newlines until "baseurl:"
   illusion's Personal Blog.
 
+image: ""
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 favicon: "" # the favicon for your site
