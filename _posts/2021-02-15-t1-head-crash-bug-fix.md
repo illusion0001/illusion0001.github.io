@@ -8,6 +8,8 @@ tags: tlou ps3 rpcs3 patches
 
 Is it a Head? Is it a bottle? No! It's a game bug. Solved by 2 bedroom coders.
 
+Your move. Naughty Dog.
+
 ## Intro
 
 Usually, when an NPC, actor, or Player's buddies does an action where they would cut Infected's Head off, they leave behind a severed head. 
@@ -16,9 +18,9 @@ If a Player decided to throw an object, let's say a brick or bottle. The game wo
 
 Affected Consoles:
 
-- ~~PlayStation 3~~ Unofficially Patched
+- ~~PlayStation 3~~ [Unofficially Patched](https://illusion0001.github.io/patches/2021/02/15/t1-head-crash-bug-fix.html)
 
-- PlayStation 4 [Video](https://youtu.be/YDDJs51B-CM?t=40)
+- ~~PlayStation 4~~ [Unofficially Patched](https://illusion0001.github.io/patches/2021/02/16/t1r-head-crash-bug-fix.html)s
 
 - PlayStation 5 [Video](https://youtu.be/HQ7oOmx4mmg?t=127)
 
