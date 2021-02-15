@@ -112,15 +112,32 @@ Let's test this change in game. The following video showcases this change aswell
 
 ## Download
 
-To install the patch, place `eboot.bin` file into your patch folder (CUSA00557-patch in my case) build and install the patch onto the console. (Only for Patch 1.10)
-
-[t1r-screentear-shipping.7z](https://cdn.discordapp.com/attachments/650395105479360514/808982489426034708/t1r-screentear-shipping.7z)
-
-### Already have your own executable?
-
-You can apply the patch yourself. Opening `eboot.bin` with a hex editor and do a search and replace.
+To install the patch, open `eboot.bin` with a hex editor and do a search and replace. build and install the patch back onto the console.
 
 ```
+
+1.00
+
+from
+
+C6 80 D5 06 00 00 00
+
+to
+
+E8 DB E3 B2 FF 90 90
+
+from
+
+BE A0 A0 00 FF B0 07 E8 CC 90 F9 FF 4C 8D A4
+
+to
+
+C6 80 D5 06 00 00 00 C6 80 30 00 00 00 01 C3
+
+####
+
+1.10
+
 from
 
 0F 8F 47 01 00 00 41 C6
@@ -144,4 +161,5 @@ C6 80 DF 06 00 00 00 44 89 F0 48 83 C4 08 5B 41 5E 41 5F 5D C3 90 90 90 90 90 90
 to
 
 C6 80 DF 06 00 00 00 C6 80 30 00 00 00 01 44 89 F0 48 83 C4 08 5B 41 5E 41 5F 5D C3
+
 ```
