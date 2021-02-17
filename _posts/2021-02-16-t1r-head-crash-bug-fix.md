@@ -27,9 +27,9 @@ Affected Consoles:
 
 - PlayStation 5 [Video](https://youtu.be/HQ7oOmx4mmg?t=127)
 
-- PS4/PS5 versions issue still persists on latest patch 1.11
+- PS4/PS5 versions issue still persists on Latest patch 1.11
 
-<video controls autoplay muted width="640" height="360">
+<video controls muted width="640" height="360">
   <source src="\assets\images\t1r-ps4-head-crash\t1r-head-crash-before.mp4" type="video/mp4">
 </video>
 
@@ -50,15 +50,15 @@ Guessing from PS3 registers, It could be RBX that is holding collision data.
 We can do a check if RBX isn't 0 we can skip and run normally.
 
 ```
-        006bc849 e8 d0 53        CALL       SUB_00c21c1e // jump to our code
+        006bc849 e8 d0 53        CALL       SUB_00c21c1e // jump to code cave
                  56 00
 ~~~
-        00c21c1e 48 89 85        MOV        qword ptr [RBP + -0xc20],RAX
+        00c21c1e 48 89 85        MOV        qword ptr [RBP + -0xc20],RAX // pervious instruction overwritten by Call
                  e0 f3 ff ff
         00c21c25 48 83 fb 00     CMP        RBX,0x0 // check if rbx isn't 0
         00c21c29 0f 84 04        JZ         LAB_00c21c33 // skip
                  00 00 00
-        00c21c2f 48 8b 43 40     MOV        RAX,qword ptr [RBX + 0x40]
+        00c21c2f 48 8b 43 40     MOV        RAX,qword ptr [RBX + 0x40] // load as normal
                              LAB_00c21c33
         00c21c33 c3              RET // return
 ```
@@ -67,11 +67,13 @@ Let's implement this fix and see the results.
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/a5QEZGT7HOU?start=10" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-Success!
+Success! Doesn't crash now when throwing an object.
 
 ## Patch
 
-To apply patch and for use on a exploitable PlayStation 4 console, you'll need to dump the game. modiify executable and install the fake patch back onto the console. There's plenty of resources online already, We won't be covering it here.
+To apply patch and for use on a exploitable PlayStation 4 console, you'll need to dump the game, modiify the executable with a hex editor and install the fake patch back onto the console.
+
+There's plenty of resources online already, We won't be covering it here.
 
 In Eboot.bin, Find and Replace
 

@@ -43,10 +43,6 @@ Going to this location in Ghidra gives us some clues.
 
 ![](\assets\images\t1-ps3-head-crash\ghidra-head-crash-hint.png)
 
-```c
-if (dVar30 < (double)*(float *)(puVar8 + 0x28))
-```
-
 The game does checks if: 
 
 - Object is throwable
@@ -63,7 +59,7 @@ Hit on an Enemy.
 
 ![](\assets\images\t1-ps3-head-crash\t1-head-debug-spu-data.png)
 
-In Register 29, there's some data here. It seems to be collision data.
+In Register 10 and 29, there's some data here. It seems to be collision data.
 
 Our best guess is that the game thinks the object collied is an enemy and no data generated.
 
@@ -73,8 +69,8 @@ We can add some data into Register 10 and additional check to prevent crashing.
 
 ```yml
  - [ be32, 0x006d9368, 0x483aa7ed ] #Branch
- - [ be32, 0x00a83b54, 0x3d400001 ] #r10 = 0x10000
- - [ be32, 0x00a83b58, 0x7f9d5000 ] #r29 vs r10
+ - [ be32, 0x00a83b54, 0x3d400001 ] #lis r10 = 0x10000
+ - [ be32, 0x00a83b58, 0x7f9d5000 ] #cmp r29 vs r10
  - [ be32, 0x00a83b5c, 0x409d0008 ] #Skip if r29<=r10 // If r29 less or equal to r10 then do nothing
  - [ be32, 0x00a83b60, 0x813d0040 ] #lwz r9,0x40(r29) // load as normal
  - [ be32, 0x00a83b64, 0x4e800020 ] #Return
@@ -84,13 +80,15 @@ Let's implement this fix and see the results!
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/yDHUPHUYr1w?start=17" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-Success!
+Success! No longer crashes when throwing an object.
 
 ## Patch
 
 To use patch on the RPCS3 Emulator, simply download and enable through Patch Manager.
 
-To apply patch and for use on a real PlayStation 3 console, you'll need to decrypt the executable, apply the patch, save and resign the executable. There's plenty of resources online already, We won't be covering it here.
+To apply patch and for use on a real PlayStation 3 console, you'll need to decrypt the executable, apply the patch, save and resign the executable.
+
+There's plenty of resources online already, We won't be covering it here.
 
 In Eboot.bin, Find and Replace
 
@@ -126,7 +124,6 @@ to
 from
 
 FA E1 00 E0 FB 01 00 E8 FB 21 00 F0 FB 41 00 F8 FB 81 01 08 81 3E 80 18
-
 
 to
 
