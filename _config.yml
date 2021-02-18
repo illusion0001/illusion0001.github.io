@@ -34,7 +34,7 @@ description: >- # this means to ignore newlines until "baseurl:"
 image: ""
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
-favicon: "" # the favicon for your site
+favicon: "/favicon.svg" # Build this into an image to look proper on web! svg for preservation and filesize
 
 # Yat date format
 # refer to https://shopify.github.io/liquid/filters/date/ if you want to customize this
