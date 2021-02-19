@@ -3,7 +3,7 @@ layout: post
 title: "Solving the Infected's Severed Head Crash Bug in The Last of Us (PlayStation 4)"
 subtitles: "Is it a Head? Is it a bottle? No! It's a game bug. Solved by 2 bedroom coders. Part 2."
 categories: Patches
-tags: tlou ps4 patches
+tags: tlou ps4 patches bugfix
 banner: /assets/images/t1r-ps4-head-crash/t1r-head-banner.png
 ---
 
@@ -23,11 +23,11 @@ Affected Consoles:
 
 - ~~PlayStation 3~~ [Unofficially Patched](https://illusion0001.github.io/patches/2021/02/15/t1-head-crash-bug-fix.html)
 
-- ~~PlayStation 4~~ [Unofficially Patched](https://illusion0001.github.io/patches/2021/02/16/t1r-head-crash-bug-fix.html)
+- ~~PlayStation 4~~ [Unofficially Patched](https://illusion0001.github.io/patches/2021/02/16/t1r-head-crash-bug-fix.html) ([Video](https://youtu.be/KCnMwV-jOoU))
 
 - PlayStation 5 [Video](https://youtu.be/HQ7oOmx4mmg?t=127)
 
-- PS4/PS5 versions issue still persists on Latest patch 1.11
+- PS4/PS5 versions issue still persists on latest patch 1.11
 
 <video controls muted width="640" height="360">
   <source src="\assets\images\t1r-ps4-head-crash\t1r-head-crash-before.mp4" type="video/mp4">
@@ -50,17 +50,17 @@ Guessing from PS3 registers, It could be RBX that is holding collision data.
 We can do a check if RBX isn't 0 we can skip and run normally.
 
 ```
-        006bc849 e8 d0 53        CALL       SUB_00c21c1e // jump to code cave
-                 56 00
+006bc849 e8 d0 53        CALL       SUB_00c21c1e // jump to code cave
+         56 00
 ~~~
-        00c21c1e 48 89 85        MOV        qword ptr [RBP + -0xc20],RAX // pervious instruction overwritten by Call
-                 e0 f3 ff ff
-        00c21c25 48 83 fb 00     CMP        RBX,0x0 // check if rbx isn't 0
-        00c21c29 0f 84 04        JZ         LAB_00c21c33 // skip
-                 00 00 00
-        00c21c2f 48 8b 43 40     MOV        RAX,qword ptr [RBX + 0x40] // load as normal
-                             LAB_00c21c33
-        00c21c33 c3              RET // return
+00c21c1e 48 89 85        MOV        qword ptr [RBP + -0xc20],RAX // pervious instruction overwritten by Call
+         e0 f3 ff ff
+00c21c25 48 83 fb 00     CMP        RBX,0x0 // check if rbx isn't 0
+00c21c29 0f 84 04        JZ         LAB_00c21c33 // skip
+         00 00 00
+00c21c2f 48 8b 43 40     MOV        RAX,qword ptr [RBX + 0x40] // load as normal
+                     LAB_00c21c33
+00c21c33 c3              RET // return
 ```
 
 Let's implement this fix and see the results.
@@ -72,8 +72,6 @@ Success! Doesn't crash now when throwing an object.
 ## Patch
 
 To apply patch and for use on a exploitable PlayStation 4 console, you'll need to dump the game, modiify the executable with a hex editor and install the fake patch back onto the console.
-
-There's plenty of resources online already, We won't be covering it here.
 
 In Eboot.bin, Find and Replace
 

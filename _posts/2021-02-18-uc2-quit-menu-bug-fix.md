@@ -3,7 +3,7 @@ layout: post
 title: "Fixing A Rare Bug in Uncharted 2 (PlayStation 3/4)"
 subtitles: "Rage quitting causing a game crash? Sounds normal. Went unnoticed for over 12 years."
 categories: Patches
-tags: uncharted uc2 ps3 rpcs3 ps4 patches
+tags: uncharted uc2 ps3 rpcs3 ps4 patches bugfix
 ---
 
 Rage quitting causing a game crash? Sounds normal.
@@ -37,7 +37,7 @@ Thread (main_thread) [0x00262e04]} VM: Access violation reading location 0x4b4 (
 
 PS4 Stop Instruction:
 
-000ade75 66 41 83        CMP        word ptr [R15 + LAB_00000620],0x0
+000ade75 66 41 83        CMP        word ptr [R15 + 0x620],0x0
          bf 20 06 
          00 00 00
 
@@ -77,7 +77,8 @@ We add a check to compare against the base register (28 for PS3 and 15 for PS4 r
 Skip to load 1 into their needed register skip and return to normal code if isn't 0.
 
 ```yml
-  - [ be32, 0x00262e04, 0x488ce301 ] #Call
+  # quit to menu fix ppc ver
+  - [ be32, 0x00262e04, 0x488ce301 ] #Call to code cave
   - [ be32, 0x00b31104, 0x2f9c0000 ] #Compare r28 to 0
   - [ be32, 0x00b31108, 0x409e000c ] #Skip to lhz if !=0
   - [ be32, 0x00b3110c, 0x38000001 ] #r0 = 1
@@ -87,28 +88,27 @@ Skip to load 1 into their needed register skip and return to normal code if isn'
 ```
 
 ```
-        000ade75 e8 87 cc        CALL       SUB_006cab01 // code cave
-                 61 00
-
+  // quit to menu fix x86 ver
+000ade75 e8 87 cc        CALL       SUB_006cab01 // code cave
+         61 00
                              SUB_006cab01
-        006cab01 49 83 ff 00     CMP        R15,0x0 // compare r15 to 0
-        006cab05 0f 85 09        JNZ        LAB_006cab14 // go to lea
-                 00 00 00
-        006cab0b 48 c7 c7        MOV        RDI,0x1 // move rdi with 1
-                 01 00 00 00
-        006cab12 eb 07           JMP        LAB_006cab1b // Go to Compare
-                             LAB_006cab14
-        006cab14 49 8d bf        LEA        RDI,[R15 + 0x620] // Lea from rdi to r15 + 620, no LEA in original code, does CMP instead
-                 20 06 00 00
-                             LAB_006cab1b
-        006cab1b 48 83 ff 00     CMP        RDI,0x0 // if rdi 0
-        006cab1f c3              RET // Return
+006cab01 49 83 ff 00     CMP        R15,0x0 // compare r15 to 0
+006cab05 0f 85 09        JNZ        LAB_006cab14 // go to lea
+         00 00 00
+006cab0b 48 c7 c7        MOV        RDI,0x1 // move rdi with 1
+         01 00 00 00
+006cab12 eb 07           JMP        LAB_006cab1b // Go to Compare
+                     LAB_006cab14
+006cab14 49 8d bf        LEA        RDI,[R15 + 0x620] // Lea from rdi to r15 + 620, no LEA in original code, does CMP instead
+         20 06 00 00
+                     LAB_006cab1b
+006cab1b 48 83 ff 00     CMP        RDI,0x0 // if rdi 0
+006cab1f c3              RET // Return
 ```
 
 Let's implement this fix and see the results.
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/UdDs6-ZT8gw?start=31" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
 
 Awesome! No longer crashing when quitting to the menu.
 
@@ -117,8 +117,6 @@ Awesome! No longer crashing when quitting to the menu.
 To apply patch and for use on an exploitable PlayStation 3 or PlayStation 4 console, you'll to modify the executable with a hex editor and install it back onto the console.
 
 For RPCS3 Users, Simply download and enable through it's built-in patch manager.
-
-There's plenty of resources online already, We won't be covering it here.
 
 In Eboot.bin, Find and Replace
 
