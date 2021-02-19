@@ -1,12 +1,12 @@
 <link rel="stylesheet"
-      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+      href="/assets/css/default.min.css">
+<script src="/assets/css/highlight.min.js"></script>
 <!-- and it's easy to individually load additional languages -->
 <script charset="UTF-8"
         src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
 
 {%- assign name = 'code_badge.enabled' -%}
-{%- include functions.html func='get_value' default='true' -%}
+{%- include functions.html func='get_value' default='false' -%}
 {%- assign badge_enabled = return -%}
 
 {%- assign name = 'code_badge.color' -%}
