@@ -1,14 +1,11 @@
 ---
 layout: post
-title: "Improved loading for The Last of Us Remastered"
-subtitles: "Long loading screens are things of the past."
+title: "Improved Loading for The Last of Us Remastered"
+subtitle: "Long Loading screens are things of the past."
+excerpt: "Long Loading screens are things of the past."
 categories: Patches
 tags: tlou ps4 patches bugfix
 ---
-
-Long loading screens are things of the past.
-
-***
 
 *TL;DR - if you are not interested in an in-depth overview of how the patch was made, scroll down to the [**Patch**](https://illusion0001.github.io/patches/2021/02/10/t1r-improve-loading.html#patch) section for a download link.*
 

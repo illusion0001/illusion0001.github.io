@@ -1,14 +1,11 @@
 ---
 layout: post
 title: "Fixing A Rare Bug in Uncharted 2 (PlayStation 3/4)"
-subtitles: "Rage quitting causing a game crash? Sounds normal. Went unnoticed for over 12 years."
+subtitle: "Rage quitting causing a game crash? Sounds normal. Went unnoticed for over 12 years."
+excerpt: "Rage quitting causing a game crash? Sounds normal. Went unnoticed for over 12 years."
 categories: Patches
 tags: uncharted uc2 ps3 rpcs3 ps4 patches bugfix
 ---
-
-Rage quitting causing a game crash? Sounds normal.
-
-Went unnoticed for over 12 years.
 
 ## Intro
 

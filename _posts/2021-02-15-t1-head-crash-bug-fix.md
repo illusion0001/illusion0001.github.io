@@ -1,17 +1,16 @@
 ---
 layout: post
 title: "Solving the Infected's Severed Head Crash Bug in The Last of Us (PlayStation 3)"
-subtitles: "Is it a Head? Is it a bottle? No! It's a game bug. Solved by 2 bedroom coders. Part 1."
+subtitle: "Is it a Head? Is it a bottle? No! It's a game bug. Part 1."
+excerpt: "Is it a Head? Is it a bottle? No! It's a game bug. Part 1."
 categories: Patches
 tags: tlou ps3 rpcs3 patches bugfix
 banner: /assets/images/t1r-ps4-head-crash/t1r-head-banner.png
 ---
 
-Is it a Head? Is it a bottle? No! It's a game bug.
-
-Solved by 2 bedroom coders. Part 1.
-
 Your move. Naughty Dog.
+
+***
 
 ## Intro
 
