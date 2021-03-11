@@ -91,44 +91,7 @@ There's plenty of resources online already, We won't be covering it here.
 
 In Eboot.bin, Find and Replace
 
-```
-1.00
-
-from
-
-81 3D 00 40 7B E3 00 20 90 01 09 A0
-
-to
-
-48 3A 4B 95 7B E3 00 20 90 01 09 A0
-
-from
-
-FA E1 00 E0 FB 01 00 E8 FB 21 00 F0 FB 41 00 F8 FB 81 01 08 81 3E 80 18
-
-to
-
-3D 40 00 01 7F 9D 50 00 40 9D 00 08 81 3D 00 40 4E 80 00 20 81 3E 80 18
-
-1.11
-
-from
-
-81 3D 00 40 7B E3 00 20 90 01 0A 60
-
-to
-
-48 3A A7 ED 7B E3 00 20 90 01 0A 60
-
-from
-
-FA E1 00 E0 FB 01 00 E8 FB 21 00 F0 FB 41 00 F8 FB 81 01 08 81 3E 80 18
-
-to
-
-3D 40 00 01 7F 9D 50 00 40 9D 00 08 81 3D 00 40 4E 80 00 20 81 3E 80 18
-
-```
+[Patch codes](https://github.com/illusion0001/illusion0001.github.io/blob/master/assets/patches/tlou1.md#infecteds-severed-head-crash-bug-fix)
 
 ## Credits
 

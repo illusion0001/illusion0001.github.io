@@ -74,43 +74,7 @@ To apply patch and for use on a exploitable PlayStation 4 console, you'll need t
 
 In Eboot.bin, Find and Replace
 
-```
-
-1.00
-
-48 8B 43 40 48 89 85 D0 F3 FF FF 4C 89 EF
-
-to
-
-E8 10 46 50 00 90 90 90 90 90 90 4C 89 EF
-
-~~~
-
-89 4C 24 34 C5 FA 2A C1 C5 FA 11 44 24 68 C5 FA 2A C8 C5 DA 5A E4 48 8D 15 70 AB 6E 00
-
-to
-
-48 89 85 D0 F3 FF FF 48 83 FB 00 0F 84 04 00 00 00 48 8B 43 40 C3 48 8D 15 70 AB 6E 00
-
-####
-
-1.10
-
-48 8B 43 40 48 89 85 E0 F3 FF FF
-
-to
-
-E8 D0 53 56 00 90 90 90 90 90 90
-
-~~~
-
-BE A0 A0 00 FF 4C 89 EF C5 E2 5E DE 8B 48 3C 44 8B 70 48 48 8D 05
-
-to
-
-48 89 85 E0 F3 FF FF 48 83 FB 00 0F 84 04 00 00 00 48 8B 43 40 C3
-
-```
+[Patch codes](https://github.com/illusion0001/illusion0001.github.io/blob/master/assets/patches/tlou1.md#infecteds-severed-head-crash-bug-fix)
 
 ## Credits
 
