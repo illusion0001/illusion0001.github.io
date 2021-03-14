@@ -51,7 +51,7 @@ RPCS3: During runtime
 
 ![](\assets\images\uc2-quit-menu-bug-fix\uc2-dbg-before.png)
 
-RPCS3: During the crash
+RPCS3: During crash
 
 ![](\assets\images\uc2-quit-menu-bug-fix\uc2-dbg-after-death.png)
 
@@ -61,7 +61,7 @@ PS4: Reaper Breakpoint during runtime.
 
 ![](\assets\images\uc2-quit-menu-bug-fix\ps4r-uc2-dbg1.png)
 
-PS4: Mira backtrace at the crash.
+PS4: Mira backtrace when crash.
 
 ![](\assets\images\uc2-quit-menu-bug-fix\ps4-uc2-crash-backtrace-mira.png)
 
