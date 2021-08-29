@@ -2,6 +2,13 @@
 
 ## 60 FPS Unlock (NON-WORKING) (WORK-IN-PROGRESS)
 
+<details>
+<summary>Current Progress Preview Image (Click to Expand)</summary>
+
+![](../assets/images/patches/preview/GravityDaze2/GD2-32FPS.png)
+
+</details>
+
 ```
 Help wanted! Find a way to disable internal frame limter.
 Pull Request is always welcome.
