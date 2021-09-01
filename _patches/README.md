@@ -46,9 +46,13 @@ This directory list game improvement patches made for use with exploited PlaySta
 
 [Homefront: The Revolution](HF2_Tech_Orbis.md)
 
+[Horizon Zero Dawn](HRZ-Orbis.md)
+
 [What Remains of Edith Finch](finchgame-Orbis.md)
 
 [Ghost Of Tsushima](GhostOfTsushima-Orbis.md)
+
+[Mad Max](MadMax-Orbis.md)
 
 [Persona 5: Royal](P5R-Orbis.md)
 
