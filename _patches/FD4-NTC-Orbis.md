@@ -2,6 +2,10 @@
 
 ## 60 FPS Unlock
 
+[Demo](https://youtu.be/d8VtX2635-Q)
+
+Author: [illusion](https://github.com/illusion0001)
+
 Only needed for Base console, enhanced consoles already have framerate unlocked.
 
 In file `eboot.bin`
@@ -11,7 +15,7 @@ In file `eboot.bin`
 
 ```
 # FlipMode
-0x1F6A903 48 E9 60 00 00 00
+0x1F6A8D7 95
 
 # VFR
 # Not applying this will result in double speed.
@@ -21,6 +25,10 @@ In file `eboot.bin`
 </details>
 
 ## Resolution Patch
+
+[Demo](https://youtu.be/d8VtX2635-Q)
+
+Author: [illusion](https://github.com/illusion0001)
 
 In file `eboot.bin`
 
