@@ -18,6 +18,8 @@ This directory list game improvement patches made for use with exploited PlaySta
 
 [Crysis: Remastered](CrysisRemastered-Orbis.md)
 
+[Days Gone](ProjectRedChair-Orbis.md)
+
 [Detroit: Become Human](KaraTech-Orbis.md)
 
 [Dark Souls III: The Fire Fades Edition](FD4_FDP-Orbis.md)
