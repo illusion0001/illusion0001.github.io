@@ -58,6 +58,8 @@ This directory list game improvement patches made for use with exploited PlaySta
 
 [Persona 5: Royal](P5R-Orbis.md)
 
+[Resident Evil: HD Remaster](bhd-orbis.md)
+
 [Resident Evil 2](Biohazard2Remake-Orbis.md)
 
 [Rime](sirengame-Orbis.md)
