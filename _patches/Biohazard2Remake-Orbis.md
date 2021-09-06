@@ -12,15 +12,11 @@ In file `eboot.bin`
 <summary>Code for 1.05 (Click to Expand)</summary>
 
 ```
-# Call
-0x3FE5418 E8 E4 48 48 FC 90 90 90
-
+0x3FCA2D7 1F 85 2B 3F
 # 67% of 1920x1080 or 2880x1620
 # 1920x1080 => 1280x720
 # 2880x1620 => 1920x1080
-
-0x0469D01 C7 80 CC 11 00 00 1F 85 2B 3F E9 01 00 00 00 C3 C5 FA 10 80 CC 11 00 00 C3
-
+# 00 00 80 3F = 1.00f (default)
 # 1F 85 2B 3F = 0.67f
 ```
 
