@@ -34,3 +34,18 @@ In file `eboot.bin`
 ```
 
 </details>
+
+## Disable Motion Blur
+
+Author: [illusion](https://github.com/illusion0001)
+
+In file `eboot.bin`
+
+<details>
+<summary>Code 1.06 (Click to Expand)</summary>
+
+```
+0xAA7F5A 00
+```
+
+</details>
