@@ -6,6 +6,8 @@ You guys are awesome!
 
 - smasher248
 
+- ac2pic
+
 <!--
 - Ethan Snyder
 
