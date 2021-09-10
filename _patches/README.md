@@ -94,6 +94,8 @@ This directory list game improvement patches made for use with exploited PlaySta
 
 [The Witcher 3](W3Witcher-Orbis.md)
 
+[The Sinking City](Tsc-orbis.md)
+
 [Kingdom Hearts: III](Tresgame-Orbis.md)
 
 [Uncharted: The Nathan Drake Collection](uncharted-collection.md)
