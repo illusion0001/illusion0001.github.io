@@ -1,4 +1,4 @@
-# Resident Evil Zero Remaster
+# Resident Evil: Zero
 
 ## 60 FPS Unlock
 
@@ -15,6 +15,16 @@ In file `BH0HD\bh0hd.elf`
 
 ```
 0x329AED 00 00 70 42
+
+# end users ignore!!
+# this is a note for other patch devs
+# bhd0 is a little different than bhd1
+# first array is game tick
+# second array is simulated tick (what we are patching)
+# setting both bits to 60.0f will result in double speed
+# however, setting only the second bit to 60.0f result in 60fps and no speedup
+# cc implemented game speed/frametime calc based on tickrate (absolute hacks :p) for win32 ver
+# code path still exist which is why this is possible
 ```
 
 </details>

@@ -58,7 +58,7 @@ This directory list game improvement patches made for use with exploited PlaySta
 
 [Persona 5: Royal](P5R-Orbis.md)
 
-[Resident Evil: HD Remaster](Bhd-orbis.md)
+[Resident Evil: HD](Bhd-orbis.md)
 
 [Resident Evil: Zero](Bhd0-orbis.md)
 

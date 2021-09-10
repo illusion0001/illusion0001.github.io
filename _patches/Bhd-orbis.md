@@ -1,4 +1,4 @@
-# Resident Evil: HD Remaster
+# Resident Evil: HD
 
 ## 60 FPS Unlock
 
@@ -12,7 +12,14 @@ In file `eboot.bin`
 <summary>Code 1.00 (Click to Expand)</summary>
 
 ```
-0xB894B 00 00 70 42 00 00 70 42
+0xB894B 00 00 70 42
+
+# end users ignore!!
+# this is a note for other patch devs
+# setting only the first bit to 60.0f is needed
+# second bit doesn't seem to do anything
+# cc implemented game speed/frametime calc based on tickrate (absolute hacks :p) for win32 ver
+# code path still exist which is why this is possible
 ```
 
 </details>
@@ -25,7 +32,8 @@ In file `BH1HD\bh1hd.elf`
 <summary>Code 1.01 (Click to Expand)</summary>
 
 ```
-0xB9B1B 00 00 70 42 00 00 70 42
+0xB9B1B 00 00 70 42
+# disc ver has notes
 ```
 
 </details>
