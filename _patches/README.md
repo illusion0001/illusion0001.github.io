@@ -38,6 +38,8 @@ This directory list game improvement patches made for use with exploited PlaySta
 
 [Far Cry New Dawn](FC-ND-Orbis.md)
 
+[Fallout 4](F4-Orbis.md)
+
 [Final Fantasy VII: Remake](FF7R-Orbis.md)
 
 [Grand Theft Auto V](GTA5-Orbis.md)
@@ -83,6 +85,8 @@ This directory list game improvement patches made for use with exploited PlaySta
 [SnowRunner](SnowRunner-Orbis.md)
 
 [Sekiro: Shadows Die Twice](FD4-NTC-Orbis.md)
+
+[Skyrim](TESV-Orbis.md)
 
 [The Order 1886](TO1886-Orbis.md)
 
