@@ -20,6 +20,8 @@ This directory list game improvement patches made for use with exploited PlaySta
 
 [Days Gone](ProjectRedChair-Orbis.md)
 
+[Daymare 1998](Daymare_MASTER-Orbis.md)
+
 [Detroit: Become Human](KaraTech-Orbis.md)
 
 [Dark Souls III: The Fire Fades Edition](FD4_FDP-Orbis.md)
