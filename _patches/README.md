@@ -16,6 +16,8 @@ This directory list game improvement patches made for use with exploited PlaySta
 
 [Crash Bandicoot 4: It's About Time](Lava-Orbis.md)
 
+[Crash Team Racing: Nitro-Fueled](Octane-Orbis.md)
+
 [Crysis: Remastered](CrysisRemastered-Orbis.md)
 
 [Days Gone](ProjectRedChair-Orbis.md)
