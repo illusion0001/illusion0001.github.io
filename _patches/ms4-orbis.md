@@ -6,7 +6,7 @@ Author: [illusion](https://github.com/illusion0001)
 
 Timer is currently double speed.
 
-- [ ] Find dynamic timestep from motorstorm PS3 titles. (requires brute forcing, how-to in patch comments, contact me on discord if you managed to get the game speed + sound pitch run at half speed globally.)
+- [ ] Find dynamic timestep from Motorstorm PS3 or Driveclub VR titles. (requires brute forcing, how-to in patch comments, contact me on discord if you managed to get the game speed + sound pitch run at half speed globally.)
 
 In file `eboot.bin`
 
