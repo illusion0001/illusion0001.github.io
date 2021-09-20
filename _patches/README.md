@@ -74,6 +74,8 @@ This directory list game improvement patches made for use with exploited PlaySta
 
 [Resident Evil 3](Biohazard3Remake-Orbis.md)
 
+[Rise of the Tomb Raider](TR2-Orbis.md)
+
 [Rime](sirengame-Orbis.md)
 
 [Red Dead Redemption 2](RDR3-Orbis.md)
