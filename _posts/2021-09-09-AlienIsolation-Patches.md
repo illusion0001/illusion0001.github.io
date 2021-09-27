@@ -13,6 +13,12 @@ twitter: {card: "summary_large_image"}
 * TOC
 {:toc}
 
+
+**Update - 9/27/2021
+I just found out it is possible to remove the save dialog on the PC version of AI thanks to ThirteenAG's [SkipSaveConfirmationDialog](https://github.com/ThirteenAG/AlienIsolation.SkipSaveConfirmationDialog).**
+
+***
+
 # Intro
 
 I recently got a copy of [Alien Isolation](https://www.alienisolation.com/) for the PlayStation 4, a sci-fi survival horror game developed by [Creative Assembly](https://www.creative-assembly.com/) and I was bothered by the save confirmation dialog box and the narrow Field of View. neither can be changed or tweaked on the console version but this is a multi-plat release and of course there's the PC version which allowed for changing the FOV and graphical settings that is considered optional on that platform.
