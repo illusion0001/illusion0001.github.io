@@ -30,25 +30,25 @@ But there's no way to remove the save confirmation screen, let's see what can be
 Let's start with the save confirmation screen, when us, the player goes to save our progress at the emergency station, will be prompted with the dialogbox mentioned earlier.
 
 <p align="center">
-<img src="{% link assets/images/AlienIsolation-Patches/AI-save.png %}">
+<img src="https://assets.illusion0001.workers.dev/0:/assets/images/AlienIsolation-Patches/AI-save.png">
 </p>
 
 Assuming the dialog is a boolean, it can either be a `00` or a `01`, let's start by searching for 1 when the prompt is shown and when it is not.
 
 <p align="center">
-<img src="{% link assets/images/AlienIsolation-Patches/AI-search0.png %}">
+<img src="https://assets.illusion0001.workers.dev/0:/assets/images/AlienIsolation-Patches/AI-search0.png">
 </p>
 
 That's a lot of results.. Let's rinse and repeat until the result list becomes manageable.
 
 <p align="center">
-<img src="{% link assets/images/AlienIsolation-Patches/AI-search1.png %}">
+<img src="https://assets.illusion0001.workers.dev/0:/assets/images/AlienIsolation-Patches/AI-search1.png">
 </p>
 
 Ah, 11 results. That's more like it, let's set a breakpoint on each of these until it breaks when the dialog pops up.
 
 <p align="center">
-<img src="{% link assets/images/AlienIsolation-Patches/AI-search2.png %}">
+<img src="https://assets.illusion0001.workers.dev/0:/assets/images/AlienIsolation-Patches/AI-search2.png">
 </p>
 
 2 Results. First one is a write so we can discard that as it is not important, the second one however is more interesting.
@@ -101,7 +101,7 @@ A compare, jump to function, and that function has what seems to be dialog save 
 
 <div align="center" class="video-container">
 <video controls >
-  <source src="\assets/images/AlienIsolation-Patches/AI-skip.mp4" type="video/mp4">
+  <source src="https://assets.illusion0001.workers.dev/0:/assets/images/AlienIsolation-Patches/AI-skip.mp4" type="video/mp4">
 </video>
 <em>It automatically saved and skipped the dialog!</em>
 </div>
@@ -111,29 +111,29 @@ A compare, jump to function, and that function has what seems to be dialog save 
 On the PC there's an option to adjust the FOV from 47 to 75. The default seems to be 47 and is a float.
 
 <p align="center">
-<img src="{% link assets/images/AlienIsolation-Patches/AI-FOV0.png %}">
+<img src="https://assets.illusion0001.workers.dev/0:/assets/images/AlienIsolation-Patches/AI-FOV0.png">
 </p>
 
 Searching for 47 and adjusting the value back and forth, a lot of them is locked but there's only one that can be manually adjusted.
 
 <p align="center">
-<img src="{% link assets/images/AlienIsolation-Patches/AI-FOV1.png %}">
+<img src="https://assets.illusion0001.workers.dev/0:/assets/images/AlienIsolation-Patches/AI-FOV1.png">
 </p>
 
 I manually set `0x05B0AC00` to 100, but this value is not static so let's have a look in memory and see if we can find it in the console version.
 
 <p align="center">
-<img src="{% link assets/images/AlienIsolation-Patches/AI-FOV2.png %}">
+<img src="https://assets.illusion0001.workers.dev/0:/assets/images/AlienIsolation-Patches/AI-FOV2.png">
 </p>
 
 Highlighted in red at the top left is the address and value we just found, the values with red squares indicated that it has changed and is not relevant to us. let's remember the row of address next to our float value and see if we can find it on the console.
 
 <p align="center">
-<img src="{% link assets/images/AlienIsolation-Patches/AI-Console-FOV-0a.png %}">
+<img src="https://assets.illusion0001.workers.dev/0:/assets/images/AlienIsolation-Patches/AI-Console-FOV-0a.png">
 </p>
 
 <p align="center">
-<img src="{% link assets/images/AlienIsolation-Patches/AI-Console-FOV-0b.png %}">
+<img src="https://assets.illusion0001.workers.dev/0:/assets/images/AlienIsolation-Patches/AI-Console-FOV-0b.png">
 </p>
 
 I decided to check the first one and sure enough, it was the one we were looking for.
@@ -151,7 +151,7 @@ I decided to check the first one and sure enough, it was the one we were looking
 ```
 
 <p align="center">
-<img src="{% link assets/images/AlienIsolation-Patches/AI-Console-FOV-3.png %}">
+<img src="https://assets.illusion0001.workers.dev/0:/assets/images/AlienIsolation-Patches/AI-Console-FOV-3.png">
 <em>Left = 47, Right = 70, Bottom Middle = 100</em>
 </p>
 

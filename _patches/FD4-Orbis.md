@@ -3,7 +3,7 @@
 ## 30 FPS Limit (Proper Frame-Pacing)
 
 Preview:
-![](../assets/images/patches/preview/Bloodborn_FramePacing_Fix/Bloodborn_FrameFix_Preview.png)
+![](https://assets.illusion0001.workers.dev/0:/assets/images/patches/preview/Bloodborn_FramePacing_Fix/Bloodborn_FrameFix_Preview.png)
 
 Author: [illusion](https://github.com/illusion0001), [manfightdragon](https://twitter.com/manfightdragon)
 

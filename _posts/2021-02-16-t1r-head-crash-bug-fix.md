@@ -4,7 +4,7 @@ title: "Solving the Infected's Severed Head Crash Bug in The Last of Us (PlaySta
 excerpt: "Is it a Head? Is it a bottle? No! It's a game bug. Part 2."
 categories: Patches
 tags: tlou ps4 patches bugfix
-feature-img: "/assets/images/t1r-ps4-head-crash/t1r-head-banner.png"
+feature-img: "https://assets.illusion0001.workers.dev/0:/assets/images/t1r-ps4-head-crash/t1r-head-banner.png"
 ---
 
 Your move. Naughty Dog.
@@ -34,7 +34,7 @@ Affected Consoles:
 
 <div align="center" class="video-container">
 <video controls muted >
-  <source src="\assets\images\t1r-ps4-head-crash\t1r-head-crash-before.mp4" type="video/mp4">
+  <source src="https://assets.illusion0001.workers.dev/0:/assets/images/t1r-ps4-head-crash/t1r-head-crash-before.mp4" type="video/mp4">
 </video>
 </div>
 
@@ -46,7 +46,7 @@ Most of the explaination was already covered in our PS3 version, see that post f
 
 We were only able to get the debugger [PS4 Reaper](https://www.psxhax.com/threads/ps4reaper-ps4-rte-debugger-and-trainer-maker-by-shiningami.6077/) working once due to connection and attaching issues but that was enough for what we needed.
 
-![](\assets\images\t1r-ps4-head-crash\ps4r-register.png)
+![](https://assets.illusion0001.workers.dev/0:/assets/images/t1r-ps4-head-crash/ps4r-register.png)
 
 Guessing from PS3 registers, It could be RBX that is holding collision data.
 

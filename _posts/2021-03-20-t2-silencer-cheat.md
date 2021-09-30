@@ -4,9 +4,9 @@ title: "Improving an existing cheat in The Last of Us: Part II"
 excerpt: "Ellie can now be James Bond"
 categories: cheatcodes
 tags: tlou2 ps4 cheatcodes
-thumbnail: "/assets/images/t2-silencer-cheat/banner2.png"
-feature-img: "/assets/images/t2-silencer-cheat/banner2.png"
-image: "/assets/images/t2-silencer-cheat/preview.png"
+thumbnail: "https://assets.illusion0001.workers.dev/0:/assets/images/t2-silencer-cheat/banner2.png"
+feature-img: "https://assets.illusion0001.workers.dev/0:/assets/images/t2-silencer-cheat/banner2.png"
+image: "https://assets.illusion0001.workers.dev/0:/assets/images/t2-silencer-cheat/preview.png"
 tags: [Articles, Releases]
 twitter: {card: "summary_large_image"}
 ---
@@ -30,7 +30,7 @@ The issue with this cheat is that ammo still decreases for the silencer, one of 
 
 <div align="center" class="video-container">
 <video controls >
-  <source src="/assets/images/t2-silencer-cheat/t2-inf-ammo-demo.mp4" type="video/mp4">
+  <source src="https://assets.illusion0001.workers.dev/0:/assets/images/t2-silencer-cheat/t2-inf-ammo-demo.mp4" type="video/mp4">
 </video>
 <em>Video showing cheat active. But silencer ammo still decreasing.</em>
 </div>
@@ -42,12 +42,12 @@ I can do a search for the silencer ammo, find it, change the value, and should b
 Not so fast. The byte for the ammo itself will shift after sometime idling, this makes the process a little difficult. but after a while, I found its memory region and found it within a couple of minutes.
 
 <p align="center">
-<img src="{% link assets/images/t2-silencer-cheat/ps4ch-list.png %}">
+<img src="https://assets.illusion0001.workers.dev/0:/assets/images/t2-silencer-cheat/ps4ch-list.png">
 <em>Ammo have been changed to 99.</em>
 </p>
 
 <p align="center">
-<img src="{% link assets/images/t2-silencer-cheat/ps4r-bp.png %}">
+<img src="https://assets.illusion0001.workers.dev/0:/assets/images/t2-silencer-cheat/ps4r-bp.png">
 <em>Breakpoint at silencer ammo address when firing.</em>
 </p>
 
@@ -63,12 +63,12 @@ This is our instruction for the silencer ammo. Nop this and the ammo will not de
 How about implementing this into the cheat that's built into the game. Sounds simple enough.
 
 <p align="center">
-<img src="{% link assets/images/t2-silencer-cheat/ps4ch-list2.png %}">
+<img src="https://assets.illusion0001.workers.dev/0:/assets/images/t2-silencer-cheat/ps4ch-list2.png">
 <em>Toggling on and off the cheat option in the menu.</em>
 </p>
 
 <p align="center">
-<img src="{% link assets/images/t2-silencer-cheat/ps4r-bp2.png %}">
+<img src="https://assets.illusion0001.workers.dev/0:/assets/images/t2-silencer-cheat/ps4r-bp2.png">
 <em>Hit breakpoint when toggling.</em>
 </p>
 
@@ -128,12 +128,12 @@ I have also ported the [Infected's Severed Head Crash Bug Fix](https://github.co
 Also, here is Naughty Dog code for loading section on 1.11.
 
 <div align="center">
-<img src="{% link assets/images/t2-silencer-cheat/t1-111-load0.png %}">
+<img src="https://assets.illusion0001.workers.dev/0:/assets/images/t2-silencer-cheat/t1-111-load0.png">
 <em>Official Patch.</em>
 </div>
 
 <div align="center">
-<img src="{% link assets/images/t2-silencer-cheat/t1-110-load.png %}">
+<img src="https://assets.illusion0001.workers.dev/0:/assets/images/t2-silencer-cheat/t1-110-load.png">
 <em>My Patch.</em>
 </div>
 

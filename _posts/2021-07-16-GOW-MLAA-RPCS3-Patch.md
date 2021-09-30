@@ -2,9 +2,9 @@
 layout: post
 title: "Graphics Patches for God of War 3 and Ascension for RPCS3"
 excerpt: "Experience God of War PlayStation 3 titles in Glorius 4K Resolution and Beyond."
-thumbnail: "assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img-feature2.png"
-feature-img: "assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img-feature2.png"
-image: "assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img-feature.png"
+thumbnail: "https://assets.illusion0001.workers.dev/0:/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img-feature2.png"
+feature-img: "https://assets.illusion0001.workers.dev/0:/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img-feature2.png"
+image: "https://assets.illusion0001.workers.dev/0:/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img-feature.png"
 categories: patches
 tags: [Articles, Releases]
 twitter: {card: "summary_large_image"}
@@ -24,14 +24,14 @@ Specifically the things you would find when playing a PC game like running at an
 Starting with God of War 3, I went into the game display options to look for clues.
 
 <p align="center">
-<img src="{% link assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img0.png %}">
+<img src="https://assets.illusion0001.workers.dev/0:/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img0.png">
 <em>In-Game Brightness Menu.</em>
 </p>
 
 Moving this silder around and searching for values I narrowed it down to 4 byte int.
 
 <p align="center">
-<img src="{% link assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img1.png %}">
+<img src="https://assets.illusion0001.workers.dev/0:/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img1.png">
 <em>In-Game Brightness Menu.</em>
 </p>
 
@@ -40,7 +40,7 @@ Max of `100` and Min of `0`.
 Peeking into memory reveals something interesting.
 
 <p align="center">
-<img src="{% link assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img2.png %}">
+<img src="https://assets.illusion0001.workers.dev/0:/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img2.png">
 <em>Highlighted is Brightness Value.</em>
 </p>
 
@@ -49,7 +49,7 @@ There is a toggle, in 4 byte int. `0x52BF2C`
 Setting it to 0 gives us this.
 
 <p align="center">
-<img src="{% link assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img3.png %}">
+<img src="https://assets.illusion0001.workers.dev/0:/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img3.png">
 <em>Strange colors..</em>
 </p>
 
@@ -58,7 +58,7 @@ Hmm, it gives strange results. Let's try patching this to 0 at startup.
 `- [ byte, 0x52BF2F, 0 ]`
 
 <p align="center">
-<img src="{% link assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img4.png %}">
+<img src="https://assets.illusion0001.workers.dev/0:/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img4.png">
 <em>2560x1440 Internal Resolution.</em>
 </p>
 
@@ -67,28 +67,28 @@ Woah, a crisp clean image. How about in-game?
 {% include_relative _image_note.md %}
 
 <p align="center">
-<img src="{% link assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img5.png %}">
+<img src="https://assets.illusion0001.workers.dev/0:/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img5.png">
 <em>Absolutely Stunning!</em>
 </p>
 
 How about God of War Ascension?
 
 <p align="center">
-<img src="{% link assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img6.png %}">
+<img src="https://assets.illusion0001.workers.dev/0:/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img6.png">
 <em>In-Game Settings Menu.</em>
 </p>
 
 Oh, a value number next to the brightness setting, how curious.
 
 <p align="center">
-<img src="{% link assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img7.png %}">
+<img src="https://assets.illusion0001.workers.dev/0:/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img7.png">
 <em>GOWA Memory View.</em>
 </p>
 
 No toggle next to brightness, there is some toggle at the bottom.
 
 <p align="center">
-<img src="{% link assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img8.png %}">
+<img src="https://assets.illusion0001.workers.dev/0:/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img8.png">
 <em>GOWA Mysterious toggle disabled.</em>
 </p>
 
@@ -101,7 +101,7 @@ Let's try the same method I used for God of War 3.
 {% include_relative _image_note.md %}
 
 <p align="center">
-<img src="{% link assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img9.png %}">
+<img src="https://assets.illusion0001.workers.dev/0:/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img9.png">
 <em>2560x1440 Internal Resolution.</em>
 </p>
 
@@ -155,12 +155,12 @@ Following the branching leads to the last one in the list.
 A few testing with `li` and register of `0` comes down to `lwz r5,0x20(r31)`
 
 <p align="center">
-<img src="{% link assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img10.png %}">
+<img src="https://assets.illusion0001.workers.dev/0:/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img10.png">
 <em>Depth of Field: Enabled.</em>
 </p>
 
 <p align="center">
-<img src="{% link assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img11.png %}">
+<img src="https://assets.illusion0001.workers.dev/0:/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img11.png">
 <em>Depth of Field: Disabled.</em>
 </p>
 
@@ -183,24 +183,24 @@ A few nop to the call `0x230c4c` narrowed down to  `0x0023137c`.
 However, Graphics Options is a little more involed.
 
 <p align="center">
-<img src="{% link assets/images/GOW-MLAA-RPCS3-Patch/ghidra-gow-img0.png %}">
+<img src="https://assets.illusion0001.workers.dev/0:/assets/images/GOW-MLAA-RPCS3-Patch/ghidra-gow-img0.png">
 </p>
 
 String refernce and a reverse branch. Hmm.
 
 <p align="center">
-<img src="{% link assets/images/GOW-MLAA-RPCS3-Patch/ghidra-gow-img1.png %}">
+<img src="https://assets.illusion0001.workers.dev/0:/assets/images/GOW-MLAA-RPCS3-Patch/ghidra-gow-img1.png">
 </p>
 
 Setting a breakpoint on `001c65b8 bl FUN_001b61e0` lead us somewhere.
 
 <p align="center">
-<img src="{% link assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img12.png %}">
+<img src="https://assets.illusion0001.workers.dev/0:/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img12.png">
 <em>Take notice of Register 3.</em>
 </p>
 
 <p align="center">
-<img src="{% link assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img13.png %}">
+<img src="https://assets.illusion0001.workers.dev/0:/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img13.png">
 </p>
 
 Setting byte `0x321ACA6B` to 0 disables motion blur.
@@ -208,7 +208,7 @@ Setting byte `0x321ACA6B` to 0 disables motion blur.
 This method can also be used for Depth of field.
 
 <p align="center">
-<img src="{% link assets/images/GOW-MLAA-RPCS3-Patch/ghidra-gow-img2.png %}">
+<img src="https://assets.illusion0001.workers.dev/0:/assets/images/GOW-MLAA-RPCS3-Patch/ghidra-gow-img2.png">
 </p>
 
 # Results

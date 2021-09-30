@@ -4,7 +4,7 @@ title: "Solving the Infected's Severed Head Crash Bug in The Last of Us (PlaySta
 excerpt: "Is it a Head? Is it a bottle? No! It's a game bug. Part 1."
 categories: Patches
 tags: tlou ps3 rpcs3 patches bugfix
-feature-img: "/assets/images/t1r-ps4-head-crash/t1r-head-banner.png"
+feature-img: "https://assets.illusion0001.workers.dev/0:/assets/images/t1r-ps4-head-crash/t1r-head-banner.png"
 ---
 
 Your move. Naughty Dog.
@@ -31,18 +31,18 @@ Affected Consoles:
 - PS4/PS5 versions issue still persists on latest patch 1.11
 <div align="center" class="video-container">
 <video controls autoplay muted >
-  <source src="\assets\images\t1-ps3-head-crash\t1-head-crash-before.mp4" type="video/mp4">
+  <source src="https://assets.illusion0001.workers.dev/0:/assets/images/t1-ps3-head-crash/t1-head-crash-before.mp4" type="video/mp4">
 </video>
 </div>
 ## Finding what caused the crash
 
 When the game crashed, using an emulator we can see that it gives an access violation as well as the address it stopped.
 
-![](\assets\images\t1-ps3-head-crash\t1-head-acess-violation.png)
+![](https://assets.illusion0001.workers.dev/0:/assets/images/t1-ps3-head-crash/t1-head-acess-violation.png)
 
 Going to this location in Ghidra gives us some clues.
 
-![](\assets\images\t1-ps3-head-crash\ghidra-head-crash-hint.png)
+![](https://assets.illusion0001.workers.dev/0:/assets/images/t1-ps3-head-crash/ghidra-head-crash-hint.png)
 
 The game does checks if: 
 
@@ -54,11 +54,11 @@ We can check using a Debugger with a breakpoint set on the crash address.
 
 Hit on the Head.
 
-![](\assets\images\t1-ps3-head-crash\t1-head-debug0.png)
+![](https://assets.illusion0001.workers.dev/0:/assets/images/t1-ps3-head-crash/t1-head-debug0.png)
 
 Hit on an Enemy.
 
-![](\assets\images\t1-ps3-head-crash\t1-head-debug-spu-data.png)
+![](https://assets.illusion0001.workers.dev/0:/assets/images/t1-ps3-head-crash/t1-head-debug-spu-data.png)
 
 In Register 10 and 29, there's some data here. It seems to be collision data.
 

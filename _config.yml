@@ -14,7 +14,7 @@ theme_settings:
 
   # Header and footer text
   header_text: Detailing the inner workings of my creations.
-  header_feature_image: assets/images/banners/lis-butterfly-banner.png
+  header_feature_image: https://assets.illusion0001.workers.dev/0:/assets/images/banners/lis-butterfly-banner.png
   footer_text: >
    Powered by <a href="https://jekyllrb.com/">Jekyll</a> with <a href="https://github.com/sylhare/Type-on-Strap">Type on Strap</a>
 

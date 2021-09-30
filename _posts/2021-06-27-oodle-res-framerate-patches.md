@@ -3,9 +3,9 @@ layout: post
 title: "Patches for The Order 1886 60FPS, 16:9 Aspect Ratio and More"
 excerpt: "Not so cinematic anymore, eh?"
 categories: patches
-thumbnail: "assets/images/oodle-res-framerate-patches/oddle-res-thumbnail-2.png"
-feature-img: "assets/images/oodle-res-framerate-patches/oddle-res-thumbnail-2.png"
-image: "assets/images/oodle-res-framerate-patches/oddle-res-thumbnail.png"
+thumbnail: "https://assets.illusion0001.workers.dev/0:/assets/images/oodle-res-framerate-patches/oddle-res-thumbnail-2.png"
+feature-img: "https://assets.illusion0001.workers.dev/0:/assets/images/oodle-res-framerate-patches/oddle-res-thumbnail-2.png"
+image: "https://assets.illusion0001.workers.dev/0:/assets/images/oodle-res-framerate-patches/oddle-res-thumbnail.png"
 tags: [Articles, Releases]
 twitter: {card: "summary_large_image"}
 ---
@@ -133,12 +133,12 @@ One is a launch parameter and another is resolution values.
 I think I found it!
 
 <p align="center">
-<img src="{% link assets/images/oodle-res-framerate-patches/oddle-res0.png %}">
+<img src="https://assets.illusion0001.workers.dev/0:/assets/images/oodle-res-framerate-patches/oddle-res0.png">
 <em>1920x1080 Letterboxed.</em>
 </p>
 
 <p align="center">
-<img src="{% link assets/images/oodle-res-framerate-patches/oddle-res1.png %}">
+<img src="https://assets.illusion0001.workers.dev/0:/assets/images/oodle-res-framerate-patches/oddle-res1.png">
 <em>1280x720 Letterboxed</em>
 </p>
 
@@ -177,7 +177,7 @@ However, `2.4` came up with some promising results.
 Around resolution code too. let's give it `1.778` and see what the game will do about it.
 
 <p align="center">
-<img src="{% link assets/images/oodle-res-framerate-patches/oddle-res2.png %}">
+<img src="https://assets.illusion0001.workers.dev/0:/assets/images/oodle-res-framerate-patches/oddle-res2.png">
 <em>Letterbox Removed.</em>
 </p>
 
