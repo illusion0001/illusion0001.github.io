@@ -35,7 +35,6 @@ Time for a fix and a good ol' resolution patch for 60FPS in some cases.
 Patching resolution in Unreal Engine 4 games has become easier than ever, usually you can guess 100.0(float) as the target and find the correct one in memory.
 
 ```cpp
-
 MyResOverride(); // call
                  // vars renamed for easier reading
 
@@ -46,7 +45,6 @@ void MyResOverride(void)
   vmovss_avx(var.ResScale);  // read to xmm0, original instruction
   return;
 }
-
 ```
 
 Easy as that.
@@ -66,7 +64,6 @@ Toggling the option in the menu on and off lands on a float, when on it is set t
 A way to fix this is to completely ignore Max FPS and instead use the sync interval variable instead. it provides much better frametime stability and no stutters.
 
 ```cpp
-
   FpsFunction(); // call
                  // vars renamed for easier reading
 
@@ -83,12 +80,16 @@ void FpsFunction(void)
   }
   return;
 }
-
 ```
 
 What this code does is it checks if the value in memory is `30.00` or not, if it is, set `var.SyncInterval` to 2 for 30FPS or else, set it 0 which is the default.
 
 To the developers, can we get this fix in a official patch? and even better, 4K support.
+
+<p align="center">
+<img src="https://assets.illusion0001.workers.dev/0:/assets/images/Overbite-FPSFixes/overbite-meme-final.png">
+<em>Fun Fact: this meme almost went unused. :P</em>
+</p>
 
 # Results
 
