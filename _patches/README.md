@@ -62,6 +62,8 @@ This directory list game improvement patches made for use with exploited PlaySta
 
 [Ghost Of Tsushima](GhostOfTsushima-Orbis.md)
 
+[MediEvil](Overbite-Orbis.md)
+
 [Mad Max](MadMax-Orbis.md)
 
 [Persona 5: Royal](P5R-Orbis.md)
