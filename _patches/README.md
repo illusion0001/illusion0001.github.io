@@ -2,6 +2,14 @@
 
 This directory list game improvement patches made for use with exploited PlayStation 4 consoles.
 
+Support on [Patreon](https://www.patreon.com/illusion0001)
+
+Follow on [YouTube](https://youtube.com/c/illusion0001)
+
+Follow on [Twitter](https://twitter.com/illusion0002)
+
+## Games
+
 [Assassin's Creed: The Ezio Collection](Scimitar-Orbis.md)
 
 [Assetto Corsa Competizione](AC2-Orbis-Shipping.md)
