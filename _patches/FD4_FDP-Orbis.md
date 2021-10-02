@@ -1,6 +1,8 @@
 # Dark Souls III: The Fire Fades Edition
 
-## 60 FPS Unlock
+## Framerate Patch
+
+### 60 FPS Unlock
 
 Author: [illusion](https://github.com/illusion0001)
 
@@ -17,14 +19,29 @@ In file `eboot.bin`
 
 ```
 # VFR
-74 1A E8 7C 82 2F 01
-
-EB 0E E8 7C 82 2F 01
+0x180805D EB 0E
 
 # Fliprate
-74 1A E8 03 81 2F 01
+0x18081D6 EB 0E
+```
 
-EB 0E E8 03 81 2F 01
+</details>
+
+### 30 FPS Limit (Proper Frame-Pacing)
+
+Author: [illusion](https://github.com/illusion0001)
+
+In file `eboot.bin`
+
+<details>
+<summary>Code 1.03 (Click to Expand)</summary>
+
+```
+# Fliprate
+0x18081D6 EB 0E
+
+# sceVideoOutSetFlipRate 0x1
+0x21180C3 BE 01 00 00 00 EB 03
 ```
 
 </details>
