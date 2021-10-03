@@ -12,9 +12,21 @@ In file `eboot.bin`
 <summary>Code 1.02 (Click to Expand)</summary>
 
 ```
-CF 01 00 8B 1D 3A 8B D4 00
+0x4547C4 01
 
-CF 01 00 C7 C3 01 00 00 00
+# screen flip mode
+0x87C1F7 # dword valid are 1-6
+         # see notes below
+
+# notes
+# according to the re work at gpcs4
+# https://github.com/Inori/GPCS4/blob/2cb81156a1a1fd914a46fbd99cecddd6f93e7dfd/GPCS4/SceModules/SceVideoOut/sce_videoout_types.h#L115-L123
+# mode 2 is pretty much flip as soon as possible, or vsync off with eye sore screen tearing
+# default is 3 which i guess is double buffered vsync
+# it would be good if triple buffering worked here
+# as it allows for 40-60 fps and not hard locking to 30-40 all the time
+# on base hw.
+# r13d loads into edx, which i think is param for SubmitFlip.
 ```
 
 </details>
@@ -35,26 +47,25 @@ In file `eboot.bin`
 # "Use 720p resolution in fullscreen mode"
 # SDK limits not letting us go below 720p.
 
-FC FF FF A8 80 74 41
-
-FC FF FF A8 80 75 41
+0x450EF5 75
 
 # For 16:9 to work; 1080p will cause visual issues
 # 900p or below is a must.
 # 720p doesn't need additional changes.
 # 1280x720 -> 1600x900
 
-75 41 C7 85 84 FC FF FF 00 05 00 00 C7 85 88 FC FF FF D0 02 00 00
+0x450EF5 75
 
-75 41 C7 85 84 FC FF FF 40 06 00 00 C7 85 88 FC FF FF 84 03 00 00
+0x450EFD 40 06 00 00
+
+0x450F07 84 03 00 00
 
 # launch param -use4k
 # "Use 4K resolution in fullscreen mode"
 # SDK limits might come back to haunt us.
-
-EB 41 F6 C4 02 74 46
-
-EB 41 F6 C4 02 75 46
+# 0x450F7E 75
+# This doesn't work, SDK does not allow buffers to be created larger than
+# 1920x1080
 ```
 
 </details>
@@ -74,9 +85,7 @@ In file `eboot.bin`
 # Native 1080p will cause visual issues, 900p or below must be used.
 # 720p doesn't need additional changes.
 
-C7 85 18 FC FF FF 9A 99 19 40
-
-C7 85 18 FC FF FF 39 8E E3 3F
+0x450E8C 39 8E E3 3F
 ```
 
 </details>
