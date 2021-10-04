@@ -2,6 +2,8 @@
 
 This directory list game improvement patches made for use with exploited PlayStation 4 consoles.
 
+**Unless stated otherwise, These are working codes and/or are currently CPU/GPU Limited. All Patches were made with Base Console in mind, Enhanced consoles are experimental and will need adjustments if it does not work out of the box. (for instance: Black Screen on Startup.)**
+
 Support on [Patreon](https://www.patreon.com/illusion0001)
 
 Follow on [YouTube](https://youtube.com/c/illusion0001)
