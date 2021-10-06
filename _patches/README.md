@@ -68,6 +68,8 @@ Follow on [Twitter](https://twitter.com/illusion0002)
 
 [Horizon Zero Dawn](HRZ-Orbis.md)
 
+[Wreckfest](ncg-orbis.md)
+
 [What Remains of Edith Finch](finchgame-Orbis.md)
 
 [Ghost Of Tsushima](GhostOfTsushima-Orbis.md)
