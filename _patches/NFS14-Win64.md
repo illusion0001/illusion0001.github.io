@@ -15,10 +15,29 @@ Can run at arbitrary framerates, For use with `NFS14` 64-bit executable, maybe s
 [ENABLE]
 aobScanModule(gametick, NFS14.exe, 44 0F B6 60 52 44 88 65 99 41 8B 56 0C 85 D2 74 0D)
 aobScanModule(fps, NFS14.exe, 75 0C 48 8B 05 FF E3 A3 01)
+alloc(alloc1,32,"NFS14.exe"+3B7375)
 label(_gametick)
-registersymbol(_gametick)
 label(_fps)
+label(ret)
+label(orgincode)
+label(exit)
+registersymbol(_gametick)
 registersymbol(_fps)
+
+alloc1:
+mov [rbp+34], 0x43480000
+
+orgincode:
+movss xmm6,[rbp+34]
+
+exit:
+jmp ret
+
+"NFS14.exe"+3B7375:
+jmp alloc1
+ret:
+
+// keep alloc'd mem here
 
 gametick:
 _gametick:
