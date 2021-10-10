@@ -19,7 +19,7 @@ I'm not much of a fan of sprinting camera shake myself so let's see what we can 
 
 Opening the executable in Ghidra and searching for `Disable Camera` gives few results. But these are just text strings, what are they for?
 
-![](https://assets.illusion0001.workers.dev/0:/assets/images/t1-camshake/t1-camshake-ghrda-search.png)
+![](https://storage.googleapis.com/assets-illusion0001/images/t1-camshake/t1-camshake-ghrda-search.png)
 
 These seem to be leftovers from developer menu code.
 
@@ -46,13 +46,13 @@ On PS4, there's a submenu dedicated to this.
 
 Let's activate this menu in-game.
 
-![](https://assets.illusion0001.workers.dev/0:/assets/images/t1-camshake/t1-camshake-menu.png)
+![](https://storage.googleapis.com/assets-illusion0001/images/t1-camshake/t1-camshake-menu.png)
 
 Three options. What we are interested here is `Disable Camera Additives` Let's see what happens when we enable it.
 
 <div align="center" class="video-container">
 <video controls >
-  <source src="https://assets.illusion0001.workers.dev/0:/assets/images/t1-camshake/t1-camshake-demo.mp4" type="video/mp4">
+  <source src="https://storage.googleapis.com/assets-illusion0001/images/t1-camshake/t1-camshake-demo.mp4" type="video/mp4">
 </video>
 <em>No more Camera shakes!</em>
 </div>
@@ -67,7 +67,7 @@ Going to `0x14f3412` in Memory and setting it to 1, does nothing. Why's that?
 
 <div align="center" class="video-container">
 <video controls >
-  <source src="https://assets.illusion0001.workers.dev/0:/assets/images/t1-camshake/t1-rpcs3-camshake-demo.mp4" type="video/mp4">
+  <source src="https://storage.googleapis.com/assets-illusion0001/images/t1-camshake/t1-rpcs3-camshake-demo.mp4" type="video/mp4">
 </video>
 <em>Got it. No more camera shake for the PS3 version.</em>
 </div>
@@ -90,7 +90,7 @@ For Uncharted 3 however, things are not as cut and dry as one might think.
 
 We can try loading it with register 0. But it doesn't work. Let's see in the debugger to find out why.
 
-![](https://assets.illusion0001.workers.dev/0:/assets/images/t1-camshake/uc3-rpcs3-camshake-dbgr.png)
+![](https://storage.googleapis.com/assets-illusion0001/images/t1-camshake/uc3-rpcs3-camshake-dbgr.png)
 
 r0 is now taken by instruction ld at `7e58ac` and we can't simply nop this and hope that the game will work. It does not.
 

@@ -4,9 +4,9 @@ title: "60FPS Patch for What Remains of Edith Finch"
 excerpt: "House exploring in 60 Frames Per Second on PlayStation 4"
 categories: patches
 tags: finchgame ps4 patches
-thumbnail: "https://assets.illusion0001.workers.dev/0:/assets/images/finchgame-60fps/fg-banner2.png"
-feature-img: "https://assets.illusion0001.workers.dev/0:/assets/images/finchgame-60fps/fg-banner2.png"
-image: "https://assets.illusion0001.workers.dev/0:/assets/images/finchgame-60fps/fg-banner.png"
+thumbnail: "https://storage.googleapis.com/assets-illusion0001/images/finchgame-60fps/fg-banner2.png"
+feature-img: "https://storage.googleapis.com/assets-illusion0001/images/finchgame-60fps/fg-banner2.png"
+image: "https://storage.googleapis.com/assets-illusion0001/images/finchgame-60fps/fg-banner.png"
 tags: [Articles, Releases]
 twitter: {card: "summary_large_image"}
 ---
@@ -35,7 +35,7 @@ This game targets its proformance profile at 1080p and 30FPS at least for Base C
 In my [previous article](https://illusion0001.github.io/patches/2021/05/20/ff7r-end-60fps/) I discovered the inital value for Unreal Engine Screen Percentage and Sync Intervals. Let's have a look in the config files and see if there's anything useful there.
 
 <p align="center">
-<img src="https://assets.illusion0001.workers.dev/0:/assets/images/finchgame-60fps/fg-compressed-ini.png">
+<img src="https://storage.googleapis.com/assets-illusion0001/images/finchgame-60fps/fg-compressed-ini.png">
 <em>Yikes.. nope.</em>
 </p>
 
@@ -44,7 +44,7 @@ This is extracted using the [UT4 QuickBMS](http://aluigi.org/bms/unreal_tourname
 100.0 float for screen percentage, and 2 for sync interval.
 
 <p align="center">
-<img src="https://assets.illusion0001.workers.dev/0:/assets/images/finchgame-60fps/ps4ch-fg1.png">
+<img src="https://storage.googleapis.com/assets-illusion0001/images/finchgame-60fps/ps4ch-fg1.png">
 <em>Looks like I found it.</em>
 </p>
 
@@ -88,19 +88,19 @@ Searching for sync came up with only a couple of releavent results. There's `r.V
 A `mov` and `cmp` instructions? Seems to use a pointer that is then allocated in memory but this is *not* eboot space as we'll see later so let's set a breakpoint and see where it takes us.
 
 <p align="center">
-<img src="https://assets.illusion0001.workers.dev/0:/assets/images/finchgame-60fps/ps4r-fg2.png">
+<img src="https://storage.googleapis.com/assets-illusion0001/images/finchgame-60fps/ps4r-fg2.png">
 <em>RAX has our memory location somewhere up high, let's check it out.</em>
 </p>
 
 <p align="center">
-<img src="https://assets.illusion0001.workers.dev/0:/assets/images/finchgame-60fps/ps4r-fg3.png">
+<img src="https://storage.googleapis.com/assets-illusion0001/images/finchgame-60fps/ps4r-fg3.png">
 </p>
 
 A row of values. seems to be 4 byte int. setting one of these values to 0 introduces tearing.
 
 <div align="center" class="video-container">
 <video controls >
-  <source src=https://assets.illusion0001.workers.dev/0:/assets/images/finchgame-60fps/fg=demo-tear.mp4" type="video/mp4">
+  <source src=https://storage.googleapis.com/assets-illusion0001/images/finchgame-60fps/fg=demo-tear.mp4" type="video/mp4">
 </video>
 <em>Oof, not looking good.</em>
 </div>
@@ -116,7 +116,7 @@ There's a compare instruction here. Let's set our value back to 1 and set this j
 
 <div align="center" class="video-container">
 <video controls >
-  <source src=https://assets.illusion0001.workers.dev/0:/assets/images/finchgame-60fps/fg=demo-no-tear.mp4" type="video/mp4">
+  <source src=https://storage.googleapis.com/assets-illusion0001/images/finchgame-60fps/fg=demo-no-tear.mp4" type="video/mp4">
 </video>
 <em>60FPS target and no screen tear! Perfect.</em>
 </div>
@@ -161,7 +161,7 @@ Pretty simple right? This should work in-game, let's test it out.
 
 <div align="center" class="video-container">
 <video controls >
-  <source src=https://assets.illusion0001.workers.dev/0:/assets/images/finchgame-60fps/fg-demo-after.mp4" type="video/mp4">
+  <source src=https://storage.googleapis.com/assets-illusion0001/images/finchgame-60fps/fg-demo-after.mp4" type="video/mp4">
 </video>
 <em>60FPS indoors and of course no tearing to be found.</em>
 </div>
@@ -173,11 +173,11 @@ Image quailty comparisons, can you guess which is which?
 {% include_relative _image_note.md %}
 
 <p align="center">
-<img src="https://assets.illusion0001.workers.dev/0:/assets/images/finchgame-60fps/fg-before.png">
+<img src="https://storage.googleapis.com/assets-illusion0001/images/finchgame-60fps/fg-before.png">
 </p>
 
 <p align="center">
-<img src="https://assets.illusion0001.workers.dev/0:/assets/images/finchgame-60fps/fg-after.png">
+<img src="https://storage.googleapis.com/assets-illusion0001/images/finchgame-60fps/fg-after.png">
 </p>
 
 <div align="center" class="video-container">

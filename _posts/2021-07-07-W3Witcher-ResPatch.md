@@ -2,9 +2,9 @@
 layout: post
 title: "The Witcher 3 60FPS and Grahpics Settings Research for PS4"
 excerpt: "Geralt fighting against monsters at up to 60 Frames-Per-Second."
-thumbnail: "https://assets.illusion0001.workers.dev/0:/assets/images/W3Witcher-ResPatch/W3Witcher-Banner.png"
-feature-img: "https://assets.illusion0001.workers.dev/0:/assets/images/W3Witcher-ResPatch/W3Witcher-Preview.png"
-image: "https://assets.illusion0001.workers.dev/0:/assets/images/W3Witcher-ResPatch/W3Witcher-Preview.png"
+thumbnail: "https://storage.googleapis.com/assets-illusion0001/images/W3Witcher-ResPatch/W3Witcher-Banner.png"
+feature-img: "https://storage.googleapis.com/assets-illusion0001/images/W3Witcher-ResPatch/W3Witcher-Preview.png"
+image: "https://storage.googleapis.com/assets-illusion0001/images/W3Witcher-ResPatch/W3Witcher-Preview.png"
 categories: patches
 tags: [Articles, Releases]
 twitter: {card: "summary_large_image"}
@@ -68,7 +68,7 @@ MOV ESI with 0x0 gives us an unlocked framerate with triple buffered VSync.
 A few things I noticed that is, there's native In-Game Frame Statistics and additional Graphics Options.
 
 <p align="center">
-<img src="https://assets.illusion0001.workers.dev/0:/assets/images/W3Witcher-ResPatch/W3Witcher-DF-Snapshot.jpg">
+<img src="https://storage.googleapis.com/assets-illusion0001/images/W3Witcher-ResPatch/W3Witcher-DF-Snapshot.jpg">
 <em>In-Game Frame Statistics with FPSGui Overlay.</em>
 </p>
 
@@ -98,14 +98,14 @@ A few things I noticed that is, there's native In-Game Frame Statistics and addi
 A simple change from `Jump Zero` to `Jump not Zero` gives us framerate stats.
 
 <p align="center">
-<img src="https://assets.illusion0001.workers.dev/0:/assets/images/W3Witcher-ResPatch/W3Witcher-ShowFPS.png">
+<img src="https://storage.googleapis.com/assets-illusion0001/images/W3Witcher-ResPatch/W3Witcher-ShowFPS.png">
 <em>In-Game Frame Statistics on PS4.</em>
 </p>
 
 What about Graphics Options? A simple drop in of the `rendering.xml` file from [GBAtemp](https://gbatemp.net/) Switch Modding Section gives us Grahpical Options seen in various Witcher 3 Switch Modded Videos.
 
 <p align="center">
-<img src="https://assets.illusion0001.workers.dev/0:/assets/images/W3Witcher-ResPatch/W3Witcher-RenderingXML.png">
+<img src="https://storage.googleapis.com/assets-illusion0001/images/W3Witcher-ResPatch/W3Witcher-RenderingXML.png">
 <em>Additional Graphics Options.</em>
 </p>
 

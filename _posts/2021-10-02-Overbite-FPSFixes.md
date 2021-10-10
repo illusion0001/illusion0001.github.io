@@ -2,8 +2,8 @@
 layout: post
 title: "Patches for MediEvil (PS4 Remake)"
 excerpt: "Resolving bad frame-pacing and patching the resolution."
-thumbnail: "https://assets.illusion0001.workers.dev/0:/assets/images/Overbite-FPSFixes/overbite-thumbnail.png"
-feature-img: "https://assets.illusion0001.workers.dev/0:/assets/images/Overbite-FPSFixes/overbite-feature.png"
+thumbnail: "https://storage.googleapis.com/assets-illusion0001/images/Overbite-FPSFixes/overbite-thumbnail.png"
+feature-img: "https://storage.googleapis.com/assets-illusion0001/images/Overbite-FPSFixes/overbite-feature.png"
 image: "https://image.api.playstation.com/cdn/UP9000/CUSA11227_00/BJZksSXNxOU0vmTCa79nr7ULJM3F6a6B.png"
 categories: patches
 tags: [Articles, Releases]
@@ -18,13 +18,13 @@ twitter: {card: "summary_large_image"}
 Another classic gets a complete overhaul in Graphics, Gameplay and the works but of course not all things are perfect and this game is no exception. When I first boot up the game for the first time, went into the options menu and it got me curious.
 
 <p align="center">
-<img src="https://assets.illusion0001.workers.dev/0:/assets/images/Overbite-FPSFixes/overbite-settings.png">
+<img src="https://storage.googleapis.com/assets-illusion0001/images/Overbite-FPSFixes/overbite-settings.png">
 </p>
 
 A 30FPS Cap option in the menu, but is it any good?
 
 <p align="center">
-<img src="https://assets.illusion0001.workers.dev/0:/assets/images/Overbite-FPSFixes/overbite-fps-borked.png">
+<img src="https://storage.googleapis.com/assets-illusion0001/images/Overbite-FPSFixes/overbite-fps-borked.png">
 <em>No, it is not.. :(</em>
 </p>
 
@@ -87,7 +87,7 @@ What this code does is it checks if the value in memory is `30.00` or not, if it
 To the developers, can we get this fix in a official patch? and even better, 4K support.
 
 <p align="center">
-<img src="https://assets.illusion0001.workers.dev/0:/assets/images/Overbite-FPSFixes/overbite-meme-final.png">
+<img src="https://storage.googleapis.com/assets-illusion0001/images/Overbite-FPSFixes/overbite-meme-final.png">
 <em>Fun Fact: this meme almost went unused. :P</em>
 </p>
 

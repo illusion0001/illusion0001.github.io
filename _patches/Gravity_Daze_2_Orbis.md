@@ -5,7 +5,7 @@
 <details>
 <summary>Current Progress Preview Image (Click to Expand)</summary>
 
-![](https://assets.illusion0001.workers.dev/0:/assets/images/patches/preview/GravityDaze2/GD2-32FPS.png)
+![](https://storage.googleapis.com/assets-illusion0001/images/patches/preview/GravityDaze2/GD2-32FPS.png)
 
 </details>
 
