@@ -38,11 +38,15 @@ Affected Consoles:
 
 When the game crashed, using an emulator we can see that it gives an access violation as well as the address it stopped.
 
-![](https://storage.googleapis.com/assets-illusion0001/images/t1-ps3-head-crash/t1-head-acess-violation.png)
+<p align="center">
+<img src="https://storage.googleapis.com/assets-illusion0001/images/t1-ps3-head-crash/t1-head-acess-violation.png">
+</p>
 
 Going to this location in Ghidra gives us some clues.
 
-![](https://storage.googleapis.com/assets-illusion0001/images/t1-ps3-head-crash/ghidra-head-crash-hint.png)
+<p align="center">
+<img src="https://storage.googleapis.com/assets-illusion0001/images/t1-ps3-head-crash/ghidra-head-crash-hint.png">
+</p>
 
 The game does checks if: 
 
@@ -54,11 +58,15 @@ We can check using a Debugger with a breakpoint set on the crash address.
 
 Hit on the Head.
 
-![](https://storage.googleapis.com/assets-illusion0001/images/t1-ps3-head-crash/t1-head-debug0.png)
+<p align="center">
+<img src="https://storage.googleapis.com/assets-illusion0001/images/t1-ps3-head-crash/t1-head-debug0.png">
+</p>
 
 Hit on an Enemy.
 
-![](https://storage.googleapis.com/assets-illusion0001/images/t1-ps3-head-crash/t1-head-debug-spu-data.png)
+<p align="center">
+<img src="https://storage.googleapis.com/assets-illusion0001/images/t1-ps3-head-crash/t1-head-debug-spu-data.png">
+</p>
 
 In Register 10 and 29, there's some data here. It seems to be collision data.
 

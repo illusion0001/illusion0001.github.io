@@ -5,7 +5,9 @@
 <details>
 <summary>Current Progress Preview Image (Click to Expand)</summary>
 
-![](https://storage.googleapis.com/assets-illusion0001/images/patches/preview/GravityDaze2/GD2-32FPS.png)
+<p align="center">
+<img src="https://storage.googleapis.com/assets-illusion0001/images/patches/preview/GravityDaze2/GD2-32FPS.png">
+</p>
 
 </details>
 

@@ -46,7 +46,9 @@ Most of the explaination was already covered in our PS3 version, see that post f
 
 We were only able to get the debugger [PS4 Reaper](https://www.psxhax.com/threads/ps4reaper-ps4-rte-debugger-and-trainer-maker-by-shiningami.6077/) working once due to connection and attaching issues but that was enough for what we needed.
 
-![](https://storage.googleapis.com/assets-illusion0001/images/t1r-ps4-head-crash/ps4r-register.png)
+<p align="center">
+<img src="https://storage.googleapis.com/assets-illusion0001/images/t1r-ps4-head-crash/ps4r-register.png">
+</p>
 
 Guessing from PS3 registers, It could be RBX that is holding collision data.
 

@@ -31,11 +31,15 @@ Finding out where this adaptive sync or "Allow Screen Tear" as it's named in the
 
 The Uncharted Collection developed by Bluepoint Games used "Allow Screen Tear" during it's load screen so searching for Byte `0` and `1` got me to the address I needed.
 
-![](https://storage.googleapis.com/assets-illusion0001/images/t1r-fast-load/ps4ch-uc3-1.png)
+<p align="center">
+<img src="https://storage.googleapis.com/assets-illusion0001/images/t1r-fast-load/ps4ch-uc3-1.png">
+</p>
 
 Setting this byte to 1 during gameplay allows for Unlocked FPS!
 
-![](https://storage.googleapis.com/assets-illusion0001/images/t1r-fast-load/UC3-tear.png)
+<p align="center">
+<img src="https://storage.googleapis.com/assets-illusion0001/images/t1r-fast-load/UC3-tear.png">
+</p>
 
 Sweet.
 
@@ -43,7 +47,9 @@ During the loading screen another option gets disabled. It's called Main Draw.
 
 Main Draw draws 3D scene. When Disabled it gives us a black screen. This is used during load screen to reduce rendering load.
 
-![](https://storage.googleapis.com/assets-illusion0001/images/t1r-fast-load/T1R-maindraw0.png)
+<p align="center">
+<img src="https://storage.googleapis.com/assets-illusion0001/images/t1r-fast-load/T1R-maindraw0.png">
+</p>
 
 300+ FPS! Not so exciting huh.
 
@@ -51,7 +57,9 @@ Main Draw draws 3D scene. When Disabled it gives us a black screen. This is used
 
 Using Ghidra, I was able to find out where this main draw byte is disabled during load screen
 
-![](https://storage.googleapis.com/assets-illusion0001/images/t1r-fast-load/ghidra-maindraw-ref.png)
+<p align="center">
+<img src="https://storage.googleapis.com/assets-illusion0001/images/t1r-fast-load/ghidra-maindraw-ref.png">
+</p>
 
 Going to 0x647631 gives us what we need.
 

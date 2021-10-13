@@ -19,7 +19,9 @@ I'm not much of a fan of sprinting camera shake myself so let's see what we can 
 
 Opening the executable in Ghidra and searching for `Disable Camera` gives few results. But these are just text strings, what are they for?
 
-![](https://storage.googleapis.com/assets-illusion0001/images/t1-camshake/t1-camshake-ghrda-search.png)
+<p align="center">
+<img src="https://storage.googleapis.com/assets-illusion0001/images/t1-camshake/t1-camshake-ghrda-search.png">
+</p>
 
 These seem to be leftovers from developer menu code.
 
@@ -46,7 +48,9 @@ On PS4, there's a submenu dedicated to this.
 
 Let's activate this menu in-game.
 
-![](https://storage.googleapis.com/assets-illusion0001/images/t1-camshake/t1-camshake-menu.png)
+<p align="center">
+<img src="https://storage.googleapis.com/assets-illusion0001/images/t1-camshake/t1-camshake-menu.png">
+</p>
 
 Three options. What we are interested here is `Disable Camera Additives` Let's see what happens when we enable it.
 
@@ -90,7 +94,9 @@ For Uncharted 3 however, things are not as cut and dry as one might think.
 
 We can try loading it with register 0. But it doesn't work. Let's see in the debugger to find out why.
 
-![](https://storage.googleapis.com/assets-illusion0001/images/t1-camshake/uc3-rpcs3-camshake-dbgr.png)
+<p align="center">
+<img src="https://storage.googleapis.com/assets-illusion0001/images/t1-camshake/uc3-rpcs3-camshake-dbgr.png">
+</p>
 
 r0 is now taken by instruction ld at `7e58ac` and we can't simply nop this and hope that the game will work. It does not.
 

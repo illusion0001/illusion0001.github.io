@@ -2,7 +2,9 @@
 
 ## 60 FPS Unlock
 
-![](https://storage.googleapis.com/assets-illusion0001/images/patches/preview/Daymare1998/Daymare_FPS_Preview.png)
+<p align="center">
+<img src="https://storage.googleapis.com/assets-illusion0001/images/patches/preview/Daymare1998/Daymare_FPS_Preview.png">
+</p>
 
 Author: [illusion](https://github.com/illusion0001)
 
