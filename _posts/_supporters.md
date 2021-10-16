@@ -4,11 +4,11 @@ Thanks to the following folks who supported me on my [Patreon](https://www.patre
 
 You guys are awesome!
 
-- smasher248
-
 - ac2pic
 
 <!--
+- smasher248
+
 - Ethan Snyder
 
 - cad5150
