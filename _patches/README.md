@@ -124,6 +124,8 @@ Follow on [Twitter](https://twitter.com/illusion0002)
 
 [The Sinking City](Tsc-orbis.md)
 
+[Vampyr](Avgame-Orbis.md)
+
 [Kingdom Hearts: III](Tresgame-Orbis.md)
 
 [Uncharted: The Nathan Drake Collection](uncharted-collection.md)
