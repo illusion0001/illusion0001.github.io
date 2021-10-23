@@ -19,19 +19,13 @@ In file `eboot.bin`
 # all code below must be applied
 
 # allow screenpercentage to be used
-8B 05 77 87 20 03 83 38 01 75 0D
-
-8B 05 77 87 20 03 83 38 01 74 0D
+0x252C934 74 0D
 
 # call
-48 8B 05 4C 7D 03 03
-
-67 67 E8 7D 0A 22 00
+0x2702C8D 67 67 E8 7D 0A 22 00
 
 # main code
-E8 0C E1 49 01 90 90 90 90 90 90 90 90 90 90 90 90 55 48 89 E5 41 57 41 56 41 54 53 48 89 D3 45 89
-
-E8 0C E1 49 01 90 90 90 90 90 90 90 90 90 90 90 90 C3 48 8B 05 C8 72 E1 02 C7 00 00 00 86 42 C3 89
+0x2923710 C3 48 8B 05 C8 72 E1 02 C7 00 00 00 86 42 C3 89
 
 # Presets:
 
@@ -65,9 +59,7 @@ In file `eboot.bin`
 <summary>Code 1.02 (Click to Expand)</summary>
 
 ```
-48 83 BF A0 00 00 00 00 0F 85 87 06 00 00
-
-48 83 BF A0 00 00 00 00 48 E9 87 06 00 00
+0x1E5C0C2 48 E9 87 06 00 00
 ```
 
 </details>
@@ -80,9 +72,7 @@ In file `eboot.bin`
 <summary>Code 1.02 (Click to Expand)</summary>
 
 ```
-66 A9 01 10 75 40
-
-66 A9 01 10 EB 40
+0x178EE71 EB 40
 ```
 
 </details>
