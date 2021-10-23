@@ -108,6 +108,8 @@ Follow on [Twitter](https://twitter.com/illusion0002)
 
 [Sekiro: Shadows Die Twice](FD4-NTC-Orbis.md)
 
+[Sleeping Dogs: Definitive Edition](SdHD-Orbis.md)
+
 [Skyrim](TESV-Orbis.md)
 
 [The Evil Within](Zwei_NG_Orbis.md)
