@@ -76,3 +76,29 @@ In file `eboot.bin`
 ```
 
 </details>
+
+## Disable Film Grain
+
+In file `eboot.bin`
+
+<details>
+<summary>Code 1.02 (Click to Expand)</summary>
+
+```
+0x156032F EB
+```
+
+</details>
+
+## Disable Post Processing
+
+In file `eboot.bin`
+
+<details>
+<summary>Code 1.02 (Click to Expand)</summary>
+
+```
+0x15602B5 48 E9
+```
+
+</details>

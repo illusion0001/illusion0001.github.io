@@ -112,6 +112,8 @@ Follow on [Twitter](https://twitter.com/illusion0002)
 
 [Skyrim](TESV-Orbis.md)
 
+[Tekken 7](TekkenGame-Orbis.md)
+
 [The Evil Within](Zwei_NG_Orbis.md)
 
 [The Order 1886](TO1886-Orbis.md)
