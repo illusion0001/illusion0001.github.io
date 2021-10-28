@@ -78,6 +78,10 @@ Follow on [Twitter](https://twitter.com/illusion0002)
 
 [MediEvil](Overbite-Orbis.md)
 
+[Mafia: Definitive Edition](Scotch-Orbis.md)
+
+[Mafia 2: Definitive Edition](Mafia2-Orbis.md)
+
 [Mad Max](MadMax-Orbis.md)
 
 [Persona 5: Royal](P5R-Orbis.md)
