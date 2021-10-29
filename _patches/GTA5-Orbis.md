@@ -4,7 +4,7 @@
 
 [Video](https://youtu.be/lLjj_0VBf7w)
 
-CPU Limited. For use with Prospero.
+CPU Limited. For use with 9th generation of game consoles.
 
 Author: [illusion](https://github.com/illusion0001)
 

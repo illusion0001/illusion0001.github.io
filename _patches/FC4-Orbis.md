@@ -2,7 +2,7 @@
 
 ## 60 FPS Unlock
 
-CPU+GPU Limited. For use with Prospero.
+CPU+GPU Limited. For use with 9th generation of game consoles.
 
 [Video](https://media.discordapp.net/attachments/650395105479360514/865565480357068800/0_46.mp4)
 

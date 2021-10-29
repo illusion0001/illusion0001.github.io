@@ -2,7 +2,7 @@
 
 ## 60 FPS Unlock
 
-CPU/GPU Limited. For use with Prospero.
+CPU/GPU Limited. For use with 9th generation of game consoles.
 
 Also uses double buffer vsync.
 

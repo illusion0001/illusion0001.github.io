@@ -4,7 +4,7 @@
 
 Author: [illusion](https://github.com/illusion0001)
 
-CPU+GPU Limited. For use with Prospero.
+CPU+GPU Limited. For use with 9th generation of game consoles.
 
 In file `eboot.bin`
 

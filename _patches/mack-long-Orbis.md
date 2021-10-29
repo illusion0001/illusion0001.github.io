@@ -6,7 +6,7 @@ Author: [illusion](https://github.com/illusion0001)
 
 Uses double buffer vsync.
 
-Not useful at the moment.
+For use with 9th generation of game consoles.
 
 In file `eboot.bin`
 
