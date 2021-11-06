@@ -8,6 +8,10 @@ You guys are awesome!
 
 - Ioritree
 
+- TeMkA169
+
+- alessaro92
+
 <!--
 - smasher248
 
