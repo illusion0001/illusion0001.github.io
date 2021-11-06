@@ -23,6 +23,7 @@ theme_settings:
   email_address: illusion3185@gmail.com
   behance:
   bitbucket:
+  coffee: illusion0001
   dribbble:
   discord: 192940192133414912
   facebook:
@@ -78,6 +79,7 @@ theme_settings:
   str_rss_follow: "Follow RSS feed"
   str_discord: "Contact on Discord"
   str_support_via: "Support via"
+  str_buy_coffee: "Buy Me a Coffee!"
   str_share_on: "Share on"
   str_add_to: "Add to"
   str_email: "Email"

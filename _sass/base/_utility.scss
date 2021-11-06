@@ -63,6 +63,10 @@ a.button.paypal {
     color: $paypal-link-color;
 }
 
+a.button.coffee {
+    color: $coffee-link-color;
+}
+
 .button-link {
     &:hover {
         background: $link-color;
@@ -107,6 +111,13 @@ a.button.paypal {
     }
 }
 
+.button-link.coffee {
+    &:hover {
+        background: $coffee-link-color;
+        border-color: $coffee-link-color;
+    }
+}
+
 .round-button {
     border-radius: 1.5em;
     border: 1px solid;
@@ -137,6 +148,10 @@ a.round-button.patreon {
 
 a.round-button.paypal {
     background-color: $paypal-link-color;
+}
+
+a.round-button.coffee {
+    background-color: $coffee-link-color;
 }
 
 .round-button-link {
@@ -190,6 +205,15 @@ a.round-button.paypal {
     }
     background: $paypal-link-color;
     border-color: $paypal-link-color;
+}
+
+.round-button-link.coffee {
+    &:hover {
+        background: darken($coffee-link-color, 15%);
+        border-color: darken($coffee-link-color, 15%);
+    }
+    background: $coffee-link-color;
+    border-color: $coffee-link-color;
 }
 
 .body-link {

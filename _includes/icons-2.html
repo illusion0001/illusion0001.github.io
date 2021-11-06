@@ -1,3 +1,11 @@
+{% if site.theme_settings.coffee %}
+<li>
+	<a href="https://www.buymeacoffee.com/{{ site.theme_settings.coffee }}" class="round-button coffee" role="button" target="_blank" title="{{ site.theme_settings.str_buy_coffee }}">
+        <i class="fas fa-coffee"></i> {{ site.theme_settings.str_buy_coffee }}
+	</a>
+</li>
+{% endif %}
+
 {% if site.theme_settings.patreon %}
 <li>
 	<a href="https://www.patreon.com/{{ site.theme_settings.patreon }}" class="round-button patreon" role="button" target="_blank" title="Become a patron">
