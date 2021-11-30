@@ -92,7 +92,7 @@ That would be it for the rest of the games, right?
 
 Starting with A Crack in Time, a later entry in the series, things changed. changing the value we previously discoverd works but has a side effect.
 
-*(If the video does not play in your web browser, right click and save the video to play it locally.)*
+{% include_relative _incompatible_video_note.md %}
 
 <div align="center" class="video-container">
 <video controls >
