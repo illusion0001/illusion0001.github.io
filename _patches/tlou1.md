@@ -62,6 +62,29 @@ C6 80 DF 06 00 00 00 C6 80 30 00 00 00 01 44 89 F0 48 83 C4 08 5B 41 5E 41 5F 5D
 
 </details>
 
+## University Nailbomb Softlock Fix
+
+Author: [illusion](https://github.com/illusion0001), [ZEROx](https://github.com/Xcedf)
+
+[Article](https://illusion0001.github.io/patches/2021/12/04/t1-nailbomb-softlock-patch/)
+
+In file `eboot.bin`
+
+<details>
+<summary>Code PS4 1.11 (Click to Expand)</summary>
+
+```
+# call
+
+0x6A67A7 E9 A4 38 9D FF 90 90 90 90 90
+
+# main
+
+0x7A050 44 89 05 99 4C 7A 01 4C 8D 05 2A CF 5C 01 41 81 38 F0 8E BC 40 74 22 41 81 38 CF F0 66 A4 74 19 41 81 38 6A 06 B6 9A 74 10 41 81 38 5C 5D 81 11 74 07 41 81 38 C8 5F D3 4A 44 8B 05 60 4C 7A 01 0F 85 1B C7 62 00 E9 1C C9 62 00
+```
+
+</details>
+
 ## Infected's Severed Head Crash Bug Fix
 
 Author: [illusion](https://github.com/illusion0001), [ZEROx](https://github.com/Xcedf)
