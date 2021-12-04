@@ -67,6 +67,9 @@ licensed under MIT: https://ellekasai.mit-license.org/
 
 /* End preamble; begin emoji classes */
 
+.thinkhappy {
+    background-image: url("https://storage.googleapis.com/assets-illusion0001/images/emoji/thinkhappy.svg")
+}
 
 .twa-1st-place-medal {
     background-image: url("https://twemoji.maxcdn.com/v/latest/svg/1f947.svg")
