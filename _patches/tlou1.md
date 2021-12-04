@@ -1,11 +1,5 @@
 # The Last of Us
 
-To apply patch:
-
-PS4: Open decrypted executable (eboot.bin) in hexeditor and search for first line and replace with second line. Repeat the same for remaining codes.
-
-PS3: Decrypt executable with [TrueAncestor SELF Resigner](https://www.psx-place.com/resources/trueancestor-self-resigner-by-jjkkyu.33/) Open decrypted executable (eboot.bin) in hexeditor, copy from first columnn and subtract 0x10000. and paste write from second columnn. Repeat the same for remaining codes.
-
 ## Improved Loading
 
 Author: [illusion](https://github.com/illusion0001)
@@ -15,11 +9,9 @@ Author: [illusion](https://github.com/illusion0001)
 In file `eboot.bin`
 
 <details>
-<summary>Code PS4 (Click to Expand)</summary>
+<summary>Code PS4 1.00 (Click to Expand)</summary>
 
 ```
-1.00
-
 from
 
 C6 80 D5 06 00 00 00
@@ -35,11 +27,14 @@ BE A0 A0 00 FF B0 07 E8 CC 90 F9 FF 4C 8D A4
 to
 
 C6 80 D5 06 00 00 00 C6 80 30 00 00 00 01 C3
+```
 
-####
+</details>
 
-1.10
+<details>
+<summary>Code PS4 1.10 (Click to Expand)</summary>
 
+```
 from
 
 0F 8F 47 01 00 00 41 C6
@@ -76,36 +71,9 @@ Author: [illusion](https://github.com/illusion0001), [ZEROx](https://github.com/
 In file `eboot.bin`
 
 <details>
-<summary>Code PS3 (Click to Expand)</summary>
+<summary>Code PS4 1.00 (Click to Expand)</summary>
 
 ```
-1.00
-0 006b06a8 483a4b95
-0 00a5523c 3d400001
-0 00a55240 7f9d5000
-0 00a55244 409d0008
-0 00a55248 813d0040
-0 00a5524c 4e800020
-
-1.11
-0 006d9368 483aa7ed
-0 00a83b54 3d400001
-0 00a83b58 7f9d5000
-0 00a83b5c 409d0008
-0 00a83b60 813d0040
-0 00a83b64 4e800020
-```
-
-</details>
-
-In file `eboot.bin`
-
-<details>
-<summary>Code PS4 (Click to Expand)</summary>
-
-```
-1.00
-
 48 8B 43 40 48 89 85 D0 F3 FF FF 4C 89 EF
 
 to
@@ -120,10 +88,14 @@ to
 
 48 89 85 D0 F3 FF FF 48 83 FB 00 0F 84 04 00 00 00 48 8B 43 40 C3 48 8D 15 70 AB 6E 00
 
-####
+```
 
-1.10
+</details>
 
+<details>
+<summary>Code PS4 1.10 (Click to Expand)</summary>
+
+```
 48 8B 43 40 48 89 85 E0 F3 FF FF
 
 to
@@ -137,11 +109,14 @@ BE A0 A0 00 FF 4C 89 EF C5 E2 5E DE 8B 48 3C 44 8B 70 48 48 8D 05
 to
 
 48 89 85 E0 F3 FF FF 48 83 FB 00 0F 84 04 00 00 00 48 8B 43 40 C3
+```
 
-####
+</details>
 
-1.11
+<details>
+<summary>Code PS4 1.11 (Click to Expand)</summary>
 
+```
 48 8B 43 40 48 89 85 E0 F3 FF FF
 
 E8 72 53 56 00 90 90 90 90 90 90
@@ -162,23 +137,9 @@ Author: [illusion](https://github.com/illusion0001)
 In file `eboot.bin`
 
 <details>
-<summary>Code PS3 (Click to Expand)</summary>
+<summary>Code PS4 1.10 (Click to Expand)</summary>
 
 ```
-1.11 
-0 00994234 997d
-```
-
-</details>
-
-In file `eboot.bin`
-
-<details>
-<summary>Code PS4 (Click to Expand)</summary>
-
-```
-1.10
-
 Find
 
 C6 83 EC 06 00 00 01 C6 83 EA 06 00 00 00
@@ -199,64 +160,9 @@ Author: [illusion](https://github.com/illusion0001), [ZEROx](https://github.com/
 In file `eboot.bin`
 
 <details>
-<summary>Code PS3 (Click to Expand)</summary>
+<summary>Code PS4 1.10 (Click to Expand)</summary>
 
 ```
-1.11
-#
-Max tools level
-0
-illusion
-0 00082960 38000005
-0 00082788 60000000
-#
-Infinite Everything (Ammo, Items, Skills, Parts)
-0
-Medo ported by Randy97Killa, Improved by illusion and ZEROx
-0 0E8D600 496E66696E697465
-0 0E8D608 2045766572797468
-0 0E8D610 696E672028416D6D
-0 0E8D618 6F2C204974656D73
-0 0E8D620 2C20536B696C6C73
-0 0E8D628 2C20506172747329
-0 01286780 00E8D600
-0 01286784 014F3412
-0 003495C 48E58C35 
-0 0E8D590 3FA0014F 
-0 0E8D594 881D3412 
-0 0E8D598 2F800000 
-0 0E8D59C 409E0008 
-0 0E8D5A0 7F7FD22E 
-0 0E8D5A4 4E800020 
-0 0034968 2F9D0200 
-0 0034970 3BA00200 
-0 00336C0 7E2802A6
-0 00336C4 48E59F01
-0 00336C8 7E2803A6
-0 00336CC 3A200000
-0 0E8D5C4 7C0B4A2E
-0 0E8D5C8 5408043E
-0 0E8D5CC 3E00014F
-0 0E8D5D0 89F03412
-0 0E8D5D4 2F8F0000
-0 0E8D5D8 409E0008
-0 0E8D5DC 7C050050
-0 0E8D5E0 7F882800
-0 0E8D5E4 39E00000
-0 0E8D5E8 3A000000
-0 0E8D5EC 4E800020
-```
-
-</details>
-
-In file `eboot.bin`
-
-<details>
-<summary>Code PS4 (Click to Expand)</summary>
-
-```
-PS4 1.10
-
 qmenu
 
 E8 B5 A8 F9 FF BF A0 00 00 00 49 89 C7 E8 D8 1D C1 00 48 89 C3 48 8D 35 1C 36 02 01 31 C9 45 31 C0 4C 89 FA 48 89 DF E8 6E DB 9B 00 4C 89 F7 48 89 DE E8 63 EA 9B 00 BF A0 00 00 00
