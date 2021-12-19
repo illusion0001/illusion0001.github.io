@@ -26,17 +26,6 @@ Author: [illusion](https://github.com/illusion0001)
 In file `eboot.bin`
 
 <details>
-<summary>Code 1.00 (Click to Expand)</summary>
-
-```
-BE 01 00 00 00 E8 86 F2 F6 00
-
-BE 00 00 00 00 E8 86 F2 F6 00
-```
-
-</details>
-
-<details>
 <summary>Code 1.11 (Click to Expand)</summary>
 
 ```
@@ -59,17 +48,6 @@ This will make the game run at half speed. It was used for remastered to run at 
 Author: [illusion](https://github.com/illusion0001)
 
 In file `eboot.bin`
-
-<details>
-<summary>Code 1.00 (Click to Expand)</summary>
-
-```
-C6 05 3C D2 65 01 01
-
-C6 05 3C D2 65 01 00
-```
-
-</details>
 
 <details>
 <summary>Code 1.11 (Click to Expand)</summary>
