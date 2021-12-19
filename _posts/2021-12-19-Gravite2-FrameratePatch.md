@@ -178,6 +178,10 @@ This patch is best experinced on PS4 Pro with 1080p output and supersampling dis
 
 Keep in mind that this patch is not perfect and nothing is so here's the minor issues I seen so far.
 
+After completion of intro, the game will run at half speed (this is a bug)
+
+To workaround this, load previous auto save.
+
 UI are double speed (there is a float for this but 735 of them doesn't particularly excite me to look through it..)
 
 Some animations are double speed but movement is half speed? (best seen when looking at the miners during intro)
