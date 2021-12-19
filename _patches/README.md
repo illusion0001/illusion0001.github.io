@@ -62,6 +62,8 @@ Follow on [Twitter](https://twitter.com/illusion0002)
 
 [Grand Theft Auto V](GTA5-Orbis.md)
 
+[Gravity Rush 2](Gravity_Daze_2_Orbis.md)
+
 [Heavy Rain](HRPS4-Orbis.md)
 
 [Hellblade: Senua's Sacrifice](HellbladeGame-Orbis.md)
