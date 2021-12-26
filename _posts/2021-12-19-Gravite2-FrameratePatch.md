@@ -155,14 +155,12 @@ if (   level_name == ep00_c /* regression, todo: is this caused by our code? */
     || level_name == ep02_a ) {
         game_flag = 3; // 30hz
 } else {
-    game_flag = 1; // 60hz
+        game_flag = 1; // 60hz
     return;
   }
 ```
 
-This one actively checks during level loading, if any of the levels matched, set the game back to 30 fps, then 60 once we leave that particular area or level of the game. The example being the end of the intro, first episode and the tutorial of episode 2. Note that the intro having a softlock is a regression potentially in my code? I'll look into it at a later date but it should not be a big deal.
-
-The post will be updated when new fixes are added.
+This one checks during level changes, if any of the levels matched, set the game back to 30 fps, then 60 once we leave that particular area or level of the game. The example being the end of the intro, first episode and the tutorial of episode 2. Note that the intro having a softlock is a regression potentially in my code? I'll look into it at a later date but it should not be a big deal.
 
 ## Showcase
 
@@ -175,20 +173,6 @@ This patch is best experinced on PS4 Pro with 1080p output and supersampling dis
 </div>
 
 # Patch
-
-Keep in mind that this patch is not perfect and nothing is so here's the minor issues I seen so far.
-
-After completion of intro, the game will run at half speed (this is a bug)
-
-To workaround this, load previous auto save.
-
-UI are double speed (there is a float for this but 735 of them doesn't particularly excite me to look through it..)
-
-Some animations are double speed but movement is half speed? (best seen when looking at the miners during intro)
-
-Some in-game cinematics are double speed.
-
-Video playback stuttering.
 
 {% include_relative _orbis_install_note.md %}
 
