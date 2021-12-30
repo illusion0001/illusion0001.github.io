@@ -1,4 +1,4 @@
-# Elden Ring Network Test
+# Elden Ring: Network Test
 
 ## Patch Preview
 
@@ -10,11 +10,22 @@ Patch applied: Resolution Patch (Neo) + 30 FPS Fix
 
 ### 60 FPS Unlock (For Base)
 
-todo
+<details>
+<summary>Code (Click to Expand)</summary>
+
+```
+# Flipmode
+0x1BF6627 95
+
+# VFR
+0x1BF6795 48 E9 5B 00 00 00
+```
+
+</details>
 
 ### 30 FPS Fix (Proper Frame Pacing)
 
-Locks FPS to 30 with Proper Frame Pacing. (Neo Only for now)
+Locks FPS to 30 with Proper Frame Pacing.
 
 Author: [illusion](https://github.com/illusion0001)
 
@@ -24,7 +35,12 @@ In file `eboot.bin`
 <summary>Code (Click to Expand)</summary>
 
 ```
+# Flipmode (Base Only)
+0x1BF6627 95
+
+# Call
 0x2D42FF0 E8 0F D5 39 00
+# Main code
 0x30E0503 00 BF 00 01 11 4E BE 01 00 00 00 E8 ED F8 D8 FF C3
 ```
 

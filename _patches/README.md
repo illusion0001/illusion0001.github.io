@@ -46,6 +46,8 @@ Follow on [Twitter](https://twitter.com/illusion0002)
 
 [Dishonored 2](Dishonored2-Orbis.md)
 
+[Elden Ring: Netowrk Test](FD4-NTS-Orbis.md)
+
 [Far Cry 3](FC3-Orbis.md)
 
 [Far Cry 4](FC4-Orbis.md)
