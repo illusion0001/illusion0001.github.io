@@ -8,7 +8,25 @@ CPU Limited. For use with 9th generation of game consoles.
 
 Author: [illusion](https://github.com/illusion0001)
 
+Ported Author: [GraFfiX_221211](https://twitter.com/GraFfiX_221211)
+
 In file `eboot.bin`
+
+
+<details>
+<summary>Code 1.38 (Click to Expand)</summary>
+
+```
+BF 02 00 00 00 31 F6 E8 C7 2C E0 00
+
+BF 01 00 00 00 31 F6 E8 C7 2C E0 00
+```
+
+</details>
+
+<!--
+
+Commenting this out when to re-test this when FCAT gets implemented.
 
 <details>
 <summary>Code 1.00 (Click to Expand)</summary>
@@ -51,3 +69,5 @@ BF 01 00 00 00 31 F6 E8 E7 69 DE 00
 ```
 
 </details>
+
+-->

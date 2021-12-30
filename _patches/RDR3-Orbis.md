@@ -11,23 +11,10 @@ Author: [illusion](https://github.com/illusion0001)
 In file `eboot.bin`
 
 <details>
-<summary>Code 1.02 (Click to Expand)</summary>
+<summary>Code 1.29 (Click to Expand)</summary>
 
 ```
-85 C0 0F 44 F0 E8 89 A8 3F 01
-
-BE 00 00 00 00 E8 89 A8 3F 01
-```
-
-</details>
-
-<details>
-<summary>Code 1.24 (Click to Expand)</summary>
-
-```
-85 C0 0F 44 F0 E8 F4 7A 47 01
-
-BE 00 00 00 00 E8 F4 7A 47 01
+0x538EB57 BE 00 00 00 00
 ```
 
 </details>
@@ -45,13 +32,14 @@ In file `eboot.bin`
 
 ```
 # Base
+# Do not apply this on Neo as it will cause a blackscreen.
 80 07 00 00 38 04 00 00 3C 00 00 00 01 00 00 00 00 0F 00 00 70 08 00 00 3C 00 00 00 01 00 00 00
 # 1920x1080 -> 1280x720
 00 05 00 00 D0 02 00 00 3C 00 00 00 01 00 00 00 00 0F 00 00 70 08 00 00 3C 00 00 00 01 00 00 00
 
 # Neo
 80 07 00 00 38 04 00 00 3C 00 00 00 01 00 00 00 00 0F 00 00 70 08 00 00 3C 00 00 00 01 00 00 00
-# 3840x2160 -> ????x????
+# 3840x2160
 # array of interest 00 0F 00 00 70 08 00 00
 ```
 
