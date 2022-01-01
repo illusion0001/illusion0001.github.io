@@ -12,6 +12,80 @@ Follow on [YouTube](https://youtube.com/c/illusion0001)
 
 Follow on [Twitter](https://twitter.com/illusion0002)
 
+# Contributing
+
+You can submit a pull request to this folder with your own patches 
+
+**Patches, cheats and more must be your own. If it was stolen from somewhere the entry will be removed without notice.**
+
+Templates:
+
+<details>
+<summary>Format for existing titles
+ (Click to Expand)</summary>
+
+## Patch title
+
+Author: [example author](link to author preferably on github)
+
+Ported author: (if applicable)
+
+Notes: (if applicable)
+
+In file: `examplefile.bin` <!-- must include full path if it is launched from somewhere else.) -->
+
+<details>
+<summary>Code (Click to Expand)</summary>
+
+```
+# Code (followed by game version)
+# Patch contents goes here.
+# The hashtag symbol can be used for comments
+# Formats supported are: Direct address and AoB array of bytes.
+# If ini or text replace, 0xoffset: hex string goes here.
+```
+</details>
+
+</details>
+
+<details>
+<summary>Format for new titles
+ (Click to Expand)</summary> 
+
+```
+Filename: GameTitle-Platform.md
+Gametitle can be the code name or shorten title for a given game.
+Platform must be a codename for a given platform. (I.e xenon for Xbox 360 or Prospero for PS5.)
+```
+
+File contents:
+
+# Game title
+
+## Patch title
+
+Author: [example author](link to author preferably on github)
+
+Ported author: (if applicable)
+
+Notes: (if applicable)
+
+In file: `examplefile.bin` <!-- must include full path if it is launched from somewhere else.) -->
+
+<details>
+<summary>Code (Click to Expand)</summary>
+
+```
+# Code (followed by game version)
+# Patch contents goes here.
+# The hashtag symbol can be used for comments
+# Formats supported are: Direct address and AoB array of bytes.
+# If ini or text replace, 0xoffset: hex string goes here.
+```
+</details>
+
+</details>
+
 ## Games
 
 [Assassin's Creed: The Ezio Collection](Scimitar-Orbis.md)
