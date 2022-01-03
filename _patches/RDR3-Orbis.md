@@ -4,7 +4,7 @@
 
 ## 60 FPS Unlock
 
-[Demo](https://youtu.be/zSlrdwxP4yA)
+[Demo](https://youtu.be/r5aY2vHjB_8)
 
 CPU Limited. For use with 9th generation of game consoles.
 
@@ -23,7 +23,7 @@ In file `eboot.bin`
 
 ## Resolution Patch
 
-[Demo](https://youtu.be/zSlrdwxP4yA)
+[Demo](https://youtu.be/r5aY2vHjB_8)
 
 Author: [illusion](https://twitter.com/illusion0002)
 
@@ -38,11 +38,6 @@ In file `eboot.bin`
 80 07 00 00 38 04 00 00 3C 00 00 00 01 00 00 00 00 0F 00 00 70 08 00 00 3C 00 00 00 01 00 00 00
 # 1920x1080 -> 1280x720
 00 05 00 00 D0 02 00 00 3C 00 00 00 01 00 00 00 00 0F 00 00 70 08 00 00 3C 00 00 00 01 00 00 00
-
-# Neo
-80 07 00 00 38 04 00 00 3C 00 00 00 01 00 00 00 00 0F 00 00 70 08 00 00 3C 00 00 00 01 00 00 00
-# 3840x2160
-# array of interest 00 0F 00 00 70 08 00 00
 ```
 
 </details>
