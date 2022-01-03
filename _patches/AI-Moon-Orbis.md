@@ -1,5 +1,7 @@
 # Alien: Isolation
 
+[Game Index](README.md#games)
+
 ## Skip Save Confirm Screen
 
 [Article](https://illusion0001.github.io/patches/2021/09/09/AlienIsolation-Patches/)

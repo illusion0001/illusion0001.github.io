@@ -1,5 +1,7 @@
 # Assetto Corsa Competizione
 
+[Game Index](README.md#games)
+
 ## Resolution Patch
 
 [Video](https://youtu.be/XnRTDuLJBig)

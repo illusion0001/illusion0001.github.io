@@ -1,5 +1,7 @@
 # inFAMOUS Second Son
 
+[Game Index](README.md#games)
+
 ## Resolution Patch
 
 Author: [illusion](https://github.com/illusion0001)

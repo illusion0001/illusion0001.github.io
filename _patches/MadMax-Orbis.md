@@ -1,5 +1,7 @@
 # Mad Max
 
+[Game Index](README.md#games)
+
 ## 60 FPS Unlock
 
 [Demo](https://youtu.be/Cr-fdcSJros)

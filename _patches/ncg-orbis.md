@@ -1,5 +1,7 @@
 # Wreckfest
 
+[Game Index](README.md#games)
+
 ## 60 FPS Unlock
 
 60FPS 99% of the time. No need for resolution patch.

@@ -1,5 +1,7 @@
 # Need for Speed: Rivals
 
+[Game Index](README.md#games)
+
 ## Framerate Patch (Proof of Concept)
 
 https://www.pcgamingwiki.com/wiki/Need_for_Speed_Rivals#High_frame_rate

@@ -1,5 +1,7 @@
 # The Last of Us: Part II
 
+[Game Index](README.md#games)
+
 ## Improved Inf Ammo
 
 Author: [illusion](https://github.com/illusion0001)

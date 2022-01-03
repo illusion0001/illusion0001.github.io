@@ -1,5 +1,7 @@
 # Crysis: Remastered
 
+[Game Index](README.md#games)
+
 ## 30 FPS Limit (Proper Frame-Pacing)
 
 Only use this when you really need to. It will cap Performance Mode on Neo to 30FPS.

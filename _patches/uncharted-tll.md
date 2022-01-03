@@ -1,8 +1,6 @@
 # Uncharted: The Lost Legacy
 
-To apply patch:
-
-PS4: Open decrypted executable (eboot.bin) in hexeditor and search for first line and replace with second line. Repeat the same for remaining codes.
+[Game Index](README.md#games)
 
 ## 720p + 60 FPS Unlock
 

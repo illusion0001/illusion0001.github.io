@@ -1,5 +1,7 @@
 # The Witcher 3
 
+[Game Index](README.md#games)
+
 ## 60 FPS Unlock
 
 [Article](https://illusion0001.github.io/patches/2021/07/07/W3Witcher-ResPatch/)

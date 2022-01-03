@@ -1,5 +1,7 @@
 # The Sinking City
 
+[Game Index](README.md#games)
+
 ## 60 FPS Unlock + Resolution Patch
 
 Author: [illusion](https://github.com/illusion0001)

@@ -1,5 +1,7 @@
 # Crash Team Racing Nitro-Fueled
 
+[Game Index](README.md#games)
+
 ## 60 FPS Unlock
 
 CPU/GPU Limited. For use with 9th generation of game consoles.

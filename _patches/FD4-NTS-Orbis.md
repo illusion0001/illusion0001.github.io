@@ -1,5 +1,7 @@
 # Elden Ring: Network Test
 
+[Game Index](README.md#games)
+
 ## Patch Preview
 
 Patch applied: Resolution Patch (Neo) + 30 FPS Fix

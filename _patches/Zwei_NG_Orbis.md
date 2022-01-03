@@ -1,5 +1,7 @@
 # The Evil Within
 
+[Game Index](README.md#games)
+
 ## 60 FPS Unlock
 
 GPU Limited. For use with 9th generation of game consoles.

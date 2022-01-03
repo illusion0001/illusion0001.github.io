@@ -1,5 +1,7 @@
 # Resident Evil: HD
 
+[Game Index](README.md#games)
+
 ## 60 FPS Unlock
 
 [Demo](https://youtu.be/MSVD1Gmm4P8)

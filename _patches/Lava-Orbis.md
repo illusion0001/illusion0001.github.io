@@ -1,5 +1,7 @@
 # Crash Bandicoot 4: It's About Time
 
+[Game Index](README.md#games)
+
 ## Resolution Patch
 
 Author: [illusion](https://github.com/illusion0001)

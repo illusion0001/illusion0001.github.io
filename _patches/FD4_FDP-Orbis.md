@@ -1,5 +1,7 @@
 # Dark Souls III: The Fire Fades Edition
 
+[Game Index](README.md#games)
+
 ## Framerate Patch
 
 ### 60 FPS Unlock

@@ -1,5 +1,7 @@
 # Kingdom Hearts III
 
+[Game Index](README.md#games)
+
 ## 720p Resolution
 
 Author: [illusion](https://github.com/illusion0001)

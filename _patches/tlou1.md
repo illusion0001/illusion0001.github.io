@@ -1,5 +1,7 @@
 # The Last of Us
 
+[Game Index](README.md#games)
+
 ## Improved Loading
 
 Author: [illusion](https://github.com/illusion0001)

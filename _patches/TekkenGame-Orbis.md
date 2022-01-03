@@ -1,5 +1,7 @@
 # Tekken 7
 
+[Game Index](README.md#games)
+
 ## Disable Post Processing
 
 Preview:

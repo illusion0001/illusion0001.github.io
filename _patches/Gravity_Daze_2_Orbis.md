@@ -1,5 +1,7 @@
 # Gravity Rush 2
 
+[Game Index](README.md#games)
+
 ## 60 FPS Unlock (WORK-IN-PROGRESS)
 
 ```

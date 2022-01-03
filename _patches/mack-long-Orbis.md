@@ -1,5 +1,7 @@
 # Crash Bandicoot N. Sane Trilogy
 
+[Game Index](README.md#games)
+
 ## 60 FPS Unlock
 
 Author: [illusion](https://github.com/illusion0001)

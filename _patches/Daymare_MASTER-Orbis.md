@@ -1,5 +1,7 @@
 # Daymare 1998
 
+[Game Index](README.md#games)
+
 ## 60 FPS Unlock
 
 <p align="center">

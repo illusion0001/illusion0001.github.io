@@ -1,5 +1,7 @@
 # Judgement
 
+[Game Index](README.md#games)
+
 ## 60 FPS Unlock (CUSA13197)
 
 Author: [illusion](https://github.com/illusion0001)

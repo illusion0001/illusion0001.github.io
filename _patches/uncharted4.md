@@ -1,8 +1,6 @@
 # Uncharted 4
 
-To apply patch:
-
-PS4: Open decrypted executable (eboot.bin) in hexeditor and search for first line and replace with second line. Repeat the same for remaining codes.
+[Game Index](README.md#games)
 
 ## Dev Menu
 

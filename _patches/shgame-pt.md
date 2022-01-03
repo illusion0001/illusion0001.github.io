@@ -1,5 +1,9 @@
 # Silent Hills: P.T
 
+[Game Index](README.md#games)
+
+## Task Lists
+
 - [x] Framerate Unlock
 - [x] 720p Internal Resolution (Currently borked)
 

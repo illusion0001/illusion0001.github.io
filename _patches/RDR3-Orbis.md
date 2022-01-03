@@ -1,5 +1,7 @@
 # Red Dead Redemption 2
 
+[Game Index](README.md#games)
+
 ## 60 FPS Unlock
 
 [Demo](https://youtu.be/zSlrdwxP4yA)

@@ -1,5 +1,7 @@
 # Life is Strange 2
 
+[Game Index](../README.md#games)
+
 ## 720p Resolution
 
 Author: [illusion](https://github.com/illusion0001)

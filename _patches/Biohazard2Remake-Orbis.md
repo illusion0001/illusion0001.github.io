@@ -1,5 +1,7 @@
 # Resident Evil 2
 
+[Game Index](README.md#games)
+
 ## Resolution Patch
 
 [Demo](https://youtu.be/Qf3BCH8-ZPM)

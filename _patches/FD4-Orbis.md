@@ -1,5 +1,7 @@
 # Bloodborne
 
+[Game Index](README.md#games)
+
 ## 30 FPS Limit (Proper Frame-Pacing)
 
 [Video](https://youtu.be/seKQOQy5Ab4)

@@ -1,5 +1,7 @@
 # Uncharted: The Nathan Drake Collection
 
+[Game Index](README.md#games)
+
 ## Uncharted: 1
 
 ## Uncharted: 2

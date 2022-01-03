@@ -1,5 +1,7 @@
 # Rise of the Tomb Raider
 
+[Game Index](README.md#games)
+
 ## 60 FPS Unlock
 
 [Video](https://youtu.be/xnPVxnp5NHw)

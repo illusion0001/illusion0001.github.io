@@ -1,5 +1,7 @@
 # MediEvil
 
+[Game Index](README.md#games)
+
 ## Resolution Patch
 
 [Article](https://illusion0001.github.io/patches/2021/10/02/Overbite-FPSFixes/)

@@ -1,5 +1,7 @@
 # Fry Cry 3
 
+[Game Index](README.md#games)
+
 ## 60 FPS Unlock
 
 CPU Limited.

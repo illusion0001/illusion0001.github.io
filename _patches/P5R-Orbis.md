@@ -1,5 +1,7 @@
 # Persona 5: Royal
 
+[Game Index](README.md#games)
+
 ## 60 FPS Unlock
 
 Author: [illusion](https://github.com/illusion0001), [ZEROx](https://github.com/Xcedf)

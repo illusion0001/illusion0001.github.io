@@ -1,5 +1,7 @@
 # Lichdom: Battlemage
 
+[Game Index](README.md#games)
+
 ## 30 FPS Limit (Proper Frame-Pacing)
 
 Author: [illusion](https://github.com/illusion0001)

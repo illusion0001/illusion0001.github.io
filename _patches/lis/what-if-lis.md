@@ -1,5 +1,7 @@
 # Life is Strange
 
+[Game Index](../README.md#games)
+
 ## 60 FPS Unlock (CUSA03279)
 
 Author: [illusion](https://github.com/illusion0001)

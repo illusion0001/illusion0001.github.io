@@ -1,5 +1,7 @@
 # The Awesome Adventures of Captain Spirit
 
+[Game Index](../README.md#games)
+
 ## 720p Resolution
 
 Author: [illusion](https://github.com/illusion0001)
