@@ -222,10 +222,10 @@ In file: `examplefile.bin` <!-- must include full path if it is launched from so
 
 [Uncharted 4](uncharted4.md)
 
-- [Life is Strange: Before the Storm](lis/dawn-lis-bts.md)
+- [Life is Strange: Before the Storm](lis/dawn-lis-bts-orbis.md)
 
-- [Life is Strange](lis/what-if-lis.md)
+- [Life is Strange](lis/what-if-lis-orbis.md)
 
-- [The Awesome Adventures of Captain Spirit](lis/captainspirit.md)
+- [The Awesome Adventures of Captain Spirit](lis/captainspirit-orbis.md)
 
-- [Life is Strange: 2](lis/prombasegame-lis2.md)
+- [Life is Strange: 2](lis/prombasegame-lis2-orbis.md)
