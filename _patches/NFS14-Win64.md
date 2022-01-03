@@ -4,16 +4,18 @@
 
 ## Framerate Patch (Cheat Engine Table) (Proof of Concept)
 
+Author: [illusion](https://twitter.com/illusion0002)
+
 https://www.pcgamingwiki.com/wiki/Need_for_Speed_Rivals#High_frame_rate
 
-Can run at arbitrary framerates, For use with `NFS14` 64-bit executable, maybe someone can port this to dll injection and add support for retail. (Credits Please.)
+Can run at arbitrary framerates, For use with `NFS14` 64-bit executable, maybe someone can port this to dll injection and add support for retail. (Credit Please.)
 
 [Cheat Table](https://storage.googleapis.com/assets-illusion0001/ct_win32/Rivals_VarFPS.CT)
 
 <details>
 <summary>CT Auto Asm Src (Click to Expand)</summary>
 
-```lua
+```
 [ENABLE]
 aobScanModule(gametick, NFS14.exe, 44 0F B6 60 52 44 88 65 99 41 8B 56 0C 85 D2 74 0D)
 aobScanModule(fps, NFS14.exe, 75 0C 48 8B 05 FF E3 A3 01)

@@ -6,7 +6,7 @@
 
 Only use this when you really need to. It will cap Performance Mode on Neo to 30FPS.
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 In file `eboot.bin`
 

@@ -4,7 +4,7 @@
 
 ## 60 FPS Unlock
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 Patch version: 1.2
 
@@ -25,7 +25,7 @@ In file `eboot.bin`
 
 ## Resolution Patch
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 In file `eboot.bin`
 
@@ -43,7 +43,7 @@ In file `eboot.bin`
 
 ## Disable Motion Blur
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 In file `eboot.bin`
 

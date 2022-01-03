@@ -8,7 +8,7 @@ CPU+GPU Limited. For use with 9th generation of game consoles.
 
 [Video](https://media.discordapp.net/attachments/650395105479360514/865565480357068800/0_46.mp4)
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 In file `eboot.bin`
 

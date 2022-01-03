@@ -4,7 +4,7 @@
 
 ## Resolution Patch
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 [Framerate analysis](https://youtu.be/DO8zPsX_ahE)
 
@@ -49,7 +49,7 @@ C7 00 F6 A8 A6 42 C3 89
 
 ## Skip Startup Videos
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 [Demo](https://cdn.discordapp.com/attachments/650395105479360514/858528041557557278/SkipMovieDemo.mp4)
 

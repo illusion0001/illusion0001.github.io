@@ -4,7 +4,7 @@
 
 ## 720p + 60 FPS Unlock
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 Note: You'll not be able to set resolution lower than 720p. Possibly SDK Limits. 
 

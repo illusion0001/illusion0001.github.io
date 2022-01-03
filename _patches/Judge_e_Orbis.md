@@ -4,7 +4,7 @@
 
 ## 60 FPS Unlock (CUSA13197)
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 In file `eboot.bin`
 
@@ -23,7 +23,7 @@ All version uses disc executable.
 
 ## 60 FPS Unlock (CUSA15953)
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 In file `eboot.bin`
 
@@ -40,7 +40,7 @@ In file `eboot.bin`
 
 ## Resolution Patch (Experimental)
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 All version uses disc executable.
 

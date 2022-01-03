@@ -6,7 +6,7 @@
 
 [Video](https://youtu.be/seKQOQy5Ab4)
 
-Author: [illusion](https://github.com/illusion0001), [manfightdragon](https://twitter.com/manfightdragon)
+Author: [illusion](https://twitter.com/illusion0002), [manfightdragon](https://twitter.com/manfightdragon)
 
 In file `eboot.bin`
 

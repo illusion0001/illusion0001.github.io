@@ -58,7 +58,7 @@ Blank fields means the episodes have not yet been tested.
 
 [Article](https://illusion0001.github.io/patches/2021/12/19/Gravite2-FrameratePatch/)
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 In file `eboot.bin`
 
@@ -115,7 +115,7 @@ In file `eboot.bin`
 
 [Article](https://illusion0001.github.io/patches/2021/12/19/Gravite2-FrameratePatch/)
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 In file `eboot.bin`
 

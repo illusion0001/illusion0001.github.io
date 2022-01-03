@@ -4,7 +4,7 @@
 
 ## 60 FPS Unlock
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 This isn't very useful right now because it only unlocks the framerate, nothing more.
 
@@ -38,7 +38,7 @@ In file `eboot.bin`
 
 ## Resolution Patch
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 This isn't very useful right now because it breaks occlusion on Base Console. (See notes)
 

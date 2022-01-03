@@ -6,7 +6,7 @@
 
 [Article](https://illusion0001.github.io/patches/2021/09/09/AlienIsolation-Patches/)
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 In file `eboot.bin`
 
@@ -23,7 +23,7 @@ In file `eboot.bin`
 
 [Article](https://illusion0001.github.io/patches/2021/09/09/AlienIsolation-Patches/)
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 In file `eboot.bin`
 

@@ -4,7 +4,7 @@
 
 ## 30 FPS Limit (Proper Frame-Pacing)
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 In file `eboot.bin`
 
@@ -36,7 +36,7 @@ E8 73 4C 1E 01 90 66 90 B8 FF FF FF FF C3 C3 BE 01 00 00 00 EB 9C 00 00
 
 ## Resolution Patch
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 In file `eboot.bin`
 

@@ -4,7 +4,7 @@
 
 ## 60 FPS Unlock
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 [Article](https://illusion0001.github.io/patches/2021/07/01/QDR.Infraworld-Res-Letterbox-Patch/)
 
@@ -23,7 +23,7 @@ B9 00 00 00 00 E8 B2 BA 31 00
 
 ## Letterbox Remover
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 [Article](https://illusion0001.github.io/patches/2021/07/01/QDR.Infraworld-Res-Letterbox-Patch/)
 
@@ -42,7 +42,7 @@ In file `eboot.bin`
 
 ## Resolution Patch
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 [Article](https://illusion0001.github.io/patches/2021/07/01/QDR.Infraworld-Res-Letterbox-Patch/)
 

@@ -4,7 +4,7 @@
 
 ## 60 FPS Unlock (Work-In-Progress!)
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 Timer is currently double speed.
 

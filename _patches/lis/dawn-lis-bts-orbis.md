@@ -4,7 +4,7 @@
 
 ## 60 FPS Unlock
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 [Article](https://illusion0001.github.io/patches/2021/05/11/wif-dawn-60fps/)
 

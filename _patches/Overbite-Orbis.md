@@ -6,7 +6,7 @@
 
 [Article](https://illusion0001.github.io/patches/2021/10/02/Overbite-FPSFixes/)
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 In file `eboot.bin`
 
@@ -26,7 +26,7 @@ In file `eboot.bin`
 
 [Article](https://illusion0001.github.io/patches/2021/10/02/Overbite-FPSFixes/)
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 In file `eboot.bin`
 

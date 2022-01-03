@@ -8,7 +8,7 @@ CPU Limited. For use with 9th generation of game consoles.
 
 This game uses double buffer vsync.
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 In file `eboot.bin`
 

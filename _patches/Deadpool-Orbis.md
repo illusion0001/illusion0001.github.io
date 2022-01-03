@@ -6,7 +6,7 @@
 
 Default flip setting is double buffer, optionally can be changed to adaptive sync at the cost of screen tearing.
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 In file `eboot.bin`
 

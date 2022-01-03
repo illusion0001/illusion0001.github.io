@@ -8,7 +8,7 @@
 
 ### Quit to Menu Crash Bug Fix
 
-Author: [illusion](https://github.com/illusion0001), [ZEROx](https://github.com/Xcedf)
+Author: [illusion](https://twitter.com/illusion0002), [ZEROx](https://github.com/Xcedf)
 
 [Article](https://illusion0001.github.io/patches/2021/02/18/uc2-quit-menu-bug-fix/)
 

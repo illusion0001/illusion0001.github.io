@@ -4,7 +4,7 @@
 
 ## 60 FPS Unlock (CUSA02218)
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 In file `eboot.bin`
 

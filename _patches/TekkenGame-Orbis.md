@@ -9,7 +9,7 @@ Preview:
 <img src="https://storage.googleapis.com/assets-illusion0001/images/patches/preview/TekkenGame/TekkenGame_PostProcess.png">
 </p>
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 In file `eboot.bin`
 

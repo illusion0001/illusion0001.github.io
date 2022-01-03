@@ -4,7 +4,7 @@
 
 ## Dev Menu
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 In file `eboot.bin`
 
@@ -22,7 +22,7 @@ F6 C2 01 75 34 84 C9 75 30
 
 ## Custom Resolution
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 [Article](https://illusion0001.github.io/patches/2021/04/16/u4-60fps-dream/)
 

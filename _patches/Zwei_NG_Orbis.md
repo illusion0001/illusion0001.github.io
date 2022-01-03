@@ -8,7 +8,7 @@ GPU Limited. For use with 9th generation of game consoles.
 
 Uses Triple buffering.
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 In file `eboot.bin`
 

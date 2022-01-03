@@ -6,7 +6,7 @@
 
 [Demo](https://youtu.be/d8VtX2635-Q)
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 Only needed for Base console, enhanced consoles already have framerate unlocked.
 
@@ -30,7 +30,7 @@ In file `eboot.bin`
 
 [Demo](https://youtu.be/d8VtX2635-Q)
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 In file `eboot.bin`
 

@@ -9,7 +9,7 @@
 
 ## 60 FPS Unlock
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 [Article](https://illusion0001.github.io/patches/2021/04/29/pt-60fps/)
 
@@ -32,7 +32,7 @@ BE 00 00 00 00 E8 F3 51 2B 00
 
 ## Resolution Hack (Borked)
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 In file `eboot.bin`
 
@@ -49,7 +49,7 @@ In file `eboot.bin`
 
 ## Graphics Patches
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 In file `eboot.bin`
 

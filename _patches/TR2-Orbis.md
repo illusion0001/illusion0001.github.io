@@ -6,7 +6,7 @@
 
 [Video](https://youtu.be/xnPVxnp5NHw)
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 In file `eboot.bin`
 
@@ -25,7 +25,7 @@ In file `eboot.bin`
 
 Features some minor flickering at the bottom right is caused by the patch.
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 In file `eboot.bin`
 

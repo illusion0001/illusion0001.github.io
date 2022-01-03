@@ -4,7 +4,7 @@
 
 ## 720p Resolution
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 Only useful for base console.
 

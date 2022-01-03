@@ -6,7 +6,7 @@
 
 [Demo](https://youtu.be/Qf3BCH8-ZPM)
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 In file `eboot.bin`
 
@@ -28,7 +28,7 @@ In file `eboot.bin`
 
 [Demo](https://youtu.be/Qf3BCH8-ZPM)
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 In file `eboot.bin`
 

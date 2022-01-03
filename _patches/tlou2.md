@@ -4,7 +4,7 @@
 
 ## Improved Inf Ammo
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 [Article](https://illusion0001.github.io/cheatcodes/2021/03/20/t2-silencer-cheat/)
 

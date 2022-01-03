@@ -4,7 +4,7 @@
 
 ## 60 FPS Unlock
 
-Author: [illusion](https://github.com/illusion0001), [ZEROx](https://github.com/Xcedf)
+Author: [illusion](https://twitter.com/illusion0002), [ZEROx](https://github.com/Xcedf)
 
 Patch may accelerate some game effects by 2x.
 

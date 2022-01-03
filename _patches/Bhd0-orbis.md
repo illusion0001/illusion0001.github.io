@@ -6,7 +6,7 @@
 
 [Demo](https://youtu.be/TP2MTZ6gC7s)
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 As part of Resident Evil Origins Collection
 

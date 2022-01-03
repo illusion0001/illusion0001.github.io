@@ -29,7 +29,7 @@ Patch applied: Resolution Patch (Neo) + 30 FPS Fix
 
 Locks FPS to 30 with Proper Frame Pacing.
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 In file `eboot.bin`
 
@@ -50,7 +50,7 @@ In file `eboot.bin`
 
 ## Resolution Patch
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 In file `eboot.bin`
 

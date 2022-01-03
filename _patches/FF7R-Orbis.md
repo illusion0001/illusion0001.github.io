@@ -4,7 +4,7 @@
 
 ## 60 FPS Unlock + Resolution Patch (ASM Ver.)
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 In file `eboot.bin`
 
@@ -52,7 +52,7 @@ Below are **optional** config ini tweaks. If you only want resolution and framer
 
 ## 60 FPS Patch
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 [Article](https://illusion0001.github.io/patches/2021/05/20/ff7r-end-60fps/)
 
@@ -88,7 +88,7 @@ rhi.SyncInterval=1 ; 60hz
 
 ## Dynamic Resolution Patch
 
-Author: [illusion](https://github.com/illusion0001), [FlyingBananaTree](https://github.com/FlyingBananaTree), [dontellmama](https://github.com/dontellmama)
+Author: [illusion](https://twitter.com/illusion0002), [FlyingBananaTree](https://github.com/FlyingBananaTree), [dontellmama](https://github.com/dontellmama)
 
 [Article](https://illusion0001.github.io/patches/2021/05/20/ff7r-end-60fps/)
 
@@ -171,7 +171,7 @@ r.DynamicRes.MaxScreenPercentage=100 ; highest is 1620p
 
 ## Disable Dynamic Resolution Patch (Optional)
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 In file `...\end\content\paks\pakchunk0-ps4.pak`
 

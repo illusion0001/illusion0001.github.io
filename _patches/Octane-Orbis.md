@@ -10,7 +10,7 @@ Also uses double buffer vsync.
 
 Not useful at the moment.
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 In file `eboot.bin`
 

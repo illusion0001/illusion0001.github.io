@@ -8,7 +8,7 @@
 <img src="https://storage.googleapis.com/assets-illusion0001/images/patches/preview/Daymare1998/Daymare_FPS_Preview.png">
 </p>
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 In file `eboot.bin`
 
@@ -37,7 +37,7 @@ In file `eboot.bin`
 
 ## 30 FPS Fix (Proper Frame Pacing)
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 In file `eboot.bin`
 
@@ -56,7 +56,7 @@ In file `eboot.bin`
 
 ## Resolution Patch
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 In file `eboot.bin`
 

@@ -6,7 +6,7 @@
 
 [Article](https://illusion0001.github.io/patches/2021/07/07/W3Witcher-ResPatch/)
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 In file `eboot.bin`
 
@@ -27,7 +27,7 @@ Currently for Base Console, Pro Backbuffer is included but untested.
 
 [Article](https://illusion0001.github.io/patches/2021/07/07/W3Witcher-ResPatch/)
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 In file `eboot.bin`
 
@@ -51,7 +51,7 @@ B9 80 07 00 00 41 B8 70 08 00 00
 
 ## Display Framerate Stats
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 [Article](https://illusion0001.github.io/patches/2021/07/07/W3Witcher-ResPatch/)
 

@@ -4,7 +4,7 @@
 
 ## 60 FPS Unlock
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 In file `eboot.bin`
 
@@ -21,7 +21,7 @@ BE 00 00 00 00 E8 42 CC 9C 01
 
 ## Resolution Patch
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 In file `eboot.bin`
 
@@ -58,7 +58,7 @@ C3 C7 05 11 BB 01 04 1F 85 2B 3F C5 FA 10 1D 09 BB 01 04 C5 FA 10 15 01 BB 01 04
 
 ## FOV Patch
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 In file `eboot.bin`
 

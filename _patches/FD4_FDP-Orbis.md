@@ -6,7 +6,7 @@
 
 ### 60 FPS Unlock
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 Only useful for base console.
 
@@ -31,7 +31,7 @@ In file `eboot.bin`
 
 ### 30 FPS Limit (Proper Frame-Pacing)
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 In file `eboot.bin`
 
@@ -50,7 +50,7 @@ In file `eboot.bin`
 
 ## 720p Resolution
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 In file `eboot.bin`
 

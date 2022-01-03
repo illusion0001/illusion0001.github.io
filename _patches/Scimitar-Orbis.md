@@ -4,7 +4,7 @@
 
 ## 60 FPS Unlock
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 In file `ScimitarAC2.elf` `ScimitarACB.elf` `ScimitarACR.elf`
 

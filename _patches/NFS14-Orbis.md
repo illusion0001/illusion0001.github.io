@@ -10,7 +10,7 @@ https://www.pcgamingwiki.com/wiki/Need_for_Speed_Rivals#High_frame_rate
 
 Solved. Game can now be run at any FPS without slow down or speedups, although logics are mostly still borked.
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 In file `eboot.bin`
 
@@ -30,7 +30,7 @@ In file `eboot.bin`
 
 ## Resolution Patch
 
-Author: [illusion](https://github.com/illusion0001)
+Author: [illusion](https://twitter.com/illusion0002)
 
 In file `eboot.bin`
 
