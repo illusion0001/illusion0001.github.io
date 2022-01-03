@@ -174,6 +174,8 @@ In file: `examplefile.bin` <!-- must include full path if it is launched from so
 
 [Persona 5: Royal](P5R-Orbis.md)
 
+[Ratchet and Clank](RCPS4-Orbis.md)
+
 [Resident Evil: HD](Bhd-orbis.md)
 
 [Resident Evil: Zero](Bhd0-orbis.md)
