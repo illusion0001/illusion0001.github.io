@@ -88,6 +88,16 @@ In file: `examplefile.bin` <!-- must include full path if it is launched from so
 
 ## Games
 
+- [Life is Strange: Before the Storm](lis/dawn-lis-bts-orbis.md)
+
+- [Life is Strange](lis/what-if-lis-orbis.md)
+
+- [The Awesome Adventures of Captain Spirit](lis/captainspirit-orbis.md)
+
+- [Life is Strange: 2](lis/prombasegame-lis2-orbis.md)
+
+- [Life is Strange: True Colors](lis/Siren-LifeisStrange3-Orbis.md)
+
 [Assassin's Creed: The Ezio Collection](Scimitar-Orbis.md)
 
 [Assetto Corsa Competizione](AC2-Orbis-Shipping.md)
@@ -221,11 +231,3 @@ In file: `examplefile.bin` <!-- must include full path if it is launched from so
 [Uncharted: The Lost Legacy](uncharted-tll.md)
 
 [Uncharted 4](uncharted4.md)
-
-- [Life is Strange: Before the Storm](lis/dawn-lis-bts-orbis.md)
-
-- [Life is Strange](lis/what-if-lis-orbis.md)
-
-- [The Awesome Adventures of Captain Spirit](lis/captainspirit-orbis.md)
-
-- [Life is Strange: 2](lis/prombasegame-lis2-orbis.md)
