@@ -40,3 +40,34 @@ BE 01 00 00 00 49 89 DC 90 90 90 90 90 89 C7 E8 85 93 4E 00
 ```
 
 </details>
+
+## Disable Chromatic Aberration
+
+Author: [illusion](https://twitter.com/illusion0002)
+
+In file `eboot.bin`
+
+<details>
+<summary>Code 1.09 (Click to Expand)</summary>
+
+```
+0x22A3AA8 C7 83 AC 00 00 00 00 00 00 00 90 90
+```
+
+</details>
+
+
+## Disable Motion Blur
+
+Author: [illusion](https://twitter.com/illusion0002)
+
+In file `eboot.bin`
+
+<details>
+<summary>Code 1.09 (Click to Expand)</summary>
+
+```
+0x22A457B EB 16
+```
+
+</details>
