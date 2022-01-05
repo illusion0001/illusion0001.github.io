@@ -4,7 +4,7 @@
 
 ## 60 FPS Unlock
 
-[Video](https://youtu.be/lLjj_0VBf7w)
+[Video](https://youtu.be/FqTg3Sij3MQ)
 
 CPU Limited. For use with 9th generation of game consoles.
 
