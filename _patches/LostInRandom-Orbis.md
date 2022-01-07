@@ -10,7 +10,7 @@ CUSA19591
 In file: `eboot.bin`
 
 <details>
-<summary>Code (Click to Expand)</summary>
+<summary>Code 1.00/1.01 (Click to Expand)</summary>
 
 ```
 40 0F 95 C6 8B B8 B0 02 00 00
