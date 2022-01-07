@@ -14,9 +14,9 @@ In file `eboot.bin`
 <summary>Code (Click to Expand)</summary>
 
 ```
-B9 01 00 00 00 E8 B2 BA 31 00
+BE 01 00 00 00 E8 98 DD A7 00
 
-B9 00 00 00 00 E8 B2 BA 31 00
+BE 00 00 00 00 E8 98 DD A7 00
 ```
 
 </details>
