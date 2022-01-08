@@ -98,28 +98,11 @@ In file `eboot.bin`
 
 </details>
 
-## Enable video recording
+## Enable video recording and screenshots
 
-Re-enables built-in video recording (share button)
+Re-enables built-in video recording and screenshots (share button)
 
-Author: Whitehawkx
-
-In file `eboot.bin`
-
-<details>
-<summary>Code (Click to Expand)</summary>
-
-```
-0x01BFF78E 90 90 90 90 90
-```
-
-</details>
-
-## Enable screenshots
-
-Re-enables built-in screenshot capture (share button)
-
-Author: Whitehawkx
+Author: [Whitehawkx](https://twitter.com/Whitehawkx)
 
 In file `eboot.bin`
 
@@ -127,7 +110,7 @@ In file `eboot.bin`
 <summary>Code (Click to Expand)</summary>
 
 ```
-0x01BFF7AC 90 90 90 90 90
+0x01BFF799 00
 ```
 
 </details>
