@@ -70,7 +70,7 @@ In file `eboot.bin`
 
 ## Bypass Network Check
 
-Author: Unknown
+Author: [Whitehawkx](https://twitter.com/Whitehawkx)
 
 In file `eboot.bin`
 
@@ -78,9 +78,7 @@ In file `eboot.bin`
 <summary>Code (Click to Expand)</summary>
 
 ```
-0x015724A0 90 90 90 90 90 90
-0x015725AC 90 90 90 90 90 90
-0x015724B1 E9 EF 00 00 00 90
+0x015724A0 E9 00 01
 ```
 
 </details>
