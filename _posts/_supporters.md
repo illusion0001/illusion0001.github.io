@@ -1,16 +1,16 @@
-# Patreon Supporters
+# Supporters
 
-Thanks to the following folks who supported me on my [Patreon](https://www.patreon.com/illusion0001) page.
+Thanks to the following folks who supported me on my [Patreon](https://www.patreon.com/illusion0001) and bought me a [Coffee](https://www.buymeacoffee.com/illusion0001)!
 
 You guys are awesome!
 
 - ac2pic
-
-- YveltalGriffin
-
-- Ioritree
-
 - alessaro92
+- faith
+- Ioritree
+- John (3)
+- YveltalGriffin (10)
+
 
 <!--
 - TeMkA169
