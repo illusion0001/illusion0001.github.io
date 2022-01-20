@@ -2,6 +2,8 @@
 
 [Game Index](README.md#games)
 
+[Installation Guide](https://illusion0001.github.io/install-instructions/)
+
 ## Resolution Patch
 
 [Demo](https://youtu.be/Qf3BCH8-ZPM)

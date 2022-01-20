@@ -2,6 +2,8 @@
 
 [Game Index](README.md#games)
 
+[Installation Guide](https://illusion0001.github.io/install-instructions/)
+
 ## Framerate Patch (Cheat Engine Table) (Proof of Concept)
 
 Author: [illusion](https://twitter.com/illusion0002)

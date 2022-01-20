@@ -2,6 +2,8 @@
 
 [Game Index](README.md#games)
 
+[Installation Guide](https://illusion0001.github.io/install-instructions/)
+
 ## Resolution Patch
 
 [Article](https://illusion0001.github.io/patches/2021/10/02/Overbite-FPSFixes/)

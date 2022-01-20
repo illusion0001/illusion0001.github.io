@@ -2,6 +2,8 @@
 
 [Game Index](../README.md#games)
 
+[Installation Guide](https://illusion0001.github.io/install-instructions/)
+
 Happy new year Deck Nine Developers!
 
 ## 60 FPS Unlock

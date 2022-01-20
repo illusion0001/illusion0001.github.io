@@ -2,6 +2,8 @@
 
 [Game Index](README.md#games)
 
+[Installation Guide](https://illusion0001.github.io/install-instructions/)
+
 ## Patch Preview
 
 Patch applied: Resolution Patch (Neo) + 30 FPS Fix

@@ -2,6 +2,8 @@
 
 [Game Index](README.md#games)
 
+[Installation Guide](https://illusion0001.github.io/install-instructions/)
+
 Next Gen got a patch, why not old gen too? https://twitter.com/VampyrGame/status/1450779093868371968
 
 Remember Me: Remastered when? :)

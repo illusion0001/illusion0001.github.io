@@ -2,6 +2,8 @@
 
 [Game Index](README.md#games)
 
+[Installation Guide](https://illusion0001.github.io/install-instructions/)
+
 ## 60 FPS Unlock
 
 [Demo](https://youtu.be/d8VtX2635-Q)

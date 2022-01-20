@@ -2,6 +2,8 @@
 
 [Game Index](README.md#games)
 
+[Installation Guide](https://illusion0001.github.io/install-instructions/)
+
 ## 30 FPS Limit (Proper Frame-Pacing)
 
 [Video](https://youtu.be/seKQOQy5Ab4)

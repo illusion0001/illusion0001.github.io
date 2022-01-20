@@ -2,6 +2,8 @@
 
 [Game Index](README.md#games)
 
+[Installation Guide](https://illusion0001.github.io/install-instructions/)
+
 ## Skip Save Confirm Screen
 
 [Article](https://illusion0001.github.io/patches/2021/09/09/AlienIsolation-Patches/)

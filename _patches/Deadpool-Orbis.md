@@ -2,6 +2,8 @@
 
 [Game Index](README.md#games)
 
+[Installation Guide](https://illusion0001.github.io/install-instructions/)
+
 ## 60 FPS Unlock
 
 Default flip setting is double buffer, optionally can be changed to adaptive sync at the cost of screen tearing.
