@@ -10,6 +10,8 @@ Author: [illusion](https://twitter.com/illusion0002)
 
 [Article](https://illusion0001.github.io/patches/2021/02/10/t1r-improve-loading/)
 
+Notes: Update 1.11 already has the fix.
+
 In file `eboot.bin`
 
 <details>
