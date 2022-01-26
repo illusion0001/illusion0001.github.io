@@ -55,3 +55,23 @@
   flex: 0 0 33%;
   margin-bottom: 10px;
 }
+
+.portfolio-page-left {
+    float: left;
+    max-width: 81.5%;
+    padding-right: 1em;
+
+    blockquote {
+        margin: 1em 0;
+    }
+}
+
+.portfolio-page-right {
+    width: 18.5%;
+    float: right;
+    text-align: right;
+    border-left: 2px solid var(--blockquote-border-color);
+    padding: 0.75em 1em;
+    background-color: $blockquote-color;
+    box-shadow: 0 2px 2px $border-color;
+}

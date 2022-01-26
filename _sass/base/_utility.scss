@@ -9,20 +9,20 @@
 %padding-regular {
     padding: $padding-small $padding-large;
     @media (max-width: 1000px) {
-        padding: $padding-small * 1.5 $padding-large / 1.6;
+        padding: $padding-small $padding-large / 1.6;
     }
     @media (max-width: 576px) {
-        padding: $padding-small;
+        padding: $padding-small / 3.0;
     }
 }
 
 %padding-medium {
     padding: $padding-medium $padding-large;
     @media (max-width: 1000px) {
-        padding: $padding-medium * 1.5 $padding-large / 1.6;
+        padding: $padding-medium $padding-large / 1.6;
     }
     @media (max-width: 576px) {
-        padding: $padding-medium;
+        padding: $padding-medium / 3.0;
     }
 }
 

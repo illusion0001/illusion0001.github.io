@@ -47,8 +47,14 @@
 
 }
 .mods-cell {
-  flex: 0 0 100%;
+  flex: 0 0 50%;
   margin-bottom: 10px;
+}
+
+@media screen and (max-width: $break) {
+    .mods-cell {
+        flex-basis: 100%;
+      }
 }
 
 .expand-link {
@@ -63,4 +69,10 @@
 .last-update {
 	text-align: right;
 	font-style: italic;
+}
+
+.download-btns-row {
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
 }
