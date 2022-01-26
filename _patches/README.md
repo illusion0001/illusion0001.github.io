@@ -148,6 +148,10 @@ In file: `examplefile.bin` <!-- must include full path if it is launched from so
 
 [Final Fantasy VII: Remake](FF7R-Orbis.md)
 
+[Ghost Of Tsushima](GhostOfTsushima-Orbis.md)
+
+[Ghost of Tsushima: Director's Cut](GhostOfTsushimaDC-Orbis.md)
+
 [Grand Theft Auto V](GTA5-Orbis.md)
 
 [Gravity Rush 2](Gravity_Daze_2_Orbis.md)
@@ -163,8 +167,6 @@ In file: `examplefile.bin` <!-- must include full path if it is launched from so
 [Wreckfest](ncg-orbis.md)
 
 [What Remains of Edith Finch](finchgame-Orbis.md)
-
-[Ghost Of Tsushima](GhostOfTsushima-Orbis.md)
 
 [MediEvil](Overbite-Orbis.md)
 
