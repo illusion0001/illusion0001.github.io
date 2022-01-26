@@ -1,7 +1,7 @@
 ---
 layout: page
-title: About
-permalink: /about/
+title: Contact
+permalink: /contact/
 ---
 
 ***
@@ -15,6 +15,5 @@ Twitter: [illusion0002](https://twitter.com/illusion0002)
 Discord: illusion#3185
 
 ***
-
 
 *Last update: {{ "2021-04-04" | date: page.date-format }}*
