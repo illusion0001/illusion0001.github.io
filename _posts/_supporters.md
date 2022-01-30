@@ -8,6 +8,7 @@ You guys are awesome!
 - alessaro92
 - faith
 - Ioritree
+- Jack Dugan
 - Jeff Eberlin
 - John (3)
 - YveltalGriffin (10)
