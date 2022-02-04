@@ -135,9 +135,11 @@ However, setting a breakpoint on that value got us here.
 
 Wait a minute, a double? They set the value initally in double, which is twice the bits as float for more accurate decimals and then converts it to float again.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/memes/tenor/we-do-a-little-trolling.gif">
-</p>
+<div align="center" class="video-container-i">
+<video autoplay loop >
+  <source src="https://storage.googleapis.com/assets-illusion0001/images/memes/tenor/we_do_a_little_trolling_meme.mp4" type="video/mp4">
+</video>
+</div>
 
 The end results is the same as the rest of the games, unlocked framerate with no speedups.
 
