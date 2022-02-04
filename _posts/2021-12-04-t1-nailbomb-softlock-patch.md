@@ -141,9 +141,7 @@ This reference disables the damage output.
 <em>That does something.</em>
 </div>
 
-Okay, now what? if we use this code for our fix, it would work explosions particles would still go off but it won't hurt anyone. Looks a little distracting, don't you think?
-
-Gotta look for a better solution.
+Okay, now what? if we use this code for our fix, it could work but the explosions particles would still go off. Looks a little distracting, don't you think?
 
 Oh look, there's an error message that I missed. `Explosion Missing Parameters` these unfortunately doesn't print anything on to the screen but it gives us a clue. the word explosion can be used to find other references.
 
@@ -256,13 +254,13 @@ Enjoy your one-less bug video game!
 <iframe width="560" height="315" src="https://www.youtube.com/embed/wDJmLgw2oF4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-# Credit(s)
+# Credits
 
 Special thanks to:
 
 [ZEROx](https://www.youtube.com/user/ZEROx2085) for porting to the PS3 version.
 
-[Freako](https://www.youtube.com/c/Freako/) and [HereisMe](https://www.youtube.com/user/HdHereidme) for publishing his knowledge about reversing Naughty Dog Titles.
+[Freako](https://www.youtube.com/c/Freako/) and [HereisMe](https://www.youtube.com/user/HdHereidme) for publishing their knowledge about reversing Naughty Dog Titles.
 
 # Patch
 
