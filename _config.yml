@@ -13,7 +13,7 @@ theme_settings:
   avatar: assets/icons/favicon.png
 
   # Header and footer text
-  header_text: Detailing the inner workings of my creations.
+  header_text: Writeup for my patches and other projects I worked on.
   header_feature_image: https://storage.googleapis.com/assets-illusion0001/images/banners/lis-butterfly-banner.png
   footer_text: >
    Powered by <a href="https://jekyllrb.com/">Jekyll</a> with <a href="https://github.com/sylhare/Type-on-Strap">Type on Strap</a>
