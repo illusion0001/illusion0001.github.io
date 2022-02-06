@@ -6,7 +6,41 @@
 
 ## Uncharted: 1
 
+### Intro Skip
+
+Author: [illusion](https://twitter.com/illusion0002)
+
+[Article](https://illusion0001.github.io/patches/2022/02/05/uncharted-tlou-introskips/)
+
+In file `eboot.bin`
+
+<details>
+<summary>Code 1.02 (Click to Expand)</summary>
+
+```
+0x960A17 01
+```
+
+</details>
+
 ## Uncharted: 2
+
+### Intro Skip
+
+Author: [illusion](https://twitter.com/illusion0002)
+
+[Article](https://illusion0001.github.io/patches/2022/02/05/uncharted-tlou-introskips/)
+
+In file `eboot.bin`
+
+<details>
+<summary>Code 1.02 (Click to Expand)</summary>
+
+```
+0x1061E94 01
+```
+
+</details>
 
 ### Quit to Menu Crash Bug Fix
 
@@ -81,3 +115,20 @@ Needs porting!
 </details>
 
 ## Uncharted: 3
+
+### Intro Skip
+
+Author: [illusion](https://twitter.com/illusion0002)
+
+[Article](https://illusion0001.github.io/patches/2022/02/05/uncharted-tlou-introskips/)
+
+In file `eboot.bin`
+
+<details>
+<summary>Code 1.02 (Click to Expand)</summary>
+
+```
+0x5691D6 00
+```
+
+</details>

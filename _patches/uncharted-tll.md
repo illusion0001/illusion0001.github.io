@@ -51,3 +51,20 @@ C7 05 9A 86 C8 02 01 00 00 00
 ```
 
 </details>
+
+## Intro Skip
+
+Author: [illusion](https://twitter.com/illusion0002)
+
+[Article](https://illusion0001.github.io/patches/2022/02/05/uncharted-tlou-introskips/)
+
+In file `eboot.bin`
+
+<details>
+<summary>Code 1.09 (Click to Expand)</summary>
+
+```
+0x13278B7 EB 4C
+```
+
+</details>

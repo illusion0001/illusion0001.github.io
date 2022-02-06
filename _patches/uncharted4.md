@@ -78,3 +78,20 @@ Enable Switch on/off 900p (light blue -> light red)
 (Optional) Disable FPS in msgcon to hide fps statistics.
 
 </details>
+
+## Intro Skip
+
+Author: [illusion](https://twitter.com/illusion0002)
+
+[Article](https://illusion0001.github.io/patches/2022/02/05/uncharted-tlou-introskips/)
+
+In file `eboot.bin`
+
+<details>
+<summary>Code 1.33 (Click to Expand)</summary>
+
+```
+0x127BEC7 EB 2C
+```
+
+</details>

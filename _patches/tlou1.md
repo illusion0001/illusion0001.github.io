@@ -68,6 +68,23 @@ C6 80 DF 06 00 00 00 C6 80 30 00 00 00 01 44 89 F0 48 83 C4 08 5B 41 5E 41 5F 5D
 
 </details>
 
+## Intro Skip
+
+Author: [illusion](https://twitter.com/illusion0002)
+
+[Article](https://illusion0001.github.io/patches/2022/02/05/uncharted-tlou-introskips/)
+
+In file `eboot.bin`
+
+<details>
+<summary>Code PS4 1.10/1.11 (Click to Expand)</summary>
+
+```
+0x614A C6 87 E5 34 00 00 01
+```
+
+</details>
+
 ## University Nailbomb Softlock Fix
 
 Author: [illusion](https://twitter.com/illusion0002), [ZEROx](https://github.com/Xcedf)
