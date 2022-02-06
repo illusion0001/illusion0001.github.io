@@ -25,6 +25,7 @@ licensed under MIT: https://ellekasai.mit-license.org/
 }
 
 .twa-lg {
+    display: inline-block;
     height: 1.33em;
     width: 1.33em;
     margin: 0 0.0665em 0 0.133em;
@@ -33,6 +34,7 @@ licensed under MIT: https://ellekasai.mit-license.org/
 }
 
 .twa-2x {
+    display: inline-block;
     height: 2em;
     width: 2em;
     margin: 0 0.1em 0 0.2em;
@@ -41,6 +43,7 @@ licensed under MIT: https://ellekasai.mit-license.org/
 }
 
 .twa-3x {
+    display: inline-block;
     height: 3em;
     width: 3em;
     margin: 0 0.15em 0 0.3em;
@@ -49,6 +52,7 @@ licensed under MIT: https://ellekasai.mit-license.org/
 }
 
 .twa-4x {
+    display: inline-block;
     height: 4em;
     width: 4em;
     margin: 0 0.2em 0 0.4em;
@@ -57,6 +61,7 @@ licensed under MIT: https://ellekasai.mit-license.org/
 }
 
 .twa-5x {
+    display: inline-block;
     height: 5em;
     width: 5em;
     margin: 0 0.25em 0 0.5em;
