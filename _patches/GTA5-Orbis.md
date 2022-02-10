@@ -21,9 +21,24 @@ In file `eboot.bin`
 <summary>Code 1.38 (Click to Expand)</summary>
 
 ```
-BF 02 00 00 00 31 F6 E8 C7 2C E0 00
+0xD3BB5E 01 00 00 00 
+```
 
-BF 01 00 00 00 31 F6 E8 C7 2C E0 00
+</details>
+
+## Skip Intro
+
+Author: [illusion](https://twitter.com/illusion0002)
+
+In file `eboot.bin`
+
+
+<details>
+<summary>Code 1.38 (Click to Expand)</summary>
+
+```
+0x2F3E794 00
+0x286EFB8 00
 ```
 
 </details>
