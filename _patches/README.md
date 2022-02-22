@@ -1,10 +1,18 @@
 # Game Patches
 
-This directory list game improvement patches made for use with exploited PlayStation 4 consoles.
+This directory list patches made for use with exploited videogame consoles.
 
 [Installation Guide](https://illusion0001.github.io/install-instructions/)
 
 **Unless stated otherwise, These are working codes and/or are currently CPU/GPU Limited. All Patches were made with Base Console in mind, Enhanced consoles are experimental and will need adjustments if it does not work out of the box. (for instance: Black Screen on Startup.)**
+
+## Sponsors and Social Links
+
+Support on [Buy me a Coffee](https://www.buymeacoffee.com/illusion0001)
+
+Support on [GitHub Sponsors](https://github.com/sponsors/illusion0001)
+
+Support on [Ko-fi](https://ko-fi.com/illusion0001)
 
 Support on [Patreon](https://www.patreon.com/illusion0001)
 
@@ -12,7 +20,7 @@ Follow on [YouTube](https://youtube.com/c/illusion0001)
 
 Follow on [Twitter](https://twitter.com/illusion0002)
 
-# Contributing
+## Contributing
 
 You can submit a pull request to this folder with your own patches 
 
@@ -86,7 +94,7 @@ In file: `examplefile.bin` <!-- must include full path if it is launched from so
 
 </details>
 
-## Games
+# Games
 
 - [Life is Strange: Before the Storm](lis/dawn-lis-bts-orbis.md)
 
@@ -220,7 +228,7 @@ In file: `examplefile.bin` <!-- must include full path if it is launched from so
 
 [The Outer Worlds](Indiana-Orbis.md)
 
-[The Last of Us](tlou1.md)
+[The Last of Us: Remastered](tlou1.md)
 
 [The Last of Us: Part II](tlou2.md)
 
