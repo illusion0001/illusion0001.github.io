@@ -1,15 +1,15 @@
 ---
-layout: post
+layout: single
 title: "Fixing A Rare Bug in Uncharted 2 (PlayStation 3/4)"
 excerpt: "Rage quitting causing a game crash? Sounds normal. Went unnoticed for over 12 years."
-categories: Patches
+categories: patches
 tags: uncharted uc2 ps3 rpcs3 ps4 patches bugfix
+
+toc: true
+toc_sticky: true
 ---
 
 {% include_relative _orbis_console_note.md %}
-
-* TOC
-{:toc}
 
 # Intro
 
@@ -53,29 +53,21 @@ Data stops processing and left the registers with 0 when quitting to the menu du
 
 RPCS3: Breakpoint runtime.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/uc2-quit-menu-bug-fix/uc2-dbg-before.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/uc2-quit-menu-bug-fix/uc2-dbg-before.png" %}
 
 RPCS3: Crash.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/uc2-quit-menu-bug-fix/uc2-dbg-after-death.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/uc2-quit-menu-bug-fix/uc2-dbg-after-death.png" %}
 
 On Playstation 4, this is similar but in register R15 instead.
 
 PS4: Reaper Breakpoint runtime.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/uc2-quit-menu-bug-fix/ps4r-uc2-dbg1.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/uc2-quit-menu-bug-fix/ps4r-uc2-dbg1.png" %}
 
 PS4: Mira backtrace.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/uc2-quit-menu-bug-fix/ps4-uc2-crash-backtrace-mira.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/uc2-quit-menu-bug-fix/ps4-uc2-crash-backtrace-mira.png" %}
 
 Looking at register data. R28 (PS3) and R15 (PS4) gets used during gameplay and are always executed and have data.
 
@@ -117,7 +109,7 @@ Skip to load 1 into their needed register skip and return to normal code if isn'
 
 Let's implement this fix and see the results.
 
-<div align="center" class="video-container">
+<div align="center" class="responsive-video-container">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/UdDs6-ZT8gw?start=31" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 

@@ -1,28 +1,30 @@
 ---
-layout: post
+layout: single
 title: "University Nailbomb Softlock Fix for The Last of Us (PS3, PS4)"
 excerpt: "A nailbomb, and a door, equals a softlock."
 thumbnail: "https://storage.googleapis.com/assets-illusion0001/images/TLOU-Nailbomb-Softlock/t1-nailbomb-feature-image.png"
-feature-img: "https://storage.googleapis.com/assets-illusion0001/images/TLOU-Nailbomb-Softlock/t1-nailbomb-feature-image.png"
-image: "https://storage.googleapis.com/assets-illusion0001/images/TLOU-Nailbomb-Softlock/t1-nailbomb-image.png"
+header:
+  overlay_image: "https://storage.googleapis.com/assets-illusion0001/images/TLOU-Nailbomb-Softlock/t1-nailbomb-feature-image.png"
+  overlay_filter: 0.5
+  og_image: "https://storage.googleapis.com/assets-illusion0001/images/TLOU-Nailbomb-Softlock/t1-nailbomb-image.png"
 categories: patches
 tags: [Articles, Releases]
-twitter: {card: "summary_large_image"}
+# twitter: {card: "summary_large_image"}
+
+toc: true
+toc_sticky: true
 ---
 
 <i class="twa twa-warning"></i> <i class="twa twa-warning"></i> **Warning: This post contains spoilers for the video game, The Last of Us. If you have not yet completed the game, you should do so or if you simply don't care, you can read through. You have been warned.** <i class="twa twa-warning"></i> <i class="twa twa-warning"></i>
 
 ***
 
-* TOC
-{:toc}
-
 # Intro
 
 A few weeks back I was browsing through [AnthonyCaliber](https://www.youtube.com/channel/UC4PlYBhe8mzGFW4lmIkIQsg) videos. Showcasing various glitches in The Last of Us Remastered. Most of the glitches in the video are out of bounds and does not prevent progressing through the game but there is one glitch that caught my eye.
 
-<div align="center" class="video-container">
-<video controls >
+<div align="center">
+<video width="100%" controls >
   <source src="https://storage.googleapis.com/assets-illusion0001/images/TLOU-Nailbomb-Softlock/T1-AC-nailbomb-section-trimmed.mp4" type="video/mp4">
 </video>
 <em>(Credit: <a href="https://www.youtube.com/channel/UC4PlYBhe8mzGFW4lmIkIQsg">AnthonyCaliber</a>) <a href="https://youtu.be/L_JrpN96uBg?t=6482">Original Video (Timestamped 01:48:02)</a></em>
@@ -35,18 +37,20 @@ Once I saw this, a great idea popped into my head. Either to give the player inf
 Let's start by seeing how the game keeps track of what level or task we are on. Thanks to the work of Freako and HereisMe. Some of this has already been worked out and is published. 
 In the [Naughty Dog Modding](https://discord.com/invite/VWEbKZsTNb) server, Freako has kindly provided all the info that he knows about the game in an archive which will become very useful as this post goes on. So let's have a look at it.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/TLOU-Nailbomb-Softlock/nd-task-research-folder.png">
-<em>TLOU Research folder.</em>
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/TLOU-Nailbomb-Softlock/nd-task-research-folder.png" %}
+
+<div align=center>
+<em>TLOU Research folder</em>
+</div>
 
 A few folders, the ones we're interested in are `tasks` and `weapon-loadout`.
 Inside the task folder is a text file and some example files. This text file list where things are, what's been discovered, etc.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/TLOU-Nailbomb-Softlock/t1-task-struct-2.png">
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/TLOU-Nailbomb-Softlock/t1-task-struct-2.png" %}
+
+<div align=center>
 <em>Basic Task.bin data structure. (Credit: <a href="https://www.youtube.com/c/Freako/">Freako</a>)</em>
-</p>
+</div>
 
 The image is barebones but enough for us to understand. From the text file on how to find a given task is as follows: get string address, find string offset as address. The identifier is found right next to the string. Obviously this is for the ps3 version soo, give me a moment while I extract the PS4 version. Alright here's the list of task we'll need to keep track and to later patch.
 
@@ -60,14 +64,13 @@ uni-4-lab-injured-escape-vault
 
 Since we're on x86_amd64 (PlayStation4), the CPU architecture is little funny. You see there's this thing called a little or big endian and it gets confusing if you're new, like me. Say you have a value, `09 87 65 43 21 00 00 00` this is how it would be represented on big endian, which is what the PlayStation 3 uses. But on x86, it's little endian which means, these bytes are swapped. Now it is `43 65 87 09 00 00 00 21`. Wrap your head around that when you have to keep track of things, worse of all, hexadecimal data displayed via printf is byte swapped! So what's the point?
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/TLOU-Nailbomb-Softlock/Jackie-Chan-confused-be-le-meme.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/TLOU-Nailbomb-Softlock/Jackie-Chan-confused-be-le-meme.png" %}
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/TLOU-Nailbomb-Softlock/t1-taskid-0.png">
-<em>Real thinking hours <i class="twa thinkhappy"></i></em>
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/TLOU-Nailbomb-Softlock/t1-taskid-0.png" %}
+
+<div align=center>
+<em>Real thinking hours. <i class="twa thinkhappy"></i></em>
+</div>
 
 Anyways, here's the task ids
 
@@ -91,16 +94,15 @@ Reverse that and that's what our id is on ps4.
 
 Now to the reproduction steps. Following what Anthony did, got us the same result, the hunter dies and the camera is stuck. Or the nailbomb explodes and the player is put into an indefinite loop. A softlock.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/TLOU-Nailbomb-Softlock/t1-camera-stuck-1.png">
-</p>
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/TLOU-Nailbomb-Softlock/t1-camera-stuck-1a.png">
-<em>This camera is not moving.</em>
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/TLOU-Nailbomb-Softlock/t1-camera-stuck-1.png" %}
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/TLOU-Nailbomb-Softlock/t1-camera-stuck-1a.png" %}
 
-<div align="center" class="video-container">
-<video controls >
+<div align=center>
+<em>This camera is not moving</em>
+</div>
+
+<div align="center">
+<video width="100%" controls >
   <source src="https://storage.googleapis.com/assets-illusion0001/images/TLOU-Nailbomb-Softlock/t1-nailbomb-softlock-demo1.mp4" type="video/mp4">
 </video>
 <em>Indefinite respawns and nailbomb exploding.</em>
@@ -114,10 +116,11 @@ I made the decision to get rid of the explosion but left the nailbomb intact. Th
 
 Searching for the string of nailbomb, nada. what about bomb?
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/TLOU-Nailbomb-Softlock/t1-ghidra-smokeb-search-4.png">
-<em>...a smoke bomb string reference.</em>
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/TLOU-Nailbomb-Softlock/t1-ghidra-smokeb-search-4.png" %}
+
+<div align=center>
+<em>...a smoke bomb string reference</em>
+</div>
 
 Welp, that was a disappointment alright.
 
@@ -125,17 +128,18 @@ Hey, what about that weapon ID earlier? This yielded some results. I will now in
 
 Alright, let's have a look at some of these references.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/TLOU-Nailbomb-Softlock/t1-ghidra-weaponid-search-3.png">
-<em>That's a lotta results.</em>
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/TLOU-Nailbomb-Softlock/t1-ghidra-weaponid-search-3.png" %}
+
+<div align=center>
+<em>That's a lotta results</em>
+</div>
 
 Most of these don't do anything interesting and there's only one reference that did do something. 
 
 This reference disables the damage output.
 
-<div align="center" class="video-container">
-<video controls >
+<div align="center">
+<video width="100%" controls >
   <source src="https://storage.googleapis.com/assets-illusion0001/images/TLOU-Nailbomb-Softlock/t1-nailbomb-damage-demo-0.mp4" type="video/mp4">
 </video>
 <em>That does something.</em>
@@ -155,17 +159,18 @@ Oh look, there's an error message that I missed. `Explosion Missing Parameters` 
       uVar30 = uVar2 < 0x18a76844;
 ```
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/TLOU-Nailbomb-Softlock/t1-ghidra-explode-strings-7.png">
-<em>That is a lot of results.</em>
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/TLOU-Nailbomb-Softlock/t1-ghidra-explode-strings-7.png" %}
+
+<div align=center>
+<em>That is a lot of results</em>
+</div>
 
 The refernce that disables the particles is around `SpawnExplosionEffects - no explosion settings` string.
 
 Let's give it a try.
 
-<div align="center" class="video-container">
-<video controls >
+<div align="center">
+<video width="100%" controls >
   <source src="https://storage.googleapis.com/assets-illusion0001/images/TLOU-Nailbomb-Softlock/t1-nailbomb-oneline-demo-2.mp4" type="video/mp4">
 </video>
 </div>
@@ -174,16 +179,15 @@ Hmm, it still blows up. even if there is no particles. that's distracting if you
 
 Wait a minute, there's two `SpawnExplosion` strings.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/TLOU-Nailbomb-Softlock/t1-ghidra-spawnexplode-search-5.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/TLOU-Nailbomb-Softlock/t1-ghidra-spawnexplode-search-5.png" %}
 
 `SpawnExplosion - can't find explosion settings` sounds interesting.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/TLOU-Nailbomb-Softlock/t1-ghidra-explode-calls-6.png">
-<em>Related function calls.</em>
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/TLOU-Nailbomb-Softlock/t1-ghidra-explode-calls-6.png" %}
+
+<div align=center>
+<em>Related function calls</em>
+</div>
 
 Hmm, let's have a look at the call references to this function. Alright time to bisect what does what. Some of these did what we saw before and some even crashed the game outright, so that's not good. How do I test this you may ask?
 
@@ -203,8 +207,8 @@ Close to a return.. hmm, what could that mean?
 
 There's a branch up here, let's skip it.
 
-<div align="center" class="video-container">
-<video controls >
+<div align="center">
+<video width="100%" controls >
   <source src="https://storage.googleapis.com/assets-illusion0001/images/TLOU-Nailbomb-Softlock/t1-nailbomb-processing-demo-3.mp4" type="video/mp4">
 </video>
 <em>Ahh-yes!</em>
@@ -234,8 +238,8 @@ Keep in mind that this is my interpretation of the code I wrote in assembly but 
 
 Looks good! time to try it out.
 
-<div align="center" class="video-container">
-<video controls >
+<div align="center">
+<video width="100%" controls >
   <source src="https://storage.googleapis.com/assets-illusion0001/images/TLOU-Nailbomb-Softlock/t1-nailbomb-typo.mp4" type="video/mp4">
 </video>
 </div>
@@ -250,7 +254,7 @@ Enjoy your one-less bug video game!
 
 # Result
 
-<div align="center" class="video-container">
+<div align="center" class="responsive-video-container">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/wDJmLgw2oF4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
@@ -268,9 +272,7 @@ This patch is available for PS3 (RPCS3), and PS4.
 
 For those looking to use the patch on the RPCS3 emulator, you can head over to the patch manager, click on the "**Download Latest Patches**" button and find the patch you wanted to use with your game Title ID and version, click on the checkbox to enable the patch and save changes.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/RatchetPS3-FPSUnlock/rpcs3_patch_example.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/RatchetPS3-FPSUnlock/rpcs3_patch_example.png" %}
 
 <a href="https://wiki.rpcs3.net/index.php?title=The_Last_of_Us#Patches" class="button" role="button"><i class='fas fa-download'></i> Patch Source Code (RPCS3)</a>
 

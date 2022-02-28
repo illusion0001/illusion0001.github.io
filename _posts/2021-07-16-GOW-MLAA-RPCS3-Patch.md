@@ -1,17 +1,20 @@
 ---
-layout: post
+layout: single
 title: "Graphics Patches for God of War 3 and Ascension for RPCS3"
 excerpt: "Experience God of War PlayStation 3 titles in Glorius 4K Resolution and Beyond."
 thumbnail: "https://storage.googleapis.com/assets-illusion0001/images/GOW-MLAA-RPCS3-Patch/rpcs3-img-feature2.png"
-feature-img: "https://storage.googleapis.com/assets-illusion0001/images/GOW-MLAA-RPCS3-Patch/rpcs3-img-feature2.png"
-image: "https://storage.googleapis.com/assets-illusion0001/images/GOW-MLAA-RPCS3-Patch/rpcs3-img-feature.png"
+header:
+  overlay_image: "https://storage.googleapis.com/assets-illusion0001/images/GOW-MLAA-RPCS3-Patch/rpcs3-img-feature2.png"
+  overlay_filter: 0.5
+  og_image: "https://storage.googleapis.com/assets-illusion0001/images/GOW-MLAA-RPCS3-Patch/rpcs3-img-feature.png"
 categories: patches
 tags: [Articles, Releases]
-twitter: {card: "summary_large_image"}
+# twitter: {card: "summary_large_image"}
+
+toc: true
+toc_sticky: true
 ---
 
-* TOC
-{:toc}
 
 # Intro
 
@@ -23,74 +26,83 @@ Specifically the things you would find when playing a PC game like running at an
 
 Starting with God of War 3, I went into the game display options to look for clues.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/GOW-MLAA-RPCS3-Patch/rpcs3-img0.png">
-<em>In-Game Brightness Menu.</em>
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/GOW-MLAA-RPCS3-Patch/rpcs3-img0.png" %}
+
+<div align=center>
+<em>In-Game Brightness Menu</em>
+</div>
 
 Moving this silder around and searching for values I narrowed it down to 4 byte int.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/GOW-MLAA-RPCS3-Patch/rpcs3-img1.png">
-<em>In-Game Brightness Menu.</em>
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/GOW-MLAA-RPCS3-Patch/rpcs3-img1.png" %}
+
+<div align=center>
+<em>In-Game Brightness Menu</em>
+</div>
 
 Max of `100` and Min of `0`.
 
 Peeking into memory reveals something interesting.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/GOW-MLAA-RPCS3-Patch/rpcs3-img2.png">
-<em>Highlighted is Brightness Value.</em>
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/GOW-MLAA-RPCS3-Patch/rpcs3-img2.png" %}
+
+<div align=center>
+<em>Highlighted is Brightness Value</em>
+</div>
 
 There is a toggle, in 4 byte int. `0x52BF2C`
 
 Setting it to 0 gives us this.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/GOW-MLAA-RPCS3-Patch/rpcs3-img3.png">
-<em>Strange colors..</em>
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/GOW-MLAA-RPCS3-Patch/rpcs3-img3.png" %}
+
+<div align=center>
+<em>Strange colors.</em>
+</div>
 
 Hmm, it gives strange results. Let's try patching this to 0 at startup.
 
 `- [ byte, 0x52BF2F, 0 ]`
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/GOW-MLAA-RPCS3-Patch/rpcs3-img4.png">
-<em>2560x1440 Internal Resolution.</em>
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/GOW-MLAA-RPCS3-Patch/rpcs3-img4.png" %}
+
+<div align=center>
+<em>2560x1440 Internal Resolution</em>
+</div>
 
 Woah, a crisp clean image. How about in-game?
 
 {% include_relative _image_note.md %}
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/GOW-MLAA-RPCS3-Patch/rpcs3-img5.png">
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/GOW-MLAA-RPCS3-Patch/rpcs3-img5.png" %}
+
+<div align=center>
 <em>Absolutely Stunning!</em>
-</p>
+</div>
 
 How about God of War Ascension?
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/GOW-MLAA-RPCS3-Patch/rpcs3-img6.png">
-<em>In-Game Settings Menu.</em>
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/GOW-MLAA-RPCS3-Patch/rpcs3-img6.png" %}
+
+<div align=center>
+<em>In-Game Settings Menu</em>
+</div>
 
 Oh, a value number next to the brightness setting, how curious.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/GOW-MLAA-RPCS3-Patch/rpcs3-img7.png">
-<em>GOWA Memory View.</em>
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/GOW-MLAA-RPCS3-Patch/rpcs3-img7.png" %}
+
+<div align=center>
+<em>GOWA Memory View</em>
+</div>
 
 No toggle next to brightness, there is some toggle at the bottom.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/GOW-MLAA-RPCS3-Patch/rpcs3-img8.png">
-<em>GOWA Mysterious toggle disabled.</em>
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/GOW-MLAA-RPCS3-Patch/rpcs3-img8.png" %}
+
+<div align=center>
+<em>GOWA Mysterious toggle disabled</em>
+</div>
 
 Another one with strange graphical issues.
 
@@ -100,10 +112,11 @@ Let's try the same method I used for God of War 3.
 
 {% include_relative _image_note.md %}
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/GOW-MLAA-RPCS3-Patch/rpcs3-img9.png">
-<em>2560x1440 Internal Resolution.</em>
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/GOW-MLAA-RPCS3-Patch/rpcs3-img9.png" %}
+
+<div align=center>
+<em>2560x1440 Internal Resolution</em>
+</div>
 
 This seem to be MLAA as well, job done right?
 
@@ -154,15 +167,17 @@ Following the branching leads to the last one in the list.
 
 A few testing with `li` and register of `0` comes down to `lwz r5,0x20(r31)`
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/GOW-MLAA-RPCS3-Patch/rpcs3-img10.png">
-<em>Depth of Field: Enabled.</em>
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/GOW-MLAA-RPCS3-Patch/rpcs3-img10.png" %}
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/GOW-MLAA-RPCS3-Patch/rpcs3-img11.png">
-<em>Depth of Field: Disabled.</em>
-</p>
+<div align=center>
+<em>Depth of Field: Enabled</em>
+</div>
+
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/GOW-MLAA-RPCS3-Patch/rpcs3-img11.png" %}
+
+<div align=center>
+<em>Depth of Field: Disabled</em>
+</div>
 
 Same can be done for Motion Blur.
 
@@ -182,42 +197,35 @@ A few nop to the call `0x230c4c` narrowed down to  `0x0023137c`.
 
 However, Graphics Options is a little more involed.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/GOW-MLAA-RPCS3-Patch/ghidra-gow-img0.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/GOW-MLAA-RPCS3-Patch/ghidra-gow-img0.png" %}
 
 String refernce and a reverse branch. Hmm.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/GOW-MLAA-RPCS3-Patch/ghidra-gow-img1.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/GOW-MLAA-RPCS3-Patch/ghidra-gow-img1.png" %}
 
 Setting a breakpoint on `001c65b8 bl FUN_001b61e0` lead us somewhere.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/GOW-MLAA-RPCS3-Patch/rpcs3-img12.png">
-<em>Take notice of Register 3.</em>
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/GOW-MLAA-RPCS3-Patch/rpcs3-img12.png" %}
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/GOW-MLAA-RPCS3-Patch/rpcs3-img13.png">
-</p>
+<div align=center>
+<em>Take notice of Register 3</em>
+</div>
+
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/GOW-MLAA-RPCS3-Patch/rpcs3-img13.png" %}
 
 Setting byte `0x321ACA6B` to 0 disables motion blur.
 
 This method can also be used for Depth of field.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/GOW-MLAA-RPCS3-Patch/ghidra-gow-img2.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/GOW-MLAA-RPCS3-Patch/ghidra-gow-img2.png" %}
 
 # Results
 
-<div align="center" class="video-container">
+<div align="center" class="responsive-video-container">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/J-rf0FcXpLw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-<div align="center" class="video-container">
+<div align="center" class="responsive-video-container">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/p_gvO2jBWwI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 

@@ -1,18 +1,15 @@
 ---
-layout: post
+layout: single
 title: "Solving the Infected's Severed Head Crash Bug in The Last of Us (PlayStation 3)"
 excerpt: "Is it a Head? Is it a bottle? No! It's a game bug. Part 1."
-categories: Patches
+categories: patches
 tags: tlou ps3 rpcs3 patches bugfix
-feature-img: "https://storage.googleapis.com/assets-illusion0001/images/t1r-ps4-head-crash/t1r-head-banner.png"
+header:
+  overlay_image: "https://storage.googleapis.com/assets-illusion0001/images/t1r-ps4-head-crash/t1r-head-banner.png"
+
+toc: true
+toc_sticky: true
 ---
-
-Your move. Naughty Dog.
-
-***
-
-* TOC
-{:toc}
 
 # Intro
 
@@ -22,15 +19,15 @@ If a Player decided to throw an object, let's say a brick or bottle. The game wo
 
 Affected Consoles:
 
-- ~~PlayStation 3~~ [Unofficially Patched](https://illusion0001.github.io/patches/2021/02/15/t1-head-crash-bug-fix/)
+- ~~PlayStation 3~~ [Unofficially Patched](/patches/2021/02/15/t1-head-crash-bug-fix/)
 
-- ~~PlayStation 4~~ [Unofficially Patched](https://illusion0001.github.io/patches/2021/02/16/t1r-head-crash-bug-fix/)
+- ~~PlayStation 4~~ [Unofficially Patched](/patches/2021/02/16/t1r-head-crash-bug-fix/)
 
 - PlayStation 5 [Video](https://youtu.be/HQ7oOmx4mmg?t=127)
 
 - PS4/PS5 versions issue still persists on latest patch 1.11
-<div align="center" class="video-container">
-<video controls autoplay muted >
+<div align="center">
+<video width="100%" controls autoplay muted >
   <source src="https://storage.googleapis.com/assets-illusion0001/images/t1-ps3-head-crash/t1-head-crash-before.mp4" type="video/mp4">
 </video>
 </div>
@@ -38,15 +35,11 @@ Affected Consoles:
 
 When the game crashed, using an emulator we can see that it gives an access violation as well as the address it stopped.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/t1-ps3-head-crash/t1-head-acess-violation.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/t1-ps3-head-crash/t1-head-acess-violation.png" %}
 
 Going to this location in Ghidra gives us some clues.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/t1-ps3-head-crash/ghidra-head-crash-hint.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/t1-ps3-head-crash/ghidra-head-crash-hint.png" %}
 
 The game does checks if: 
 
@@ -58,15 +51,11 @@ We can check using a Debugger with a breakpoint set on the crash address.
 
 Hit on the Head.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/t1-ps3-head-crash/t1-head-debug0.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/t1-ps3-head-crash/t1-head-debug0.png" %}
 
 Hit on an Enemy.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/t1-ps3-head-crash/t1-head-debug-spu-data.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/t1-ps3-head-crash/t1-head-debug-spu-data.png" %}
 
 In Register 10 and 29, there's some data here. It seems to be collision data.
 
@@ -87,7 +76,7 @@ We can add some data into Register 10 and additional check to prevent crashing.
 
 Let's implement this fix and see the results!
 
-<div align="center" class="video-container">
+<div align="center" class="responsive-video-container">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/yDHUPHUYr1w?start=17" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 

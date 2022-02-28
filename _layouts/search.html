@@ -1,27 +1,42 @@
 ---
-layout: page
+layout: default
 ---
 
-<!-- Html Elements for Search -->
-<input type="text" id="search-input" placeholder="Enter keywords..." class="search-bar">
-<br>
-<br>
-<ul id="results-container"></ul>
+{% if page.header.overlay_color or page.header.overlay_image or page.header.image %}
+  {% include page__hero.html %}
+{% endif %}
 
-<section>
-    <!-- Script pointing to jekyll-search.js -->
-    <script src="{% link assets/js/vendor/simple-jekyll-search.min.js %}" type="text/javascript"></script>
+{% if page.url != "/" and site.breadcrumbs %}
+  {% unless paginator %}
+    {% include breadcrumbs.html %}
+  {% endunless %}
+{% endif %}
 
-    <script type="text/javascript">
-        SimpleJekyllSearch({
-            searchInput: document.getElementById('search-input'),
-            resultsContainer: document.getElementById('results-container'),
-            json: '{% link assets/data/search.json %}',
-            searchResultTemplate: '<div class="search-title"><a href="{url}"><h3> {title}</h3></a><div class="meta">{date} <div class="right"><i class="fas fa-folder"></i> {category}  {tags}</div></div><p>{excerpt}</p></div><hr> ',
-            noResultsText: 'No results found',
-            limit: 25,
-            fuzzy: false,
-            exclude: []
-        })
-    </script>
-</section>
+<div id="main" role="main">
+  {% include sidebar.html %}
+
+  <div class="archive">
+    {% unless page.header.overlay_color or page.header.overlay_image %}
+      <h1 id="page-title" class="page__title">{{ page.title }}</h1>
+    {% endunless %}
+
+    {{ content }}
+
+    {%- assign search_provider = site.search_provider | default: "lunr" -%}
+    {%- case search_provider -%}
+      {%- when "lunr" -%}
+        <input type="text" id="search" class="search-input" placeholder="{{ site.data.ui-text[site.locale].search_placeholder_text | default: 'Enter your search term...' }}" />
+        <div id="results" class="results"></div>
+      {%- when "google" -%}
+        <form onsubmit="return googleCustomSearchExecute();" id="cse-search-box-form-id">
+        <input type="text" id="cse-search-input-box-id" class="search-input" placeholder="{{ site.data.ui-text[site.locale].search_placeholder_text | default: 'Enter your search term...' }}" />
+        </form>
+        <div id="results" class="results">
+          <gcse:searchresults-only></gcse:searchresults-only>
+        </div>
+      {%- when "algolia" -%}
+        <div class="search-searchbar"></div>
+        <div class="search-hits"></div>
+    {%- endcase -%}
+  </div>
+</div>

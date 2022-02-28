@@ -1,28 +1,29 @@
-# Idea files
-.idea/*
+# Vim
+*~
+*.sw[p_]
 
-# Mac files
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Ruby Gem
+*.gem
+.bundle
+Gemfile.lock
+**/vendor/bundle
+
+# Node.js and NPM
+node_modules
+npm-debug.log*
+package-lock.json
+codekit-config.json
+
+# macOS
 .DS_Store
 
-# Byte-compiled / optimized / DLL files
-*.manifest
-*.spec
-
-# Jekyll dev or build files
-_site/*
-_development_tool/*
-.sass-cache/*
-*.css.map
-*.scssc
-
-# Theme Gem files
-Gemfile.lock
-*.gem
-.gems
-jekyll-theme-type-on-strap.gemspec
-.jekyll-cache/*
-
-# Node js files
-**/node_modules/*
-
-scratch/
+# Jekyll generated files
+.jekyll-cache
+.jekyll-metadata
+.sass-cache
+_asset_bundler_cache
+_site

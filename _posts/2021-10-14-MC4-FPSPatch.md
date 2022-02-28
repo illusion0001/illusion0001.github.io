@@ -1,17 +1,20 @@
 ---
-layout: post
+layout: single
 title: "Dynamic FPS Patch for Midnight Club: Los Angeles"
 excerpt: "Fast and Furious Racing at up-to 60 FPS!"
 thumbnail: "https://storage.googleapis.com/assets-illusion0001/images/MC4-FPSPatch/MC4-Thumbnail-0.jpg"
-feature-img: "https://storage.googleapis.com/assets-illusion0001/images/MC4-FPSPatch/MC4-Thumbnail-0.jpg"
-image: "https://storage.googleapis.com/assets-illusion0001/images/MC4-FPSPatch/MC4-Thumbnail.jpg"
+header:
+  overlay_image: "https://storage.googleapis.com/assets-illusion0001/images/MC4-FPSPatch/MC4-Thumbnail-0.jpg"
+  overlay_filter: 0.5
+  og_image: "https://storage.googleapis.com/assets-illusion0001/images/MC4-FPSPatch/MC4-Thumbnail.jpg"
 categories: patches
 tags: [Articles, Releases]
-twitter: {card: "summary_large_image"}
+# twitter: {card: "summary_large_image"}
+
+toc: true
+toc_sticky: true
 ---
 
-* TOC
-{:toc}
 
 # Intro
 
@@ -25,9 +28,7 @@ Common fixed timestep values usually are `1/30` or `1/60`, `0.03333333`, `0.0166
 
 We will be searching for `0.03333333` as that is what its used in MCLA. which in hex is `3D088889` Big Endian format.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/MC4-FPSPatch/MC4-Screen0.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/MC4-FPSPatch/MC4-Screen0.png" %}
 
 A lot of results, let's try changing one of these to our current frametime which is about `0.077` from `77/1000`.
 
@@ -37,10 +38,11 @@ Neat thing about the xenia emulator is that it is super easy to get executable a
 
 `emit_source_annotations # Add extra movs and nops to make disassembly easier to read.`
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/MC4-FPSPatch/MC4-Screen0a.png">
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/MC4-FPSPatch/MC4-Screen0a.png" %}
+
+<div align=center>
 <em>Piece of cake!</em>
-</p>
+</div>
 
 ## Part 2 - Patching
 
@@ -85,19 +87,19 @@ Let's port this to the PS3 version.
 
 `3D 08 88 89 3D CC CC CD 38 D1 B7 17` This is the constants from the 360 version, this will become useful later on.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/MC4-FPSPatch/MC4-Screen1.png">
-<em>Oh no, no results.</em>
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/MC4-FPSPatch/MC4-Screen1.png" %}
+
+<div align=center>
+<em>Oh no, no results</em>
+</div>
 
 It turns out the mininum frametime is just slightly different. searching for just `3D CC CC CD 38 D1 B7 17` yielded one result.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/MC4-FPSPatch/MC4-Screen0b.png">
-</p>
-<p align="center">
-<em>Wait, this looks like a different constant.</em>
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/MC4-FPSPatch/MC4-Screen0b.png" %}
+
+<div align=center>
+<em>Wait, this looks like a different constant</em>
+</div>
 
 `3D 08 AB 86`? that looks *strange*. seems to be a calcuaction error of some sort. `1/29.7` and not `1/30` it could be `29.97` but that is unlikely though, thanks to [Whatcookie](https://github.com/Whatcookie) for pointing that out!
 
@@ -118,7 +120,7 @@ Enjoy!
 
 Note that the video below is recorded in slow motion to show the patch at its best.
 
-<div align="center" class="video-container">
+<div align="center" class="responsive-video-container">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/4vjIctNwu8A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 

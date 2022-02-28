@@ -1,15 +1,15 @@
 ---
-layout: post
+layout: single
 title: "Porting and Improving Cheat Codes in The Last of Us"
-excerpt: "Joel can build a spaceship now. 🚀🚀🚀"
+excerpt: "Joel can build a spaceship now."
 categories: cheatcodes
 tags: tlou ps3 ps4 cheatcodes
+
+toc: true
+toc_sticky: true
 ---
 
 {% include_relative _orbis_console_note.md %}
-
-* TOC
-{:toc}
 
 Recently, I was browsing through the [ArtemisPS3 repository](https://github.com/bucanero/ArtemisPS3/tree/master/docs/codes) of cheats for PS3 and I found myself wondering... "why aren't these on the PS4?"
 Some of them look pretty useful, so let's see if we can port a few over, and perhaps improve them as well!
@@ -53,9 +53,7 @@ Yes! We can nop out fsub, which subtracts the float value by 0.1, we can achieve
 
 Let's have a look in memory to see what clues we can find to port this to the PS4 version.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/t1-cheat-porting/ps3-ch-fl1.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/t1-cheat-porting/ps3-ch-fl1.png" %}
 
 Remember `ProcessWeaponFlashlight` and a few float values, as these will be helpful later on.
 
@@ -65,9 +63,7 @@ We can do a quick search through the games memory for the number of parts in Joe
 
 There are 2 results - One address for the HUD, and another for the "real" value. Attempting to modify the HUD value will result in it being overwritten by the real value, so we can ignore the HUD value and focus only on the real value.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/t1-cheat-porting/ps3-ch-part1.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/t1-cheat-porting/ps3-ch-part1.png" %}
 
 Unfortunately, peeking into memory here won't do much, since the real value is dynamic and it's address is always shifting when the game is loaded.
 
@@ -160,15 +156,11 @@ Let's try making our own cheat.
 
 Searching for Tools level, we get 2 results. We can ignore 1 in executable space. As it's only for HUD value.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/t1-cheat-porting/ps4-tool1.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/t1-cheat-porting/ps4-tool1.png" %}
 
 Tools value has been changed to 127. Let's set a breakpoint on pickup.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/t1-cheat-porting/ps4-tool2.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/t1-cheat-porting/ps4-tool2.png" %}
 
 ```
 00068742 ff 84 bb        INC        dword ptr [RBX + RDI*0x4 + 0x16448]
@@ -201,22 +193,16 @@ Done!
 
 On PS4 we can do a search for the text we noted down earlier: "ProcessWeaponFlashlight" - These floats will become useful later on when we peek into memory.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/t1-cheat-porting/ps4-ch-fl0.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/t1-cheat-porting/ps4-ch-fl0.png" %}
 
 4 results; let's check for similarities.
 Found it. Highlighted are the same floats and values. Sweet!
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/t1-cheat-porting/ps4-ch-fl1.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/t1-cheat-porting/ps4-ch-fl1.png" %}
 
 Let's set a breakpoint and see where it takes us.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/t1-cheat-porting/ps4r-flr.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/t1-cheat-porting/ps4r-flr.png" %}
 
 ```
 00697b83 c5 f2 5c        VSUBSS     XMM2,XMM1,dword ptr [RAX + 0x18] // subtract by 0.1
@@ -228,9 +214,7 @@ Let's set a breakpoint and see where it takes us.
 
 Let's try changing VMOVSS XMM2 to XMM1.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/t1-cheat-porting/ps3-ch-fl2.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/t1-cheat-porting/ps3-ch-fl2.png" %}
 
 Success! Achieved the same result and no use of nop.
 
@@ -247,9 +231,7 @@ Same story here but it's just a little different.
 
 On Pickup, the address will shift, but on use or spending it does not.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/t1-cheat-porting/ps4ch-part1.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/t1-cheat-porting/ps4ch-part1.png" %}
 
 ```
 000894dc 66 42 89        MOV        word ptr [RDI + R8*0x2 + 0xf4],AX
@@ -259,9 +241,7 @@ On Pickup, the address will shift, but on use or spending it does not.
 
 Let's try searching for `f4 00 00 00`. 
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/t1-cheat-porting/ghidra-hint-parts.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/t1-cheat-porting/ghidra-hint-parts.png" %}
 
 ```
 00089022 66 45 89        MOV        word ptr [R15 + RBX*0x2 + 0xf4],R14W
@@ -271,9 +251,7 @@ Let's try searching for `f4 00 00 00`.
 
 How about setting a breakpoint?
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/t1-cheat-porting/ps4r-part1.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/t1-cheat-porting/ps4r-part1.png" %}
 
 RAX, RCX and R14 stores the newest value ready to be loaded into R13.
 
@@ -283,9 +261,7 @@ Let's try loading our specified value, would it work?
 MOV word ptr [R15 + RBX*0x2 + 0xf4],0x96F
 ```
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/t1-cheat-porting/ps4-t1-part-edit.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/t1-cheat-porting/ps4-t1-part-edit.png" %}
 
 But, we can do better than just loading into a register. How about make it optional?
 
@@ -375,7 +351,7 @@ The Compare SUB allows for infinite items - when byte is enabled, parts, item, e
 
 ## Results
 
-<div align="center" class="video-container">
+<div align="center" class="responsive-video-container">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/wesqEfidErg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 

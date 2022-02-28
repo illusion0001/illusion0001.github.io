@@ -1,20 +1,22 @@
 ---
-layout: post
+layout: single
 title: "60FPS Patch for What Remains of Edith Finch"
 excerpt: "House exploring in 60 Frames Per Second on PlayStation 4"
 categories: patches
 tags: finchgame ps4 patches
 thumbnail: "https://storage.googleapis.com/assets-illusion0001/images/finchgame-60fps/fg-banner2.png"
-feature-img: "https://storage.googleapis.com/assets-illusion0001/images/finchgame-60fps/fg-banner2.png"
-image: "https://storage.googleapis.com/assets-illusion0001/images/finchgame-60fps/fg-banner.png"
+header:
+  overlay_image: "https://storage.googleapis.com/assets-illusion0001/images/finchgame-60fps/fg-banner2.png"
+  overlay_filter: 0.5
+  og_image: "https://storage.googleapis.com/assets-illusion0001/images/finchgame-60fps/fg-banner.png"
 tags: [Articles, Releases]
-twitter: {card: "summary_large_image"}
+# twitter: {card: "summary_large_image"}
+
+toc: true
+toc_sticky: true
 ---
 
 {% include_relative _orbis_console_note.md %}
-
-* TOC
-{:toc}
 
 # Intro
 
@@ -24,7 +26,7 @@ One of my favorite games this past generation was What Remains of Edith Finch. A
 
 This game targets its proformance profile at 1080p and 30FPS at least for Base Console.
 
-<div align="center" class="video-container">
+<div align="center" class="responsive-video-container">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/PD1jGLGeytQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
@@ -32,21 +34,23 @@ This game targets its proformance profile at 1080p and 30FPS at least for Base C
 
 ## Bruteforcing
 
-In my [previous article](https://illusion0001.github.io/patches/2021/05/20/ff7r-end-60fps/) I discovered the inital value for Unreal Engine Screen Percentage and Sync Intervals. Let's have a look in the config files and see if there's anything useful there.
+In my [previous article](/patches/2021/05/20/ff7r-end-60fps/) I discovered the inital value for Unreal Engine Screen Percentage and Sync Intervals. Let's have a look in the config files and see if there's anything useful there.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/finchgame-60fps/fg-compressed-ini.png">
-<em>Yikes.. nope.</em>
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/finchgame-60fps/fg-compressed-ini.png" %}
+
+<div align=center>
+<em>Yikes.. nope</em>
+</div>
 
 This is extracted using the [UT4 QuickBMS](http://aluigi.org/bms/unreal_tournament_4.bms) script and it didn't look exactly great. UnrealPak gives up and doesn't extract correctly either, So let's try bruteforcing by searching for values in memory instead.
 
 100.0 float for screen percentage, and 2 for sync interval.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/finchgame-60fps/ps4ch-fg1.png">
-<em>Looks like I found it.</em>
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/finchgame-60fps/ps4ch-fg1.png" %}
+
+<div align=center>
+<em>Looks like I found it</em>
+</div>
 
 That was simple at least for screen percentage but I ran into a deadend with sync interval.. how about we look in the executable? Could be clues that should lead us somewhere.
 
@@ -87,19 +91,18 @@ Searching for sync came up with only a couple of releavent results. There's `r.V
 
 A `mov` and `cmp` instructions? Seems to use a pointer that is then allocated in memory but this is *not* eboot space as we'll see later so let's set a breakpoint and see where it takes us.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/finchgame-60fps/ps4r-fg2.png">
-<em>RAX has our memory location somewhere up high, let's check it out.</em>
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/finchgame-60fps/ps4r-fg2.png" %}
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/finchgame-60fps/ps4r-fg3.png">
-</p>
+<div align=center>
+<em>RAX has our memory location somewhere up high, let's check it out</em>
+</div>
+
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/finchgame-60fps/ps4r-fg3.png" %}
 
 A row of values. seems to be 4 byte int. setting one of these values to 0 introduces tearing.
 
-<div align="center" class="video-container">
-<video controls >
+<div align="center">
+<video width="100%" controls >
   <source src=https://storage.googleapis.com/assets-illusion0001/images/finchgame-60fps/fg=demo-tear.mp4" type="video/mp4">
 </video>
 <em>Oof, not looking good.</em>
@@ -114,8 +117,8 @@ This isn't ideal because we are targetting up to 60FPS and not completely unlock
 
 There's a compare instruction here. Let's set our value back to 1 and set this jump to Jump Not Zero and see what it does.
 
-<div align="center" class="video-container">
-<video controls >
+<div align="center">
+<video width="100%" controls >
   <source src=https://storage.googleapis.com/assets-illusion0001/images/finchgame-60fps/fg=demo-no-tear.mp4" type="video/mp4">
 </video>
 <em>60FPS target and no screen tear! Perfect.</em>
@@ -159,8 +162,8 @@ Plan is to write a custom float value to that pointer which then will be read by
 
 Pretty simple right? This should work in-game, let's test it out.
 
-<div align="center" class="video-container">
-<video controls >
+<div align="center">
+<video width="100%" controls >
   <source src=https://storage.googleapis.com/assets-illusion0001/images/finchgame-60fps/fg-demo-after.mp4" type="video/mp4">
 </video>
 <em>60FPS indoors and of course no tearing to be found.</em>
@@ -172,15 +175,11 @@ Image quailty comparisons, can you guess which is which?
 
 {% include_relative _image_note.md %}
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/finchgame-60fps/fg-before.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/finchgame-60fps/fg-before.png" %}
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/finchgame-60fps/fg-after.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/finchgame-60fps/fg-after.png" %}
 
-<div align="center" class="video-container">
+<div align="center" class="responsive-video-container">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/BQaG989KYcs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 

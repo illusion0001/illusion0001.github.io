@@ -1,32 +1,34 @@
 ---
-layout: post
+layout: single
 title: "Patches for MediEvil (PS4 Remake)"
 excerpt: "Resolving bad frame-pacing and patching the resolution."
 thumbnail: "https://storage.googleapis.com/assets-illusion0001/images/Overbite-FPSFixes/overbite-thumbnail.png"
-feature-img: "https://storage.googleapis.com/assets-illusion0001/images/Overbite-FPSFixes/overbite-feature.png"
-image: "https://image.api.playstation.com/cdn/UP9000/CUSA11227_00/BJZksSXNxOU0vmTCa79nr7ULJM3F6a6B.png"
+header:
+  overlay_image: "https://storage.googleapis.com/assets-illusion0001/images/Overbite-FPSFixes/overbite-feature.png"
+  overlay_filter: 0.5
+  og_image: "https://image.api.playstation.com/cdn/UP9000/CUSA11227_00/BJZksSXNxOU0vmTCa79nr7ULJM3F6a6B.png"
 categories: patches
 tags: [Articles, Releases]
-twitter: {card: "summary_large_image"}
+# twitter: {card: "summary_large_image"}
+
+toc: true
+toc_sticky: true
 ---
 
-* TOC
-{:toc}
 
 # Intro
 
 Another classic gets a complete overhaul in Graphics, Gameplay and the works but of course not all things are perfect and this game is no exception. When I first boot up the game for the first time, went into the options menu and it got me curious.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/Overbite-FPSFixes/overbite-settings.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/Overbite-FPSFixes/overbite-settings.png" %}
 
 A 30FPS Cap option in the menu, but is it any good?
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/Overbite-FPSFixes/overbite-fps-borked.png">
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/Overbite-FPSFixes/overbite-fps-borked.png" %}
+
+<div align=center>
 <em>No, it is not.. :(</em>
-</p>
+</div>
 
 Time for a fix and a good ol' resolution patch for 60FPS in some cases.
 
@@ -86,16 +88,17 @@ What this code does is it checks if the value in memory is `30.00` or not, if it
 
 To the developers, can we get this fix in a official patch? and even better, 4K support.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/Overbite-FPSFixes/overbite-meme-final.png">
-<em>Fun Fact: this meme almost went unused. :P</em>
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/Overbite-FPSFixes/overbite-meme-final.png" %}
+
+<div align=center>
+<em>Fun Fact: this meme almost went unused.</em>
+</div>
 
 # Results
 
 See the video below for a comparison between the patched versions.
 
-<div align="center" class="video-container">
+<div align="center" class="responsive-video-container">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/_FyHCSwze_8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 

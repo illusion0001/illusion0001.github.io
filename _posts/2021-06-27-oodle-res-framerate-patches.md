@@ -1,17 +1,20 @@
 ---
-layout: post
+layout: single
 title: "Patches for The Order 1886 60FPS, 16:9 Aspect Ratio and More"
 excerpt: "Not so cinematic anymore, eh?"
 categories: patches
 thumbnail: "https://storage.googleapis.com/assets-illusion0001/images/oodle-res-framerate-patches/oddle-res-thumbnail-2.png"
-feature-img: "https://storage.googleapis.com/assets-illusion0001/images/oodle-res-framerate-patches/oddle-res-thumbnail-2.png"
-image: "https://storage.googleapis.com/assets-illusion0001/images/oodle-res-framerate-patches/oddle-res-thumbnail.png"
+header:
+  overlay_image: "https://storage.googleapis.com/assets-illusion0001/images/oodle-res-framerate-patches/oddle-res-thumbnail-2.png"
+  overlay_filter: 0.5
+  og_image: "https://storage.googleapis.com/assets-illusion0001/images/oodle-res-framerate-patches/oddle-res-thumbnail.png"
 tags: [Articles, Releases]
-twitter: {card: "summary_large_image"}
+# twitter: {card: "summary_large_image"}
+
+toc: true
+toc_sticky: true
 ---
 
-* TOC
-{:toc}
 
 # Intro
 
@@ -132,15 +135,16 @@ One is a launch parameter and another is resolution values.
 
 I think I found it!
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/oodle-res-framerate-patches/oddle-res0.png">
-<em>1920x1080 Letterboxed.</em>
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/oodle-res-framerate-patches/oddle-res0.png" %}
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/oodle-res-framerate-patches/oddle-res1.png">
+<div align=center>
+<em>1920x1080 Letterboxed</em>
+</div>
+
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/oodle-res-framerate-patches/oddle-res1.png" %}
+
+<div align=center>
 <em>1280x720 Letterboxed</em>
-</p>
 
 A simple jump switch did the trick.
 
@@ -176,10 +180,11 @@ However, `2.4` came up with some promising results.
 
 Around resolution code too. let's give it `1.778` and see what the game will do about it.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/oodle-res-framerate-patches/oddle-res2.png">
-<em>Letterbox Removed.</em>
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/oodle-res-framerate-patches/oddle-res2.png" %}
+
+<div align=center>
+<em>Letterbox Removed</em>
+</div>
 
 Not so cinematic anymore huh?
 
@@ -191,7 +196,7 @@ It seem to also crop in the image, I tried looking for an FOV scale but no luck,
 
 # Results
 
-<div align="center" class="video-container">
+<div align="center" class="responsive-video-container">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/MRnD9XCb1tY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 

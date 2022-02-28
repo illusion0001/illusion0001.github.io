@@ -1,19 +1,21 @@
 ---
-layout: post
+layout: single
 title: "Intro Skip Patches for Uncharted and The Last of Us"
 excerpt: "Introduction logos are no more."
 thumbnail: "https://storage.googleapis.com/assets-illusion0001/images/uncharted-t1-introskips/intro_noicon_thumbnail.png"
-feature-img: "https://storage.googleapis.com/assets-illusion0001/images/uncharted-t1-introskips/intro_noicon_thumbnail.png"
-image: "https://storage.googleapis.com/assets-illusion0001/images/uncharted-t1-introskips/intro_cut_thumbnail.png"
+header:
+  overlay_image: "https://storage.googleapis.com/assets-illusion0001/images/uncharted-t1-introskips/intro_noicon_thumbnail.png"
+  overlay_filter: 0.5
+  og_image: "https://storage.googleapis.com/assets-illusion0001/images/uncharted-t1-introskips/intro_cut_thumbnail.png"
 categories: patches
 tags: uncharted tlou ps4 patches
-twitter: {card: "summary_large_image"}
+# twitter: {card: "summary_large_image"}
+
+toc: true
+toc_sticky: true
 ---
 
 {% include_relative _orbis_console_note.md %}
-
-* TOC
-{:toc}
 
 # Intro
 
@@ -31,23 +33,15 @@ Task ID (usually 32 but 64 Bit in The Last of Us: Part 2 with the change to enti
 
 32 Bit Pointer and Hashes (PS3, Big Endian, Uncharted 3)
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/uncharted-t1-introskips/ND_task_ID_e00.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/uncharted-t1-introskips/ND_task_ID_e00.png" %}
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/uncharted-t1-introskips/ND_task_ID_e01.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/uncharted-t1-introskips/ND_task_ID_e01.png" %}
 
 64 Bit Pointer and Hashes (PS4, Litle Endian, The Last of Us: Part 2)
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/uncharted-t1-introskips/ND_task_ID_e02.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/uncharted-t1-introskips/ND_task_ID_e02.png" %}
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/uncharted-t1-introskips/ND_task_ID_e03.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/uncharted-t1-introskips/ND_task_ID_e03.png" %}
 
 ## Part 2 - Intros or No Intros
 
@@ -91,22 +85,21 @@ Because the compiled script file on that version is not the easiest thing to rea
 
 As for The Last of Us Part 2, the intro is baked directly into the `menu` task. Which also explains why there are no `ndi` task to be found in the task list. 
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/uncharted-t1-introskips/t2_task_menu.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/uncharted-t1-introskips/t2_task_menu.png" %}
 
 I think it is still possible if I look hard enough into the game's code or it could simply be a case of...
 
-<div align="center" class="video-container-i">
-<video autoplay loop >
+<div align="center">
+<video width="100%" autoplay loop >
   <source src="https://storage.googleapis.com/assets-illusion0001/images/memes/tenor/skill_issue_meme.mp4" type="video/mp4">
 </video>
 </div>
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/uncharted-t1-introskips/u1_ps3_taskbin.png">
-<em>Uncharted 1 task script file.</em>
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/uncharted-t1-introskips/u1_ps3_taskbin.png" %}
+
+<div align=center>
+<em>Uncharted 1 task script file</em>
+</div>
 
 Yeah.. I wouldn't touch this script file with a ten foot pole.
 
@@ -118,9 +111,7 @@ Let's see if the PS4 version is any difficult for the PS3 era titles. Thankfully
 
 This Boolean is used when the user switches games from the option menu.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/uncharted-t1-introskips/u3_appchooser.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/uncharted-t1-introskips/u3_appchooser.png" %}
 
 However, things are not as cut and dry as I would have thought.
 
@@ -142,10 +133,11 @@ The last one happens to be the same one that skips the intro in the public beta 
 
 I got the motivation to do intro skips was from fixing a bug where Uncharted 3 Public Beta on the PS3 would crash upon entering the Lan menu, which will be an upcoming post for those curious about it.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/uncharted-t1-introskips/u3_ps3_public_beta_tease.png">
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/uncharted-t1-introskips/u3_ps3_public_beta_tease.png" %}
+
+<div align=center>
 <em><i class="twa-2x twa-eyes"></i></em>
-</p>
+</div>
 
 ## Closing Words
 
@@ -161,7 +153,7 @@ Have a good rest of your day! I'll catch you next time.
 
 ## Showcase
 
-<div align="center" class="video-container">
+<div align="center" class="responsive-video-container">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Ord-myNMg2E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
@@ -171,9 +163,7 @@ This patch is available for PS3 (RPCS3), and PS4.
 
 For those looking to use the patch on the RPCS3 emulator, you can head over to the patch manager, click on the "**Download Latest Patches**" button and find the patch you wanted to use with your game Title ID and version, click on the checkbox to enable the patch and save changes.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/RatchetPS3-FPSUnlock/rpcs3_patch_example.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/RatchetPS3-FPSUnlock/rpcs3_patch_example.png" %}
 
 <a href="https://wiki.rpcs3.net/index.php?title=Uncharted_2:_Among_Thieves#Patches" class="button" role="button"><i class='fas fa-download'></i> Patch Source Code: Uncharted 2 (RPCS3)</a>
 

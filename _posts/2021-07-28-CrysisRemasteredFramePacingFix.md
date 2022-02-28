@@ -1,17 +1,20 @@
 ---
-layout: post
+layout: single
 title: "Frame Pacing Fix for Crysis Remastered (PS4)"
 excerpt: "Resolving inconsistent frame delivery on Crysis Remastered."
 categories: patches
 thumbnail: "https://storage.googleapis.com/assets-illusion0001/images/CrysisRemasteredFramePacingFix/CrysisRemasteredFramePacingFix_Banner.png"
-feature-img: "https://storage.googleapis.com/assets-illusion0001/images/CrysisRemasteredFramePacingFix/CrysisRemasteredFramePacingFix_Banner.png"
-image: "https://gs2-sec.ww.prod.dl.playstation.net/gs2-sec/appkgo/prod/CUSA18659_00/6/i_090b53a1ed8854fe34a2b4f986c4b524d543275d140eb81ab6df0fe47c7087da/i/pic0.png"
+header:
+  overlay_image: "https://storage.googleapis.com/assets-illusion0001/images/CrysisRemasteredFramePacingFix/CrysisRemasteredFramePacingFix_Banner.png"
+  overlay_filter: 0.5
+  og_image: "https://gs2-sec.ww.prod.dl.playstation.net/gs2-sec/appkgo/prod/CUSA18659_00/6/i_090b53a1ed8854fe34a2b4f986c4b524d543275d140eb81ab6df0fe47c7087da/i/pic0.png"
 tags: [Articles, Releases]
-twitter: {card: "summary_large_image"}
+# twitter: {card: "summary_large_image"}
+
+toc: true
+toc_sticky: true
 ---
 
-* TOC
-{:toc}
 
 # Intro
 Most of crytek releases utilizing their cryengine has this issue where the frames aren't being consistently delivered resulting in "bad frame pacing". In a 30FPS game. New frames should be sent to the display every other frame.
@@ -144,14 +147,15 @@ The breakpoint would lead to the address above.
 
 # Results
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/CrysisRemasteredFramePacingFix/CrysisRemasteredFramePacingFix_Preview.png">
-<em>Trdrop Frame Graph Overlay.</em>
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/CrysisRemasteredFramePacingFix/CrysisRemasteredFramePacingFix_Preview.png" %}
+
+<div align=center>
+<em>Trdrop Frame Graph Overlay</em>
+</div>
 
 Notice how the Green line is more stable than the Orange line.
 
-<div align="center" class="video-container">
+<div align="center" class="responsive-video-container">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Cmm4thcGYZ0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 

@@ -1,20 +1,17 @@
 ---
-layout: post
+layout: single
 title: "Solving the Infected's Severed Head Crash Bug in The Last of Us (PlayStation 4)"
 excerpt: "Is it a Head? Is it a bottle? No! It's a game bug. Part 2."
-categories: Patches
+categories: patches
 tags: tlou ps4 patches bugfix
-feature-img: "https://storage.googleapis.com/assets-illusion0001/images/t1r-ps4-head-crash/t1r-head-banner.png"
+header:
+  overlay_image: "https://storage.googleapis.com/assets-illusion0001/images/t1r-ps4-head-crash/t1r-head-banner.png"
+
+toc: true
+toc_sticky: true
 ---
 
-Your move. Naughty Dog.
-
-***
-
 {% include_relative _orbis_console_note.md %}
-
-* TOC
-{:toc}
 
 # Intro
 
@@ -24,16 +21,16 @@ If a Player decided to throw an object, let's say a brick or bottle. The game wo
 
 Affected Consoles:
 
-- ~~PlayStation 3~~ [Unofficially Patched](https://illusion0001.github.io/patches/2021/02/15/t1-head-crash-bug-fix/)
+- ~~PlayStation 3~~ [Unofficially Patched](/patches/2021/02/15/t1-head-crash-bug-fix/)
 
-- ~~PlayStation 4~~ [Unofficially Patched](https://illusion0001.github.io/patches/2021/02/16/t1r-head-crash-bug-fix/) ([Video](https://youtu.be/KCnMwV-jOoU))
+- ~~PlayStation 4~~ [Unofficially Patched](/patches/2021/02/16/t1r-head-crash-bug-fix/) ([Video](https://youtu.be/KCnMwV-jOoU))
 
 - PlayStation 5 [Video](https://youtu.be/HQ7oOmx4mmg?t=127)
 
 - PS4/PS5 versions issue still persists on latest patch 1.11
 
-<div align="center" class="video-container">
-<video controls muted >
+<div align="center">
+<video width="100%" controls muted >
   <source src="https://storage.googleapis.com/assets-illusion0001/images/t1r-ps4-head-crash/t1r-head-crash-before.mp4" type="video/mp4">
 </video>
 </div>
@@ -42,13 +39,11 @@ Affected Consoles:
 
 Most of the explaination was already covered in our PS3 version, see that post for more details.
 
-[Solving the Infected's Severed Head Crash Bug in The Last of Us (PlayStation 3)](https://illusion0001.github.io/patches/2021/02/15/t1-head-crash-bug-fix/)
+[Solving the Infected's Severed Head Crash Bug in The Last of Us (PlayStation 3)](/patches/2021/02/15/t1-head-crash-bug-fix/)
 
 We were only able to get the debugger [PS4 Reaper](https://www.psxhax.com/threads/ps4reaper-ps4-rte-debugger-and-trainer-maker-by-shiningami.6077/) working once due to connection and attaching issues but that was enough for what we needed.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/t1r-ps4-head-crash/ps4r-register.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/t1r-ps4-head-crash/ps4r-register.png" %}
 
 Guessing from PS3 registers, It could be RBX that is holding collision data.
 
@@ -72,7 +67,7 @@ We can do a check if RBX isn't 0 we can skip and run normally.
 
 Let's implement this fix and see the results.
 
-<div align="center" class="video-container">
+<div align="center" class="responsive-video-container">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/a5QEZGT7HOU?start=10" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 

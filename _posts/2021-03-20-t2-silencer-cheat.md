@@ -1,20 +1,22 @@
 ---
-layout: post
+layout: single
 title: "Improving an existing cheat in The Last of Us: Part II"
 excerpt: "Ellie can now be James Bond"
 categories: cheatcodes
 tags: tlou2 ps4 cheatcodes
 thumbnail: "https://storage.googleapis.com/assets-illusion0001/images/t2-silencer-cheat/banner2.png"
-feature-img: "https://storage.googleapis.com/assets-illusion0001/images/t2-silencer-cheat/banner2.png"
-image: "https://storage.googleapis.com/assets-illusion0001/images/t2-silencer-cheat/preview.png"
+header:
+  overlay_image: "https://storage.googleapis.com/assets-illusion0001/images/t2-silencer-cheat/banner2.png"
+  overlay_filter: 0.5
+  og_image: "https://storage.googleapis.com/assets-illusion0001/images/t2-silencer-cheat/preview.png"
 tags: [Articles, Releases]
-twitter: {card: "summary_large_image"}
+# twitter: {card: "summary_large_image"}
+
+toc: true
+toc_sticky: true
 ---
 
 {% include_relative _orbis_console_note.md %}
-
-* TOC
-{:toc}
 
 With the recent release of the [7.5x exploit](https://wololo.net/2021/03/17/ps4-7-55-jailbreak-sleirsgoevy-releases-updated-version/), I have an opportunity to make a cheat I wanted a reality.
 
@@ -28,8 +30,8 @@ There’s a fault with one of the provided cheats, “Infinite Ammo” - Whether
 
 The issue with this cheat is that ammo still decreases for the silencer, one of the games craftable items for the Pistol.
 
-<div align="center" class="video-container">
-<video controls >
+<div align="center">
+<video width="100%" controls >
   <source src="https://storage.googleapis.com/assets-illusion0001/images/t2-silencer-cheat/t2-inf-ammo-demo.mp4" type="video/mp4">
 </video>
 <em>Video showing cheat active. But silencer ammo still decreasing.</em>
@@ -41,15 +43,17 @@ I can do a search for the silencer ammo, find it, change the value, and should b
 
 Not so fast. The byte for the ammo itself will shift after sometime idling, this makes the process a little difficult. but after a while, I found its memory region and found it within a couple of minutes.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/t2-silencer-cheat/ps4ch-list.png">
-<em>Ammo have been changed to 99.</em>
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/t2-silencer-cheat/ps4ch-list.png" %}
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/t2-silencer-cheat/ps4r-bp.png">
-<em>Breakpoint at silencer ammo address when firing.</em>
-</p>
+<div align=center>
+<em>Ammo have been changed to 99</em>
+</div>
+
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/t2-silencer-cheat/ps4r-bp.png" %}
+
+<div align=center>
+<em>Breakpoint at silencer ammo address when firing</em>
+</div>
 
 ```
 015df257 41 ff 8e        DEC        dword ptr [R14 + 0x814]
@@ -62,15 +66,17 @@ This is our instruction for the silencer ammo. Nop this and the ammo will not de
 
 How about implementing this into the cheat that's built into the game. Sounds simple enough.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/t2-silencer-cheat/ps4ch-list2.png">
-<em>Toggling on and off the cheat option in the menu.</em>
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/t2-silencer-cheat/ps4ch-list2.png" %}
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/t2-silencer-cheat/ps4r-bp2.png">
-<em>Hit breakpoint when toggling.</em>
-</p>
+<div align=center>
+<em>Toggling on and off the cheat option in the menu</em>
+</div>
+
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/t2-silencer-cheat/ps4r-bp2.png" %}
+
+<div align=center>
+<em>Hit breakpoint when toggling</em>
+</div>
 
 ```
 003188d0 48 8b 05        MOV        RAX,qword ptr [DAT_037675b0]
@@ -109,7 +115,7 @@ Replaced `DEC` instruction to call to our new location, setup a pointer, compare
 
 ## Result
 
-<div align="center" class="video-container">
+<div align="center" class="responsive-video-container">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ZRg-gr79vp8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
@@ -127,14 +133,16 @@ I have also ported the [Infected's Severed Head Crash Bug Fix](https://github.co
 
 Also, here is Naughty Dog code for loading section on 1.11.
 
-<div align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/t2-silencer-cheat/t1-111-load0.png">
-<em>Official Patch.</em>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/t2-silencer-cheat/t1-111-load0.png" %}
+
+<div align=center>
+<em>Official Patch</em>
 </div>
 
-<div align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/t2-silencer-cheat/t1-110-load.png">
-<em>My Patch.</em>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/t2-silencer-cheat/t1-110-load.png" %}
+
+<div align=center>
+<em>My Patch</em>
 </div>
 
 0x2c is framelock but the fact that it doesn't even work in the menu made me laughed a little.

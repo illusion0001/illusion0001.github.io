@@ -1,44 +1,21 @@
-{% if site.theme_settings.footer_text %}
-<footer class="site-footer">
-    <p class="text">{{ site.theme_settings.footer_text }}</p>
-            <div class="footer-icons">
-                <!-- Social icons from Font Awesome, if enabled -->
-                <ul class="top-row">
-                {% include icons.html %}
-                </ul>
-                <ul class="bottom-row">
-                {% include icons-2.html %}
-                </ul>
-            </div>
-</footer>
-{% endif %}
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    {% if site.data.ui-text[site.locale].follow_label %}
+      <li><strong>{{ site.data.ui-text[site.locale].follow_label }}</strong></li>
+    {% endif %}
 
-<!-- Dark mode script -->
-<script>
-systemInitiatedDark.addListener(function (systemDark) {
-    changeIconTitle(systemDark.matches);
-    document.documentElement.removeAttribute('data-theme');
-    sessionStorage.removeItem('theme');
-});
+    {% if site.footer.links %}
+      {% for link in site.footer.links %}
+        {% if link.label and link.url %}
+          <li><a href="{{ link.url }}" rel="nofollow noopener noreferrer"><i class="{{ link.icon | default: 'fas fa-link' }}" aria-hidden="true"></i> {{ link.label }}</a></li>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
 
-function modeSwitcher() {
-    let theme = sessionStorage.getItem('theme');
-    if (theme === "dark") {
-        document.documentElement.setAttribute('data-theme', 'light');
-        changeIconTitle(false);
-        sessionStorage.setItem('theme', 'light');
-    }	else if (theme === "light") {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        changeIconTitle(true);
-        sessionStorage.setItem('theme', 'dark');
-    } else if (systemInitiatedDark.matches) {
-        document.documentElement.setAttribute('data-theme', 'light');
-        changeIconTitle(false);
-        sessionStorage.setItem('theme', 'light');
-    } else {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        changeIconTitle(true);
-        sessionStorage.setItem('theme', 'dark');
-    }
-}
-</script>
+    {% unless site.atom_feed.hide %}
+      <li><a href="{% if site.atom_feed.path %}{{ site.atom_feed.path }}{% else %}{{ '/feed.xml' | relative_url }}{% endif %}"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].feed_label | default: "Feed" }}</a></li>
+    {% endunless %}
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; {{ site.time | date: '%Y' }} {{ site.name | default: site.title }}. {{ site.data.ui-text[site.locale].powered_by | default: "Powered by" }} <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>

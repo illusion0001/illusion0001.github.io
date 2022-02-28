@@ -1,17 +1,20 @@
 ---
-layout: post
+layout: single
 title: "Patches and Enhancements for Alien: Isolation (PS4)"
 excerpt: "Removing save comfirm message and bringing a PC exclusive feature to console."
 thumbnail: "https://gs2-sec.ww.prod.dl.playstation.net/gs2-sec/appkgo/prod/CUSA00363_00/3/i_b2589b00f5519f8e53bf65225b78d3ab58efac7de467e2f5297cec8fc4f94c65/i/pic0.png"
-feature-img: "https://gs2-sec.ww.prod.dl.playstation.net/gs2-sec/appkgo/prod/CUSA00363_00/3/i_b2589b00f5519f8e53bf65225b78d3ab58efac7de467e2f5297cec8fc4f94c65/i/pic0.png"
-image: "https://gs2-sec.ww.prod.dl.playstation.net/gs2-sec/appkgo/prod/CUSA00363_00/3/i_b2589b00f5519f8e53bf65225b78d3ab58efac7de467e2f5297cec8fc4f94c65/i/pic0.png"
+header:
+  overlay_image: "https://gs2-sec.ww.prod.dl.playstation.net/gs2-sec/appkgo/prod/CUSA00363_00/3/i_b2589b00f5519f8e53bf65225b78d3ab58efac7de467e2f5297cec8fc4f94c65/i/pic0.png"
+  overlay_filter: 0.5
+  og_image: "https://gs2-sec.ww.prod.dl.playstation.net/gs2-sec/appkgo/prod/CUSA00363_00/3/i_b2589b00f5519f8e53bf65225b78d3ab58efac7de467e2f5297cec8fc4f94c65/i/pic0.png"
 categories: patches
 tags: [Articles, Releases]
-twitter: {card: "summary_large_image"}
+# twitter: {card: "summary_large_image"}
+
+toc: true
+toc_sticky: true
 ---
 
-* TOC
-{:toc}
 
 
 **Update - 9/27/2021
@@ -29,27 +32,19 @@ But there's no way to remove the save confirmation screen, let's see what can be
 
 Let's start with the save confirmation screen, when us, the player goes to save our progress at the emergency station, will be prompted with the dialogbox mentioned earlier.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/AlienIsolation-Patches/AI-save.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/AlienIsolation-Patches/AI-save.png" %}
 
 Assuming the dialog is a boolean, it can either be a `00` or a `01`, let's start by searching for 1 when the prompt is shown and when it is not.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/AlienIsolation-Patches/AI-search0.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/AlienIsolation-Patches/AI-search0.png" %}
 
 That's a lot of results.. Let's rinse and repeat until the result list becomes manageable.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/AlienIsolation-Patches/AI-search1.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/AlienIsolation-Patches/AI-search1.png" %}
 
 Ah, 11 results. That's more like it, let's set a breakpoint on each of these until it breaks when the dialog pops up.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/AlienIsolation-Patches/AI-search2.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/AlienIsolation-Patches/AI-search2.png" %}
 
 2 Results. First one is a write so we can discard that as it is not important, the second one however is more interesting.
 
@@ -99,8 +94,8 @@ A compare, jump to function, and that function has what seems to be dialog save 
 01197e0a eb 0d           JMP        LAB_01197e19 ; skip save confirm code
 ```
 
-<div align="center" class="video-container">
-<video controls >
+<div align="center">
+<video width="100%" controls >
   <source src="https://storage.googleapis.com/assets-illusion0001/images/AlienIsolation-Patches/AI-skip.mp4" type="video/mp4">
 </video>
 <em>It automatically saved and skipped the dialog!</em>
@@ -110,31 +105,21 @@ A compare, jump to function, and that function has what seems to be dialog save 
 
 On the PC there's an option to adjust the FOV from 47 to 75. The default seems to be 47 and is a float.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/AlienIsolation-Patches/AI-FOV0.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/AlienIsolation-Patches/AI-FOV0.png" %}
 
 Searching for 47 and adjusting the value back and forth, a lot of them is locked but there's only one that can be manually adjusted.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/AlienIsolation-Patches/AI-FOV1.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/AlienIsolation-Patches/AI-FOV1.png" %}
 
 I manually set `0x05B0AC00` to 100, but this value is not static so let's have a look in memory and see if we can find it in the console version.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/AlienIsolation-Patches/AI-FOV2.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/AlienIsolation-Patches/AI-FOV2.png" %}
 
 Highlighted in red at the top left is the address and value we just found, the values with red squares indicated that it has changed and is not relevant to us. let's remember the row of address next to our float value and see if we can find it on the console.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/AlienIsolation-Patches/AI-Console-FOV-0a.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/AlienIsolation-Patches/AI-Console-FOV-0a.png" %}
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/AlienIsolation-Patches/AI-Console-FOV-0b.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/AlienIsolation-Patches/AI-Console-FOV-0b.png" %}
 
 I decided to check the first one and sure enough, it was the one we were looking for.
 
@@ -150,14 +135,15 @@ I decided to check the first one and sure enough, it was the one we were looking
 01333d15 c3              RET ; return
 ```
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/AlienIsolation-Patches/AI-Console-FOV-3.png">
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/AlienIsolation-Patches/AI-Console-FOV-3.png" %}
+
+<div align=center>
 <em>Left = 47, Right = 70, Bottom Middle = 100</em>
-</p>
+</div>
 
 Just for fun, here is a comparison between the different FOV angles.
 
-<div align="center" class="video-container">
+<div align="center" class="responsive-video-container">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/r7hd-VvBy80" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 

@@ -1,15 +1,15 @@
 ---
-layout: post
+layout: single
 title: "Camera Shake Patch for Uncharted 3 and The Last of Us"
 excerpt: "Oh, there's camera shake? 👀"
-categories: Patches
+categories: patches
 tags: tlou uncharted uc3 ps3 ps4 patches
+
+toc: true
+toc_sticky: true
 ---
 
 {% include_relative _orbis_console_note.md %}
-
-* TOC
-{:toc}
 
 Recently, I stumped upon a video by a speedrunner [Anthony Caliber](https://www.youtube.com/channel/UC4PlYBhe8mzGFW4lmIkIQsg) which shows a [Video](https://youtu.be/EaBFyrCyMbs?t=302) comparing differences between camera shakes.
 
@@ -19,9 +19,7 @@ I'm not much of a fan of sprinting camera shake myself so let's see what we can 
 
 Opening the executable in Ghidra and searching for `Disable Camera` gives few results. But these are just text strings, what are they for?
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/t1-camshake/t1-camshake-ghrda-search.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/t1-camshake/t1-camshake-ghrda-search.png" %}
 
 These seem to be leftovers from developer menu code.
 
@@ -48,14 +46,12 @@ On PS4, there's a submenu dedicated to this.
 
 Let's activate this menu in-game.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/t1-camshake/t1-camshake-menu.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/t1-camshake/t1-camshake-menu.png" %}
 
 Three options. What we are interested here is `Disable Camera Additives` Let's see what happens when we enable it.
 
-<div align="center" class="video-container">
-<video controls >
+<div align="center">
+<video width="100%" controls >
   <source src="https://storage.googleapis.com/assets-illusion0001/images/t1-camshake/t1-camshake-demo.mp4" type="video/mp4">
 </video>
 <em>No more Camera shakes!</em>
@@ -69,8 +65,8 @@ Going to `0x14f3412` in Memory and setting it to 1, does nothing. Why's that?
 
 `0x14f3412` seems to be `Show Camera Additives` as `final` build configs have most debugging features stripped out, it doesn't do anything. Let's try byte next to it. 
 
-<div align="center" class="video-container">
-<video controls >
+<div align="center">
+<video width="100%" controls >
   <source src="https://storage.googleapis.com/assets-illusion0001/images/t1-camshake/t1-rpcs3-camshake-demo.mp4" type="video/mp4">
 </video>
 <em>Got it. No more camera shake for the PS3 version.</em>
@@ -94,9 +90,7 @@ For Uncharted 3 however, things are not as cut and dry as one might think.
 
 We can try loading it with register 0. But it doesn't work. Let's see in the debugger to find out why.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/t1-camshake/uc3-rpcs3-camshake-dbgr.png">
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/t1-camshake/uc3-rpcs3-camshake-dbgr.png" %}
 
 r0 is now taken by instruction ld at `7e58ac` and we can't simply nop this and hope that the game will work. It does not.
 
@@ -177,7 +171,7 @@ First `CALL` here is jumping to our new location. We *must* run original instruc
 
 The video below showcases changes introduced by the Patch.
 
-<div align="center" class="video-container">
+<div align="center" class="responsive-video-container">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Zoz7e9jN6Xs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 

@@ -1,171 +1,287 @@
-# SITE CONFIGURATION
-baseurl: ""
-url: "https://illusion0001.github.io"
-title: illusion's Blog
-description: "" # used by search engines
-permalink: pretty
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your entire site, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# `jekyll serve`. If you change this file, please restart the server process.
 
+# Theme Settings
+#
+# Review documentation to determine if you should use `theme` or `remote_theme`
+# https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/#installing-the-theme
 
-# THEME-SPECIFIC CONFIGURATION
-theme_settings:
-  # Meta
-  title: illusion's Blog
-  avatar: assets/icons/favicon.png
+# theme                  : "minimal-mistakes-jekyll"
+# remote_theme           : "mmistakes/minimal-mistakes"
+minimal_mistakes_skin    : "dark" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
-  # Header and footer text
-  header_text: Writeup for my patches and other projects I worked on.
-  header_feature_image: https://storage.googleapis.com/assets-illusion0001/images/banners/lis-butterfly-banner.png
-  footer_text: >
-   Powered by <a href="https://jekyllrb.com/">Jekyll</a> with <a href="https://github.com/sylhare/Type-on-Strap">Type on Strap</a>
-
-  # Icons
-  rss: true
-  email_address: illusion3185@gmail.com
-  behance:
-  bitbucket:
-  coffee: illusion0001
-  dribbble:
-  discord: 192940192133414912
+# Site Settings
+locale                   : "en-US"
+title                    : "illusion's Blog"
+title_separator          : "-"
+subtitle                 :  "Writeup for my patches and other projects I worked on."
+name                     : "illusion"
+description              : ""
+url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+baseurl                  : # the subpath of your site, e.g. "/blog"
+repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
+teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
+logo                     : "https://storage.googleapis.com/assets-illusion0001/avatar_cloud_strife_svg.svg"
+masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
+breadcrumbs              : false # true, false (default)
+words_per_minute         : 200
+comments:
+  provider               : # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "giscus", "custom"
+  disqus:
+    shortname            : # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
+  discourse:
+    server               : # https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 , e.g.: meta.discourse.org
   facebook:
-  flickr:
-  gitlab:
-  github: illusion0001
-  github_sponsors: false
-  google_plus:
-  instagram:
-  keybase:
-  linkedin:  # Full URL
-  pinterest:
-  patreon: illusion0001
-  paypal: 
-  reddit: illusion0001
-  soundcloud:
-  stack_exchange:  # Full URL
-  steam: 
-  tumblr:
-  twitter: illusion0002
-  vimeo:
-  wordpress:
-  youtube: illusion0001
+    # https://developers.facebook.com/docs/plugins/comments
+    appid                :
+    num_posts            : # 5 (default)
+    colorscheme          : # "light" (default), "dark"
+  utterances:
+    theme                : # "github-light" (default), "github-dark"
+    issue_term           : # "pathname" (default)
+  giscus:
+    repo_id              : # Shown during giscus setup at https://giscus.app
+    category_name        : # Full text name of the category
+    category_id          : # Shown during giscus setup at https://giscus.app
+    discussion_term      : # "pathname" (default), "url", "title", "og:title"
+    reactions_enabled    : # '1' for enabled (default), '0' for disabled
+    theme                : # "light" (default), "dark", "dark_dimmed", "transparent_dark", "preferred_color_scheme"
+  staticman:
+    branch               : # "master"
+    endpoint             : # "https://{your Staticman v3 API}/v3/entry/github/"
+reCaptcha:
+  siteKey                :
+  secret                 :
+atom_feed:
+  path                   : # blank (default) uses feed.xml
+  hide                   : # true, false (default)
+search                   : true
+search_full_content      : # true, false (default)
+search_provider          : # lunr (default), algolia, google
+algolia:
+  application_id         : # YOUR_APPLICATION_ID
+  index_name             : # YOUR_INDEX_NAME
+  search_only_api_key    : # YOUR_SEARCH_ONLY_API_KEY
+  powered_by             : # true (default), false
+google:
+  search_engine_id       : # YOUR_SEARCH_ENGINE_ID
+  instant_search         : # false (default), true
+# SEO Related
+google_site_verification :
+bing_site_verification   :
+naver_site_verification  :
+yandex_site_verification :
+baidu_site_verification  :
 
-  # Sharing options
-  share_buttons:
-    facebook: true
-    twitter: true
-    google_plus:
-    tumblr:
-    pinterest:
-    pocket:
-    reddit: true
-    hacker_news: true
-    linkedin:
-    wordpress:
-    email:
-
-  # Scripts / Features
-  google_analytics: UA-189385610-1
-  katex:
-
-  special_page:
-    search:
-      icon: "search" # Assuming page link and icon are the same
-      enabled: true
-    categories:
-      icon: "tags"
-      enabled: true
-
-  # Localization strings
-  str_follow_on: "Follow on"
-  str_rss_follow: "Follow RSS feed"
-  str_discord: "Contact on Discord"
-  str_support_via: "Support via"
-  str_buy_coffee: "Buy Me a Coffee!"
-  str_share_on: "Share on"
-  str_add_to: "Add to"
-  str_email: "Email"
-  str_tweet: "Tweet"
-  str_pin_it: "Pin it"
-  str_next_post: "Next post"
-  str_previous_post: "Previous post"
-  str_next_page: "Next"
-  str_previous_page: "Prev"
-  str_continue_reading: "Continue reading"
-  
-  # Icons for buttons
-  download_icon: "<i class='fas fa-download'></i>"
-  github_icon: "<i class='fab fa-github'></i>"
-  docs_icon: "<i class='fas fa-book'></i>"
-  gtaf_icon: "<i class='fas icomoon icon-gtaf'></i>"
-  codemasters_icon: "<i class='fas icomoon icon-codemasters'></i>"
-
-  # Flags
-  pl_flag: "<img style='height:1em;padding: 0 0.5em' src='/assets/images/svg/flags/pl.svg' alt='PL'>"
-  gb_flag: "<img style='height:1em;padding: 0 0.5em' src='/assets/images/svg/flags/gb.svg' alt='GB'>"
-  eu_flag: "<img style='height:1em;padding: 0 0.5em' src='/assets/images/svg/flags/eu.svg' alt='EU'>"
-  us_flag: "<img style='height:1em;padding: 0 0.5em' src='/assets/images/svg/flags/us.svg' alt='US'>"
-  jp_flag: "<img style='height:1em;padding: 0 0.5em' src='/assets/images/svg/flags/jp.svg' alt='JP'>"
-
-  # Colours, typography and padding
-  # Open the "_sass > base" folder, and open "_variables.scss"
-  google_fonts: "Source+Sans+Pro:400,700,700italic,400italic"
-
-  # Post navigation
-  post_navigation: true
-
-
-# PAGINATION
-paginate: 5
-paginate_path: "blog/page:num"
-
-collections:
-  mods:
-  games:
-    output: true
-    permalink: /mods/:name/
-  portfolio:
-    output: true
-
-# SEO
+# Social Sharing
 twitter:
-  username: 
-  card: summary
-
+  username               : illusion0002
+facebook:
+  username               :
+  app_id                 :
+  publisher              :
+og_image                 : # Open Graph/Twitter default site image
+# For specifying social profiles
+# - https://developers.google.com/structured-data/customize/social-profiles
 social:
-  name: 
+  type                   : # Person or Organization (defaults to Person)
+  name                   : # If the user or organization name differs from the site's name
+  links: # An array of links to social media profiles
+
+# Analytics
+analytics:
+  provider               : google # false (default), "google", "google-universal", "google-gtag", "custom"
+  google:
+    tracking_id          : UA-189385610-1
+    anonymize_ip         : true # true, false (default)
+
+# Site Author
+author:
+  name             : "illusion"
+  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  bio              : "I make video game patches as a hobby."
+  location         : "United States"
+  email            : illusion3185@gmail.com
   links:
-    - 
-    - 
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      # url: "illusion3185@gmail.com"
+    - label: "Website"
+      icon: "fas fa-fw fa-link"
+      # url: "https://your-website.com"
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      # url: "https://twitter.com/"
+    - label: "Facebook"
+      icon: "fab fa-fw fa-facebook-square"
+      # url: "https://facebook.com/"
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      # url: "https://github.com/"
+    - label: "Instagram"
+      icon: "fab fa-fw fa-instagram"
+      # url: "https://instagram.com/"
 
-defaults:
-  - scope:
-      path: ""
-    values:
-      # image: assets/icons/favicon.png
-      date-format: "%B %-d, %Y"
-  - scope:
-      path: ""
-      type: "games"
-    values:
-      game-series: ""
-      parent-series: ""
-      order: 0
-  - scope:
-      path: ""
-      type: "mods"
-    values:
-      excerpt: ""
+# Site Footer
+footer:
+  links:
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      # url:
+    - label: "Facebook"
+      icon: "fab fa-fw fa-facebook-square"
+      # url:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      # url:
+    - label: "GitLab"
+      icon: "fab fa-fw fa-gitlab"
+      # url:
+    - label: "Bitbucket"
+      icon: "fab fa-fw fa-bitbucket"
+      # url:
+    - label: "Instagram"
+      icon: "fab fa-fw fa-instagram"
+      # url:
 
 
-# PORTFOLIO
+# Reading Files
+include:
+  - .htaccess
+  - _pages
+exclude:
+  - "*.sublime-project"
+  - "*.sublime-workspace"
+  - vendor
+  - .asset-cache
+  - .bundle
+  - .jekyll-assets-cache
+  - .sass-cache
+  - assets/js/plugins
+  - assets/js/_main.js
+  - assets/js/vendor
+  - Capfile
+  - CHANGELOG
+  - config
+  - Gemfile
+  - Gruntfile.js
+  - gulpfile.js
+  - LICENSE
+  - log
+  - node_modules
+  - package.json
+  - package-lock.json
+  - Rakefile
+  - README
+  - tmp
+  - /docs # ignore Minimal Mistakes /docs
+  - /test # ignore Minimal Mistakes /test
+keep_files:
+  - .git
+  - .svn
+encoding: "utf-8"
+markdown_ext: "markdown,mkdown,mkdn,mkd,md"
 
 
-
-# BUILD SETTINGS
+# Conversion
 markdown: kramdown
 highlighter: rouge
+lsi: false
+excerpt_separator: "\n\n"
+incremental: false
+
+
+# Markdown Processing
+kramdown:
+  input: GFM
+  hard_wrap: false
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  smart_quotes: lsquo,rsquo,ldquo,rdquo
+  enable_coderay: false
+
+# Sass/SCSS
 sass:
   sass_dir: _sass
-  style: :compressed
-plugins: [jekyll-gist, jekyll-paginate, jekyll-seo-tag, jekyll-redirect-from, jekyll-feed]
-#theme: type-on-strap # Uncomment if using the theme as a jekyll theme gem
-exclude: ["Gemfile", "Gemfile.lock", "type-on-strap.gemspec", "*.gem", "LICENSE", "README.md", "screenshot.png", "assets/package.json", "assets/node_modules", "assets/gulpfile.js", ".idea/*", "scratch", "_patches/*"]
+  style: compressed # https://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
+
+# Outputting
+permalink: pretty
+paginate: 5 # amount of posts to show
+paginate_path: /page:num/
+timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+
+
+# Plugins (previously gems:)
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-gist
+  - jekyll-feed
+  - jekyll-include-cache
+
+# mimic GitHub Pages with --safe
+whitelist:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-gist
+  - jekyll-feed
+  - jekyll-include-cache
+
+
+# Archives
+#  Type
+#  - GitHub Pages compatible archive pages built with Liquid ~> type: liquid (default)
+#  - Jekyll Archives plugin archive pages ~> type: jekyll-archives
+#  Path (examples)
+#  - Archive page should exist at path when using Liquid method or you can
+#    expect broken links (especially with breadcrumbs enabled)
+#  - <base_path>/tags/my-awesome-tag/index.html ~> path: /tags/
+#  - <base_path>/categories/my-awesome-category/index.html ~> path: /categories/
+#  - <base_path>/my-awesome-category/index.html ~> path: /
+category_archive:
+  type: liquid
+  path: /categories/
+tag_archive:
+  type: liquid
+  path: /tags/
+# https://github.com/jekyll/jekyll-archives
+# jekyll-archives:
+#   enabled:
+#     - categories
+#     - tags
+#   layouts:
+#     category: archive-taxonomy
+#     tag: archive-taxonomy
+#   permalinks:
+#     category: /categories/:name/
+#     tag: /tags/:name/
+
+
+# HTML Compression
+# - https://jch.penibelst.de/
+compress_html:
+  clippings: all
+  ignore:
+    envs: development
+
+
+# Defaults
+defaults:
+  # _posts
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: false
+      comments: false # true
+      share: true
+      related: true

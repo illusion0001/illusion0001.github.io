@@ -1,19 +1,21 @@
 ---
-layout: post
+layout: single
 title: "The Witcher 3 60FPS and Grahpics Settings Research for PS4"
 excerpt: "Geralt fighting against monsters at up to 60 Frames-Per-Second."
 thumbnail: "https://storage.googleapis.com/assets-illusion0001/images/W3Witcher-ResPatch/W3Witcher-Banner.png"
-feature-img: "https://storage.googleapis.com/assets-illusion0001/images/W3Witcher-ResPatch/W3Witcher-Preview.png"
-image: "https://storage.googleapis.com/assets-illusion0001/images/W3Witcher-ResPatch/W3Witcher-Preview.png"
+header:
+  overlay_image: "https://storage.googleapis.com/assets-illusion0001/images/W3Witcher-ResPatch/W3Witcher-Preview.png"
+  overlay_filter: 0.5
+  og_image: "https://storage.googleapis.com/assets-illusion0001/images/W3Witcher-ResPatch/W3Witcher-Preview.png"
 categories: patches
 tags: [Articles, Releases]
-twitter: {card: "summary_large_image"}
+# twitter: {card: "summary_large_image"}
+
+toc: true
+toc_sticky: true
 ---
 
 {% include_relative _orbis_console_note.md %}
-
-* TOC
-{:toc}
 
 # Intro
 
@@ -67,10 +69,11 @@ MOV ESI with 0x0 gives us an unlocked framerate with triple buffered VSync.
 
 A few things I noticed that is, there's native In-Game Frame Statistics and additional Graphics Options.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/W3Witcher-ResPatch/W3Witcher-DF-Snapshot.jpg">
-<em>In-Game Frame Statistics with FPSGui Overlay.</em>
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/W3Witcher-ResPatch/W3Witcher-DF-Snapshot.jpg" %}
+
+<div align=center>
+<em>In-Game Frame Statistics with FPSGui Overlay</em>
+</div>
 
 `FPS` String search comes up with.. no results but in Unicode, it does.
 
@@ -97,17 +100,19 @@ A few things I noticed that is, there's native In-Game Frame Statistics and addi
 
 A simple change from `Jump Zero` to `Jump not Zero` gives us framerate stats.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/W3Witcher-ResPatch/W3Witcher-ShowFPS.png">
-<em>In-Game Frame Statistics on PS4.</em>
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/W3Witcher-ResPatch/W3Witcher-ShowFPS.png" %}
+
+<div align=center>
+<em>In-Game Frame Statistics on PS4</em>
+</div>
 
 What about Graphics Options? A simple drop in of the `rendering.xml` file from [GBAtemp](https://gbatemp.net/) Switch Modding Section gives us Grahpical Options seen in various Witcher 3 Switch Modded Videos.
 
-<p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/W3Witcher-ResPatch/W3Witcher-RenderingXML.png">
-<em>Additional Graphics Options.</em>
-</p>
+{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/W3Witcher-ResPatch/W3Witcher-RenderingXML.png" %}
+
+<div align=center>
+<em>Additional Graphics Options</em>
+</div>
 
 ## Part 3 - Experimental Graphics Patches through Executable Patching
 
