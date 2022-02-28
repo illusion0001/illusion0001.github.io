@@ -2,8 +2,8 @@
 layout: single
 title: "Intro Skip Patches for Uncharted and The Last of Us"
 excerpt: "Introduction logos are no more."
-thumbnail: "https://storage.googleapis.com/assets-illusion0001/images/uncharted-t1-introskips/intro_noicon_thumbnail.png"
 header:
+  teaser: "https://storage.googleapis.com/assets-illusion0001/images/uncharted-t1-introskips/intro_noicon_thumbnail.png"
   overlay_image: "https://storage.googleapis.com/assets-illusion0001/images/uncharted-t1-introskips/intro_noicon_thumbnail.png"
   overlay_filter: 0.5
   og_image: "https://storage.googleapis.com/assets-illusion0001/images/uncharted-t1-introskips/intro_cut_thumbnail.png"

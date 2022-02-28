@@ -2,8 +2,8 @@
 layout: single
 title: "Patches and Enhancements for Alien: Isolation (PS4)"
 excerpt: "Removing save comfirm message and bringing a PC exclusive feature to console."
-thumbnail: "https://gs2-sec.ww.prod.dl.playstation.net/gs2-sec/appkgo/prod/CUSA00363_00/3/i_b2589b00f5519f8e53bf65225b78d3ab58efac7de467e2f5297cec8fc4f94c65/i/pic0.png"
 header:
+  teaser: "https://gs2-sec.ww.prod.dl.playstation.net/gs2-sec/appkgo/prod/CUSA00363_00/3/i_b2589b00f5519f8e53bf65225b78d3ab58efac7de467e2f5297cec8fc4f94c65/i/pic0.png"
   overlay_image: "https://gs2-sec.ww.prod.dl.playstation.net/gs2-sec/appkgo/prod/CUSA00363_00/3/i_b2589b00f5519f8e53bf65225b78d3ab58efac7de467e2f5297cec8fc4f94c65/i/pic0.png"
   overlay_filter: 0.5
   og_image: "https://gs2-sec.ww.prod.dl.playstation.net/gs2-sec/appkgo/prod/CUSA00363_00/3/i_b2589b00f5519f8e53bf65225b78d3ab58efac7de467e2f5297cec8fc4f94c65/i/pic0.png"

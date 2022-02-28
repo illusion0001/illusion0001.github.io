@@ -3,8 +3,8 @@ layout: single
 title: "Frame Pacing Fix for Crysis Remastered (PS4)"
 excerpt: "Resolving inconsistent frame delivery on Crysis Remastered."
 categories: patches
-thumbnail: "https://storage.googleapis.com/assets-illusion0001/images/CrysisRemasteredFramePacingFix/CrysisRemasteredFramePacingFix_Banner.png"
 header:
+  teaser: "https://storage.googleapis.com/assets-illusion0001/images/CrysisRemasteredFramePacingFix/CrysisRemasteredFramePacingFix_Banner.png"
   overlay_image: "https://storage.googleapis.com/assets-illusion0001/images/CrysisRemasteredFramePacingFix/CrysisRemasteredFramePacingFix_Banner.png"
   overlay_filter: 0.5
   og_image: "https://gs2-sec.ww.prod.dl.playstation.net/gs2-sec/appkgo/prod/CUSA18659_00/6/i_090b53a1ed8854fe34a2b4f986c4b524d543275d140eb81ab6df0fe47c7087da/i/pic0.png"

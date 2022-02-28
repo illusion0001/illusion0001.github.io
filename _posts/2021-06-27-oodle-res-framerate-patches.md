@@ -3,8 +3,8 @@ layout: single
 title: "Patches for The Order 1886 60FPS, 16:9 Aspect Ratio and More"
 excerpt: "Not so cinematic anymore, eh?"
 categories: patches
-thumbnail: "https://storage.googleapis.com/assets-illusion0001/images/oodle-res-framerate-patches/oddle-res-thumbnail-2.png"
 header:
+  teaser: "https://storage.googleapis.com/assets-illusion0001/images/oodle-res-framerate-patches/oddle-res-thumbnail-2.png"
   overlay_image: "https://storage.googleapis.com/assets-illusion0001/images/oodle-res-framerate-patches/oddle-res-thumbnail-2.png"
   overlay_filter: 0.5
   og_image: "https://storage.googleapis.com/assets-illusion0001/images/oodle-res-framerate-patches/oddle-res-thumbnail.png"

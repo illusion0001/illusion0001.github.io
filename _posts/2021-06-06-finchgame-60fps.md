@@ -4,8 +4,8 @@ title: "60FPS Patch for What Remains of Edith Finch"
 excerpt: "House exploring in 60 Frames Per Second on PlayStation 4"
 categories: patches
 tags: finchgame ps4 patches
-thumbnail: "https://storage.googleapis.com/assets-illusion0001/images/finchgame-60fps/fg-banner2.png"
 header:
+  teaser: "https://storage.googleapis.com/assets-illusion0001/images/finchgame-60fps/fg-banner2.png"
   overlay_image: "https://storage.googleapis.com/assets-illusion0001/images/finchgame-60fps/fg-banner2.png"
   overlay_filter: 0.5
   og_image: "https://storage.googleapis.com/assets-illusion0001/images/finchgame-60fps/fg-banner.png"

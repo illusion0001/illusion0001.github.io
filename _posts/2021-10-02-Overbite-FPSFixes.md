@@ -2,8 +2,8 @@
 layout: single
 title: "Patches for MediEvil (PS4 Remake)"
 excerpt: "Resolving bad frame-pacing and patching the resolution."
-thumbnail: "https://storage.googleapis.com/assets-illusion0001/images/Overbite-FPSFixes/overbite-thumbnail.png"
 header:
+  teaser: "https://storage.googleapis.com/assets-illusion0001/images/Overbite-FPSFixes/overbite-thumbnail.png"
   overlay_image: "https://storage.googleapis.com/assets-illusion0001/images/Overbite-FPSFixes/overbite-feature.png"
   overlay_filter: 0.5
   og_image: "https://image.api.playstation.com/cdn/UP9000/CUSA11227_00/BJZksSXNxOU0vmTCa79nr7ULJM3F6a6B.png"

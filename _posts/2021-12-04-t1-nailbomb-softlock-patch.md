@@ -2,8 +2,8 @@
 layout: single
 title: "University Nailbomb Softlock Fix for The Last of Us (PS3, PS4)"
 excerpt: "A nailbomb, and a door, equals a softlock."
-thumbnail: "https://storage.googleapis.com/assets-illusion0001/images/TLOU-Nailbomb-Softlock/t1-nailbomb-feature-image.png"
 header:
+  teaser: "https://storage.googleapis.com/assets-illusion0001/images/TLOU-Nailbomb-Softlock/t1-nailbomb-feature-image.png"
   overlay_image: "https://storage.googleapis.com/assets-illusion0001/images/TLOU-Nailbomb-Softlock/t1-nailbomb-feature-image.png"
   overlay_filter: 0.5
   og_image: "https://storage.googleapis.com/assets-illusion0001/images/TLOU-Nailbomb-Softlock/t1-nailbomb-image.png"

@@ -2,8 +2,8 @@
 layout: single
 title: "Initial Framerate Patch Release (Work-In-Progress) for Gravity Rush 2"
 excerpt: "A fast paced game means fast framerate, right?"
-thumbnail: "https://storage.googleapis.com/assets-illusion0001/images/Gravite2-FrameratePatch/GR2-feature-img.png"
 header:
+  teaser: "https://storage.googleapis.com/assets-illusion0001/images/Gravite2-FrameratePatch/GR2-feature-img.png"
   overlay_image: "https://storage.googleapis.com/assets-illusion0001/images/Gravite2-FrameratePatch/GR2-feature-img2.png"
   overlay_filter: 0.5
   og_image: "https://storage.googleapis.com/assets-illusion0001/images/Gravite2-FrameratePatch/GR2-feature-img.png"

@@ -2,8 +2,8 @@
 layout: single
 title: "Framerate Unlock Patches for Ratchet and Clank PS3 titles (RPCS3)"
 excerpt: "PS5 does not yet have a remaster, but the PC does, through an emulator."
-thumbnail: "https://storage.googleapis.com/assets-illusion0001/images/RatchetPS3-FPSUnlock/RC_Feature.png"
 header:
+  teaser: "https://storage.googleapis.com/assets-illusion0001/images/RatchetPS3-FPSUnlock/RC_Feature.png"
   overlay_image: "https://storage.googleapis.com/assets-illusion0001/images/RatchetPS3-FPSUnlock/RC_Feature.png"
   overlay_filter: 0.5
   og_image: "https://storage.googleapis.com/assets-illusion0001/images/RatchetPS3-FPSUnlock/RC_Feature.png"

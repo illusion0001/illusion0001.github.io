@@ -2,8 +2,8 @@
 layout: single
 title: "Graphics Patches for God of War 3 and Ascension for RPCS3"
 excerpt: "Experience God of War PlayStation 3 titles in Glorius 4K Resolution and Beyond."
-thumbnail: "https://storage.googleapis.com/assets-illusion0001/images/GOW-MLAA-RPCS3-Patch/rpcs3-img-feature2.png"
 header:
+  teaser: "https://storage.googleapis.com/assets-illusion0001/images/GOW-MLAA-RPCS3-Patch/rpcs3-img-feature2.png"
   overlay_image: "https://storage.googleapis.com/assets-illusion0001/images/GOW-MLAA-RPCS3-Patch/rpcs3-img-feature2.png"
   overlay_filter: 0.5
   og_image: "https://storage.googleapis.com/assets-illusion0001/images/GOW-MLAA-RPCS3-Patch/rpcs3-img-feature.png"

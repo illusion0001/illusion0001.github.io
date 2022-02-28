@@ -18,14 +18,14 @@ minimal_mistakes_skin    : "dark" # "air", "aqua", "contrast", "dark", "dirt", "
 locale                   : "en-US"
 title                    : "illusion's Blog"
 title_separator          : "-"
-subtitle                 :  "Writeup for my patches and other projects I worked on."
+subtitle                 : 
 name                     : "illusion"
-description              : ""
-url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+description              : "Writeup for my patches and other projects I worked on."
+url                      : "https://illusion0001.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
-repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
+repository               : "illusion0001/illusion0001.github.io"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
-logo                     : "https://storage.googleapis.com/assets-illusion0001/avatar_cloud_strife_svg.svg"
+logo                     :
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
 breadcrumbs              : false # true, false (default)
 words_per_minute         : 200
@@ -102,7 +102,7 @@ analytics:
 # Site Author
 author:
   name             : "illusion"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "https://storage.googleapis.com/assets-illusion0001/avatar_cloud_strife.svg"
   bio              : "I make video game patches as a hobby."
   location         : "United States"
   email            : illusion3185@gmail.com
@@ -282,6 +282,6 @@ defaults:
       layout: single
       author_profile: true
       read_time: false
-      comments: false # true
+      comments: false
       share: true
       related: true

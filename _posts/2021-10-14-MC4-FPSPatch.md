@@ -2,8 +2,8 @@
 layout: single
 title: "Dynamic FPS Patch for Midnight Club: Los Angeles"
 excerpt: "Fast and Furious Racing at up-to 60 FPS!"
-thumbnail: "https://storage.googleapis.com/assets-illusion0001/images/MC4-FPSPatch/MC4-Thumbnail-0.jpg"
 header:
+  teaser: "https://storage.googleapis.com/assets-illusion0001/images/MC4-FPSPatch/MC4-Thumbnail-0.jpg"
   overlay_image: "https://storage.googleapis.com/assets-illusion0001/images/MC4-FPSPatch/MC4-Thumbnail-0.jpg"
   overlay_filter: 0.5
   og_image: "https://storage.googleapis.com/assets-illusion0001/images/MC4-FPSPatch/MC4-Thumbnail.jpg"

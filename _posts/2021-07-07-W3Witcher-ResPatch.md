@@ -2,8 +2,8 @@
 layout: single
 title: "The Witcher 3 60FPS and Grahpics Settings Research for PS4"
 excerpt: "Geralt fighting against monsters at up to 60 Frames-Per-Second."
-thumbnail: "https://storage.googleapis.com/assets-illusion0001/images/W3Witcher-ResPatch/W3Witcher-Banner.png"
 header:
+  teaser: "https://storage.googleapis.com/assets-illusion0001/images/W3Witcher-ResPatch/W3Witcher-Banner.png"
   overlay_image: "https://storage.googleapis.com/assets-illusion0001/images/W3Witcher-ResPatch/W3Witcher-Preview.png"
   overlay_filter: 0.5
   og_image: "https://storage.googleapis.com/assets-illusion0001/images/W3Witcher-ResPatch/W3Witcher-Preview.png"
