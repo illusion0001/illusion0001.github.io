@@ -145,6 +145,7 @@ I think I found it!
 
 <div align=center>
 <em>1280x720 Letterboxed</em>
+</div>
 
 A simple jump switch did the trick.
 
