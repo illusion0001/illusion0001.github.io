@@ -148,11 +148,11 @@ footer:
       icon: "fab fa-fw fa-instagram"
       # url:
 
-
 # Reading Files
 include:
   - .htaccess
   - _pages
+  - _patches
 exclude:
   - "*.sublime-project"
   - "*.sublime-workspace"
