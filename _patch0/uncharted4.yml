@@ -1,0 +1,10 @@
+- game: "Uncharted 4"
+  app_ver: "01.33"
+  patch_ver: "1.0"
+  name: "Intro Skip"
+  author: "illusion"
+  note:
+  arch: generic_orbis
+  enabled: False # Todo: move this to a separate file
+  patch_list:
+        - [ bytes, 0x127BEC7, "EB 2C" ]

@@ -1,0 +1,34 @@
+- game: "Ghost of Tsushima: Director's Cut"
+  app_ver: "02.13"
+  patch_ver: "1.0"
+  name: "60 FPS Unlock"
+  author: "illusion"
+  note: "Enable "Better Framerate Mode" in the game options menu on Neo. Not very useful for Base Console due to hardware limits."
+  # Dev Notes: "60 FPS mode everywhere, yes even in IGCs (in game cinematics). which is an upgrade over Prospero ver."
+  arch: generic_orbis
+  enabled: False # Todo: move this to a separate file
+  patch_list:
+        - [ bytes, 0x707B1A, "EB 12" ]
+
+- game: "Ghost of Tsushima: Director's Cut"
+  app_ver: "02.13"
+  patch_ver: "1.0"
+  name: "900p for Pro"
+  author: "illusion"
+  note: "Enable "Better Framerate Mode" in the game options menu on Neo."
+  arch: generic_orbis
+  enabled: False # Todo: move this to a separate file
+  patch_list:
+        - [ bytes, 0x706BD1, "40 06 00 00" ]
+        - [ bytes, 0x706BD5, "84 03 00 00" ]
+
+- game: "Ghost of Tsushima: Director's Cut"
+  app_ver: "02.13"
+  patch_ver: "1.0"
+  name: "Disable Checkerboarding"
+  author: "illusion"
+  note: "Enable "Better Framerate Mode" in the game options menu on Neo."
+  arch: generic_orbis
+  enabled: False # Todo: move this to a separate file
+  patch_list:
+        - [ bytes, 0x706BEA, "00" ]

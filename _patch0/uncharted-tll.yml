@@ -1,0 +1,10 @@
+- game: "Uncharted: The Lost Legacy"
+  app_ver: "01.02"
+  patch_ver: "1.0"
+  name: "Intro Skip"
+  author: "illusion"
+  note:
+  arch: generic_orbis
+  enabled: False # Todo: move this to a separate file
+  patch_list:
+        - [ bytes, 0x13278B7, "EB 4C" ]

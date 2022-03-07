@@ -21,6 +21,12 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-gems-
 
+    - name: Pack patch files into zip
+      run: |
+        cp  -r "_patch0" "patch0"
+        zip -r _patch/patch.zip patch0
+        rm  -r "patch0"
+
     - name: Deploy
       uses: helaili/jekyll-action@v2
       with:

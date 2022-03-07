@@ -1,0 +1,26 @@
+- game: "Horizon Zero Dawn"
+  app_ver: "01.52"
+  patch_ver: "1.0"
+  name: "60 FPS Unlock"
+  author: "illusion"
+  note:
+  arch: generic_orbis
+  enabled: False # Todo: move this to a separate file
+  patch_list:
+        - [ bytes, 0x125AFB, "84" ]
+
+- game: "Horizon Zero Dawn"
+  app_ver: "01.52"
+  patch_ver: "1.0"
+  name: "60 FPS Unlock"
+  author: "illusion"
+  note:
+  arch: generic_orbis
+  enabled: False # Todo: move this to a separate file
+  patch_list:
+        # base
+        # 1920x1080 -> 1280x720
+        - [ bytes, 0x1C74E20, "00 05 00 00 D0 02 00 00" ]
+        # neo
+        # 3840x2160 -> 1920x1080 // untested
+        - [ bytes, 0x1C74E48, "80 07 00 00 38 04 00 00" ]

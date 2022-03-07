@@ -1,0 +1,21 @@
+- game: "Grand Theft Auto V"
+  app_ver: "01.38"
+  patch_ver: "1.0"
+  name: "60 FPS Unlock"
+  author: "illusion, GraFfiX_221211"
+  note: "CPU Limited. For use with 9th generation of game consoles."
+  arch: generic_orbis
+  enabled: False # Todo: move this to a separate file
+  patch_list:
+        - [ bytes, 0xD3BB5E, "01 00 00 00" ]
+- game: "Grand Theft Auto V"
+  app_ver: "01.38"
+  patch_ver: "1.0"
+  name: "Skip Intro"
+  author: "illusion"
+  note:
+  arch: generic_orbis
+  enabled: False # Todo: move this to a separate file
+  patch_list:
+        - [ bytes, 0x2F3E794, "00" ]
+        - [ bytes, 0x286EFB8, "00" ]

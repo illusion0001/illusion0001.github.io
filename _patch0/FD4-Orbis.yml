@@ -1,0 +1,21 @@
+- game: "Bloodborne"
+  app_ver: "01.09"
+  patch_ver: "1.0"
+  name: "Disable Chromatic Aberration"
+  author: "illusion"
+  note:
+  arch: generic_orbis
+  enabled: False # Todo: move this to a separate file
+  patch_list:
+        - [ bytes, 0x22A3AA8, "C7 83 AC 00 00 00 00 00 00 00 90 90" ]
+
+- game: "Bloodborne"
+  app_ver: "01.09"
+  patch_ver: "1.0"
+  name: "Disable Motion Blur"
+  author: "illusion"
+  note:
+  arch: generic_orbis
+  enabled: False # Todo: move this to a separate file
+  patch_list:
+        - [ bytes, 0x22A457B, "EB 16" ]

@@ -1,0 +1,32 @@
+- game: "Uncharted: 1"
+  app_ver: "01.02"
+  patch_ver: "1.0"
+  name: "Intro Skip"
+  author: "illusion"
+  note:
+  arch: generic_orbis
+  enabled: False # Todo: move this to a separate file
+  patch_list:
+        - [ bytes, 0x960A17, "01" ]
+
+- game: "Uncharted: 2"
+  app_ver: "01.02"
+  patch_ver: "1.0"
+  name: "Intro Skip"
+  author: "illusion"
+  note:
+  arch: generic_orbis
+  enabled: False # Todo: move this to a separate file
+  patch_list:
+        - [ bytes, 0x1061E94, "01" ]
+
+- game: "Uncharted: 3"
+  app_ver: "01.02"
+  patch_ver: "1.0"
+  name: "Intro Skip"
+  author: "illusion"
+  note:
+  arch: generic_orbis
+  enabled: False # Todo: move this to a separate file
+  patch_list:
+        - [ bytes, 0x5691D6, "00" ]
