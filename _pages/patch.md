@@ -62,7 +62,7 @@ You can submit a pull request to this [repository](https://github.com/illusion00
 - [Final Fantasy VII: Remake](/_patch/legacy_md/FF7R-Orbis)
 - [Ghost Of Tsushima](/_patch/legacy_md/GhostOfTsushima-Orbis)
 - [Ghost of Tsushima: Director's Cut](/_patch/legacy_md/GhostOfTsushimaDC-Orbis)
-- [Grand Theft Auto V](/_patch/legacy_md/GTA5-Orbis)
+- [Grand Theft Auto V](/_patch/new_md/GTA5-Orbis)
 - [Gravity Rush 2](/_patch/legacy_md/Gravity_Daze_2_Orbis)
 - [Heavy Rain](/_patch/legacy_md/HRPS4-Orbis)
 - [Hellblade: Senua's Sacrifice](/_patch/legacy_md/HellbladeGame-Orbis)
