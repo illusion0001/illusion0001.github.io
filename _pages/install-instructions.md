@@ -15,9 +15,7 @@ Games used for the presentation does not have any relevance for the steps.
 
 # Installing Patch Using Automated Tool
 
-[Download Program](https://github.com/illusion0001/py-patcher/releases)
-
-1) Download the program linked above.
+1) Download the program: [py-patch](https://github.com/illusion0001/py-patcher/releases/latest)
 
 {% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/setup/launcher0.png" %}
 
@@ -25,14 +23,15 @@ Games used for the presentation does not have any relevance for the steps.
 
 3) Extract both archive to a folder somewhere on your computer.
 
-4) Open a `.yml` patch file you want to patch, change `enabled: False` to `enabled: True`, save the file.
+4) Open a `.yml` patch file you want to patch, change `enabled: False` to `enabled: True` and save the file.
 
 5) Open PowerShell 
 
 {% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/setup/launcher1.png" %}
 
-6) Type `.\launcher.exe -f (file to be patched) -c (patch file)`
+6) Type `(program name).exe -f (file to be patched) -c (patch file)`
 
+Example:
 {% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/setup/launcher2.png" %}
 
 7) Hit Enter and if your executable is valid, it should apply all the patches, your patched executable file is saved to `filename-patched` in the same folder that the program is in.
@@ -44,6 +43,8 @@ Video Guide:
   <source src="https://storage.googleapis.com/assets-illusion0001/images/setup/launcher-vidya.mp4" type="video/mp4">
 </video>
 </div>
+
+***
 
 # Legacy methods
 
