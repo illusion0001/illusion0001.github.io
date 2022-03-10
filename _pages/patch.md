@@ -30,6 +30,12 @@ You can submit a pull request to this [repository](https://github.com/illusion00
 
 # Patches
 
+## PS3
+
+- [Uncharted 3 Multiplayer Beta](/_patch/new_md/Big3-Beta-Cell)
+
+## PS4
+
 - [Life is Strange: Before the Storm](/_patch/legacy_md/lis/dawn-lis-bts-orbis)
 - [Life is Strange](/_patch/legacy_md/lis/what-if-lis-orbis)
 - [The Awesome Adventures of Captain Spirit](/_patch/legacy_md/lis/captainspirit-orbis)

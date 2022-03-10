@@ -4,7 +4,7 @@ layout: single
 
 # The Witcher 3
 
-[Game Index](/patch/#patches)
+[Game Index](/patch/#ps4)
 
 [Installation Guide](https://illusion0001.github.io/install-instructions/)
 

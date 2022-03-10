@@ -4,7 +4,7 @@ layout: single
 
 # Crash Bandicoot 4: It's About Time
 
-[Game Index](/patch/#patches)
+[Game Index](/patch/#ps4)
 
 [Installation Guide](https://illusion0001.github.io/install-instructions/)
 

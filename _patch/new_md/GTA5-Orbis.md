@@ -4,7 +4,7 @@ layout: single
 
 # Grand Theft Auto V
 
-[Game Index](/patch/#patches)
+[Game Index](/patch/#ps4)
 
 [Installation Guide](/install-instructions/)
 
@@ -24,7 +24,7 @@ In file `eboot.bin`
 <summary>Code (Click to Expand)</summary>
 
 {% highlight yml %}
-{% flexible_include _patch0/GTA5-Orbis.yml %}
+{% flexible_include _patch0/orbis/GTA5-Orbis.yml %}
 {% endhighlight %}
 
 </details>

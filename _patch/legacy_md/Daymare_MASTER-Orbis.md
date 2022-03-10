@@ -4,7 +4,7 @@ layout: single
 
 # Daymare 1998
 
-[Game Index](/patch/#patches)
+[Game Index](/patch/#ps4)
 
 [Installation Guide](https://illusion0001.github.io/install-instructions/)
 

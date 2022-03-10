@@ -4,7 +4,7 @@ layout: single
 
 # Assetto Corsa Competizione
 
-[Game Index](/patch/#patches)
+[Game Index](/patch/#ps4)
 
 [Installation Guide](https://illusion0001.github.io/install-instructions/)
 
@@ -22,7 +22,7 @@ In file `eboot.bin`
 <summary>Code (Click to Expand)</summary>
 
 {% highlight yml %}
-{% flexible_include _patch0/AC2-Orbis-Shipping.yml %}
+{% flexible_include _patch0/orbis/AC2-Orbis-Shipping.yml %}
 {% endhighlight %}
 
 </details>
