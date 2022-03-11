@@ -102,6 +102,7 @@ You can submit a pull request to this [repository](https://github.com/illusion00
 - [The Evil Within](/_patch/legacy_md/Zwei_NG_Orbis)
 - [The Order 1886](/_patch/legacy_md/TO1886-Orbis)
 - [The Outer Worlds](/_patch/legacy_md/Indiana-Orbis)
+- [The Last Guardian](/_patch/new_md/Trico-Orbis)
 - [The Last of Us: Remastered](/_patch/legacy_md/tlou1)
 - [The Last of Us: Part II](/_patch/legacy_md/tlou2)
 - [The Witcher 3](/_patch/legacy_md/W3Witcher-Orbis)
