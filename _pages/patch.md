@@ -58,7 +58,7 @@ You can submit a pull request to this [repository](https://github.com/illusion00
 - [Dark Souls III: Network Stress Test](/_patch/legacy_md/FD4_FDNT-Orbis)
 - [Dishonored: Definitive Edition](/_patch/legacy_md/DishonoredGame-Orbis)
 - [Dishonored 2](/_patch/legacy_md/Dishonored2-Orbis)
-- [Elden Ring: Netowrk Test](/_patch/legacy_md/FD4-NTS-Orbis)
+- [Elden Ring: Network Test](/_patch/legacy_md/FD4-NTS-Orbis)
 - [Far Cry 3](/_patch/legacy_md/FC3-Orbis)
 - [Far Cry 4](/_patch/legacy_md/FC4-Orbis)
 - [Far Cry 5](/_patch/legacy_md/FC5-Orbis)
