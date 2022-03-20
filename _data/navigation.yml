@@ -6,7 +6,7 @@ main:
     url: /contact/
   - title: "Patches"
     url: /patch/
-  # - title: "Sample Collections"
-  #   url: /collection-archive/
+  - title: "Miscellaneous"
+    url: /misc/
   # - title: "Sitemap"
   #   url: /sitemap/
