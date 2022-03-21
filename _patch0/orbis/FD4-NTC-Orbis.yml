@@ -1,16 +1,32 @@
 - game: "Sekiro: Shadows Die Twice"
   app_ver: "01.06"
   patch_ver: "1.0"
-  name: "60 FPS Unlock"
+  name: "30 FPS Fix (Proper Frame Pacing)"
   author: "illusion"
-  note: "Only needed for Base console, enhanced consoles already have framerate unlocked."
-  arch: generic_orbis
+  note: "Caps framerate to 30 with proper frame pacing."
+  arch: orbis
   enabled: False # Todo: move this to a separate file
   patch_list:
         # FlipMode
-        - [ bytes, 0x1F6AF27, "95" ]
+        # Comment this if platform is neo to not enable poor framerate cap
+        - [ bytes, 0x02366f27, "95" ]
+        # SceVideoOutFliprate(handle, 1);
+        # return;
+        - [ bytes, 0x034cdc27, "bf0001114ebe01000000eb12" ]
+
+- game: "Sekiro: Shadows Die Twice"
+  app_ver: "01.06"
+  patch_ver: "1.0"
+  name: "60 FPS Unlock"
+  author: "illusion"
+  note: "Only needed for Base console, enhanced consoles already have framerate unlocked."
+  arch: orbis
+  enabled: False # Todo: move this to a separate file
+  patch_list:
+        # FlipMode
+        - [ bytes, 0x02366f27, "95" ]
         # VFR
-        - [ bytes, 0x1F6B0C3, "48 E9 6B 00 00 00" ]
+        - [ bytes, 0x023670c3, "48e96b000000" ]
 
 - game: "Sekiro: Shadows Die Twice"
   app_ver: "01.06"
@@ -18,13 +34,14 @@
   name: Resolution Patch (720p Base, 1080p Pro)
   author: "illusion"
   note:
-  arch: generic_orbis
+  arch: orbis
   enabled: False # Todo: move this to a separate file
   patch_list:
         # Base
         # 1920x1080 -> 1280x720
-        - [ bytes, 0x3E2DD44, "00 05 00 00 D0 02 00 00 " ]
+        # todo: convert these to int patches
+        - [ bytes, 0x4229D44, "00050000D0020000" ]
         # Neo
         # 3200x1800 -> 1920x1080
-        - [ bytes, 0x1F643FF, "80 07 00 00" ]
-        - [ bytes, 0x1F64409, "38 04 00 00" ]
+        - [ bytes, 0x23603FF, "80070000" ]
+        - [ bytes, 0x2364409, "38040000" ]

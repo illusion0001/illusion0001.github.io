@@ -15,9 +15,9 @@
 - game: "Dark Souls III: The Fire Fades Edition"
   app_ver: "01.03"
   patch_ver: "1.0"
-  name: "30 FPS Limit (Proper Frame-Pacing)"
+  name: "30 FPS Fix (Proper Frame-Pacing)"
   author: "illusion"
-  note:
+  note: "Caps framerate to 30 with proper frame pacing."
   arch: generic_orbis
   enabled: False # Todo: move this to a separate file
   patch_list:

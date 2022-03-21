@@ -1,13 +1,27 @@
 - game: "Bloodborne"
   app_ver: "01.09"
   patch_ver: "1.0"
+  name: "30 FPS Fix (Proper Frame Pacing)"
+  author: "illusion, manfightdragon"
+  note: "Caps framerate to 30 with proper frame pacing."
+  arch: orbis
+  enabled: False # Todo: move this to a separate file
+  patch_list:
+        - [ float32, 0x02434883, 0.016666667 ]
+        # SceVideoOutFliprate(handle, 1);
+        # return;
+        - [ bytes, 0x02ad61df, "be010000004989dc9090909090" ]
+
+- game: "Bloodborne"
+  app_ver: "01.09"
+  patch_ver: "1.0"
   name: "Disable Chromatic Aberration"
   author: "illusion"
   note:
-  arch: generic_orbis
+  arch: orbis
   enabled: False # Todo: move this to a separate file
   patch_list:
-        - [ bytes, 0x22A3AA8, "C7 83 AC 00 00 00 00 00 00 00 90 90" ]
+        - [ bytes, 0x0269faa8, "c783ac000000000000009090" ]
 
 - game: "Bloodborne"
   app_ver: "01.09"
@@ -15,7 +29,7 @@
   name: "Disable Motion Blur"
   author: "illusion"
   note:
-  arch: generic_orbis
+  arch: orbis
   enabled: False # Todo: move this to a separate file
   patch_list:
-        - [ bytes, 0x22A457B, "EB 16" ]
+        - [ bytes, 0x026a057b, "eb16" ]

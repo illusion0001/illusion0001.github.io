@@ -30,6 +30,10 @@ You can submit a pull request to this [repository](https://github.com/illusion00
 
 # Patches
 
+## FromSoftware Titles
+
+{% flexible_include _pages/fromsoft-titles.md %}
+
 ## PS3
 
 - [Uncharted 3 Multiplayer Beta](/_patch/new_md/Big3-Beta-Cell)
@@ -45,7 +49,6 @@ You can submit a pull request to this [repository](https://github.com/illusion00
 - [Assetto Corsa Competizione](/_patch/legacy_md/AC2-Orbis-Shipping)
 - [Batman: Arkham Knight](/_patch/legacy_md/BmGame4Orbis)
 - [Beyond: Two Souls](/_patch/legacy_md/QDR.Infraworld-Orbis)
-- [Bloodborne](/_patch/legacy_md/FD4-Orbis)
 - [Concrete Genie](/_patch/legacy_md/ConcreteGenie-Orbis)
 - [Crash Bandicoot N. Sane Trilogy](/_patch/legacy_md/mack-long-Orbis)
 - [Crash Bandicoot 4: It's About Time](/_patch/legacy_md/Lava-Orbis)
@@ -54,11 +57,8 @@ You can submit a pull request to this [repository](https://github.com/illusion00
 - [Days Gone](/_patch/legacy_md/ProjectRedChair-Orbis)
 - [Daymare 1998](/_patch/legacy_md/Daymare_MASTER-Orbis)
 - [Detroit: Become Human](/_patch/legacy_md/KaraTech-Orbis)
-- [Dark Souls III: The Fire Fades Edition](/_patch/legacy_md/FD4_FDP-Orbis)
-- [Dark Souls III: Network Stress Test](/_patch/legacy_md/FD4_FDNT-Orbis)
 - [Dishonored: Definitive Edition](/_patch/legacy_md/DishonoredGame-Orbis)
 - [Dishonored 2](/_patch/legacy_md/Dishonored2-Orbis)
-- [Elden Ring: Network Test](/_patch/legacy_md/FD4-NTS-Orbis)
 - [Far Cry 3](/_patch/legacy_md/FC3-Orbis)
 - [Far Cry 4](/_patch/legacy_md/FC4-Orbis)
 - [Far Cry 5](/_patch/legacy_md/FC5-Orbis)
@@ -95,7 +95,6 @@ You can submit a pull request to this [repository](https://github.com/illusion00
 - [Judgement](/_patch/legacy_md/Judge_e_Orbis)
 - [Silent Hills: P.T.](/_patch/legacy_md/shgame-pt)
 - [SnowRunner](/_patch/legacy_md/SnowRunner-Orbis)
-- [Sekiro: Shadows Die Twice](/_patch/legacy_md/FD4-NTC-Orbis)
 - [Sleeping Dogs: Definitive Edition](/_patch/legacy_md/SdHD-Orbis)
 - [Skyrim](/_patch/legacy_md/TESV-Orbis)
 - [Tekken 7](/_patch/legacy_md/TekkenGame-Orbis)

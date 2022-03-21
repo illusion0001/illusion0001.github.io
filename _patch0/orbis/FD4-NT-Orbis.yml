@@ -1,0 +1,13 @@
+- game: "Bloodborne: Network Test"
+  app_ver: "01.00"
+  patch_ver: "1.0"
+  name: "30 FPS Fix (Proper Frame Pacing)"
+  author: "illusion, manfightdragon"
+  note: "Caps framerate to 30 with proper frame pacing."
+  arch: orbis
+  enabled: False # Todo: move this to a separate file
+  patch_list:
+        - [ float32, 0x00c34917, 0.016666667 ]
+        # SceVideoOutFliprate(handle, 1);
+        # return;
+        - [ bytes, 0x02908da2, "be0100000089c79090909090" ]

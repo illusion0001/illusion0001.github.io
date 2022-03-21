@@ -17,7 +17,7 @@
   patch_ver: "1.0"
   name: "30 FPS Fix (Proper Frame Pacing)"
   author: "illusion"
-  note: "Locks FPS to 30 with Proper Frame Pacing."
+  note: "Caps framerate to 30 with proper frame pacing."
   arch: generic_orbis
   enabled: False # Todo: move this to a separate file
   patch_list:
