@@ -1,5 +1,6 @@
 ---
 layout: single
+patch_file: "_patch0/orbis/FD4-NTC-Orbis.yml"
 ---
 
 # Sekiro: Shadows Die Twice
@@ -14,17 +15,17 @@ For use with [py-patch program](https://github.com/illusion0001/py-patcher/relea
 
 Download all [patch](/_patch/patch.zip) files.
 
-Patch file `orbis/FD4-NTC-Orbis.yml`
+Patch file: `{{ page.patch_file }}`
 
 File to be patched: `eboot.bin`
 
 Author: [illusion](https://twitter.com/illusion0002)
 
 <details>
-<summary>Code (Click to Expand)</summary>
+<summary>Contents of patch file (Click to Expand)</summary>
 
 {% highlight yml %}
-{% flexible_include _patch0/orbis/FD4-NTC-Orbis.yml %}
+{% flexible_include {{ page.patch_file }} %}
 {% endhighlight %}
 
 </details>

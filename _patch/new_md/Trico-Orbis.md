@@ -1,5 +1,6 @@
 ---
 layout: single
+patch_file: "_patch0/orbis/trico-orbis.yml"
 ---
 
 # The Last Guardian
@@ -14,17 +15,17 @@ For use with [py-patch tool](https://github.com/illusion0001/py-patcher/releases
 
 Download all [patch](/_patch/patch.zip) files.
 
-Patch file `orbis/trico-orbis.yml`
+Patch file: `{{ page.patch_file }}`
 
 File to be patched: `eboot.bin`
 
 Author: [illusion](https://twitter.com/illusion0002)
 
 <details>
-<summary>Code (Click to Expand)</summary>
+<summary>Contents of patch file (Click to Expand)</summary>
 
 {% highlight yml %}
-{% flexible_include _patch0/orbis/trico-orbis.yml %}
+{% flexible_include {{ page.patch_file }} %}
 {% endhighlight %}
 
 </details>

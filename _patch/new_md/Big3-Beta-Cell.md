@@ -1,5 +1,6 @@
 ---
 layout: single
+patch_file: "_patch0/cell/big3-beta.yml"
 ---
 
 # Uncharted 3 Multiplayer Beta
@@ -16,17 +17,17 @@ For use with [py-patch program](https://github.com/illusion0001/py-patcher/relea
 
 Download all [patch](/_patch/patch.zip) files.
 
-Patch file `cell/big3-beta.yml`
+Patch file: `{{ page.patch_file }}`
 
 File to be patched: `EBOOT.ELF` (decrypted `EBOOT.BIN`)
 
 Author: [illusion](https://twitter.com/illusion0002), [ZEROx](https://github.com/Xcedf)
 
 <details>
-<summary>Code (Click to Expand)</summary>
+<summary>Contents of patch file (Click to Expand)</summary>
 
 {% highlight yml %}
-{% flexible_include _patch0/cell/big3-beta.yml %}
+{% flexible_include {{ page.patch_file }} %}
 {% endhighlight %}
 
 </details>
