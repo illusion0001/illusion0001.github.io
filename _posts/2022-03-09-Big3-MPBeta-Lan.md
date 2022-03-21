@@ -3,28 +3,28 @@ layout: single
 title: "Uncharted 3 Multiplayer Beta Now Playable Without PSN (PS3)"
 excerpt: "Online or Offline, you decide."
 header:
-  teaser: "https://storage.googleapis.com/assets-illusion0001/images/UC3-MP-BetaPlayableLan/big3-pic0.png"
-  overlay_image: "https://storage.googleapis.com/assets-illusion0001/images/UC3-MP-BetaPlayableLan/big3-pic0.png"
+  teaser: "https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/big3-pic0.png"
+  overlay_image: "https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/big3-pic0.png"
   overlay_filter: 0.5
-  og_image: "https://storage.googleapis.com/assets-illusion0001/images/UC3-MP-BetaPlayableLan/big3-pic0.png"
+  og_image: "https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/big3-pic0.png"
 
 categories: patches
 tags: uncharted ps3 rpcs3 patches
 twitter: {card: "summary_large_image"}
 
 gallery:
-  - url: https://storage.googleapis.com/assets-illusion0001/images/UC3-MP-BetaPlayableLan/DiscPhoto-2-Scaled.png
-    image_path: https://storage.googleapis.com/assets-illusion0001/images/UC3-MP-BetaPlayableLan/DiscPhoto-2-Scaled.png
-  - url: https://storage.googleapis.com/assets-illusion0001/images/UC3-MP-BetaPlayableLan/DiscPhoto-3-Scaled.png
-    image_path: https://storage.googleapis.com/assets-illusion0001/images/UC3-MP-BetaPlayableLan/DiscPhoto-3-Scaled.png
+  - url: https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/DiscPhoto-2-Scaled.png
+    image_path: https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/DiscPhoto-2-Scaled.png
+  - url: https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/DiscPhoto-3-Scaled.png
+    image_path: https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/DiscPhoto-3-Scaled.png
 
 gallery0:
-  - url: https://storage.googleapis.com/assets-illusion0001/images/UC3-MP-BetaPlayableLan/GameOS-XMB-12.png
-    image_path: https://storage.googleapis.com/assets-illusion0001/images/UC3-MP-BetaPlayableLan/GameOS-XMB-12.png
-  - url: https://storage.googleapis.com/assets-illusion0001/images/UC3-MP-BetaPlayableLan/GameOS-XMB-13.png
-    image_path: https://storage.googleapis.com/assets-illusion0001/images/UC3-MP-BetaPlayableLan/GameOS-XMB-13.png
-  - url: https://storage.googleapis.com/assets-illusion0001/images/UC3-MP-BetaPlayableLan/GameOS-XMB-15.png
-    image_path: https://storage.googleapis.com/assets-illusion0001/images/UC3-MP-BetaPlayableLan/GameOS-XMB-15.png
+  - url: https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/GameOS-XMB-12.png
+    image_path: https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/GameOS-XMB-12.png
+  - url: https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/GameOS-XMB-13.png
+    image_path: https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/GameOS-XMB-13.png
+  - url: https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/GameOS-XMB-15.png
+    image_path: https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/GameOS-XMB-15.png
 
 toc: true
 toc_sticky: true
@@ -44,7 +44,7 @@ Normally it is not possible to access this mode because on the start screen, you
 
 <div align="center">
 <video width="100%" controls>
-  <source src="https://storage.googleapis.com/assets-illusion0001/images/UC3-MP-BetaPlayableLan/GameOS-XMB-0c.mp4" type="video/mp4">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/GameOS-XMB-0c.mp4" type="video/mp4">
 </video>
 </div>
 
@@ -62,7 +62,7 @@ The game has a so called blacklist of titleIDs that will restrict access to cert
 
 <div align="center">
 <video width="100%" controls>
-  <source src="https://storage.googleapis.com/assets-illusion0001/images/UC3-MP-BetaPlayableLan/Cell-XMB-0b.mp4" type="video/mp4">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/Cell-XMB-0b.mp4" type="video/mp4">
 </video>
 </div>
 
@@ -70,7 +70,7 @@ That's right, Yours truly (finally) got a PlayStation 3!
 
 Special thanks goes to the [Patrons](https://www.patreon.com/illusion0001), Vampyre, a member of the team and *you* for supporting me to be able to get a hold of such not-so rare piece of hardware.
 
-{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/UC3-MP-BetaPlayableLan/DiscPhoto-1-Scaled.png" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/DiscPhoto-1-Scaled.png" %}
 
 It is a Slim model PS3, check it out, quite a beauty isn't it? This will become useful later on.
 
@@ -84,7 +84,7 @@ What is this simple trick you may ask? Well it is quite simple, by changing the 
 
 Oh wait, is that too small? Let me zoom in.
 
-{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/UC3-MP-BetaPlayableLan/DiscPhoto-4-Scaled.png" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/DiscPhoto-4-Scaled.png" %}
 
 <div align=center>
 <em>I apologize if I ruin the illusion that printed material are full color but they are not. <i class="twa thinkhappy"></i></em>
@@ -94,13 +94,13 @@ For SKU blacklist, in this case it only restricts the use of the main menu.
 
 What will happen if the SKU is changed?
 
-{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/UC3-MP-BetaPlayableLan/GameOS-XMB-11stack.png" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/GameOS-XMB-11stack.png" %}
 
 With this one simple trick, we can have access to the whole menu, which includes but not limited to: Online Mode used during the beta, a Local Multiplayer mode and a options menu with a blank controller page. Will get back to that in a moment.
 
 The funny thing about this SKU check code is it will fallback to whatever the default is set to (in this case its `UP9000-BCUS98233_00`) if the string does not match. Hot singles in your `strcmp` (string compare)? With that knowledge the SKU can be anything but the blacklisted ID of the game.
 
-{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/UC3-MP-BetaPlayableLan/CE-0b.png" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/CE-0b.png" %}
 
 <div align=center>
 <em><a href="https://www.youtube.com/user/ZEROx2085">ZEROx</a> says hi! Part of the code was written by him. :)</em>
@@ -119,7 +119,7 @@ A script file cannot be found, how strange. such is life I suppose.
 
 So I had a brilliant idea, mess around in the game's memory in the area where the SKU is located.
 
-{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/UC3-MP-BetaPlayableLan/CE-0c.png" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/CE-0c.png" %}
 
 At first I thought I was out of luck but fear not, with a little bit of trial and error of changing true to false, there is a solution.
 
@@ -127,7 +127,7 @@ You may have already noticed there is some `01` at the top. If you guess correct
 
 <div align="center">
 <video width="100%" controls>
-  <source src="https://storage.googleapis.com/assets-illusion0001/images/UC3-MP-BetaPlayableLan/RPCS3-login.mp4" type="video/mp4">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/RPCS3-login.mp4" type="video/mp4">
 </video>
 </div>
 
@@ -135,7 +135,7 @@ The crash is solved! But it doesn't go anywhere, or does it?
 
 <div align="center">
  <audio controls>
-  <source src="https://storage.googleapis.com/assets-illusion0001/misc/JakeChudnowMoonMen.mp3" type="audio/mpeg">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/misc/JakeChudnowMoonMen.mp3" type="audio/mpeg">
 Your browser does not support the audio element.
 </audio>
 </div>
@@ -148,7 +148,7 @@ Let's try it on a real PS3.
 
 <div align="center">
 <video width="100%" controls>
-  <source src="https://storage.googleapis.com/assets-illusion0001/images/UC3-MP-BetaPlayableLan/GameOS-XMB-011.mp4" type="video/mp4">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/GameOS-XMB-011.mp4" type="video/mp4">
 </video>
 </div>
 
@@ -156,7 +156,7 @@ Oh my. It works? What's with the poor performance on the menu?
 
 Here, let's put some numbers on the screen.
 
-{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/UC3-MP-BetaPlayableLan/GameOS-XMB-0f.png" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/GameOS-XMB-0f.png" %}
 
 It turns out you were never supposed to be able to enter this menu, and Uncharted TV is setup for an online only environment. The rapid flicker and slowdowns are caused by the game trying to do the following:
 
@@ -203,7 +203,7 @@ return 0;
 ```
 
 Since the code turns it on, let's turn it off.
-{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/UC3-MP-BetaPlayableLan/GameOS-XMB-0e.png" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/GameOS-XMB-0e.png" %}
 
 <div align=center>
 <em>That doesn't look good. <i class="twa-2x twa-eyes"></i></em>
@@ -222,7 +222,7 @@ It's worse than before and the video panel is not even shown, well something mus
 Ah, it could have been that if that byte was 0 it could have return -1 which is `ffffffff` in hex and caused it to run into the issue we were having earlier, let's return 0 and skip the code that tries to spawn the threads and accompanying video panel.
 
 
-{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/UC3-MP-BetaPlayableLan/GameOS-XMB-010.png" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/GameOS-XMB-010.png" %}
 
 <div align=center>
 <em>Hella yes! We got our performance back, and no mosh pit of slowdowns, shaka brah!</em>
@@ -238,7 +238,7 @@ Here comes the moment of truth, will other players be able to connect after the 
 
 What about the blank controller page I mentioned earlier? After loading into the multiplayer menu, the assets necessary for it is also loaded.
 
-{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/UC3-MP-BetaPlayableLan/GameOS-XMB-14.png" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/GameOS-XMB-14.png" %}
 
 ## Closing Words
 

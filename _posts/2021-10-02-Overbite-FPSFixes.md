@@ -3,8 +3,8 @@ layout: single
 title: "Patches for MediEvil (PS4 Remake)"
 excerpt: "Resolving bad frame-pacing and patching the resolution."
 header:
-  teaser: "https://storage.googleapis.com/assets-illusion0001/images/Overbite-FPSFixes/overbite-thumbnail.png"
-  overlay_image: "https://storage.googleapis.com/assets-illusion0001/images/Overbite-FPSFixes/overbite-feature.png"
+  teaser: "https://img-assets.illusion0001.workers.dev/assets/images/Overbite-FPSFixes/overbite-thumbnail.png"
+  overlay_image: "https://img-assets.illusion0001.workers.dev/assets/images/Overbite-FPSFixes/overbite-feature.png"
   overlay_filter: 0.5
   og_image: "https://image.api.playstation.com/cdn/UP9000/CUSA11227_00/BJZksSXNxOU0vmTCa79nr7ULJM3F6a6B.png"
 categories: patches
@@ -20,11 +20,11 @@ toc_sticky: true
 
 Another classic gets a complete overhaul in Graphics, Gameplay and the works but of course not all things are perfect and this game is no exception. When I first boot up the game for the first time, went into the options menu and it got me curious.
 
-{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/Overbite-FPSFixes/overbite-settings.png" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/Overbite-FPSFixes/overbite-settings.png" %}
 
 A 30FPS Cap option in the menu, but is it any good?
 
-{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/Overbite-FPSFixes/overbite-fps-borked.png" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/Overbite-FPSFixes/overbite-fps-borked.png" %}
 
 <div align=center>
 <em>No, it is not.. :(</em>
@@ -88,7 +88,7 @@ What this code does is it checks if the value in memory is `30.00` or not, if it
 
 To the developers, can we get this fix in a official patch? and even better, 4K support.
 
-{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/Overbite-FPSFixes/overbite-meme-final.png" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/Overbite-FPSFixes/overbite-meme-final.png" %}
 
 <div align=center>
 <em>Fun Fact: this meme almost went unused.</em>

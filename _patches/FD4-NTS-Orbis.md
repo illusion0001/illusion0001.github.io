@@ -8,7 +8,7 @@
 
 Patch applied: Resolution Patch (Neo) + 30 FPS Fix
 
-![](https://storage.googleapis.com/assets-illusion0001/images/patches/preview/EldenRingPatches/EldenRingNeoPreview.png)
+![](https://img-assets.illusion0001.workers.dev/assets/images/patches/preview/EldenRingPatches/EldenRingNeoPreview.png)
 
 ## Framerate Patch
 

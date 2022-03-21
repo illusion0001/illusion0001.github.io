@@ -53,21 +53,21 @@ Data stops processing and left the registers with 0 when quitting to the menu du
 
 RPCS3: Breakpoint runtime.
 
-{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/uc2-quit-menu-bug-fix/uc2-dbg-before.png" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/uc2-quit-menu-bug-fix/uc2-dbg-before.png" %}
 
 RPCS3: Crash.
 
-{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/uc2-quit-menu-bug-fix/uc2-dbg-after-death.png" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/uc2-quit-menu-bug-fix/uc2-dbg-after-death.png" %}
 
 On Playstation 4, this is similar but in register R15 instead.
 
 PS4: Reaper Breakpoint runtime.
 
-{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/uc2-quit-menu-bug-fix/ps4r-uc2-dbg1.png" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/uc2-quit-menu-bug-fix/ps4r-uc2-dbg1.png" %}
 
 PS4: Mira backtrace.
 
-{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/uc2-quit-menu-bug-fix/ps4-uc2-crash-backtrace-mira.png" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/uc2-quit-menu-bug-fix/ps4-uc2-crash-backtrace-mira.png" %}
 
 Looking at register data. R28 (PS3) and R15 (PS4) gets used during gameplay and are always executed and have data.
 

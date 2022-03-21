@@ -102,7 +102,7 @@ analytics:
 # Site Author
 author:
   name             : "illusion"
-  avatar           : "https://storage.googleapis.com/assets-illusion0001/avatar_cloud_strife.svg"
+  avatar           : "https://img-assets.illusion0001.workers.dev/assets/avatar_cloud_strife.svg"
   bio              : "I make video game patches as a hobby."
   location         : "United States"
   email            : illusion3185@gmail.com

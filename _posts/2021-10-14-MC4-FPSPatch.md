@@ -3,10 +3,10 @@ layout: single
 title: "Dynamic FPS Patch for Midnight Club: Los Angeles"
 excerpt: "Fast and Furious Racing at up-to 60 FPS!"
 header:
-  teaser: "https://storage.googleapis.com/assets-illusion0001/images/MC4-FPSPatch/MC4-Thumbnail-0.jpg"
-  overlay_image: "https://storage.googleapis.com/assets-illusion0001/images/MC4-FPSPatch/MC4-Thumbnail-0.jpg"
+  teaser: "https://img-assets.illusion0001.workers.dev/assets/images/MC4-FPSPatch/MC4-Thumbnail-0.jpg"
+  overlay_image: "https://img-assets.illusion0001.workers.dev/assets/images/MC4-FPSPatch/MC4-Thumbnail-0.jpg"
   overlay_filter: 0.5
-  og_image: "https://storage.googleapis.com/assets-illusion0001/images/MC4-FPSPatch/MC4-Thumbnail.jpg"
+  og_image: "https://img-assets.illusion0001.workers.dev/assets/images/MC4-FPSPatch/MC4-Thumbnail.jpg"
 categories: patches
 tags: [Articles, Releases]
 # twitter: {card: "summary_large_image"}
@@ -28,7 +28,7 @@ Common fixed timestep values usually are `1/30` or `1/60`, `0.03333333`, `0.0166
 
 We will be searching for `0.03333333` as that is what its used in MCLA. which in hex is `3D088889` Big Endian format.
 
-{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/MC4-FPSPatch/MC4-Screen0.png" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/MC4-FPSPatch/MC4-Screen0.png" %}
 
 A lot of results, let's try changing one of these to our current frametime which is about `0.077` from `77/1000`.
 
@@ -38,7 +38,7 @@ Neat thing about the xenia emulator is that it is super easy to get executable a
 
 `emit_source_annotations # Add extra movs and nops to make disassembly easier to read.`
 
-{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/MC4-FPSPatch/MC4-Screen0a.png" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/MC4-FPSPatch/MC4-Screen0a.png" %}
 
 <div align=center>
 <em>Piece of cake!</em>
@@ -87,7 +87,7 @@ Let's port this to the PS3 version.
 
 `3D 08 88 89 3D CC CC CD 38 D1 B7 17` This is the constants from the 360 version, this will become useful later on.
 
-{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/MC4-FPSPatch/MC4-Screen1.png" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/MC4-FPSPatch/MC4-Screen1.png" %}
 
 <div align=center>
 <em>Oh no, no results</em>
@@ -95,7 +95,7 @@ Let's port this to the PS3 version.
 
 It turns out the mininum frametime is just slightly different. searching for just `3D CC CC CD 38 D1 B7 17` yielded one result.
 
-{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/MC4-FPSPatch/MC4-Screen0b.png" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/MC4-FPSPatch/MC4-Screen0b.png" %}
 
 <div align=center>
 <em>Wait, this looks like a different constant</em>

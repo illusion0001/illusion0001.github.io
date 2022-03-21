@@ -3,10 +3,10 @@ layout: single
 title: "The Witcher 3 60FPS and Grahpics Settings Research for PS4"
 excerpt: "Geralt fighting against monsters at up to 60 Frames-Per-Second."
 header:
-  teaser: "https://storage.googleapis.com/assets-illusion0001/images/W3Witcher-ResPatch/W3Witcher-Banner.png"
-  overlay_image: "https://storage.googleapis.com/assets-illusion0001/images/W3Witcher-ResPatch/W3Witcher-Preview.png"
+  teaser: "https://img-assets.illusion0001.workers.dev/assets/images/W3Witcher-ResPatch/W3Witcher-Banner.png"
+  overlay_image: "https://img-assets.illusion0001.workers.dev/assets/images/W3Witcher-ResPatch/W3Witcher-Preview.png"
   overlay_filter: 0.5
-  og_image: "https://storage.googleapis.com/assets-illusion0001/images/W3Witcher-ResPatch/W3Witcher-Preview.png"
+  og_image: "https://img-assets.illusion0001.workers.dev/assets/images/W3Witcher-ResPatch/W3Witcher-Preview.png"
 categories: patches
 tags: [Articles, Releases]
 # twitter: {card: "summary_large_image"}
@@ -69,7 +69,7 @@ MOV ESI with 0x0 gives us an unlocked framerate with triple buffered VSync.
 
 A few things I noticed that is, there's native In-Game Frame Statistics and additional Graphics Options.
 
-{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/W3Witcher-ResPatch/W3Witcher-DF-Snapshot.jpg" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/W3Witcher-ResPatch/W3Witcher-DF-Snapshot.jpg" %}
 
 <div align=center>
 <em>In-Game Frame Statistics with FPSGui Overlay</em>
@@ -100,7 +100,7 @@ A few things I noticed that is, there's native In-Game Frame Statistics and addi
 
 A simple change from `Jump Zero` to `Jump not Zero` gives us framerate stats.
 
-{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/W3Witcher-ResPatch/W3Witcher-ShowFPS.png" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/W3Witcher-ResPatch/W3Witcher-ShowFPS.png" %}
 
 <div align=center>
 <em>In-Game Frame Statistics on PS4</em>
@@ -108,7 +108,7 @@ A simple change from `Jump Zero` to `Jump not Zero` gives us framerate stats.
 
 What about Graphics Options? A simple drop in of the `rendering.xml` file from [GBAtemp](https://gbatemp.net/) Switch Modding Section gives us Grahpical Options seen in various Witcher 3 Switch Modded Videos.
 
-{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/W3Witcher-ResPatch/W3Witcher-RenderingXML.png" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/W3Witcher-ResPatch/W3Witcher-RenderingXML.png" %}
 
 <div align=center>
 <em>Additional Graphics Options</em>

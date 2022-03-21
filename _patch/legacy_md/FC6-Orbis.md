@@ -14,7 +14,7 @@ Author: [illusion](https://twitter.com/illusion0002)
 
 Notes: CPU+GPU Limited. For use with 9th generation of game consoles.
 
-Preview: ![](https://storage.googleapis.com/assets-illusion0001/images/patches/preview/FC6-FPS/FC6-FPS-0.png)
+Preview: ![](https://img-assets.illusion0001.workers.dev/assets/images/patches/preview/FC6-FPS/FC6-FPS-0.png)
 
 In file `eboot.bin`
 

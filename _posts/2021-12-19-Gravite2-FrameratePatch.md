@@ -3,10 +3,10 @@ layout: single
 title: "Initial Framerate Patch Release (Work-In-Progress) for Gravity Rush 2"
 excerpt: "A fast paced game means fast framerate, right?"
 header:
-  teaser: "https://storage.googleapis.com/assets-illusion0001/images/Gravite2-FrameratePatch/GR2-feature-img.png"
-  overlay_image: "https://storage.googleapis.com/assets-illusion0001/images/Gravite2-FrameratePatch/GR2-feature-img2.png"
+  teaser: "https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch/GR2-feature-img.png"
+  overlay_image: "https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch/GR2-feature-img2.png"
   overlay_filter: 0.5
-  og_image: "https://storage.googleapis.com/assets-illusion0001/images/Gravite2-FrameratePatch/GR2-feature-img.png"
+  og_image: "https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch/GR2-feature-img.png"
 categories: patches
 tags: [Articles, Releases]
 # twitter: {card: "summary_large_image"}
@@ -24,7 +24,7 @@ When I got into framerate patching 8 months ago, I looked at the exclusives on t
 
 What's so special about this title that took me so long to breakthrough? First is that there are barely any string references, second is they have their own frame limiter for video playback which also clamps down during gameplay.
 
-{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/Gravite2-FrameratePatch/GR2-FPS2a.png" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch/GR2-FPS2a.png" %}
 
 <div align=center>
 <em>32-33 FPS <i class="twa galciv"></i></em>
@@ -32,9 +32,9 @@ What's so special about this title that took me so long to breakthrough? First i
 
 So where do we start? Fliprate to 0 for 60hz output got us that. 32 to 33 framerate limit. And I went on for months, on and off looking for what this is about. And I even managed to break the framebuffer.
 
-{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/Gravite2-FrameratePatch/GR2-Framebuffer0.png" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch/GR2-Framebuffer0.png" %}
 
-{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/Gravite2-FrameratePatch/GR2-Framebuffer1.png" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch/GR2-Framebuffer1.png" %}
 
 <div align=center>
 <em>Nice looking Jigsaw puzzle</em>
@@ -46,7 +46,7 @@ Looking at the framerate graph, it averages about 33 fps. Why is this important?
 
 `1000 / 33` equals to 30.. ish. But wait, what happens if we plug this number into the executable?
 
-{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/Gravite2-FrameratePatch/GR2-30msSearch.png" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch/GR2-30msSearch.png" %}
 
 A couple results, seems boring. Or so I thought..
 
@@ -66,7 +66,7 @@ Another case of Japanese developers reinventing the wheel. <i class="twa twa-pur
 
 But anyway, removing this code gives us, you guess it, unlocked framerate.
 
-{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/Gravite2-FrameratePatch/GR2-FPS3.png" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch/GR2-FPS3.png" %}
 
 <div align=center>
 <em>First section of the demo, known to be cpu limited area</em>
@@ -82,7 +82,7 @@ Some sections will softlock the game because the game tick is running twice as f
 
 Saving between two points, the start of epiosde 1 and the end of the epoiode and comparing the results can easily give us the level name we are looking for.
 
-{% include img1 image_path="https://storage.googleapis.com/assets-illusion0001/images/Gravite2-FrameratePatch/GR2-savedata-compare.png" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch/GR2-savedata-compare.png" %}
 
 <div align=center>
 <em>Thanks to our Patreon Supporter <a href="https://github.com/ac2pic">ac2pic</a> for their knowledge about Gravity Rush save structure.</em>

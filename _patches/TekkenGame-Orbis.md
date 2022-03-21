@@ -8,7 +8,7 @@
 
 Preview:
 <p align="center">
-<img src="https://storage.googleapis.com/assets-illusion0001/images/patches/preview/TekkenGame/TekkenGame_PostProcess.png">
+<img src="https://img-assets.illusion0001.workers.dev/assets/images/patches/preview/TekkenGame/TekkenGame_PostProcess.png">
 </p>
 
 Author: [illusion](https://twitter.com/illusion0002)

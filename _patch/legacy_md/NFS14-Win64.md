@@ -16,7 +16,7 @@ https://www.pcgamingwiki.com/wiki/Need_for_Speed_Rivals#High_frame_rate
 
 Can run at arbitrary framerates, For use with `NFS14` 64-bit executable, maybe someone can port this to dll injection and add support for retail. (Credit Please.)
 
-[Cheat Table](https://storage.googleapis.com/assets-illusion0001/ct_win32/Rivals_VarFPS.CT)
+[Cheat Table](https://img-assets.illusion0001.workers.dev/assets/ct_win32/Rivals_VarFPS.CT)
 
 <details>
 <summary>CT Auto Asm Src (Click to Expand)</summary>
