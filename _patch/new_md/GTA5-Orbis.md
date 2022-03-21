@@ -6,8 +6,6 @@ layout: single
 
 [Game Index](/patch/#ps4)
 
-[Installation Guide](/install-instructions/)
-
 ## Patches
 
 For use with [py-patch tool](https://github.com/illusion0001/py-patcher/releases/).

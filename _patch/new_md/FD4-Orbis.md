@@ -6,8 +6,6 @@ layout: single
 
 [Game Index](/patch/#fromsoftware-titles)
 
-[Installation Guide](https://illusion0001.github.io/install-instructions/)
-
 ## Patches
 
 For use with [py-patch program](https://github.com/illusion0001/py-patcher/releases/).

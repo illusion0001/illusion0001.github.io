@@ -6,13 +6,11 @@ layout: single
 
 [Game Index](/patch/#ps4)
 
-[Installation Guide](https://illusion0001.github.io/install-instructions/)
-
 ## Resolution Patch (720p)
 
 [Video](https://youtu.be/XnRTDuLJBig)
 
-CPU Limited in Races.
+[Installation Guide](/install-instructions/)
 
 Author: [illusion](https://twitter.com/illusion0002)
 

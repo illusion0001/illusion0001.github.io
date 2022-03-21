@@ -6,7 +6,7 @@ layout: single
 
 [Game Index](/patch/#ps4)
 
-[Installation Guide](https://illusion0001.github.io/install-instructions/)
+[Installation Guide](/install-instructions/)
 
 ## 60 FPS Unlock (CUSA03279)
 
