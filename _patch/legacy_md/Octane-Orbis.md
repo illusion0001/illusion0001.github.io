@@ -25,7 +25,7 @@ In file `eboot.bin`
   author: "illusion"
   note: "\nCPU/GPU Limited. For use with 9th generation of game consoles.\nAlso uses double buffer vsync.\nNot useful at the moment."
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         - [ bytes, 0x13ADEDB, "31 F6 EB 0F" ]
 {% endhighlight %}

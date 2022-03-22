@@ -27,7 +27,7 @@ In file `eboot.bin`
   author: "illusion"
   note: "CPU Limited. For use with 9th generation of game consoles."
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         # 60fps
         - [ bytes, 0x616ABF, "00" ]
@@ -64,7 +64,7 @@ In file `eboot.bin`
   author: "illusion"
   note: 
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         - [ bytes, 0x276C034, "00 05 00 00 D0 02 00 00 00" ]
 {% endhighlight %}

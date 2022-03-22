@@ -27,7 +27,7 @@ In file `eboot.bin`
   author: "illusion"
   note: "\nGame can now be run at any FPS without slow down or speedups, although logics are still borked."
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         - [ bytes, 0x494B83, "48 B2 01" ]
         - [ bytes, 0x5F6906, "48 E8 94 0D 91 01" ]
@@ -53,7 +53,7 @@ In file `eboot.bin`
   author: "illusion"
   note:
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         # Render.ResolutionScale
         - [ lef32, 0x5CF1CD, 0.67 ]

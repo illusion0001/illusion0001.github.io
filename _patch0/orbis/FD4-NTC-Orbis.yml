@@ -5,7 +5,7 @@
   author: "illusion"
   note: "Caps framerate to 30 with proper frame pacing."
   arch: orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         # FlipMode
         # Comment this if platform is neo to not enable poor framerate cap
@@ -21,7 +21,7 @@
   author: "illusion"
   note: "Only needed for Base console, enhanced consoles already have framerate unlocked."
   arch: orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         # FlipMode
         - [ bytes, 0x02366f27, "95" ]
@@ -35,7 +35,7 @@
   author: "illusion"
   note:
   arch: orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         # Base
         # 1920x1080 -> 1280x720

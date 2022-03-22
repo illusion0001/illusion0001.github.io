@@ -27,7 +27,7 @@ In file `eboot.bin`
   author: "illusion"
   note:
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         - [ bytes, 0x19BE0A, "EB" ]
 {% endhighlight %}
@@ -53,7 +53,7 @@ In file `eboot.bin`
   author: "illusion"
   note:
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         - [ bytes, 0x15F8C6, "E8 3A 84 1D 00" ]
         - [ bytes, 0x337D05, "C7 84 21 38 00 00 00 00 00 C8 42 C5 FA 10 41 38 C3" ]

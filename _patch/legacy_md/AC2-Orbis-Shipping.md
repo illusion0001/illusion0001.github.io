@@ -29,7 +29,7 @@ In file `eboot.bin`
   author: "illusion"
   note: "CPU Limited in Races."
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         - [ bytes, 0x34BA740, "E9 CB E3 38 FE 41 C7 04 8E 00 00 86 42 C4 C1 7A 10 04 8E C3" ]
         - [ bytes, 0x2E93FA8, "48 E9" ]

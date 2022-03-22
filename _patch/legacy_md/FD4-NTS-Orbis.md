@@ -29,7 +29,7 @@ Patch applied: Resolution Patch (Neo) + 30 FPS Fix
   author: "illusion"
   note:
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         # Flipmode
         - [ bytes, 0x1BF6627, "95" ]
@@ -56,7 +56,7 @@ In file `eboot.bin`
   author: "illusion"
   note: "Locks FPS to 30 with Proper Frame Pacing."
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         # Flipmode (Base Only)
         - [ bytes, 0x1BF6627, "95" ]
@@ -85,7 +85,7 @@ In file `eboot.bin`
   author: "illusion"
   note:
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         # Base
         - [ bytes, 0x3C68B8C, "00 05 00 00 D0 02 00 00" ]
@@ -113,7 +113,7 @@ In file `eboot.bin`
   author: "Whitehawkx"
   note:
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         - [ bytes, 0x015724A0, "E9 00 01" ]
 {% endhighlight %}
@@ -137,7 +137,7 @@ In file `eboot.bin`
   author: "Pav"
   note:
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         - [ bytes, 0x013BBC33, "90 90 90 90 90" ]
 {% endhighlight %}
@@ -163,7 +163,7 @@ In file `eboot.bin`
   author: "Whitehawkx"
   note: "Re-enables built-in video recording and screenshots (Share button)"
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         - [ bytes, 0x01BFF799, "00" ]
 {% endhighlight %}

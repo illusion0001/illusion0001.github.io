@@ -5,7 +5,7 @@
   author: "illusion"
   note:
   arch: orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         - [ bytes, 0x0278c407, "c7430805000000eb07" ] # flipmode
         - [ bytes, 0x0278c50c, "41b601" ]             # delta time
@@ -17,7 +17,7 @@
   author: "illusion"
   note: "Caps framerate to 30 with proper frame pacing."
   arch: orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         - [ bytes, 0x0278c407, "c7430805000000eb07" ]           # flipmode
         # SceVideoOutFliprate(handle, 1);
@@ -31,7 +31,7 @@
   author: "illusion"
   note:
   arch: orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         # todo: convert these to int patches
         - [ bytes, 0x05d22d84, "00050000d0020000" ]

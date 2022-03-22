@@ -25,7 +25,7 @@ In file `eboot.bin`
   author: "illusion"
   note:
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         - [ bytes, 0x125AFB, "84" ]
 {% endhighlight %}
@@ -51,7 +51,7 @@ In file `eboot.bin`
   author: "illusion"
   note:
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         # base
         # 1920x1080 -> 1280x720

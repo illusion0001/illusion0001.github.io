@@ -91,7 +91,7 @@ In file `eboot.bin`
   author: "illusion"
   note:
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         - [ bytes, 0x614A, "C6 87 E5 34 00 00 01" ]
 {% endhighlight %}
@@ -117,7 +117,7 @@ In file `eboot.bin`
   author: "illusion"
   note:
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         # call
         - [ bytes, 0x6A67A7, "E9 A4 38 9D FF 90 90 90 90 90" ]
@@ -296,7 +296,7 @@ In file `eboot.bin`
   author: "illusion"
   note:
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         - [ bytes, 0x61A4, "75" ]
 {% endhighlight %}
@@ -320,7 +320,7 @@ In file `eboot.bin`
   author: "illusion"
   note:
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         # code
         - [ bytes, 0x79DB0, "BE 01 00 00 00 48 89 3D 59 7D 85 01 C3 48 8B 07 48 89 05 59 7D 85 01 48 31 C0 BE 01 00 00 00 C3 48 83 05 91 7D 85 01 20 48 8D 35 71 D7 3D 01 48 03 35 83 7D 85 01 C3 00 80 05 61 7D 85 01 20 48 8D 35 62 00 00 00 48 03 35 53 7D 85 01 C3" ]

@@ -79,7 +79,7 @@ In file `eboot.bin`
   author: "illusion"
   note: "Help wanted! Check the rest of the game and add it to lookup table."
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         # Framerate
         - [ bytes, 0x44A981, "00 00 00 00" ]
@@ -134,7 +134,7 @@ In file `eboot.bin`
   author: "illusion"
   note:
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         # Semi-functional video stutter fix
         # DO NOT apply this as the draw thread will stall indefinitely after it has to sleep for 30ms during video playback.

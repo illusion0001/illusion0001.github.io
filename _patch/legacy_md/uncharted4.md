@@ -102,7 +102,7 @@ In file `eboot.bin`
   author: "illusion"
   note:
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         - [ bytes, 0x127BEC7, "EB 2C" ]
 {% endhighlight %}

@@ -5,7 +5,7 @@
   author: "illusion, manfightdragon"
   note: "Caps framerate to 30 with proper frame pacing."
   arch: orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         - [ float32, 0x02434883, 0.016666667 ]
         # SceVideoOutFliprate(handle, 1);
@@ -19,7 +19,7 @@
   author: "illusion"
   note:
   arch: orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         - [ bytes, 0x0269faa8, "c783ac000000000000009090" ]
 
@@ -30,6 +30,6 @@
   author: "illusion"
   note:
   arch: orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         - [ bytes, 0x026a057b, "eb16" ]

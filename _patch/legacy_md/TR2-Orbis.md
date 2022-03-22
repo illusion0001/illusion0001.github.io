@@ -27,7 +27,7 @@ In file `eboot.bin`
   author: "illusion"
   note: "CPU Limited in some areas."
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         - [ bytes, 0x49226C, "31 F6" ]
 {% endhighlight %}
@@ -55,7 +55,7 @@ In file `eboot.bin`
   author: "illusion"
   note:
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         # Base
         # This game creates a separate container for resolution

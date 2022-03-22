@@ -29,7 +29,7 @@ In file `eboot.bin`
   author: "illusion"
   note:
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         - [ bytes, 0x32C3726, "EB 69" ]
 {% endhighlight %}
@@ -53,7 +53,7 @@ In file `eboot.bin`
   author: "illusion"
   note: "720p for Base PS4."
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         - [ bytes, 0x3129259, "48 E8 C6 1D 1B 00 90 90" ]
         - [ bytes, 0x32DB020, "E9 89 50 05 00 C7 00 00 00 86 42 C5 F0 57 C9 C5 FA 10 00 C3" ]

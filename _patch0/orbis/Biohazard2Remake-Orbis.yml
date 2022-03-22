@@ -5,7 +5,7 @@
   author: "illusion"
   note: "720p for Base, 1080p for Pro."
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         - [ bytes, 0x3FCA2D7, "1F 85 2B 3F" ]
 # 67% of 1920x1080 or 2880x1620
@@ -20,7 +20,7 @@
   author: "illusion"
   note:
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         - [ bytes, 0x3F72473, "48 E8 DB 07 00 00" ]
         - [ bytes, 0x3F72C54, "41 8B 7F 10 BE 01 00 00 00 C3" ]

@@ -5,7 +5,7 @@
   author: "illusion"
   note:
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         - [ bytes, 0x21B3801, "E8 2C 00 00 00" ]
         - [ bytes, 0x21B3832, "C7 04 8B 00 00 86 42 C5 FA 10 04 8B C3" ]
@@ -18,7 +18,7 @@
   author: "illusion"
   note:
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         # Call
         - [ bytes, 0x275C719, "E8 C7 90 FE FF" ]

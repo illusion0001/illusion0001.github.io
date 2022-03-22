@@ -27,7 +27,7 @@ In file `eboot.bin`
   author: "illusion"
   note: "Only needed for Base console, enhanced consoles already have framerate unlocked."
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         # FlipMode
         - [ bytes, 0x1F6AF27, "95" ]
@@ -56,7 +56,7 @@ In file `eboot.bin`
   author: "illusion"
   note:
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         # Base
         # 1920x1080 -> 1280x720

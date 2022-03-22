@@ -25,7 +25,7 @@ In file `eboot.bin`
   author: "illusion"
   note: "\n60FPS 99% of the time. No need for resolution patch.\nUses adapative sync."
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         - [ bytes, 0x14460B, "95" ]
 {% endhighlight %}

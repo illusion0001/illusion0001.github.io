@@ -29,7 +29,7 @@ In file `eboot.bin`
   author: "illusion, GraFfiX_221211"
   note: "CPU Limited. For use with 9th generation of game consoles."
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         - [ bytes, 0xD3BB5E, "01 00 00 00" ]
 {% endhighlight %}
@@ -53,7 +53,7 @@ In file `eboot.bin`
   author: "illusion"
   note:
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         - [ bytes, 0x2F3E794, "00" ]
         - [ bytes, 0x286EFB8, "00" ]

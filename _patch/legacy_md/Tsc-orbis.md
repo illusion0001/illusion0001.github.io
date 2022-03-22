@@ -25,7 +25,7 @@ In file `eboot.bin`
   author: "illusion"
   note:
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         - [ bytes, 0x2204E3A, "48 E8 31 14 6D 00" ]
         - [ bytes, 0x2204706, "E8 76 1B 6D 00" ]

@@ -27,7 +27,7 @@ In file `eboot.bin`
   author: "illusion"
   note:
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         - [ bytes, 0xB894B, "00 00 70 42 00 00 70 42" ]
 # this is a note for other patch devs
@@ -52,7 +52,7 @@ In file `BH1HD\bh1hd.elf`
   author: "illusion"
   note: "As part of Resident Evil Origins Collection."
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         - [ bytes, 0xB9B1B, "00 00 70 42 00 00 70 42" ]
 # disc ver has notes

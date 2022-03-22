@@ -5,7 +5,7 @@
   author: "illusion"
   note:
   arch: orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         - [ bytes, 0x013302c8, "48e8f400000090" ]
         - [ bytes, 0x013303c2, "c680d506000000c6403001c3" ]
@@ -17,7 +17,7 @@
   author: "illusion, ZEROx"
   note:
   arch: orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         - [ bytes, 0x0095a067, "e810465000909090909090" ]
         - [ bytes, 0x00e5e67c, "488985d0f3ffff4883fb000f8404000000488b4340c3" ]
@@ -29,7 +29,7 @@
   author: "illusion"
   note:
   arch: orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         - [ byte, 0x00401c79, 0x01 ] # enable // gameconfig is no gud
         - [ bytes16, 0x00a92c41, 0x2e85 ] # save data to dbg render
@@ -112,7 +112,7 @@
   author: "illusion"
   note:
   arch: orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         - [ bytes, 0x00401c22, "c687a534000001" ]
 
@@ -123,7 +123,7 @@
   author: "illusion"
   note:
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         - [ bytes, 0x614A, "c687e534000001" ]
 
@@ -134,7 +134,7 @@
   author: "illusion, ZEROx"
   note:
   arch: orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         - [ bytes, 0x00abc859, "e872535600909090909090" ]
         - [ bytes, 0x01021bd0, "488985e0f3ffff4883fb007404488b4340c3" ]
@@ -146,7 +146,7 @@
   author: "illusion, ZEROx"
   note:
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         # call
         - [ bytes, 0x6A67A7, "e9a4389dff9090909090" ]
@@ -160,7 +160,7 @@
   author: "illusion"
   note:
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         - [ bytes, 0x61A4, "75" ]
 
@@ -171,7 +171,7 @@
   author: "illusion"
   note:
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         # code
         - [ bytes, 0x79DB0, "be0100000048893d597d8501c3488b07488905597d85014831c0be01000000c3488305917d850120488d3571d73d01480335837d8501c3008005617d850120488d3562000000480335537d8501c3" ]

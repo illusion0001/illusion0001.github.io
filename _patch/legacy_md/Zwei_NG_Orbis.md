@@ -25,7 +25,7 @@ In file `eboot.bin`
   author: "illusion"
   note: "\nGPU Limited. For use with 9th generation of game consoles.\nUses Triple buffering."
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         - [ bytes, 0x23BCE3, "00" ]
 {% endhighlight %}

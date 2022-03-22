@@ -27,7 +27,7 @@ In file `eboot.bin`
   author: "illusion"
   note: "\nOnly useful for base console.\nYou must apply FPS Unlock patch to take effect on Base Console.\nPro owners do not need this patch."
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         # VFR
         - [ bytes, 0x180805D, "EB 0E" ]
@@ -54,7 +54,7 @@ In file `eboot.bin`
   author: "illusion"
   note:
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         # Fliprate
         - [ bytes, 0x18081D6, "EB 0E" ]

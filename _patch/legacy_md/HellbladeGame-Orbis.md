@@ -27,7 +27,7 @@ In file `eboot.bin`
   author: "illusion"
   note: "\nThis game already runs with uncapped framerate.\nOnly useful for Base Console."
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         # allow screenpercentage to be used
         - [ bytes, 0x252C934, "74 0D" ]
@@ -70,7 +70,7 @@ In file `eboot.bin`
   author: "illusion"
   note:
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         - [ bytes, 0x1E5C0C2, "48 E9 87 06 00 00" ]
 {% endhighlight %}
@@ -92,7 +92,7 @@ In file `eboot.bin`
   author: "illusion"
   note:
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         - [ bytes, 0x178EE71, "EB 40" ] 
 {% endhighlight %}
@@ -114,7 +114,7 @@ In file `eboot.bin`
   author: "illusion"
   note:
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         - [ bytes, 0x156032F, "EB" ]
 {% endhighlight %}
@@ -136,7 +136,7 @@ In file `eboot.bin`
   author: "illusion"
   note:
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         - [ bytes, 0x15602B5, "48 E9" ]
 {% endhighlight %}

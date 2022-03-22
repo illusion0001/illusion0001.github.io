@@ -5,7 +5,7 @@
   author: "illusion"
   note:
   arch: generic_orbis
-  enabled: False # Todo: move this to a separate file
+  enabled: False
   patch_list:
         - [ bytes, 0x9F7471, "EB 0E" ]
         - [ bytes, 0x9F7481, "31 F6" ]
