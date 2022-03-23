@@ -19,7 +19,7 @@ Patch file: `{{ page.patch_file }}`
 
 File to be patched: `eboot.bin`
 
-Author: [illusion](https://twitter.com/illusion0002), 
+Author: [illusion](https://twitter.com/illusion0002), [manfightdragon](https://twitter.com/manfightdragon)
 
 <details>
 <summary>Contents of patch file (Click to Expand)</summary>
