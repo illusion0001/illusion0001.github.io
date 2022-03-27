@@ -9,7 +9,7 @@ patch_file: "_patch0/orbis/GTA5-Orbis.yml"
 
 ## Patches
 
-For use with [py-patch tool](https://github.com/illusion0001/py-patcher/releases/).
+For use with [py-patch tool](https://github.com/illusion0001/py-patcher/releases/latest).
 
 [Video](https://youtu.be/FqTg3Sij3MQ)
 

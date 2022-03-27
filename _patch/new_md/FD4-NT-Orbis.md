@@ -9,7 +9,7 @@ patch_file: "_patch0/orbis/FD4-NT-Orbis.yml"
 
 ## Patches
 
-For use with [py-patch program](https://github.com/illusion0001/py-patcher/releases/).
+For use with [py-patch program](https://github.com/illusion0001/py-patcher/releases/latest).
 
 [Installation Guide](/install-instructions/)
 
