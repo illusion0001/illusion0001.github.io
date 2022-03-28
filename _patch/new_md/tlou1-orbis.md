@@ -9,11 +9,7 @@ patch_file: "_patch0/orbis/tlou1.yml"
 
 ## Patches
 
-For use with [py-patch program](https://github.com/illusion0001/py-patcher/releases/latest).
-
-[Installation Guide](/install-instructions/)
-
-Download all [patch](/_patch/patch.zip) files.
+{% include_relative patch_header.md %}
 
 Patch file: `{{ page.patch_file }}`
 

@@ -7,11 +7,11 @@ patch_file: "_patch0/orbis/AC2-Orbis-Shipping.yml"
 
 [Game Index](/patch/#ps4)
 
-## Resolution Patch (720p)
+## Patches
 
 [Video](https://youtu.be/XnRTDuLJBig)
 
-[Installation Guide](/install-instructions/)
+{% include_relative patch_header.md %}
 
 Author: [illusion](https://twitter.com/illusion0002)
 

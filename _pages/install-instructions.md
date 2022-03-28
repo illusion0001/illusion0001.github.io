@@ -11,11 +11,11 @@ toc_sticky: true
 These instructions are general and apply to most patch from this website.
 Games used for the presentation does not have any relevance for the steps.
 
-**This guide does not cover how to build the update itself.** It only covers how to install the patches.
+**This guide does not cover how to build the update package itself.** It only covers how to install patches into the binary file.
 
-# Installing Patch Using Automated Tool
+# Installing Patch Using Automated Program
 
-1) Download the program: [py-patch](https://github.com/illusion0001/py-patcher/releases/latest)
+1) Download the program: [py-patch](https://github.com/illusion0001/py-patcher-bin/releases/latest)
 
 {% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/setup/launcher0.png" %}
 
@@ -23,13 +23,13 @@ Games used for the presentation does not have any relevance for the steps.
 
 3) Extract both archive to a folder somewhere on your computer.
 
-4) Open a `.yml` patch file you want to patch, change `enabled: False` to `enabled: True` and save the file.
+4) Open a `.yml` patch file, change the entry you want to be patched from `enabled: False` to `enabled: True` and save the file.
 
-5) Open PowerShell 
+5) Open PowerShell
 
 {% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/setup/launcher1.png" %}
 
-6) Type `(program name).exe -f (file to be patched) -c (patch file)`
+6) Type `.\py-patch.exe -f (file to be patched) -p (patch file)`
 
 Example:
 {% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/setup/launcher2.png" %}
@@ -43,8 +43,6 @@ Video Guide:
   <source src="https://img-assets.illusion0001.workers.dev/assets/images/setup/launcher-vidya.mp4" type="video/mp4">
 </video>
 </div>
-
-***
 
 # Legacy methods
 
