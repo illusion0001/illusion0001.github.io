@@ -1,0 +1,29 @@
+---
+layout: single
+patch_file: "_patch0/orbis/Bhd-orbis.yml"
+---
+
+# Resident Evil: HD
+
+[Game Index](/patch/#ps4)
+
+[Demo](https://youtu.be/MSVD1Gmm4P8)
+
+## Patches
+
+{% include_relative patch_header.md %}
+
+Patch file: `{{ page.patch_file }}`
+
+File to be patched: `BH1HD\bh1hd.elf`
+
+Author: [illusion](https://twitter.com/illusion0002)
+
+<details>
+<summary>Contents of patch file (Click to Expand)</summary>
+
+{% highlight yml %}
+{% flexible_include {{ page.patch_file }} %}
+{% endhighlight %}
+
+</details>

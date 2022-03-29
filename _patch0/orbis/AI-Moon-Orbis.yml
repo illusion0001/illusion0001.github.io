@@ -2,7 +2,8 @@
   app_ver: "01.04"
   patch_ver: "1.0"
   name: "Skip Save Confirm Screen"
-  author: "illusion"
+  author: "ThirteenAG, illusion"
+  note: "A port of ThirteenAG patch. https://github.com/ThirteenAG/AlienIsolation.SkipSaveConfirmationDialog"
   arch: generic_orbis
   enabled: False
   patch_list:
