@@ -88,6 +88,7 @@ You can submit a pull request to this [repository](https://github.com/illusion00
 - [Rime](/_patch/sirengame-Orbis)
 - [Red Dead Redemption 2](/_patch/RDR3-Orbis)
 - [Lichdom: Battlemage](/_patch/lichdomgame-orbis)
+- [Lost in Random](/_patch/LostInRandom-Orbis)
 - [inFAMOUS Second Son](/_patch/iss-Orbis)
 - [inFAMOUS First Light](/_patch/ifl-Orbis)
 - [Judgement](/_patch/Judge_e_Orbis)

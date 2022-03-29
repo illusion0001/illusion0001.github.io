@@ -2,17 +2,13 @@
 layout: single
 ---
 
-## Lost In Random
+# Lost In Random
 
 [Game Index](/patch/#ps4)
 
-[Installation Guide](/install-instructions/)
-
-## 60 FPS Unlock
+## 60 FPS Unlock (CUSA19591)
 
 Author: [TL431](https://github.com/TL431)
-
-CUSA19591
 
 In file: `eboot.bin`
 
