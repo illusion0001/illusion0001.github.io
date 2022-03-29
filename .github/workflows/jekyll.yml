@@ -8,29 +8,21 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Cache
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: vendor/bundle
         key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile') }}
         restore-keys: ${{ runner.os }}-gems-
 
     - name: Pack patch files into zip
-      run: |
-        current=`date '+%Y-%m-%d %H:%M:%S %A'`
-        cp -r "_patch0" "patch0"
-        ls -R _patch0 > manifest_patch0.txt
-        find _patch0 -print > manifest_patch1.txt
-        echo "Built on: $current" >> patch0/patch_build.txt
-        cat patch0/patch_build.txt
-        zip -r _patch/patch.zip patch0
-        rm  -r "patch0"
+      run: chmod +x *.sh && ./ci.sh
 
     - name: Deploy
       if: github.repository == 'illusion0001/illusion0001.github.io'
-      uses: helaili/jekyll-action@v2
+      uses: helaili/jekyll-action@master
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         target_branch: 'gh-pages'

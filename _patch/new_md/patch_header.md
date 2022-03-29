@@ -3,3 +3,5 @@ For use with [py-patch program](https://github.com/illusion0001/py-patcher-bin/r
 [Installation Guide](/install-instructions/)
 
 Download all [patch](/_patch/patch.zip) files.
+
+{% flexible_include _pages/patch_built.md %}
