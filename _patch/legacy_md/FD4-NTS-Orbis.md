@@ -27,7 +27,6 @@ Patch applied: Resolution Patch (Neo) + 30 FPS Fix
   patch_ver: "1.0"
   name: "60 FPS Unlock (For Base)"
   author: "illusion"
-  note:
   arch: generic_orbis
   enabled: False
   patch_list:
@@ -83,7 +82,6 @@ In file `eboot.bin`
   patch_ver: "1.0"
   name: "Resolution Patch (720p for Base, 1080p for Pro)"
   author: "illusion"
-  note:
   arch: generic_orbis
   enabled: False
   patch_list:
@@ -111,7 +109,6 @@ In file `eboot.bin`
   patch_ver: "1.0"
   name: "Bypass Network Check"
   author: "Whitehawkx"
-  note:
   arch: generic_orbis
   enabled: False
   patch_list:
@@ -135,7 +132,6 @@ In file `eboot.bin`
   patch_ver: "1.0"
   name: "Disable Fog Wall"
   author: "Pav"
-  note:
   arch: generic_orbis
   enabled: False
   patch_list:

@@ -23,7 +23,6 @@ In file `eboot.bin`
   patch_ver: "1.0"
   name: "Resolution Patch"
   author: "illusion"
-  note:
   arch: generic_orbis
   enabled: False
   patch_list:

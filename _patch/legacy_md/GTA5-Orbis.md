@@ -51,7 +51,6 @@ In file `eboot.bin`
   patch_ver: "1.0"
   name: "Skip Intro"
   author: "illusion"
-  note:
   arch: generic_orbis
   enabled: False
   patch_list:

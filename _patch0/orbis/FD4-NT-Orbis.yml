@@ -17,7 +17,6 @@
   patch_ver: "1.0"
   name: "60 FPS (with Deltatime)"
   author: "illusion"
-  note:
   arch: orbis
   enabled: False
   patch_list:
@@ -46,7 +45,6 @@
   patch_ver: "1.0"
   name: "Resolution Patch (720p)"
   author: "illusion"
-  note:
   arch: orbis
   enabled: False
   patch_list:
@@ -62,7 +60,6 @@
   patch_ver: "1.0"
   name: "Disable Chromatic Aberration"
   author: "illusion"
-  note:
   arch: orbis
   enabled: False
   patch_list:
@@ -73,7 +70,6 @@
   patch_ver: "1.0"
   name: "Disable Motion Blur"
   author: "illusion"
-  note:
   arch: orbis
   enabled: False
   patch_list:

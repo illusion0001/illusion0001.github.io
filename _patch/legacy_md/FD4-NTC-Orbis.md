@@ -54,7 +54,6 @@ In file `eboot.bin`
   patch_ver: "1.0"
   name: Resolution Patch (720p Base, 1080p Pro)
   author: "illusion"
-  note:
   arch: generic_orbis
   enabled: False
   patch_list:

@@ -3,7 +3,6 @@
   patch_ver: "1.0"
   name: "60 FPS Unlock (With Delta Time)"
   author: "illusion"
-  note:
   arch: orbis
   enabled: False
   patch_list:
@@ -29,7 +28,6 @@
   patch_ver: "1.0"
   name: "720p Resolution"
   author: "illusion"
-  note:
   arch: orbis
   enabled: False
   patch_list:

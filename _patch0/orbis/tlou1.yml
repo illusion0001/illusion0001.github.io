@@ -3,7 +3,6 @@
   patch_ver: "1.0"
   name: "Improved Loading Times"
   author: "illusion"
-  note:
   arch: orbis
   enabled: False
   patch_list:
@@ -15,7 +14,6 @@
   patch_ver: "1.0"
   name: "Infected's Severed Head Crash Bug Fix"
   author: "illusion, ZEROx"
-  note:
   arch: orbis
   enabled: False
   patch_list:
@@ -27,7 +25,6 @@
   patch_ver: "1.0"
   name: "Enable Dev Menu"
   author: "illusion"
-  note:
   arch: orbis
   enabled: False
   patch_list:
@@ -110,7 +107,6 @@
   patch_ver: "1.0"
   name: "Intro Skip"
   author: "illusion"
-  note:
   arch: orbis
   enabled: False
   patch_list:
@@ -121,7 +117,6 @@
   patch_ver: "1.0"
   name: "Intro Skip"
   author: "illusion"
-  note:
   arch: generic_orbis
   enabled: False
   patch_list:
@@ -132,7 +127,6 @@
   patch_ver: "1.0"
   name: "Infected's Severed Head Crash Bug Fix"
   author: "illusion, ZEROx"
-  note:
   arch: orbis
   enabled: False
   patch_list:
@@ -144,7 +138,6 @@
   patch_ver: "1.0"
   name: "University Nailbomb Softlock Fix"
   author: "illusion, ZEROx"
-  note:
   arch: generic_orbis
   enabled: False
   patch_list:
@@ -158,7 +151,6 @@
   patch_ver: "1.0"
   name: "Enable Dev Menu"
   author: "illusion"
-  note:
   arch: generic_orbis
   enabled: False
   patch_list:
@@ -169,7 +161,6 @@
   patch_ver: "1.0"
   name: "Give Player Weapon Fix"
   author: "illusion"
-  note:
   arch: generic_orbis
   enabled: False
   patch_list:

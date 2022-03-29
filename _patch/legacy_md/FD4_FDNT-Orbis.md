@@ -25,7 +25,6 @@ In file `eboot.bin`
   patch_ver: "1.0"
   name: "60 FPS Unlock (With Delta Time)"
   author: "illusion"
-  note:
   arch: generic_orbis
   enabled: False
   patch_list:
@@ -50,7 +49,6 @@ In file `eboot.bin`
   patch_ver: "1.0"
   name: "720p Resolution"
   author: "illusion"
-  note:
   arch: generic_orbis
   enabled: False
   patch_list:

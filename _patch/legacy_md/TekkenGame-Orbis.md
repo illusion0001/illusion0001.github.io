@@ -28,7 +28,6 @@ In file `eboot.bin`
   patch_ver: "1.0"
   name: "Disable Post Processing"
   author: "illusion"
-  note:
   arch: generic_orbis
   enabled: False
   patch_list:

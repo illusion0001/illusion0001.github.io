@@ -132,7 +132,6 @@ In file `eboot.bin`
   patch_ver: "1.0"
   name: "Semi-functional video stutter fix (FOR PATCH DEVELEOPERS ONLY)"
   author: "illusion"
-  note:
   arch: generic_orbis
   enabled: False
   patch_list:

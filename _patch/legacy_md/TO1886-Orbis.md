@@ -25,7 +25,6 @@ In file `eboot.bin`
   patch_ver: "1.0"
   name: "60 FPS Unlock"
   author: "illusion"
-  note:
   arch: generic_orbis
   enabled: False
   patch_list:
@@ -64,7 +63,6 @@ In file `eboot.bin`
   patch_ver: "1.0"
   name: "Resolution Patch (900p)"
   author: "illusion"
-  note:
   arch: generic_orbis
   enabled: False
   patch_list:

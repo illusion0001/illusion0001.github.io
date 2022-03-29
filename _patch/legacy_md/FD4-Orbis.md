@@ -62,7 +62,6 @@ In file `eboot.bin`
   patch_ver: "1.0"
   name: "Disable Chromatic Aberration"
   author: "illusion"
-  note:
   arch: generic_orbis
   enabled: False
   patch_list:
@@ -86,7 +85,6 @@ In file `eboot.bin`
   patch_ver: "1.0"
   name: "Disable Motion Blur"
   author: "illusion"
-  note:
   arch: generic_orbis
   enabled: False
   patch_list:

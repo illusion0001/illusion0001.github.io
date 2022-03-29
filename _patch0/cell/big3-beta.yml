@@ -41,7 +41,6 @@
   patch_ver: "1.0"
   name: "Disable Camera Sprint"
   author: "illusion"
-  note:
   enabled: False
   arch: cell
   patch_list:

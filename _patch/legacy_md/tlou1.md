@@ -89,7 +89,6 @@ In file `eboot.bin`
   patch_ver: "1.0"
   name: "Intro Skip"
   author: "illusion"
-  note:
   arch: generic_orbis
   enabled: False
   patch_list:
@@ -115,7 +114,6 @@ In file `eboot.bin`
   patch_ver: "1.0"
   name: "University Nailbomb Softlock Fix"
   author: "illusion"
-  note:
   arch: generic_orbis
   enabled: False
   patch_list:
@@ -294,7 +292,6 @@ In file `eboot.bin`
   patch_ver: "1.0"
   name: "Enable Dev Menu"
   author: "illusion"
-  note:
   arch: generic_orbis
   enabled: False
   patch_list:
@@ -318,7 +315,6 @@ In file `eboot.bin`
   patch_ver: "1.0"
   name: "Give Player Weapon Fix"
   author: "illusion"
-  note:
   arch: generic_orbis
   enabled: False
   patch_list:

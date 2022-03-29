@@ -52,7 +52,6 @@ In file `eboot.bin`
   patch_ver: "1.0"
   name: "30 FPS Limit (Proper Frame-Pacing)"
   author: "illusion"
-  note:
   arch: generic_orbis
   enabled: False
   patch_list:
