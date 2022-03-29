@@ -1,6 +1,9 @@
 # Assassin's Creed: The Ezio Collection
 
-[Game Index](README.md#games)
+**This page has been moved to the [website](https://illusion0001.github.io/patch).**
+
+<!--
+
 
 [Installation Guide](https://illusion0001.github.io/install-instructions/)
 

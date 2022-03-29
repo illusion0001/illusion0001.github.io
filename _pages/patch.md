@@ -6,7 +6,7 @@ permalink: /patch/
 
 This site lists patches made for use with exploited consoles.
 
-Can't find an old patch you're looking for? Visit the legacy folder [here](https://github.com/illusion0001/illusion0001.github.io/blob/main/_patches/README.md).
+<!-- Can't find an old patch you're looking for? Visit the legacy folder [here](https://github.com/illusion0001/illusion0001.github.io/blob/main/_patches/README.md). -->
 
 [Installation Guide](/install-instructions/)
 

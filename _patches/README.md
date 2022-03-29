@@ -1,8 +1,8 @@
 # Game Patches
 
-This page has been moved to the [website](https://illusion0001.github.io/patch/).
+**This page has been moved to the [website](https://illusion0001.github.io/patch).**
 
-**The list below are legacy patches and will no longer be updated.**
+<!--
 
 # Games
 
