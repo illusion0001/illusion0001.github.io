@@ -1,0 +1,30 @@
+- game: "Assassin's Creed: Unity"
+  app_ver: "01.05"
+  patch_ver: "1.0"
+  name: "Skip Intro"
+  author: "illusion"
+  arch: orbis
+  enabled: False
+  patch_list:
+        - [ bytes, 0x03ffaadb, "0f85" ] # JNZ 0x03ffabf5
+
+- game: "Assassin's Creed: Unity"
+  app_ver: "01.05"
+  patch_ver: "1.0"
+  name: "60 FPS Unlock"
+  author: "illusion"
+  arch: orbis
+  enabled: False
+  patch_list:
+        - [ bytes, 0x042f034e, "be00000000" ] # MOV ESI,0x0
+
+- game: "Assassin's Creed: Unity"
+  app_ver: "01.05"
+  patch_ver: "1.0"
+  name: "Resolution Patch (1080p)"
+  author: "illusion"
+  arch: orbis
+  enabled: False
+  patch_list:
+        - [ bytes32, 0x042f3a19, 1920 ]
+        - [ bytes32, 0x042f3a0b, 1080 ]
