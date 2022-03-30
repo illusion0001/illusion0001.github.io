@@ -18,7 +18,7 @@ jobs:
         restore-keys: ${{ runner.os }}-gems-
 
     - name: Pack patch files into zip
-      run: chmod +x *.sh && ./ci.sh
+      run: chmod +x .ci/*.sh && .ci/zip.sh
 
     - name: Deploy
       if: github.repository == 'illusion0001/illusion0001.github.io'
