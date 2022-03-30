@@ -1,46 +1,27 @@
 ---
 layout: single
+patch_file: "_patch0/orbis/ProjectRedChair-Orbis.yml"
 ---
 
 # Days Gone
 
 [Game Index](/patch/#ps4)
 
-[Installation Guide](/install-instructions/)
+## Patches
 
-## 60 FPS Unlock
+{% include_relative patch_header.md %}
 
-[Video](https://youtu.be/JufzJFXRlLQ)
+Patch file: `{{ page.patch_file }}`
 
-Author: [illusion](https://twitter.com/illusion0002)
-
-In file `eboot.bin`
-
-<details>
-<summary>Code 1.70 (Click to Expand)</summary>
-
-{% highlight none %}
-0x5BAE3D0 01 00 00 00
-0x386B4DB 89 05 ef 2e 5a 03
-{% endhighlight %}
-
-</details>
-
-## Resolution Patch
-
-[Video](https://youtu.be/JufzJFXRlLQ)
+File to be patched: `eboot.bin`
 
 Author: [illusion](https://twitter.com/illusion0002)
 
-In file `eboot.bin`
-
 <details>
-<summary>Code 1.70 (Click to Expand)</summary>
+<summary>Contents of patch file (Click to Expand)</summary>
 
-{% highlight none %}
-# Base
-# 1920x1080 -> 1280x720
-0x49CD818 00 05 00 00 D0 02 00 00
+{% highlight yml %}
+{% flexible_include {{ page.patch_file }} %}
 {% endhighlight %}
 
 </details>
