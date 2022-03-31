@@ -232,6 +232,9 @@ whitelist:
   - jekyll-feed
   - jekyll-include-cache
 
+collections:
+  - _patch
+
 # Archives
 #  Type
 #  - GitHub Pages compatible archive pages built with Liquid ~> type: liquid (default)

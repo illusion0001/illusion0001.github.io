@@ -5,7 +5,7 @@ game_title: "Lost In Random"
 
 # {{ page.game_title }}
 
-[Game Index](/patch/#ps4)
+{% include_relative index.md %}
 
 ## 60 FPS Unlock (CUSA19591)
 

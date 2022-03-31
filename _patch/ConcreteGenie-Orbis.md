@@ -6,7 +6,7 @@ game_title: "Concrete Genie"
 
 # {{ page.game_title }}
 
-[Game Index](/patch/#ps4)
+{% include_relative index.md %}
 
 ## Patches
 

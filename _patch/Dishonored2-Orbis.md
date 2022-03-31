@@ -5,7 +5,7 @@ game_title: "Dishonored 2"
 
 # {{ page.game_title }}
 
-[Game Index](/patch/#ps4)
+{% include_relative index.md %}
 
 [Installation Guide](/install-instructions/)
 

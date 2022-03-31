@@ -6,7 +6,7 @@ game_title: "Mafia 2: Definitive Edition"
 
 # {{ page.game_title }}
 
-[Game Index](/patch/#ps4)
+{% include_relative index.md %}
 
 ## Patches
 
