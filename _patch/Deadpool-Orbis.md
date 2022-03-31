@@ -1,9 +1,10 @@
 ---
 layout: single
 patch_file: "_patch0/orbis/Deadpool-Orbis.yml"
+game_title: "Deadpool"
 ---
 
-# Deadpool
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

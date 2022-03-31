@@ -1,9 +1,10 @@
 ---
 layout: single
 patch_file: "_patch0/orbis/TO1886-Orbis.yml"
+game_title: "The Order 1886"
 ---
 
-# The Order 1886
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

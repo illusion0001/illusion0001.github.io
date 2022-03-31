@@ -1,9 +1,10 @@
 ---
 layout: single
 patch_file: "_patch0/orbis/AI-Moon-Orbis.yml"
+game_title: "Alien: Isolation"
 ---
 
-# Alien: Isolation
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

@@ -1,9 +1,10 @@
 ---
 layout: single
 patch_file: "_patch0/orbis/uncharted-tll.yml"
+game_title: "Uncharted: The Lost Legacy"
 ---
 
-# Uncharted: The Lost Legacy
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

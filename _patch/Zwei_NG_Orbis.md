@@ -1,9 +1,10 @@
 ---
 layout: single
 patch_file: "_patch0/orbis/Zwei_NG_Orbis.yml"
+game_title: "The Evil Within"
 ---
 
-# The Evil Within
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

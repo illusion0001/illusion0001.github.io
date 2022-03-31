@@ -1,9 +1,10 @@
 ---
 layout: single
 patch_file: "_patch0/orbis/Gravity_Daze_2_Orbis.yml"
+game_title: "Gravity Rush 2 (Gravity Daze 2)"
 ---
 
-# Gravity Rush 2 (Gravity Daze 2)
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

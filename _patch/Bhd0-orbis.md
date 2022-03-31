@@ -1,9 +1,10 @@
 ---
 layout: single
 patch_file: "_patch0/orbis/Bhd0-orbis.yml"
+game_title: "Resident Evil: Zero"
 ---
 
-# Resident Evil: Zero
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

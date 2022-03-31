@@ -1,9 +1,10 @@
 ---
 layout: single
 patch_file: "_patch0/orbis/Tsc-orbis.yml"
+game_title: "The Sinking City"
 ---
 
-# The Sinking City
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

@@ -1,9 +1,10 @@
 ---
 layout: single
 patch_file: "_patch0/orbis/FD4_FDNT-Orbis.yml"
+game_title: "Dark Souls III: Network Stress Test"
 ---
 
-# Dark Souls III: Network Stress Test
+# {{ page.game_title }}
 
 [Game Index](/patch/#fromsoftware-titles)
 

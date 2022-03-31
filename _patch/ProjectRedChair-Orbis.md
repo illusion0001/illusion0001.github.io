@@ -1,9 +1,10 @@
 ---
 layout: single
 patch_file: "_patch0/orbis/ProjectRedChair-Orbis.yml"
+game_title: "Days Gone"
 ---
 
-# Days Gone
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

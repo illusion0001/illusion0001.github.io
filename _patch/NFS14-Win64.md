@@ -1,8 +1,9 @@
----
-layout: single
----
+<!-- ---
+# layout: single
+# game_title: "Need for Speed: Rivals"
+--- -->
 
-# Need for Speed: Rivals
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

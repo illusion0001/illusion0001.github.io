@@ -1,9 +1,10 @@
 ---
 layout: single
 patch_file: "_patch0/orbis/FD4_FDP-Orbis.yml"
+game_title: "Dark Souls III: The Fire Fades Edition"
 ---
 
-# Dark Souls III: The Fire Fades Edition
+# {{ page.game_title }}
 
 [Game Index](/patch/#fromsoftware-titles)
 

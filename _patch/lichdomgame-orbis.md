@@ -1,8 +1,9 @@
 ---
 layout: single
+game_title: "Lichdom: Battlemage"
 ---
 
-# Lichdom: Battlemage
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

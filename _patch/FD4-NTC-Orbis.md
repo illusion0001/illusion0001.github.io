@@ -1,9 +1,10 @@
 ---
 layout: single
 patch_file: "_patch0/orbis/FD4-NTC-Orbis.yml"
+game_title: "Sekiro: Shadows Die Twice"
 ---
 
-# Sekiro: Shadows Die Twice
+# {{ page.game_title }}
 
 [Game Index](/patch/#fromsoftware-titles)
 

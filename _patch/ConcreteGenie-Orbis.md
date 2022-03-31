@@ -1,9 +1,10 @@
 ---
 layout: single
 patch_file: "_patch0/orbis/ConcreteGenie-Orbis.yml"
+game_title: "Concrete Genie"
 ---
 
-# Concrete Genie
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

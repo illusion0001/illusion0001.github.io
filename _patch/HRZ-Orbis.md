@@ -1,9 +1,10 @@
 ---
 layout: single
 patch_file: "_patch0/orbis/HRZ-Orbis.yml"
+game_title: "Horizon Zero Dawn"
 ---
 
-# Horizon Zero Dawn
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

@@ -1,9 +1,10 @@
 ---
 layout: single
 patch_file: "_patch0/cell/big3-beta.yml"
+game_title: "Uncharted 3: Multiplayer Beta"
 ---
 
-# Uncharted 3 Multiplayer Beta
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps3)
 

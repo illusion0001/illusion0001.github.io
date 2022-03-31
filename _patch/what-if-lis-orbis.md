@@ -1,8 +1,9 @@
 ---
 layout: single
+game_title: "Life is Strange"
 ---
 
-# Life is Strange
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

@@ -1,8 +1,11 @@
+<!--
 ---
-layout: single
+# layout: single
+# game_title: "The Last of Us: Remastered"
 ---
+-->
 
-# The Last of Us: Remastered
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

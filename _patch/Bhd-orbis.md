@@ -1,9 +1,10 @@
 ---
 layout: single
 patch_file: "_patch0/orbis/Bhd-orbis.yml"
+game_title: "Resident Evil: HD"
 ---
 
-# Resident Evil: HD
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

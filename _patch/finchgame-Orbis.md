@@ -1,8 +1,9 @@
 ---
 layout: single
+game_title: "What Remains of Edith Finch"
 ---
 
-# What Remains of Edith Finch
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

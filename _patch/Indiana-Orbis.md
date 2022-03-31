@@ -1,8 +1,9 @@
 ---
 layout: single
+game_title: "The Outer Worlds"
 ---
 
-# The Outer Worlds
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

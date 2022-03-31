@@ -1,8 +1,9 @@
 ---
 layout: single
+game_title: "SnowRunner"
 ---
 
-# SnowRunner
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

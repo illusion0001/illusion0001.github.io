@@ -1,9 +1,10 @@
 ---
 layout: single
 patch_file: "_patch0/orbis/GhostOfTsushimaDC-Orbis.yml"
+game_title: "Ghost of Tsushima: Director's Cut"
 ---
 
-# Ghost of Tsushima: Director's Cut
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

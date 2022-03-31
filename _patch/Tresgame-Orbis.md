@@ -1,8 +1,9 @@
 ---
 layout: single
+game_title: "Kingdom Hearts III"
 ---
 
-# Kingdom Hearts III
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

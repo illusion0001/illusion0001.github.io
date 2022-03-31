@@ -1,9 +1,10 @@
 ---
 layout: single
 patch_file: "_patch0/orbis/NFS14-Orbis.yml"
+game_title: "Need for Speed: Rivals"
 ---
 
-# Need for Speed: Rivals
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

@@ -1,8 +1,9 @@
 ---
 layout: single
+game_title: "Dishonored: Definitive Edition"
 ---
 
-# Dishonored: Definitive Edition
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

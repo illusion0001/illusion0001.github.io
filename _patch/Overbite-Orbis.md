@@ -1,9 +1,10 @@
 ---
 layout: single
 patch_file: "_patch0/orbis/Overbite-Orbis.yml"
+game_title: "MediEvil"
 ---
 
-# MediEvil
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

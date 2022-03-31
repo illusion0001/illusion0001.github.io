@@ -1,9 +1,10 @@
 ---
 layout: single
 patch_file: "_patch0/orbis/trico-orbis.yml"
+game_title: "The Last Guardian"
 ---
 
-# The Last Guardian
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

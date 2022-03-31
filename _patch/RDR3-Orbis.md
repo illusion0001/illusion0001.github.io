@@ -1,8 +1,9 @@
 ---
 layout: single
+game_title: "Red Dead Redemption 2"
 ---
 
-# Red Dead Redemption 2
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

@@ -1,9 +1,10 @@
 ---
 layout: single
 patch_file: "_patch0/orbis/Siren-LifeisStrange3-Orbis.yml"
+game_title: "Life is Strange: True Colors"
 ---
 
-# Life is Strange: True Colors
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

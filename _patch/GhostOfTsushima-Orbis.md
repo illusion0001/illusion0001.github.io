@@ -1,8 +1,9 @@
 ---
 layout: single
+game_title: "Ghost Of Tsushima"
 ---
 
-# Ghost Of Tsushima
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

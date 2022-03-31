@@ -1,9 +1,10 @@
 ---
 layout: single
 patch_file: "_patch0/orbis/ncg-orbis.yml"
+game_title: "Wreckfest"
 ---
 
-# Wreckfest
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

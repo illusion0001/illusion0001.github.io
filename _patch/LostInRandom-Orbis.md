@@ -1,8 +1,9 @@
 ---
 layout: single
+game_title: "Lost In Random"
 ---
 
-# Lost In Random
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

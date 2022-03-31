@@ -1,8 +1,9 @@
 ---
 layout: single
+game_title: "Assassin's Creed: The Ezio Collection"
 ---
 
-# Assassin's Creed: The Ezio Collection
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

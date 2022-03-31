@@ -1,9 +1,10 @@
 ---
 layout: single
 patch_file: "_patch0/orbis/RCPS4-Orbis.yml"
+game_title: "Ratchet and Clank (Remake)"
 ---
 
-# Ratchet and Clank (Remake)
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

@@ -1,8 +1,9 @@
 ---
 layout: single
+game_title: "Prey (2017)"
 ---
 
-# Prey (2017)
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

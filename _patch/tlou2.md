@@ -1,8 +1,9 @@
 ---
 layout: single
+game_title: "The Last of Us: Part II"
 ---
 
-# The Last of Us: Part II
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

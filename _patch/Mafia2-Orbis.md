@@ -1,9 +1,10 @@
 ---
 layout: single
 patch_file: "_patch0/orbis/Mafia2-Orbis.yml"
+game_title: "Mafia 2: Definitive Edition"
 ---
 
-# Mafia 2: Definitive Edition
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

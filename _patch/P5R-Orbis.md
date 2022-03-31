@@ -1,8 +1,9 @@
 ---
 layout: single
+game_title: "Persona 5: Royal"
 ---
 
-# Persona 5: Royal
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

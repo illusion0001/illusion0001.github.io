@@ -1,9 +1,10 @@
 ---
 layout: single
 patch_file: "_patch0/orbis/Scotch-Orbis.yml"
+game_title: "Mafia: Definitive Edition"
 ---
 
-# Mafia: Definitive Edition
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

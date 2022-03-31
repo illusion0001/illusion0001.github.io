@@ -1,8 +1,9 @@
 ---
 layout: single
+game_title: "Crash Bandicoot 4: It's About Time"
 ---
 
-# Crash Bandicoot 4: It's About Time
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

@@ -1,9 +1,10 @@
 ---
 layout: single
 patch_file: "_patch0/orbis/uncharted-collection.yml"
+game_title: "Uncharted: The Nathan Drake Collection"
 ---
 
-# Uncharted: The Nathan Drake Collection
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

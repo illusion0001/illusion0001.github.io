@@ -1,9 +1,10 @@
 ---
 layout: single
 patch_file: "_patch0/orbis/Avgame-Orbis.yml"
+game_title: "Vampyr"
 ---
 
-# Vampyr
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

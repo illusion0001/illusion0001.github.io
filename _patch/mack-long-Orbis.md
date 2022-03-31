@@ -1,8 +1,9 @@
 ---
 layout: single
+game_title: "Crash Bandicoot N. Sane Trilogy"
 ---
 
-# Crash Bandicoot N. Sane Trilogy
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

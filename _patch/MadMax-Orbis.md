@@ -1,9 +1,10 @@
 ---
 layout: single
 patch_file: "_patch0/orbis/MadMax-Orbis.yml"
+game_title: "Mad Max"
 ---
 
-# Mad Max
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

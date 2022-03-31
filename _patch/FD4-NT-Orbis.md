@@ -1,9 +1,10 @@
 ---
 layout: single
 patch_file: "_patch0/orbis/FD4-NT-Orbis.yml"
+game_title: "Bloodborne: Network Test"
 ---
 
-# Bloodborne: Network Test
+# {{ page.game_title }}
 
 [Game Index](/patch/#fromsoftware-titles)
 

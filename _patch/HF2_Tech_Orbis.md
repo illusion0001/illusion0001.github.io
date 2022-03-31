@@ -1,8 +1,9 @@
 ---
 layout: single
+game_title: "Homefront: The Revolution"
 ---
 
-# Homefront: The Revolution
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

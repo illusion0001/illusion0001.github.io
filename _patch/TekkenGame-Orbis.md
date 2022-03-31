@@ -1,9 +1,10 @@
 ---
 layout: single
 patch_file: "_patch0/orbis/TekkenGame-Orbis.yml"
+game_title: "Tekken 7"
 ---
 
-# Tekken 7
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

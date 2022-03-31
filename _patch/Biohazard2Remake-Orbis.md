@@ -1,9 +1,10 @@
 ---
 layout: single
 patch_file: "_patch0/orbis/Biohazard2Remake-Orbis.yml"
+game_title: "Resident Evil: 2"
 ---
 
-# Resident Evil 2
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

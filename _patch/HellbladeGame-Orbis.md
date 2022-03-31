@@ -1,9 +1,10 @@
 ---
 layout: single
 patch_file: "_patch0/orbis/HellbladeGame-Orbis.yml"
+game_title: "Hellblade: Senua's Sacrifice"
 ---
 
-# Hellblade: Senua's Sacrifice
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

@@ -1,8 +1,9 @@
 ---
 layout: single
+game_title: "The Awesome Adventures of Captain Spirit"
 ---
 
-# The Awesome Adventures of Captain Spirit
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

@@ -1,9 +1,10 @@
 ---
 layout: single
 patch_file: "_patch0/orbis/tlou1.yml"
+game_title: "The Last of Us: Remastered"
 ---
 
-# The Last of Us: Remastered
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

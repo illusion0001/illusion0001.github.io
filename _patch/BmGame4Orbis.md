@@ -1,9 +1,10 @@
 ---
 layout: single
 patch_file: "_patch0/orbis/BmGame4Orbis.yml"
+game_title: "Batman: Arkham Knight"
 ---
 
-# Batman: Arkham Knight
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

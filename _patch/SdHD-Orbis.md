@@ -1,9 +1,10 @@
 ---
 layout: single
 patch_file: "_patch0/orbis/SdHD-Orbis.yml"
+game_title: "Sleeping Dogs: Definitive Edition"
 ---
 
-# Sleeping Dogs: Definitive Edition
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

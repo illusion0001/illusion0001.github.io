@@ -1,8 +1,9 @@
 ---
 layout: single
+game_title: "Detroit: Become Human"
 ---
 
-# Detroit: Become Human
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

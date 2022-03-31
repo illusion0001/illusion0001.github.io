@@ -1,9 +1,10 @@
 ---
 layout: single
 patch_file: "_patch0/orbis/TR2-Orbis.yml"
+game_title: "Rise of the Tomb Raider"
 ---
 
-# Rise of the Tomb Raider
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

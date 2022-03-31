@@ -1,9 +1,10 @@
 ---
 layout: single
 patch_file: "_patch0/orbis/F4-Orbis.yml"
+game_title: "Fallout 4"
 ---
 
-# Fallout 4
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

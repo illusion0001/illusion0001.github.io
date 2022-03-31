@@ -1,8 +1,9 @@
 ---
 layout: single
+game_title: "Life is Strange: Before the Storm"
 ---
 
-# Life is Strange: Before the Storm
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

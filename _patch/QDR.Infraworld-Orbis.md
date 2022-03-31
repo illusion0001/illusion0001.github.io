@@ -1,8 +1,9 @@
 ---
 layout: single
+game_title: "Beyond: Two Souls"
 ---
 
-# Beyond: Two Souls
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

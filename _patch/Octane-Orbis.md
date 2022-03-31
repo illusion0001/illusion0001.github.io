@@ -1,9 +1,10 @@
 ---
 layout: single
 patch_file: "_patch0/orbis/Octane-Orbis.yml"
+game_title: "Crash Team Racing Nitro-Fueled"
 ---
 
-# Crash Team Racing Nitro-Fueled
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

@@ -1,9 +1,10 @@
 ---
 layout: single
 patch_file: "_patch0/orbis/Daymare_MASTER-Orbis.yml"
+game_title: "Daymare 1998"
 ---
 
-# Daymare 1998
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

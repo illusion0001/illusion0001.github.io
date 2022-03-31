@@ -1,8 +1,9 @@
 ---
 layout: single
+game_title: "Crysis: Remastered"
 ---
 
-# Crysis: Remastered
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

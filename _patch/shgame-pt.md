@@ -1,8 +1,9 @@
 ---
 layout: single
+game_title: "Silent Hills: P.T"
 ---
 
-# Silent Hills: P.T
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

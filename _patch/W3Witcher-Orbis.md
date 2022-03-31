@@ -1,8 +1,9 @@
 ---
 layout: single
+game_title: "The Witcher 3"
 ---
 
-# The Witcher 3
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

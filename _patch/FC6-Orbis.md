@@ -1,8 +1,9 @@
 ---
 layout: single
+game_title: "Fry Cry: 6"
 ---
 
-# Fry Cry 6
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

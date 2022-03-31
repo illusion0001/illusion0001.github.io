@@ -1,9 +1,10 @@
 ---
 layout: single
 patch_file: "_patch0/orbis/GTA5-Orbis.yml"
+game_title: "Grand Theft Auto V"
 ---
 
-# Grand Theft Auto V
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 

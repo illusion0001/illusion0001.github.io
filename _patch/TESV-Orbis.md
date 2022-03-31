@@ -1,9 +1,10 @@
 ---
 layout: single
 patch_file: "_patch0/orbis/TESV-Orbis.yml"
+game_title: "Skyrim"
 ---
 
-# Skyrim
+# {{ page.game_title }}
 
 [Game Index](/patch/#ps4)
 
