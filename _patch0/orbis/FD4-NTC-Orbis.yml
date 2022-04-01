@@ -38,9 +38,9 @@
   patch_list:
         # Base
         # 1920x1080 -> 1280x720
-        # todo: convert these to int patches
-        - [ bytes, 0x4229D44, "00050000D0020000" ]
+        - [ bytes32, 0x04229d44, 1280 ]
+        - [ bytes32, 0x04229d44, 720  ]
         # Neo
         # 3200x1800 -> 1920x1080
-        - [ bytes, 0x23603FF, "80070000" ]
-        - [ bytes, 0x2364409, "38040000" ]
+        - [ bytes32, 0x023603ff, 1920 ]
+        - [ bytes32, 0x02360409, 1080 ]

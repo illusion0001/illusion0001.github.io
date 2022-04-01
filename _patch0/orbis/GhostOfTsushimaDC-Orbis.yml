@@ -3,7 +3,7 @@
   patch_ver: "1.0"
   name: "60 FPS Unlock"
   author: "illusion"
-  note: "Enable "Better Framerate Mode" in the game options menu on Neo. Not very useful for Base Console due to hardware limits."
+  note: "Enable \"Better Framerate Mode\" in the game options menu on Neo. Not very useful for Base Console due to hardware limits."
   # Dev Notes: "60 FPS mode everywhere, yes even in IGCs (in game cinematics). which is an upgrade over Prospero ver."
   arch: generic_orbis
   enabled: False
@@ -15,7 +15,7 @@
   patch_ver: "1.0"
   name: "900p for Pro"
   author: "illusion"
-  note: "Enable "Better Framerate Mode" in the game options menu on Neo."
+  note: "Enable \"Better Framerate Mode\" in the game options menu on Neo."
   arch: generic_orbis
   enabled: False
   patch_list:
@@ -27,7 +27,7 @@
   patch_ver: "1.0"
   name: "Disable Checkerboarding"
   author: "illusion"
-  note: "Enable "Better Framerate Mode" in the game options menu on Neo."
+  note: "Enable \"Better Framerate Mode\" in the game options menu on Neo."
   arch: generic_orbis
   enabled: False
   patch_list:
