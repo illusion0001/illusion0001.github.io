@@ -1,6 +1,6 @@
 ---
 layout: single
-patch_file: "_patch0/orbis/ncg-orbis.yml"
+patch_file: "_patch0/orbis/Wreckfest-Orbis.yml"
 game_title: "Wreckfest"
 ---
 

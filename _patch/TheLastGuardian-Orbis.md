@@ -1,6 +1,6 @@
 ---
 layout: single
-patch_file: "_patch0/orbis/trico-orbis.yml"
+patch_file: "_patch0/orbis/TheLastGuardian-Orbis.yml"
 game_title: "The Last Guardian"
 ---
 

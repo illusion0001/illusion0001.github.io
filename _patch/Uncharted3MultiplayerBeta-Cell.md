@@ -1,6 +1,6 @@
 ---
 layout: single
-patch_file: "_patch0/cell/big3-beta.yml"
+patch_file: "_patch0/cell/Uncharted3MultiplayerBeta-Cell.yml"
 game_title: "Uncharted 3: Multiplayer Beta"
 ---
 

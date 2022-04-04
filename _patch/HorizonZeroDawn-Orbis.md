@@ -1,6 +1,6 @@
 ---
 layout: single
-patch_file: "_patch0/orbis/HRZ-Orbis.yml"
+patch_file: "_patch0/orbis/HorizonZeroDawn-Orbis.yml"
 game_title: "Horizon Zero Dawn"
 ---
 

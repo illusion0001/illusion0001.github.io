@@ -1,6 +1,6 @@
 ---
 layout: single
-patch_file: "_patch0/orbis/TO1886-Orbis.yml"
+patch_file: "_patch0/orbis/TheOrder1886-Orbis.yml"
 game_title: "The Order 1886"
 ---
 

@@ -1,6 +1,6 @@
 ---
 layout: single
-patch_file: "_patch0/orbis/uncharted-tll.yml"
+patch_file: "_patch0/orbis/UnchartedTheLostLegacy-Orbis.yml"
 game_title: "Uncharted: The Lost Legacy"
 ---
 

@@ -1,6 +1,6 @@
 ---
 layout: single
-patch_file: "_patch0/orbis/FD4-NTS-Orbis.yml"
+patch_file: "_patch0/orbis/EldenRingNetworkTest-Orbis.yml"
 game_title: "Elden Ring: Network Test"
 ---
 

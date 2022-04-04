@@ -1,6 +1,6 @@
 ---
 layout: single
-patch_file: "_patch0/orbis/TESV-Orbis.yml"
+patch_file: "_patch0/orbis/Skyrim-Orbis.yml"
 game_title: "Skyrim"
 ---
 

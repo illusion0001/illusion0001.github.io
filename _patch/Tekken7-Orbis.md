@@ -1,6 +1,6 @@
 ---
 layout: single
-patch_file: "_patch0/orbis/TekkenGame-Orbis.yml"
+patch_file: "_patch0/orbis/Tekken7-Orbis.yml"
 game_title: "Tekken 7"
 ---
 

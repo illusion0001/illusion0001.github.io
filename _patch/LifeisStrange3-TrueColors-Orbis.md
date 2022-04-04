@@ -1,6 +1,6 @@
 ---
 layout: single
-patch_file: "_patch0/orbis/Siren-LifeisStrange3-Orbis.yml"
+patch_file: "_patch0/orbis/LifeisStrange3-TrueColors-Orbis.yml"
 game_title: "Life is Strange: True Colors"
 ---
 

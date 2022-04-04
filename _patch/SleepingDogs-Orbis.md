@@ -1,6 +1,6 @@
 ---
 layout: single
-patch_file: "_patch0/orbis/SdHD-Orbis.yml"
+patch_file: "_patch0/orbis/SleepingDogs-Orbis.yml"
 game_title: "Sleeping Dogs: Definitive Edition"
 ---
 

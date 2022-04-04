@@ -1,6 +1,6 @@
 ---
 layout: single
-patch_file: "_patch0/orbis/Avgame-Orbis.yml"
+patch_file: "_patch0/orbis/Vampyr-Orbis.yml"
 game_title: "Vampyr"
 ---
 

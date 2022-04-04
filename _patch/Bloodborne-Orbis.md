@@ -1,6 +1,6 @@
 ---
 layout: single
-patch_file: "_patch0/orbis/FD4-Orbis.yml"
+patch_file: "_patch0/orbis/Bloodborne-Orbis.yml"
 game_title: "Bloodborne"
 ---
 

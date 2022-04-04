@@ -1,6 +1,6 @@
 ---
 layout: single
-patch_file: "_patch0/orbis/FD4-NTC-Orbis.yml"
+patch_file: "_patch0/orbis/SekiroShadowsDieTwice-Orbis.yml"
 game_title: "Sekiro: Shadows Die Twice"
 ---
 

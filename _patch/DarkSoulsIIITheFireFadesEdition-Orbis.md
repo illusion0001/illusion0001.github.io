@@ -1,6 +1,6 @@
 ---
 layout: single
-patch_file: "_patch0/orbis/FD4_FDP-Orbis.yml"
+patch_file: "_patch0/orbis/DarkSoulsIIITheFireFadesEdition-Orbis.yml"
 game_title: "Dark Souls III: The Fire Fades Edition"
 ---
 

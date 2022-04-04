@@ -1,6 +1,6 @@
 ---
 layout: single
-patch_file: "_patch0/orbis/TR2-Orbis.yml"
+patch_file: "_patch0/orbis/RiseoftheTombRaider-Orbis.yml"
 game_title: "Rise of the Tomb Raider"
 ---
 

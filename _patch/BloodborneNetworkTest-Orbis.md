@@ -1,6 +1,6 @@
 ---
 layout: single
-patch_file: "_patch0/orbis/FD4-NT-Orbis.yml"
+patch_file: "_patch0/orbis/BloodborneNetworkTest-Orbis.yml"
 game_title: "Bloodborne: Network Test"
 ---
 

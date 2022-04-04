@@ -1,6 +1,6 @@
 ---
 layout: single
-patch_file: "_patch0/orbis/Scotch-Orbis.yml"
+patch_file: "_patch0/orbis/Mafia1Remake-Orbis.yml"
 game_title: "Mafia: Definitive Edition"
 ---
 

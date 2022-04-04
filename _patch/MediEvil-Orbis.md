@@ -1,6 +1,6 @@
 ---
 layout: single
-patch_file: "_patch0/orbis/Overbite-Orbis.yml"
+patch_file: "_patch0/orbis/MediEvil-Orbis.yml"
 game_title: "MediEvil"
 ---
 

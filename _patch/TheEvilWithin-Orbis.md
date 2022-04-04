@@ -1,6 +1,6 @@
 ---
 layout: single
-patch_file: "_patch0/orbis/Zwei_NG_Orbis.yml"
+patch_file: "_patch0/orbis/TheEvilWithin-Orbis.yml"
 game_title: "The Evil Within"
 ---
 

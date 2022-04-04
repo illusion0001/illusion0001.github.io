@@ -1,6 +1,6 @@
 ---
 layout: single
-patch_file: "_patch0/orbis/ProjectRedChair-Orbis.yml"
+patch_file: "_patch0/orbis/DaysGone-Orbis.yml"
 game_title: "Days Gone"
 ---
 

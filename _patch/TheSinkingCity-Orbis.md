@@ -1,6 +1,6 @@
 ---
 layout: single
-patch_file: "_patch0/orbis/Tsc-orbis.yml"
+patch_file: "_patch0/orbis/TheSinkingCity-Orbis.yml"
 game_title: "The Sinking City"
 ---
 

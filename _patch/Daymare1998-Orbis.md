@@ -1,6 +1,6 @@
 ---
 layout: single
-patch_file: "_patch0/orbis/Daymare_MASTER-Orbis.yml"
+patch_file: "_patch0/orbis/Daymare1998-Orbis.yml"
 game_title: "Daymare 1998"
 ---
 

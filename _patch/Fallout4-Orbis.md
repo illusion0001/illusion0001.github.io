@@ -1,6 +1,6 @@
 ---
 layout: single
-patch_file: "_patch0/orbis/F4-Orbis.yml"
+patch_file: "_patch0/orbis/Fallout4-Orbis.yml"
 game_title: "Fallout 4"
 ---
 

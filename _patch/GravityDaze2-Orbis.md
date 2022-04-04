@@ -1,6 +1,6 @@
 ---
 layout: single
-patch_file: "_patch0/orbis/Gravity_Daze_2_Orbis.yml"
+patch_file: "_patch0/orbis/GravityDaze2-Orbis.yml"
 game_title: "Gravity Rush 2 (Gravity Daze 2)"
 ---
 

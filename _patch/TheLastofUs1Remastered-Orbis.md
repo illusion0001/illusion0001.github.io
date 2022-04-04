@@ -1,6 +1,6 @@
 ---
 layout: single
-patch_file: "_patch0/orbis/tlou1.yml"
+patch_file: "_patch0/orbis/TheLastofUs1Remastered-Orbis.yml"
 game_title: "The Last of Us: Remastered"
 ---
 

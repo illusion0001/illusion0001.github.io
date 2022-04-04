@@ -1,6 +1,6 @@
 ---
 layout: single
-patch_file: "_patch0/orbis/Octane-Orbis.yml"
+patch_file: "_patch0/orbis/CrashTeamRacing-Orbis.yml"
 game_title: "Crash Team Racing Nitro-Fueled"
 ---
 

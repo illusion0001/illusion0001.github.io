@@ -1,6 +1,6 @@
 ---
 layout: single
-patch_file: "_patch0/orbis/AI-Moon-Orbis.yml"
+patch_file: "_patch0/orbis/AlienIsolation-Orbis.yml"
 game_title: "Alien: Isolation"
 ---
 

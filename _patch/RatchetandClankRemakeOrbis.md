@@ -1,6 +1,6 @@
 ---
 layout: single
-patch_file: "_patch0/orbis/RCPS4-Orbis.yml"
+patch_file: "_patch0/orbis/RatchetandClankRemakeOrbis.yml"
 game_title: "Ratchet and Clank (Remake)"
 ---
 

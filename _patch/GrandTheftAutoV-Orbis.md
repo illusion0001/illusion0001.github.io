@@ -1,6 +1,6 @@
 ---
 layout: single
-patch_file: "_patch0/orbis/GTA5-Orbis.yml"
+patch_file: "_patch0/orbis/GrandTheftAutoV-Orbis.yml"
 game_title: "Grand Theft Auto V"
 ---
 

@@ -1,6 +1,6 @@
 ---
 layout: single
-patch_file: "_patch0/orbis/FD4_FDNT-Orbis.yml"
+patch_file: "_patch0/orbis/DarkSoulsIIINetworkStressTest-Orbis.yml"
 game_title: "Dark Souls III: Network Stress Test"
 ---
 

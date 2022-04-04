@@ -1,6 +1,6 @@
 ---
 layout: single
-patch_file: "_patch0/orbis/uncharted-collection.yml"
+patch_file: "_patch0/orbis/UnchartedTheNathanDrakeCollection-Orbis.yml"
 game_title: "Uncharted: The Nathan Drake Collection"
 ---
 

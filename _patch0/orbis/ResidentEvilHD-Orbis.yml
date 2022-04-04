@@ -12,6 +12,7 @@
 # second bit is target fps
 # cc implemented game speed/frametime calc based on tickrate (absolute hacks :p) for win32 ver
 # code path still exist which is why this is possible
+
 - game: "Resident Evil: HD"
   app_ver: "01.01"
   patch_ver: "1.0"

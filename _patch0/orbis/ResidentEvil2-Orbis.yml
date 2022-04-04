@@ -8,6 +8,7 @@
   enabled: False
   patch_list:
         - [ bytes, 0x3FCA2D7, "1F 85 2B 3F" ]
+
 # 67% of 1920x1080 or 2880x1620
 # 1920x1080 => 1280x720
 # 2880x1620 => 1920x1080

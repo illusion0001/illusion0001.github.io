@@ -1,6 +1,6 @@
 ---
 layout: single
-patch_file: "_patch0/orbis/Biohazard2Remake-Orbis.yml"
+patch_file: "_patch0/orbis/ResidentEvil2-Orbis.yml"
 game_title: "Resident Evil: 2"
 ---
 

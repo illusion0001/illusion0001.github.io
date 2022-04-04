@@ -1,6 +1,6 @@
 ---
 layout: single
-patch_file: "_patch0/orbis/big4-orbis.yml"
+patch_file: "_patch0/orbis/Uncharted4AThiefsEnd-Orbis.yml"
 game_title: "Uncharted 4: A Thief's End"
 ---
 

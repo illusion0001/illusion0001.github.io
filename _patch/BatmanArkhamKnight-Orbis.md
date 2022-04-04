@@ -1,6 +1,6 @@
 ---
 layout: single
-patch_file: "_patch0/orbis/BmGame4Orbis.yml"
+patch_file: "_patch0/orbis/BatmanArkhamKnight-Orbis.yml"
 game_title: "Batman: Arkham Knight"
 ---
 

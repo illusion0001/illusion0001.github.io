@@ -1,6 +1,6 @@
 ---
 layout: single
-patch_file: "_patch0/orbis/Bhd-orbis.yml"
+patch_file: "_patch0/orbis/ResidentEvilHD-Orbis.yml"
 game_title: "Resident Evil: HD"
 ---
 

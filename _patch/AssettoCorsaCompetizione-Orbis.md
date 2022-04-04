@@ -1,6 +1,6 @@
 ---
 layout: single
-patch_file: "_patch0/orbis/AC2-Orbis-Shipping.yml"
+patch_file: "_patch0/orbis/AssettoCorsaCompetizione-Orbis.yml"
 game_title: "Assetto Corsa Competizione"
 ---
 
