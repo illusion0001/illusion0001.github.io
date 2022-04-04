@@ -19,22 +19,13 @@ Games used for the presentation does not have any relevance for the steps.
 
 {% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/setup/launcher0.png" %}
 
-2) Download the [patch](/_patch/patch.zip) zip file.
+2) Extract the program archive to a folder somewhere on your computer.
 
-3) Extract both archive to a folder somewhere on your computer.
+3) Double click on the program and follow the on-screen instructions.
 
-4) Open a `.yml` patch file, change the entry you want to be patched from `enabled: False` to `enabled: True` and save the file.
-
-5) Open PowerShell
-
-{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/setup/launcher1.png" %}
-
-6) Type `.\py-patch.exe -f (file to be patched) -p (patch file)`
-
-Example:
-{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/setup/launcher2.png" %}
-
-7) Hit Enter and if your executable is valid, it should apply all the patches, your patched executable file is saved to `filename-patched` in the same folder that the program is in.
+- (If there is a malware detection when runnning the program, it is a false positive.)
+- (Patch files can be updated by using `-dl` flag)
+- (An internet connection is required to download/update [patch](/_patch/patch.zip) files.)
 
 Video Guide:
 
