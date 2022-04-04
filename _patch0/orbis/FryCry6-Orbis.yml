@@ -4,7 +4,6 @@
   name: "60 FPS Unlock"
   author: "illusion"
   arch: generic_orbis
-  enabled: False
   patch_list:
         - [ bytes, 0x9F7471, "EB 0E" ]
         - [ bytes, 0x9F7481, "31 F6" ]

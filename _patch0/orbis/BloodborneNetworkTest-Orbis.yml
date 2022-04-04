@@ -5,7 +5,6 @@
   author: "illusion, manfightdragon"
   note: "Caps framerate to 30 with proper frame pacing."
   arch: orbis
-  enabled: False
   patch_list:
         - [ bytes, 0x00c346e5, "40c6c002" ] # MOV AL,0x2
         # SceVideoOutFliprate(handle, 1);
@@ -18,7 +17,6 @@
   name: "60 FPS (with Deltatime)"
   author: "illusion"
   arch: orbis
-  enabled: False
   patch_list:
         - [ bytes, 0x00c346e5, "40c6c002" ]         # MOV AL,0x2 // 60FPS_Noskip
         - [ utf16, 0x056b4040, "withSkip\x00" ]     # str
@@ -46,7 +44,6 @@
   name: "Resolution Patch (720p)"
   author: "illusion"
   arch: orbis
-  enabled: False
   patch_list:
         # set rt size
         - [ bytes32, 0x06297018, 1280 ]
@@ -61,7 +58,6 @@
   name: "Disable Chromatic Aberration"
   author: "illusion"
   arch: orbis
-  enabled: False
   patch_list:
         - [ bytes, 0x01905491, "48b100" ] # MOV CL,0x0
 
@@ -71,6 +67,5 @@
   name: "Disable Motion Blur"
   author: "illusion"
   arch: orbis
-  enabled: False
   patch_list:
         - [ byte, 0x0198a0e7, 0xeb ] # JMP 0x0198a104

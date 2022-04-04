@@ -4,7 +4,6 @@
   name: "60 FPS Unlock"
   author: "illusion"
   arch: generic_orbis
-  enabled: False
   patch_list:
         - [ bytes, 0x745AA1, "00" ]
         # Screenflip type

@@ -4,7 +4,6 @@
   name: "Intro Skip"
   author: "illusion"
   arch: generic_orbis
-  enabled: False
   patch_list:
         - [ bytes, 0x960A17, "01" ]
 
@@ -14,7 +13,6 @@
   name: "Intro Skip"
   author: "illusion"
   arch: generic_orbis
-  enabled: False
   patch_list:
         - [ bytes, 0x1061E94, "01" ]
 
@@ -24,6 +22,5 @@
   name: "Intro Skip"
   author: "illusion"
   arch: generic_orbis
-  enabled: False
   patch_list:
         - [ bytes, 0x5691D6, "00" ]

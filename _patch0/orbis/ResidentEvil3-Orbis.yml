@@ -5,7 +5,6 @@
   author: "illusion"
   note: "720p for Base, 1080p for Pro."
   arch: generic_orbis
-  enabled: False
   patch_list:
         - [ bytes, 0x30A09FC, "1F 85 2B 3F" ]
 # 67% of 1920x1080 or 2880x1620

@@ -5,7 +5,6 @@
   author: "illusion, manfightdragon"
   note: "Caps framerate to 30 with proper frame pacing."
   arch: orbis
-  enabled: False
   patch_list:
         - [ float32, 0x02434883, 0.016666667 ]
         # SceVideoOutFliprate(handle, 1);
@@ -18,7 +17,6 @@
   name: "Disable Chromatic Aberration"
   author: "illusion"
   arch: orbis
-  enabled: False
   patch_list:
         - [ bytes, 0x0269faa8, "c783ac000000000000009090" ]
 
@@ -28,6 +26,5 @@
   name: "Disable Motion Blur"
   author: "illusion"
   arch: orbis
-  enabled: False
   patch_list:
         - [ bytes, 0x026a057b, "eb16" ]

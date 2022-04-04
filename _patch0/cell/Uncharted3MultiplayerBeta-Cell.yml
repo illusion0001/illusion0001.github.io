@@ -4,7 +4,6 @@
   name: "Unlock Main Menu, Crash Fix and Disable Uncharted TV"
   author: "illusion, ZEROx"
   note: "Allows Multiplayer Beta to be played over LAN"
-  enabled: False
   arch: "cell"
   patch_list:
         # Crash Fix
@@ -41,7 +40,6 @@
   patch_ver: "1.0"
   name: "Disable Camera Sprint"
   author: "illusion"
-  enabled: False
   arch: cell
   patch_list:
        - [ bytes32, 0x0019e450, 0x98c30178 ]

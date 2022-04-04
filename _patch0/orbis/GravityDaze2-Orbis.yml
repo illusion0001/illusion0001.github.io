@@ -5,7 +5,6 @@
   author: "illusion"
   note: "Help wanted! Check the rest of the game and add it to lookup table."
   arch: orbis
-  enabled: False
   patch_list:
         # Framerate
         - [ bytes, 0x00846980, "be00000000" ]   # MOV ESI,0x0
@@ -255,8 +254,7 @@
 #   name: "Semi-functional video stutter fix (FOR PATCH DEVELEOPERS ONLY)"
 #   author: "illusion"
 # #   arch: generic_orbis
-#   enabled: False
-#   patch_list:
+# #   patch_list:
 #         # Semi-functional video stutter fix
 #         # DO NOT apply this as the draw thread will stall indefinitely after it has to sleep for 30ms during video playback.
 #         # For patch develeopers only!

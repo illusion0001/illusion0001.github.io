@@ -4,7 +4,6 @@
   name: "60 FPS Unlock"
   author: "illusion"
   arch: generic_orbis
-  enabled: False
   patch_list:
         - [ bytes, 0x10B8FB7, "00 00 00 00" ]
 
@@ -14,7 +13,6 @@
   name: "Resolution Patch (720p for Base)"
   author: "illusion"
   arch: generic_orbis
-  enabled: False
   patch_list:
         # Base
         # 1920x1080 -> 1280x720

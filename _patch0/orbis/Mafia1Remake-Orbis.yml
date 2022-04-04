@@ -5,6 +5,5 @@
   author: "illusion"
   note: "CPU/GPU Limited. For use with 9th generation of game consoles."
   arch: generic_orbis
-  enabled: False
   patch_list:
         - [ bytes, 0x2D2E2A1, "EB 05 90" ]

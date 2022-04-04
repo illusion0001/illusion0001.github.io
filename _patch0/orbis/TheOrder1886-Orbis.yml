@@ -4,7 +4,6 @@
   name: "60 FPS Unlock"
   author: "illusion"
   arch: generic_orbis
-  enabled: False
   patch_list:
         - [ bytes, 0x4547C4, "01" ]
         # screen flip mode
@@ -25,7 +24,6 @@
   name: "Resolution Patch (900p)"
   author: "illusion"
   arch: generic_orbis
-  enabled: False
   patch_list:
         - [ bytes, 0x450EF5, "75" ]
         - [ bytes, 0x450EFD, "40 06 00 00" ]
@@ -38,6 +36,5 @@
   author: "illusion"
   note: "\nNative 1080p will cause visual issues, 900p or below must be used.\n720p doesn't need additional changes."
   arch: generic_orbis
-  enabled: False
   patch_list:
         - [ bytes, 0x450E8C, "39 8E E3 3F" ]

@@ -5,6 +5,5 @@
   author: "illusion"
   note: "CPU Limited, for use with 9th generation of consoles."
   arch: orbis
-  enabled: False
   patch_list:
        - [ bytes, 0x01051467, "e9b3000000" ]
