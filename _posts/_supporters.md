@@ -1,25 +1,23 @@
 # Supporters
 
-Thanks to the following folks who supported me on my [Patreon](https://www.patreon.com/illusion0001) and bought me a [Coffee](https://www.buymeacoffee.com/illusion0001), [Ko-fi](https://ko-fi.com/illusion0001)!
+Thanks to the patrons who supported me on various platforms! You guys are awesome!
 
-You guys are awesome!
+[Patreon](https://www.patreon.com/illusion0001):
 
 - ac2pic
-- InquisitionImplied (3)
 - alessaro92
 - faith
 - Ioritree
-- Jack Dugan
 - Jeff Eberlin
-- John (3)
-- YveltalGriffin (10)
+- YveltalGriffin
 
-<!--
-- TeMkA169
+[Github Sponsors](https://github.com/sponsors/illusion0001):
 
-- smasher248
+- superpic31
+- regal.
 
-- Ethan Snyder
+[BuyMeACoffee](https://www.buymeacoffee.com/illusion0001) and [Ko-fi](https://ko-fi.com/illusion0001):
 
-- cad5150
--->
+- John
+- InquisitionImplied
+- YveltalGriffin
