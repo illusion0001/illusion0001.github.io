@@ -55,10 +55,11 @@
   app_ver: "01.00"
   patch_ver: "1.0"
   name: "Bypass Network Check"
-  author: "Whitehawkx"
+  author: "Unknown, Whitehawkx, illusion"
   arch: orbis
   patch_list:
-        - [ bytes, 0x0196e4a0, "e900010000" ] # JMP 0x0196e5a5
+        - [ bytes, 0x018863c0, "b001" ] # MOV AL,0x1
+        - [ bytes, 0x018863c2, "c3" ]   # RET
 
 - game: "Elden Ring: Network Test"
   app_ver: "01.00"
