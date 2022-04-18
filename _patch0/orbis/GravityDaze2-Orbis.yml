@@ -244,6 +244,7 @@
         # Loading
         - [ bytes, 0x013c8ee6, "c6055e26b30002" ] # MOV byte ptr [0x01efb54b],0x2
         - [ bytes, 0x013c8eed, "eb62" ]           # JMP 0x013c8f51
+        - [ bytes, 0x013c8f2f, "ebb5" ]           # JMP 0x013c8ee6
         # After loading
         - [ bytes, 0x013c8f80, "8b05c625b300" ] # MOV EAX,dword ptr [0x01efb54c]
 

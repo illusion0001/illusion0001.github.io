@@ -179,6 +179,6 @@ This patch is best experinced on PS4 Pro with 1080p output and supersampling dis
 
 {% include_relative _orbis_install_note.md %}
 
-<a href="https://github.com/illusion0001/illusion0001.github.io/blob/main/_patches/Gravity_Daze_2_Orbis.md" class="button" role="button"><i class='fas fa-download'></i> Patch Code</a>
+<a href="/_patch/GravityDaze2-Orbis/" class="button" role="button"><i class='fas fa-download'></i> Patch Code</a>
 
 {% include_relative _supporters.md %}
