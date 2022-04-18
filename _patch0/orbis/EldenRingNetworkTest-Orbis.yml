@@ -3,12 +3,15 @@
   patch_ver: "1.0"
   name: "60 FPS Unlock (For Base)"
   author: "illusion"
-  arch: generic_orbis
+  arch: orbis
   patch_list:
         # Flipmode
-        - [ bytes, 0x1BF6627, "95" ]
-        # VFR
-        - [ bytes, 0x1BF6795, "48 E9 5B 00 00 00" ]
+        - [ bytes, 0x01ff26b5, "48b90900000009000000" ] # MOV RCX,0x900000009
+        - [ bytes, 0x01ff26bf, "b805000000" ]           # MOV EAX,0x5
+        - [ bytes, 0x01ff26c4, "90" ]                   # NOP
+        - [ bytes, 0x01ff26c5, "90" ]                   # NOP
+        - [ bytes, 0x01ff26c6, "90" ]                   # NOP
+        - [ bytes, 0x01ff26c7, "90" ]                   # NOP
 
 - game: "Elden Ring: Network Test"
   app_ver: "01.00"
@@ -16,45 +19,59 @@
   name: "30 FPS Fix (Proper Frame Pacing)"
   author: "illusion"
   note: "Caps framerate to 30 with proper frame pacing."
-  arch: generic_orbis
+  arch: orbis
   patch_list:
-        # Flipmode (Base Only)
-        - [ bytes, 0x1BF6627, "95" ]
+        # Flipmode
+        - [ bytes, 0x01ff26b5, "48b90900000009000000" ] # MOV RCX,0x900000009
+        - [ bytes, 0x01ff26bf, "b805000000" ]           # MOV EAX,0x5
+        - [ bytes, 0x01ff26c4, "90" ]                   # NOP
+        - [ bytes, 0x01ff26c5, "90" ]                   # NOP
+        - [ bytes, 0x01ff26c6, "90" ]                   # NOP
+        - [ bytes, 0x01ff26c7, "90" ]                   # NOP
         # Call
-        - [ bytes, 0x2D42FF0, "E8 0F D5 39 00" ]
+        - [ bytes, 0x0313eff0, "e80fd53900" ] # CALL 0x034dc504
         # Main code
-        - [ bytes, 0x30E0503, "00 BF 00 01 11 4E BE 01 00 00 00 E8 ED F8 D8 FF C3" ]
+        - [ bytes, 0x034dc503, "00" ]         # ?? 00h
+        - [ bytes, 0x034dc504, "bf0001114e" ] # MOV EDI,0x4e110100
+        - [ bytes, 0x034dc509, "be01000000" ] # MOV ESI,0x1
+        - [ bytes, 0x034dc50e, "e8edf8d8ff" ] # CALL 0x0326be00
+        - [ bytes, 0x034dc513, "c3" ]         # RET
 
 - game: "Elden Ring: Network Test"
   app_ver: "01.00"
   patch_ver: "1.0"
   name: "Resolution Patch (720p for Base, 1080p for Pro)"
   author: "illusion"
-  arch: generic_orbis
+  arch: orbis
   patch_list:
         # Base
-        - [ bytes, 0x3C68B8C, "00 05 00 00 D0 02 00 00" ]
-        # Neo
-        - [ bytes, 0x1BE505F, "80 07 00 00" ]
-        - [ bytes, 0x1BE5069, "38 04 00 00" ]
+        - [ bytes, 0x04258b8c, 1280 ]
+        - [ bytes, 0x04258b90, 720  ]
+        # Neo 1920x1080 CB
+        - [ bytes, 0x01fe105f, 1920 ]
+        - [ bytes, 0x01fe1069, 1080 ]
 
 - game: "Elden Ring: Network Test"
   app_ver: "01.00"
   patch_ver: "1.0"
   name: "Bypass Network Check"
   author: "Whitehawkx"
-  arch: generic_orbis
+  arch: orbis
   patch_list:
-        - [ bytes, 0x015724A0, "E9 00 01" ]
+        - [ bytes, 0x0196e4a0, "e900010000" ] # JMP 0x0196e5a5
 
 - game: "Elden Ring: Network Test"
   app_ver: "01.00"
   patch_ver: "1.0"
   name: "Disable Fog Wall"
   author: "Pav"
-  arch: generic_orbis
+  arch: orbis
   patch_list:
-        - [ bytes, 0x013BBC33, "90 90 90 90 90" ]
+        - [ bytes, 0x017b7c33, "90" ] # NOP
+        - [ bytes, 0x017b7c34, "90" ] # NOP
+        - [ bytes, 0x017b7c35, "90" ] # NOP
+        - [ bytes, 0x017b7c36, "90" ] # NOP
+        - [ bytes, 0x017b7c37, "90" ] # NOP
 
 - game: "Elden Ring: Network Test"
   app_ver: "01.00"
@@ -62,6 +79,6 @@
   name: "Enable Video Recording and Screenshots"
   author: "Whitehawkx"
   note: "Re-enables built-in video recording and screenshots (Share button)"
-  arch: generic_orbis
+  arch: orbis
   patch_list:
-        - [ bytes, 0x01BFF799, "00" ]
+        - [ bytes, 0x01ffb793, "c785b0fdffff00000000" ] # MOV dword ptr [RBP + -0x250],0x0
