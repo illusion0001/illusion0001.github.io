@@ -23,6 +23,9 @@ Games used for the presentation does not have any relevance for the steps.
 
 3) Double click on the program and follow the on-screen instructions.
 
+4) Install the patched executable back on to the console.
+
+- **(PS4 Only)** Build the update package with the newly patched executable file and install it on the console.
 - (If there is a malware detection when runnning the program, it is a false positive.)
 - (Patch files can be updated by using `-dl` flag)
 - (An internet connection is required to download/update [patch](/_patch/patch.zip) files.)
