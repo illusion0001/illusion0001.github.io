@@ -3,9 +3,9 @@
   patch_ver: "1.0"
   name: "Intro Skip"
   author: "illusion"
-  arch: generic_orbis
+  arch: orbis
   patch_list:
-        - [ bytes, 0x960A17, "01" ]
+        - [ byte, 0x00d5ca17, 0x1 ]
 
 - game: "Uncharted 2: Among Thieves Remastered"
   app_ver: "01.00"
@@ -33,15 +33,15 @@
   patch_ver: "1.0"
   name: "Intro Skip"
   author: "illusion"
-  arch: generic_orbis
+  arch: orbis
   patch_list:
-        - [ bytes, 0x1061E94, "01" ]
+        - [ byte, 0x0145de94, 0x1 ]
 
 - game: "Uncharted 3: Drake's Deception Remastered"
   app_ver: "01.02"
   patch_ver: "1.0"
   name: "Intro Skip"
   author: "illusion"
-  arch: generic_orbis
+  arch: orbis
   patch_list:
-        - [ bytes, 0x5691D6, "00" ]
+        - [ bytes, 0x009651d0, "c685043a000000" ] # MOV byte ptr [RBP + 0x3a04],0x0
