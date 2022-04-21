@@ -7,31 +7,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
 
-    - name: Cache
-      uses: actions/cache@v3
-      with:
-        path: vendor/bundle
-        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile') }}
-        restore-keys: ${{ runner.os }}-gems-
+      - name: Cache
+        uses: actions/cache@v3
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile') }}
+          restore-keys: ${{ runner.os }}-gems-
 
-    - name: Pack patch files into zip
-      run: |
-        # temp to keep page working for draft
-        cd _posts
-        cp 2022-04-18-Fromsoftware-Framepacing.md 1971-01-01-Fromsoftware-Framepacing.md
-        cd ..
-        # very very ugly workaround
-        # find out why it doesnt work without copy
-        cp -r _patch __patch
-        chmod +x .ci/*.sh && .ci/zip.sh
+      - name: Pack patch files into zip
+        run: |
+          # temp to keep page working for draft
+          cd _posts
+          cp {2022-04-18,1971-01-01}-Fromsoftware-Framepacing.md
+          cd -
+          # very very ugly workaround
+          # find out why it doesn't work without copying
+          cp -r _patch __patch
+          chmod +x .ci/*.sh
+          .ci/zip.sh
 
-    - name: Deploy
-      if: github.repository == 'illusion0001/illusion0001.github.io'
-      uses: helaili/jekyll-action@master
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        target_branch: 'gh-pages'
-        jekyll_src: './'
+      - name: Deploy
+        if: github.repository == 'illusion0001/illusion0001.github.io'
+        uses: helaili/jekyll-action@master
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          target_branch: gh-pages
+          jekyll_src: .
