@@ -13,6 +13,7 @@ Thanks to the patrons who supported me on various platforms! You guys are awesom
 
 [Github Sponsors](https://github.com/sponsors/illusion0001):
 
+- Asinine
 - superpic31
 - regal.
 
