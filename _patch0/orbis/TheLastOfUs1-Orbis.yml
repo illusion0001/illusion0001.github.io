@@ -5,8 +5,11 @@
   author: "illusion"
   arch: orbis
   patch_list:
-        - [ bytes, 0x013302c8, "48e8f400000090" ]
-        - [ bytes, 0x013303c2, "c680d506000000c6403001c3" ]
+        - [ bytes, 0x013302c8, "48e8f4000000" ] # CALL 0x013303c2
+        - [ bytes, 0x013302ce, "90" ]           # NOP
+        - [ bytes, 0x013303c2, "c680d506000000" ] # MOV byte ptr [RAX + 0x6d5],0x0
+        - [ bytes, 0x013303c9, "c6403001" ]       # MOV byte ptr [RAX + 0x30],0x1
+        - [ bytes, 0x013303cd, "c3" ]             # RET
 
 - game: "The Last of Us: Remastered"
   app_ver: "01.00"
@@ -15,8 +18,18 @@
   author: "illusion, ZEROx"
   arch: orbis
   patch_list:
-        - [ bytes, 0x0095a067, "e810465000909090909090" ]
-        - [ bytes, 0x00e5e67c, "488985d0f3ffff4883fb000f8404000000488b4340c3" ]
+        - [ bytes, 0x0095a067, "e810465000" ]     # CALL 0x00e5e67c
+        - [ bytes, 0x0095a06c, "90" ]             # NOP
+        - [ bytes, 0x0095a06d, "90" ]             # NOP
+        - [ bytes, 0x0095a06e, "90" ]             # NOP
+        - [ bytes, 0x0095a06f, "90" ]             # NOP
+        - [ bytes, 0x0095a070, "90" ]             # NOP
+        - [ bytes, 0x0095a071, "90" ]             # NOP
+        - [ bytes, 0x00e5e67c, "488985d0f3ffff" ] # MOV qword ptr [RBP + -0xc30],RAX
+        - [ bytes, 0x00e5e683, "4883fb00" ]       # CMP RBX,0x0
+        - [ bytes, 0x00e5e687, "0f8404000000" ]   # JZ 0x00e5e691
+        - [ bytes, 0x00e5e68d, "488b4340" ]       # MOV RAX,qword ptr [RBX + 0x40]
+        - [ bytes, 0x00e5e691, "c3" ]             # RET
 
 - game: "The Last of Us: Remastered"
   app_ver: "01.00"
@@ -25,7 +38,7 @@
   author: "illusion"
   arch: orbis
   patch_list:
-        - [ byte, 0x00401c79, 0x01 ] # enable // gameconfig is no gud
+        - [ byte, 0x00401c79, 0x01 ] # enable
         - [ bytes16, 0x00a92c41, 0x2e85 ] # save data to dbg render
         # rendering dev
         # - [ bytes, , "" ] # call
@@ -113,9 +126,9 @@
   patch_ver: "1.0"
   name: "Intro Skip"
   author: "illusion"
-  arch: generic_orbis
+  arch: orbis
   patch_list:
-        - [ bytes, 0x614A, "c687e534000001" ]
+        - [ bytes, 0x0040214a, "c687e534000001" ] # MOV byte ptr [RDI + 0x34e5],0x1
 
 - game: "The Last of Us: Remastered"
   app_ver: "01.11"
@@ -124,44 +137,145 @@
   author: "illusion, ZEROx"
   arch: orbis
   patch_list:
-        - [ bytes, 0x00abc859, "e872535600909090909090" ]
-        - [ bytes, 0x01021bd0, "488985e0f3ffff4883fb007404488b4340c3" ]
+        - [ bytes, 0x00abc859, "e872535600" ]     # CALL 0x01021bd0
+        - [ bytes, 0x00abc85e, "90" ]             # NOP
+        - [ bytes, 0x00abc85f, "90" ]             # NOP
+        - [ bytes, 0x00abc860, "90" ]             # NOP
+        - [ bytes, 0x00abc861, "90" ]             # NOP
+        - [ bytes, 0x00abc862, "90" ]             # NOP
+        - [ bytes, 0x00abc863, "90" ]             # NOP
+        - [ bytes, 0x01021bd0, "488985e0f3ffff" ] # MOV qword ptr [RBP + -0xc20],RAX
+        - [ bytes, 0x01021bd7, "4883fb00" ]       # CMP RBX,0x0
+        - [ bytes, 0x01021bdb, "7404" ]           # JZ 0x01021be1
+        - [ bytes, 0x01021bdd, "488b4340" ]       # MOV RAX,qword ptr [RBX + 0x40]
+        - [ bytes, 0x01021be1, "c3" ]             # RET
 
 - game: "The Last of Us: Remastered"
   app_ver: "01.11"
   patch_ver: "1.0"
   name: "University Nailbomb Softlock Fix"
   author: "illusion, ZEROx"
-  arch: generic_orbis
+  arch: orbis
   patch_list:
-        # call
-        - [ bytes, 0x6A67A7, "e9a4389dff9090909090" ]
-        # main
-        - [ bytes, 0x7A050, "448905994c7a014c8d052acf5c01418138f08ebc407422418138cff066a474194181386a06b69a74104181385c5d81117407418138c85fd34a448b05604c7a010f851bc76200e91cc96200" ]
+        - [ bytes, 0x00aa27a7, "e9a4389dff" ]     # JMP 0x00476050
+        - [ bytes, 0x00aa27ac, "90" ]             # NOP
+        - [ bytes, 0x00aa27ad, "90" ]             # NOP
+        - [ bytes, 0x00aa27ae, "90" ]             # NOP
+        - [ bytes, 0x00aa27af, "90" ]             # NOP
+        - [ bytes, 0x00aa27b0, "90" ]             # NOP
+        - [ bytes, 0x00476050, "448905994c7a01" ] # MOV dword ptr [0x01c1acf0],R8D
+        - [ bytes, 0x00476057, "4c8d052acf5c01" ] # LEA R8,[0x1a42f88]
+        - [ bytes, 0x0047605e, "418138f08ebc40" ] # CMP dword ptr [R8],0x40bc8ef0
+        - [ bytes, 0x00476065, "7422" ]           # JZ 0x00476089
+        - [ bytes, 0x00476067, "418138cff066a4" ] # CMP dword ptr [R8],0xa466f0cf
+        - [ bytes, 0x0047606e, "7419" ]           # JZ 0x00476089
+        - [ bytes, 0x00476070, "4181386a06b69a" ] # CMP dword ptr [R8],0x9ab6066a
+        - [ bytes, 0x00476077, "7410" ]           # JZ 0x00476089
+        - [ bytes, 0x00476079, "4181385c5d8111" ] # CMP dword ptr [R8],0x11815d5c
+        - [ bytes, 0x00476080, "7407" ]           # JZ 0x00476089
+        - [ bytes, 0x00476082, "418138c85fd34a" ] # CMP dword ptr [R8],0x4ad35fc8
+        - [ bytes, 0x00476089, "448b05604c7a01" ] # MOV R8D,dword ptr [0x01c1acf0]
+        - [ bytes, 0x00476090, "0f851bc76200" ]   # JNZ 0x00aa27b1
+        - [ bytes, 0x00476096, "e91cc96200" ]     # JMP 0x00aa29b7
 
 - game: "The Last of Us: Remastered"
   app_ver: "01.11"
   patch_ver: "1.0"
   name: "Enable Dev Menu"
   author: "illusion"
-  arch: generic_orbis
+  arch: orbis
   patch_list:
-        - [ bytes, 0x61A4, "75" ]
+        - [ bytes, 0x004021a4, 0x75 ]
 
 - game: "The Last of Us: Remastered"
   app_ver: "01.11"
   patch_ver: "1.0"
   name: "Give Player Weapon Fix"
   author: "illusion"
-  arch: generic_orbis
+  arch: orbis
   patch_list:
         # code
-        - [ bytes, 0x79DB0, "be0100000048893d597d8501c3488b07488905597d85014831c0be01000000c3488305917d850120488d3571d73d01480335837d8501c3008005617d850120488d3562000000480335537d8501c3" ]
+        - [ bytes, 0x00475db0, "be01000000" ]       # MOV ESI,0x1
+        - [ bytes, 0x00475db5, "48893d597d8501" ]   # MOV qword ptr [0x01ccdb15],RDI
+        - [ bytes, 0x00475dbc, "c3" ]               # RET
+        - [ bytes, 0x00475dbd, "488b07" ]           # MOV RAX,qword ptr [RDI]
+        - [ bytes, 0x00475dc0, "488905597d8501" ]   # MOV qword ptr [0x01ccdb20],RAX
+        - [ bytes, 0x00475dc7, "4831c0" ]           # XOR RAX,RAX
+        - [ bytes, 0x00475dca, "be01000000" ]       # MOV ESI,0x1
+        - [ bytes, 0x00475dcf, "c3" ]               # RET
+        - [ bytes, 0x00475dd0, "488305917d850120" ] # ADD qword ptr [0x01ccdb69],0x20
+        - [ bytes, 0x00475dd8, "488d3571d73d01" ]   # LEA RSI,[0x1853550]
+        - [ bytes, 0x00475ddf, "480335837d8501" ]   # ADD RSI,qword ptr [0x01ccdb69]
+        - [ bytes, 0x00475de6, "c3" ]               # RET
         # ptrs
-        - [ bytes, 0x51D311, "488b35fd473b01" ]
-        - [ bytes, 0x51D392, "488b3d7c473b01e81fcab5ff" ]
+        - [ bytes, 0x00919311, "488b35fd473b01" ] # MOV RSI,qword ptr [0x01ccdb15]
+        - [ bytes, 0x00919392, "488b3d7c473b01" ] # MOV RDI,qword ptr [0x01ccdb15]
         # Calls
-        - [ bytes, 0x51D189, "48e841ccb5ff90" ]
-        - [ bytes, 0x51D2C9, "e8e2cab5ff" ]
+        - [ bytes, 0x00919189, "48e841ccb5ff" ] # CALL 0x00475dd0
+        - [ bytes, 0x0091918f, "90" ]           # NOP
+        - [ bytes, 0x00919399, "e81fcab5ff" ]   # CALL 0x00475dbd
+        - [ bytes, 0x009192c9, "e8e2cab5ff" ]   # CALL 0x00475db0
         # str lookup
-        - [ bytes, 0x1457570, "7368697620202020202020202020202020202020202020202020202020202000706973746f6c2d756265722d74312020202020202020202020202020202020006261736562616c6c2d626174202020202020202020202020202020202020200068617463686574202020202020202020202020202020202020202020202020004e4f5f4152545f47524f555020202020202020202020202020202020202020006e61696c2d626f6d62202020202020202020202020202020202020202020200074776f2d62792d666f75722020202020202020202020202020202020202020006e61696c2d626f6d6220202020202020202020202020202020202020202020007475727265742d736e69706572202020202020202020202020202020202020007269666c652d6c657665722d616374696f6e2020202020202020202020202000706973746f6c2d756265722d74312020202020202020202020202020202020007368697620202020202020202020202020202020202020202020202020202000726164696f2020202020202020202020202020202020202020202020202020006d6f6c6f746f762020202020202020202020202020202020202020202020200062616e646167652d6170706c79202020202020202020202020202020202020006d702d70617263656c20202020202020202020202020202020202020202020006772656e2d6c61756e636865722d696d70726f7669736564202020202020200073686f7467756e2d64626c2d62617272656c20202020202020202020202020006d6163686574652d626c61646520202020202020202020202020202020202000626f772d6461726b2020202020202020202020202020202020202020202020007269666c652d7661726961626c652020202020202020202020202020202020006d696e692d31342d7269666c652020202020202020202020202020202020200074776f2d62792d666f7572202020202020202020202020202020202020202000706973746f6c2d73686f7467756e2020202020202020202020202020202020007269666c652d696d70726f76697365642d66756c6c6175746f2020202020200073757065722d736f616b657220202020202020202020202020202020202020004e4f5f4152545f47524f55502020202020202020202020202020202020202000626565722d626f74746c6520202020202020202020202020202020202020200063726f7373626f772d646c6320202020202020202020202020202020202020006c6561642d7069706520202020202020202020202020202020202020202020006c6561642d706970652020202020202020202020202020202020202020202000666c616d657468726f77657220202020202020202020202020202020202020006465736572742d6561676c652d74312020202020202020202020202020202000666c6173686c69676874202020202020202020202020202020202020202020007269666c652d736e6970657220202020202020202020202020202020202020006d342d7269666c652d7431202020202020202020202020202020202020202000736d6f6b652d626f6d62202020202020202020202020202020202020202020007468726f772d627269636b20202020202020202020202020202020202020200073686f7467756e2d70756d702d73746f636b202020202020202020202020200073696c656e6365642d67616c696c2d7269666c652020202020202020202020004e4f5f4152545f47524f55502020202020202020202020202020202020202000626c6f617465722d70757374756c6520202020202020202020202020202020007461757275732d363662342d7265766f6c7665722020202020202020202020006e61696c2d626f6d6220202020202020202020202020202020202020202020007269666c652d696d70726f76697365642d61737361756c7420202020202020007468726f77696e672d6b6e6966652020202020202020202020202020202020007269666c652d626f6c7420202020202020202020202020202020202020202000626572657474612d6a61677561722d706973746f6c2020202020202020202000626f7720202020202020202020202020202020202020202020202020202020006d6f6c6f746f762020202020202020202020202020202020202020202020200062696c6c2d6b6e696665202020202020202020202020202020202020202020006261736562616c6c2d62617420202020202020202020202020202020202020006d696e692d31342d7269666c6520202020202020202020202020202020202000706973746f6c2d676c6f636b2d62757273742020202020202020202020202000706973746f6c2d396d6d2020202020202020202020202020202020202020200073686f7467756e2d746163746963616c202020202020202020202020202020006d616c2d6761732d63616e2020202020202020202020202020202020202020006d6163686574652d626c616465202020202020202020202020202020202020006e6f6e65202020202020202020202020202020202020202020202020202020007269666c652d696d70726f76697365642d61737361756c74202020202020200062696e6f63756c61727320202020202020202020202020202020202020202000737769746368626c6164652020202020202020202020202020202020202020007269666c652d696d70726f76697365642d66756c6c6175746f20202020202000" ]
+        - [ bytes, 0x01853570, "shiv                           " ]
+        - [ bytes, 0x01853590, "pistol-uber-t1                 " ]
+        - [ bytes, 0x018535b0, "baseball-bat                   " ]
+        - [ bytes, 0x018535d0, "hatchet                        " ]
+        - [ bytes, 0x018535f0, "NO_ART_GROUP                   " ]
+        - [ bytes, 0x01853610, "nail-bomb                      " ]
+        - [ bytes, 0x01853630, "two-by-four                    " ]
+        - [ bytes, 0x01853650, "nail-bomb                      " ]
+        - [ bytes, 0x01853670, "turret-sniper                  " ]
+        - [ bytes, 0x01853690, "rifle-lever-action             " ]
+        - [ bytes, 0x018536b0, "pistol-uber-t1                 " ]
+        - [ bytes, 0x018536d0, "shiv                           " ]
+        - [ bytes, 0x018536f0, "radio                          " ]
+        - [ bytes, 0x01853710, "molotov                        " ]
+        - [ bytes, 0x01853730, "bandage-apply                  " ]
+        - [ bytes, 0x01853750, "mp-parcel                      " ]
+        - [ bytes, 0x01853770, "gren-launcher-improvised       " ]
+        - [ bytes, 0x01853790, "shotgun-dbl-barrel             " ]
+        - [ bytes, 0x018537b0, "machete-blade                  " ]
+        - [ bytes, 0x018537d0, "bow-dark                       " ]
+        - [ bytes, 0x018537f0, "rifle-variable                 " ]
+        - [ bytes, 0x01853810, "mini-14-rifle                  " ]
+        - [ bytes, 0x01853830, "two-by-four                    " ]
+        - [ bytes, 0x01853850, "pistol-shotgun                 " ]
+        - [ bytes, 0x01853870, "rifle-improvised-fullauto      " ]
+        - [ bytes, 0x01853890, "super-soaker                   " ]
+        - [ bytes, 0x018538b0, "NO_ART_GROUP                   " ]
+        - [ bytes, 0x018538d0, "beer-bottle                    " ]
+        - [ bytes, 0x018538f0, "crossbow-dlc                   " ]
+        - [ bytes, 0x01853910, "lead-pipe                      " ]
+        - [ bytes, 0x01853930, "lead-pipe                      " ]
+        - [ bytes, 0x01853950, "flamethrower                   " ]
+        - [ bytes, 0x01853970, "desert-eagle-t1                " ]
+        - [ bytes, 0x01853990, "flashlight                     " ]
+        - [ bytes, 0x018539b0, "rifle-sniper                   " ]
+        - [ bytes, 0x018539d0, "m4-rifle-t1                    " ]
+        - [ bytes, 0x018539f0, "smoke-bomb                     " ]
+        - [ bytes, 0x01853a10, "throw-brick                    " ]
+        - [ bytes, 0x01853a30, "shotgun-pump-stock             " ]
+        - [ bytes, 0x01853a50, "silenced-galil-rifle           " ]
+        - [ bytes, 0x01853a70, "NO_ART_GROUP                   " ]
+        - [ bytes, 0x01853a90, "bloater-pustule                " ]
+        - [ bytes, 0x01853ab0, "taurus-66b4-revolver           " ]
+        - [ bytes, 0x01853ad0, "nail-bomb                      " ]
+        - [ bytes, 0x01853af0, "rifle-improvised-assault       " ]
+        - [ bytes, 0x01853b10, "throwing-knife                 " ]
+        - [ bytes, 0x01853b30, "rifle-bolt                     " ]
+        - [ bytes, 0x01853b50, "beretta-jaguar-pistol          " ]
+        - [ bytes, 0x01853b70, "bow                            " ]
+        - [ bytes, 0x01853b90, "molotov                        " ]
+        - [ bytes, 0x01853bb0, "bill-knife                     " ]
+        - [ bytes, 0x01853bd0, "baseball-bat                   " ]
+        - [ bytes, 0x01853bf0, "mini-14-rifle                  " ]
+        - [ bytes, 0x01853c10, "pistol-glock-burst             " ]
+        - [ bytes, 0x01853c30, "pistol-9mm                     " ]
+        - [ bytes, 0x01853c50, "shotgun-tactical               " ]
+        - [ bytes, 0x01853c70, "mal-gas-can                    " ]
+        - [ bytes, 0x01853c90, "machete-blade                  " ]
+        - [ bytes, 0x01853cb0, "none                           " ]
+        - [ bytes, 0x01853cd0, "rifle-improvised-assault       " ]
+        - [ bytes, 0x01853cf0, "binoculars                     " ]
+        - [ bytes, 0x01853d10, "switchblade                    " ]
+        - [ bytes, 0x01853d30, "rifle-improvised-fullauto      " ]
