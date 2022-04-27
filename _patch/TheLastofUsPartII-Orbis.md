@@ -1,5 +1,6 @@
 ---
 layout: single
+patch_file: "_patch0/orbis/TheLastOfUs2-Orbis.yml"
 game_title: "The Last of Us: Part II"
 ---
 
@@ -7,29 +8,21 @@ game_title: "The Last of Us: Part II"
 
 {% include_relative index.md %}
 
-[Installation Guide](/install-instructions/)
+## Patches
 
-## Improved Inf Ammo
+{% include_relative patch_header.md %}
+
+Patch file: `{{ page.patch_file }}`
+
+File to be patched:`eboot.bin`
 
 Author: [illusion](https://twitter.com/illusion0002)
 
-[Article](https://illusion0001.github.io/cheatcodes/2021/03/20/t2-silencer-cheat/)
-
-In file `eboot.bin`
-
 <details>
-<summary>Code PS4 (Click to Expand)</summary>
+<summary>Contents of patch file (Click to Expand)</summary>
 
-{% highlight none %}
-1.07
-
-41 ff 8e 14 08 00 00 4c 89 f7
-
-67 67 e8 32 53 e2 ff 4c 89 f7
-
-55 48 89 e5 41 57 41 56 41 55 41 54 53 50 49 89 f6 e8 ea 0d de 00 48 8d 15 ab 01 5d 01 be 10 00
-
-48 8b 05 19 30 36 02 80 3d e3 a6 1a 02 00 80 b8 ac 43 00 00 00 75 07 41 ff 8e 14 08 00 00 c3 00
+{% highlight yml %}
+{% flexible_include {{ page.patch_file }} %}
 {% endhighlight %}
 
 </details>

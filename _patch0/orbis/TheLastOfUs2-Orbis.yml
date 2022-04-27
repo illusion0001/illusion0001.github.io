@@ -1,0 +1,52 @@
+- game: "The Last of Us: Part II"
+  app_ver: "01.09"
+  patch_ver: "1.0"
+  name: "Enable Dev Menu"
+  author: "illusion"
+  arch: orbis
+  patch_list:
+        - [ byte, 0x00a141f8, 0x75 ]
+
+- game: "The Last of Us: Part II"
+  app_ver: "01.09"
+  patch_ver: "1.0"
+  name: "Increase Dev Menu Size"
+  author: "illusion"
+  arch: orbis
+  patch_list:
+        - [ float32, 0x00ba0ecf, 1.0 ]
+
+- game: "The Last of Us: Part II"
+  app_ver: "01.07"
+  patch_ver: "1.0"
+  name: "Enable Dev Menu"
+  author: "illusion"
+  arch: orbis
+  patch_list:
+        - [ byte, 0x005d26b8, 0x75 ]
+
+- game: "The Last of Us: Part II"
+  app_ver: "01.07"
+  patch_ver: "1.0"
+  name: "Increase Dev Menu Size"
+  author: "illusion"
+  arch: orbis
+  patch_list:
+        - [ float32, 0x0075f70f, 1.0 ]
+
+- game: "The Last of Us: Part II"
+  app_ver: "01.07"
+  patch_ver: "1.0"
+  name: "Improved Infinite Ammo Cheat"
+  author: "illusion"
+  arch: orbis
+  patch_list:
+        - [ bytes, 0x019df257, "e83453e2ff" ]     # CALL 0x01804590
+        - [ bytes, 0x019df25c, "90" ]             # NOP
+        - [ bytes, 0x019df25d, "90" ]             # NOP
+        - [ bytes, 0x01804590, "488b0519303602" ] # MOV RAX,qword ptr [0x03b675b0]
+        - [ bytes, 0x01804597, "803de3a61a0200" ] # CMP byte ptr [0x039aec81],0x0
+        - [ bytes, 0x0180459e, "80b8ac43000000" ] # CMP byte ptr [RAX + 0x43ac],0x0
+        - [ bytes, 0x018045a5, "7507" ]           # JNZ 0x018045ae
+        - [ bytes, 0x018045a7, "41ff8e14080000" ] # DEC dword ptr [R14 + 0x814]
+        - [ bytes, 0x018045ae, "c3" ]             # RET
