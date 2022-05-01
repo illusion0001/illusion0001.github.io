@@ -159,10 +159,6 @@ Note that the video below is recorded in slow motion to show the patch at its be
 
 # Patch
 
-For those looking to use the patch on the emulator, you can head over to the patch manager, click on the "Download Latest Patches" and find the patch you wanted to use with your game Title ID and version, click on the checkbox to enable the patch and save changes.
-
-{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_patch_example.png" %}
-
-<a href="https://wiki.rpcs3.net/index.php?title=Help:Game_Patches/Main#Ratchet_.26_Clank_Future:_A_Crack_in_Time" class="button" role="button"><i class='fas fa-download'></i> Patch Source Codes</a>
+{% include_relative _generic_rpcs3_patch_note.md %}
 
 {% include_relative _supporters.md %}
