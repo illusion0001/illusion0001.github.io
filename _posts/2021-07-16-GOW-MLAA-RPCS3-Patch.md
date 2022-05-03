@@ -233,8 +233,6 @@ This method can also be used for Depth of field.
 
 Patch was made available back in August 2020. You can download through the emulator built-in Patch Manager.
 
-<a href="https://wiki.rpcs3.net/index.php?title=God_of_War_III#Patches#Patches" class="button" role="button"> <i class='fas fa-download'></i> Patch Source Code for God of War: 3</a>
-
-<a href="https://wiki.rpcs3.net/index.php?title=God_of_War:_Ascension#Patches" class="button" role="button"> <i class='fas fa-download'></i> Patch Source Code for God of War: Ascension</a>
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_patch_example.png" %}
 
 {% include_relative _supporters.md %}

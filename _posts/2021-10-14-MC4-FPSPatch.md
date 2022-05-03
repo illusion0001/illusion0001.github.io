@@ -128,6 +128,6 @@ Note that the video below is recorded in slow motion to show the patch at its be
 
 <a href="https://wiki.rpcs3.net/index.php?title=Midnight_Club:_Los_Angeles#Patches" class="button" role="button"><i class='fas fa-download'></i> Patch Code: RPCS3</a>
 
-<a href="https://github.com/xenia-canary/game-patches/blob/main/patches/545407F8%20-%20Midnight%20Club%20Los%20Angeles.patch" class="button" role="button"><i class='fas fa-download'></i> Patch Code: Xenia</a>
+<a href="https://github.com/xenia-canary/game-patches/tree/main/patches" class="button" role="button"><i class='fas fa-download'></i> Patch Code: Xenia</a>
 
 {% include_relative _supporters.md %}
