@@ -1,10 +1,11 @@
 ---
 layout: single
+excerpt: "Game Patch"
 patch_file: "_patch0/orbis/AssassinsCreedUnity-Orbis.yml"
-game_title: "Assassin's Creed: Unity"
+title: "Assassin's Creed: Unity"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

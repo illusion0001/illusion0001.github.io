@@ -1,9 +1,10 @@
 ---
 layout: single
-game_title: "Lost In Random"
+excerpt: "Game Patch"
+title: "Lost In Random"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

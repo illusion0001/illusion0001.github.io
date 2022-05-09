@@ -1,9 +1,10 @@
 ---
 layout: single
-game_title: "Crash Bandicoot 4: It's About Time"
+excerpt: "Game Patch"
+title: "Crash Bandicoot 4: It's About Time"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

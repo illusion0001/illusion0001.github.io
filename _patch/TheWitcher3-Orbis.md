@@ -1,9 +1,10 @@
 ---
 layout: single
-game_title: "The Witcher 3"
+excerpt: "Game Patch"
+title: "The Witcher 3"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

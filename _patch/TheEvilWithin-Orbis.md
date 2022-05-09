@@ -1,10 +1,11 @@
 ---
 layout: single
+excerpt: "Game Patch"
 patch_file: "_patch0/orbis/TheEvilWithin-Orbis.yml"
-game_title: "The Evil Within"
+title: "The Evil Within"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

@@ -1,10 +1,11 @@
 ---
 layout: single
+excerpt: "Game Patch"
 patch_file: "_patch0/orbis/LifeisStrange3-TrueColors-Orbis.yml"
-game_title: "Life is Strange: True Colors"
+title: "Life is Strange: True Colors"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

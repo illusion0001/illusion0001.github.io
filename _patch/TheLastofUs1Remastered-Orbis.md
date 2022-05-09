@@ -1,10 +1,11 @@
 ---
 layout: single
+excerpt: "Game Patch"
 patch_file: "_patch0/orbis/TheLastOfUs1-Orbis.yml"
-game_title: "The Last of Us: Remastered"
+title: "The Last of Us: Remastered"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

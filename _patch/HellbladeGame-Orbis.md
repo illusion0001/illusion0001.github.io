@@ -1,10 +1,11 @@
 ---
 layout: single
+excerpt: "Game Patch"
 patch_file: "_patch0/orbis/HellbladeGame-Orbis.yml"
-game_title: "Hellblade: Senua's Sacrifice"
+title: "Hellblade: Senua's Sacrifice"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

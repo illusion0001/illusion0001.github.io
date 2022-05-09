@@ -1,9 +1,10 @@
 ---
 layout: single
-game_title: "Final Fantasy VII: Remake"
+excerpt: "Game Patch"
+title: "Final Fantasy VII: Remake"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

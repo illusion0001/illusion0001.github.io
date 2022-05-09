@@ -26,5 +26,5 @@ YML syntax example: [example.yml](https://github.com/illusion0001/py-patcher/blo
 ## Patches
 
 {% for _patch in site._patch %}
-- [{{ _patch.game_title }}]({{ _patch.url }})
+- [{{ _patch.title }}]({{ _patch.url }})
 {% endfor %}

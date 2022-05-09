@@ -1,9 +1,10 @@
 ---
 layout: single
-game_title: "inFAMOUS First Light"
+excerpt: "Game Patch"
+title: "inFAMOUS First Light"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

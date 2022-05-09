@@ -1,10 +1,11 @@
 ---
 layout: single
+excerpt: "Game Patch"
 patch_file: "_patch0/orbis/EldenRingNetworkTest-Orbis.yml"
-game_title: "Elden Ring: Network Test"
+title: "Elden Ring: Network Test"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

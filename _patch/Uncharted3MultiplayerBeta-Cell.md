@@ -1,10 +1,11 @@
 ---
 layout: single
+excerpt: "Game Patch"
 patch_file: "_patch0/cell/Uncharted3MultiplayerBeta-Cell.yml"
-game_title: "Uncharted 3: Multiplayer Beta"
+title: "Uncharted 3: Multiplayer Beta"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

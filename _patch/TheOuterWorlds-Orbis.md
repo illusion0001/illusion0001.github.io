@@ -1,9 +1,10 @@
 ---
 layout: single
-game_title: "The Outer Worlds"
+excerpt: "Game Patch"
+title: "The Outer Worlds"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

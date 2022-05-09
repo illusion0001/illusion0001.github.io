@@ -1,10 +1,11 @@
 ---
 layout: single
+excerpt: "Game Patch"
 patch_file: "_patch0/orbis/Mafia1Remake-Orbis.yml"
-game_title: "Mafia: Definitive Edition"
+title: "Mafia: Definitive Edition"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

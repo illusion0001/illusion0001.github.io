@@ -1,9 +1,10 @@
 ---
 layout: single
-game_title: "Prey (2017)"
+excerpt: "Game Patch"
+title: "Prey (2017)"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

@@ -1,10 +1,11 @@
 ---
 layout: single
+excerpt: "Game Patch"
 patch_file: "_patch0/orbis/BatmanArkhamKnight-Orbis.yml"
-game_title: "Batman: Arkham Knight"
+title: "Batman: Arkham Knight"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

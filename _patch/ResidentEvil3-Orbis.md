@@ -1,10 +1,11 @@
 ---
 layout: single
+excerpt: "Game Patch"
 patch_file: "_patch0/orbis/ResidentEvil3-Orbis.yml"
-game_title: "Resident Evil: 3"
+title: "Resident Evil: 3"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

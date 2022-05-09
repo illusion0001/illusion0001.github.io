@@ -1,9 +1,10 @@
 ---
 layout: single
-game_title: "Homefront: The Revolution"
+excerpt: "Game Patch"
+title: "Homefront: The Revolution"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

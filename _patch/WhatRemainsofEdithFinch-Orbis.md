@@ -1,9 +1,10 @@
 ---
 layout: single
-game_title: "What Remains of Edith Finch"
+excerpt: "Game Patch"
+title: "What Remains of Edith Finch"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

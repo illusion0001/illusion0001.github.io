@@ -1,9 +1,10 @@
 ---
 layout: single
-game_title: "The Awesome Adventures of Captain Spirit"
+excerpt: "Game Patch"
+title: "The Awesome Adventures of Captain Spirit"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

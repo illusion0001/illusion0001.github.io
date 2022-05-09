@@ -1,9 +1,10 @@
 ---
 layout: single
-game_title: "Lichdom: Battlemage"
+excerpt: "Game Patch"
+title: "Lichdom: Battlemage"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

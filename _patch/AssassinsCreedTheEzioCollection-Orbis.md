@@ -1,9 +1,10 @@
 ---
 layout: single
-game_title: "Assassin's Creed: The Ezio Collection"
+excerpt: "Game Patch"
+title: "Assassin's Creed: The Ezio Collection"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

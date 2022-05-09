@@ -1,9 +1,10 @@
 <!-- ---
 # layout: single
-# game_title: "Need for Speed: Rivals"
+excerpt: "Game Patch"
+# title: "Need for Speed: Rivals"
 --- -->
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

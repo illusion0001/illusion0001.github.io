@@ -1,9 +1,10 @@
 ---
 layout: single
-game_title: "Crash Bandicoot N. Sane Trilogy"
+excerpt: "Game Patch"
+title: "Crash Bandicoot N. Sane Trilogy"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

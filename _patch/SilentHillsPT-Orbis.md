@@ -1,9 +1,10 @@
 ---
 layout: single
-game_title: "Silent Hills: P.T"
+excerpt: "Game Patch"
+title: "Silent Hills: P.T"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

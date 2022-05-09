@@ -1,10 +1,11 @@
 ---
 layout: single
+excerpt: "Game Patch"
 patch_file: "_patch0/orbis/Uncharted4AThiefsEnd-Orbis.yml"
-game_title: "Uncharted 4: A Thief's End"
+title: "Uncharted 4: A Thief's End"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

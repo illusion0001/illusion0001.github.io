@@ -1,9 +1,10 @@
 ---
 layout: single
-game_title: "Persona 5: Royal"
+excerpt: "Game Patch"
+title: "Persona 5: Royal"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

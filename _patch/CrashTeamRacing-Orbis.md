@@ -1,10 +1,11 @@
 ---
 layout: single
+excerpt: "Game Patch"
 patch_file: "_patch0/orbis/CrashTeamRacing-Orbis.yml"
-game_title: "Crash Team Racing Nitro-Fueled"
+title: "Crash Team Racing Nitro-Fueled"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

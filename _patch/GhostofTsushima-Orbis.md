@@ -1,9 +1,10 @@
 ---
 layout: single
-game_title: "Ghost Of Tsushima"
+excerpt: "Game Patch"
+title: "Ghost Of Tsushima"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

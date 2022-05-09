@@ -1,10 +1,11 @@
 ---
 layout: single
+excerpt: "Game Patch"
 patch_file: "_patch0/orbis/GrandTheftAutoV-Orbis.yml"
-game_title: "Grand Theft Auto V"
+title: "Grand Theft Auto V"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

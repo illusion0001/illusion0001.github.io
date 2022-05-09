@@ -1,11 +1,12 @@
 <!--
 ---
 # layout: single
-# game_title: "The Last of Us: Remastered"
+excerpt: "Game Patch"
+# title: "The Last of Us: Remastered"
 ---
 -->
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

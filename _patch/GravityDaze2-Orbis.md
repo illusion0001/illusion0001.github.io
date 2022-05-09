@@ -1,10 +1,11 @@
 ---
 layout: single
+excerpt: "Game Patch"
 patch_file: "_patch0/orbis/GravityDaze2-Orbis.yml"
-game_title: "Gravity Rush 2 (Gravity Daze 2)"
+title: "Gravity Rush 2 (Gravity Daze 2)"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

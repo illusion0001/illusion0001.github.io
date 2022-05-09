@@ -1,10 +1,11 @@
 ---
 layout: single
+excerpt: "Game Patch"
 patch_file: "_patch0/orbis/AssettoCorsaCompetizione-Orbis.yml"
-game_title: "Assetto Corsa Competizione"
+title: "Assetto Corsa Competizione"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

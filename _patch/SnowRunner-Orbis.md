@@ -1,9 +1,10 @@
 ---
 layout: single
-game_title: "SnowRunner"
+excerpt: "Game Patch"
+title: "SnowRunner"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

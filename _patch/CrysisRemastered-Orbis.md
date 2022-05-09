@@ -1,9 +1,10 @@
 ---
 layout: single
-game_title: "Crysis: Remastered"
+excerpt: "Game Patch"
+title: "Crysis: Remastered"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

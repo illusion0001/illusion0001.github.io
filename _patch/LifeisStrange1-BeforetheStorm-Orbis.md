@@ -1,9 +1,10 @@
 ---
 layout: single
-game_title: "Life is Strange: Before the Storm"
+excerpt: "Game Patch"
+title: "Life is Strange: Before the Storm"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

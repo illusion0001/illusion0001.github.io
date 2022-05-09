@@ -1,10 +1,11 @@
 ---
 layout: single
+excerpt: "Game Patch"
 patch_file: "_patch0/orbis/SekiroShadowsDieTwice-Orbis.yml"
-game_title: "Sekiro: Shadows Die Twice"
+title: "Sekiro: Shadows Die Twice"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

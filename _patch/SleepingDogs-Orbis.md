@@ -1,10 +1,11 @@
 ---
 layout: single
+excerpt: "Game Patch"
 patch_file: "_patch0/orbis/SleepingDogs-Orbis.yml"
-game_title: "Sleeping Dogs: Definitive Edition"
+title: "Sleeping Dogs: Definitive Edition"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

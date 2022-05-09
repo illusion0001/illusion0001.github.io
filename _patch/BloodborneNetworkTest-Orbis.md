@@ -1,10 +1,11 @@
 ---
 layout: single
+excerpt: "Game Patch"
 patch_file: "_patch0/orbis/BloodborneNetworkTest-Orbis.yml"
-game_title: "Bloodborne: Network Test"
+title: "Bloodborne: Network Test"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

@@ -1,10 +1,11 @@
 ---
 layout: single
+excerpt: "Game Patch"
 patch_file: "_patch0/orbis/TheLastOfUs2-Orbis.yml"
-game_title: "The Last of Us: Part II"
+title: "The Last of Us: Part II"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

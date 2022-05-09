@@ -1,10 +1,11 @@
 ---
 layout: single
+excerpt: "Game Patch"
 patch_file: "_patch0/orbis/RatchetandClankRemakeOrbis.yml"
-game_title: "Ratchet and Clank (Remake)"
+title: "Ratchet and Clank (Remake)"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

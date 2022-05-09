@@ -1,9 +1,10 @@
 ---
 layout: single
-game_title: "Dishonored 2"
+excerpt: "Game Patch"
+title: "Dishonored 2"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

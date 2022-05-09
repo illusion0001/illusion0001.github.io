@@ -1,10 +1,11 @@
 ---
 layout: single
+excerpt: "Game Patch"
 patch_file: "_patch0/orbis/DarkSoulsIIITheFireFadesEdition-Orbis.yml"
-game_title: "Dark Souls III: The Fire Fades Edition"
+title: "Dark Souls III: The Fire Fades Edition"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

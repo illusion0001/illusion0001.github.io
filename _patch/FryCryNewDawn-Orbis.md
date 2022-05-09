@@ -1,9 +1,10 @@
 ---
 layout: single
-game_title: "Fry Cry: New Dawn"
+excerpt: "Game Patch"
+title: "Fry Cry: New Dawn"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

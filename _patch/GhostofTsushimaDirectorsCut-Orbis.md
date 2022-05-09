@@ -1,10 +1,11 @@
 ---
 layout: single
+excerpt: "Game Patch"
 patch_file: "_patch0/orbis/GhostOfTsushimaDC-Orbis.yml"
-game_title: "Ghost of Tsushima: Director's Cut"
+title: "Ghost of Tsushima: Director's Cut"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

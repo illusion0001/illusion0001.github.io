@@ -1,9 +1,10 @@
 ---
 layout: single
-game_title: "Beyond: Two Souls"
+excerpt: "Game Patch"
+title: "Beyond: Two Souls"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

@@ -1,9 +1,10 @@
 ---
 layout: single
-game_title: "Detroit: Become Human"
+excerpt: "Game Patch"
+title: "Detroit: Become Human"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

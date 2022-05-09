@@ -1,10 +1,11 @@
 ---
 layout: single
+excerpt: "Game Patch"
 patch_file: "_patch0/orbis/RiseoftheTombRaider-Orbis.yml"
-game_title: "Rise of the Tomb Raider"
+title: "Rise of the Tomb Raider"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

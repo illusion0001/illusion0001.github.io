@@ -1,10 +1,11 @@
 ---
 layout: single
+excerpt: "Game Patch"
 patch_file: "_patch0/orbis/DarkSoulsIIINetworkStressTest-Orbis.yml"
-game_title: "Dark Souls III: Network Stress Test"
+title: "Dark Souls III: Network Stress Test"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

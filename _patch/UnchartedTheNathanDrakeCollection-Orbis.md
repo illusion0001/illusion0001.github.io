@@ -1,10 +1,11 @@
 ---
 layout: single
+excerpt: "Game Patch"
 patch_file: "_patch0/orbis/UnchartedTheNathanDrakeCollection-Orbis.yml"
-game_title: "Uncharted: The Nathan Drake Collection"
+title: "Uncharted: The Nathan Drake Collection"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

@@ -1,9 +1,10 @@
 ---
 layout: single
-game_title: "Driveclub"
+excerpt: "Game Patch"
+title: "Driveclub"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

@@ -1,9 +1,10 @@
 ---
 layout: single
-game_title: "Kingdom Hearts III"
+excerpt: "Game Patch"
+title: "Kingdom Hearts III"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 

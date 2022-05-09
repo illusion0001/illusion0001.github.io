@@ -1,9 +1,10 @@
 ---
 layout: single
-game_title: "Red Dead Redemption 2"
+excerpt: "Game Patch"
+title: "Red Dead Redemption 2"
 ---
 
-# {{ page.game_title }}
+<!-- # {{ page.title }} -->
 
 {% include_relative index.md %}
 
