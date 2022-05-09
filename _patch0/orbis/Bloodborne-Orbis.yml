@@ -55,30 +55,6 @@
         # 0.5 to xmm0
         - [ bytes, 0x013d3557, "c4c17a104608" ]         # VMOVSS XMM0,dword ptr [R14 + 0x8]
         - [ bytes, 0x013d355d, "e9b6f8ffff" ]           # JMP 0x013d2e18
-        # test code 0
-        - [ bytes, 0x01a44c55, "b880070000" ]           # MOV EAX,0x780
-        - [ bytes, 0x01a44c5a, "90" ]                   # NOP
-        - [ bytes, 0x01a44c5b, "90" ]                   # NOP
-        - [ bytes, 0x01a44c5c, "90" ]                   # NOP
-        - [ bytes, 0x01a44c5d, "90" ]                   # NOP
-        - [ bytes, 0x01a44c5e, "c4e1fa2ac8" ]           # VCVTSI2SS XMM1,XMM0,RAX
-        - [ bytes, 0x01a44c63, "b838040000" ]           # MOV EAX,0x438
-        - [ bytes, 0x01a44c68, "90" ]                   # NOP
-        - [ bytes, 0x01a44c69, "90" ]                   # NOP
-        - [ bytes, 0x01a44c6a, "90" ]                   # NOP
-        - [ bytes, 0x01a44c6b, "90" ]                   # NOP
-        # test code 1
-        - [ bytes, 0x01a452c7, "b880070000" ]           # MOV EAX,0x780
-        - [ bytes, 0x01a452cc, "90" ]                   # NOP
-        - [ bytes, 0x01a452cd, "90" ]                   # NOP
-        - [ bytes, 0x01a452ce, "90" ]                   # NOP
-        - [ bytes, 0x01a452cf, "90" ]                   # NOP
-        - [ bytes, 0x01a452d0, "c4e1fa2ac8" ]           # VCVTSI2SS XMM1,XMM0,RAX
-        - [ bytes, 0x01a452d5, "b838040000" ]           # MOV EAX,0x438
-        - [ bytes, 0x01a452da, "90" ]                   # NOP
-        - [ bytes, 0x01a452db, "90" ]                   # NOP
-        - [ bytes, 0x01a452dc, "90" ]                   # NOP
-        - [ bytes, 0x01a452dd, "90" ]                   # NOP
         # deltatime code cave
         - [ bytes, 0x01bf9b71, "e933010000" ]           # JMP 0x01bf9ca9
         - [ bytes, 0x01bf9b76, "90" ]                   # NOP
@@ -217,5 +193,30 @@
   author: "Lance McDonald (manfightdragon)"
   arch: orbis
   patch_list:
+        # Render Target
         - [ bytes32, 0x055289f8, 1280 ]
         - [ bytes32, 0x055289fc, 720  ]
+        # Reticle Fix
+        - [ bytes, 0x01a44c55, "b880070000" ]           # MOV EAX,0x780
+        - [ bytes, 0x01a44c5a, "90" ]                   # NOP
+        - [ bytes, 0x01a44c5b, "90" ]                   # NOP
+        - [ bytes, 0x01a44c5c, "90" ]                   # NOP
+        - [ bytes, 0x01a44c5d, "90" ]                   # NOP
+        - [ bytes, 0x01a44c5e, "c4e1fa2ac8" ]           # VCVTSI2SS XMM1,XMM0,RAX
+        - [ bytes, 0x01a44c63, "b838040000" ]           # MOV EAX,0x438
+        - [ bytes, 0x01a44c68, "90" ]                   # NOP
+        - [ bytes, 0x01a44c69, "90" ]                   # NOP
+        - [ bytes, 0x01a44c6a, "90" ]                   # NOP
+        - [ bytes, 0x01a44c6b, "90" ]                   # NOP
+        # Reticle Fix
+        - [ bytes, 0x01a452c7, "b880070000" ]           # MOV EAX,0x780
+        - [ bytes, 0x01a452cc, "90" ]                   # NOP
+        - [ bytes, 0x01a452cd, "90" ]                   # NOP
+        - [ bytes, 0x01a452ce, "90" ]                   # NOP
+        - [ bytes, 0x01a452cf, "90" ]                   # NOP
+        - [ bytes, 0x01a452d0, "c4e1fa2ac8" ]           # VCVTSI2SS XMM1,XMM0,RAX
+        - [ bytes, 0x01a452d5, "b838040000" ]           # MOV EAX,0x438
+        - [ bytes, 0x01a452da, "90" ]                   # NOP
+        - [ bytes, 0x01a452db, "90" ]                   # NOP
+        - [ bytes, 0x01a452dc, "90" ]                   # NOP
+        - [ bytes, 0x01a452dd, "90" ]                   # NOP
