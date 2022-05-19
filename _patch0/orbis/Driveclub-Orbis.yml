@@ -1,0 +1,10 @@
+- game: Driveclub
+  app_ver: "01.28"
+  patch_ver: "1.0"
+  name: "60 FPS (WIP)"
+  author: "illusion, u/Charlie_Muggins"
+  note: "No deltatime and fixed timestep."
+  arch: orbis
+  patch_list:
+        - [ bytes, 0x01184800, "b801000000" ] # MOV EAX,0x1 // fps
+        - [ bytes, 0x01184725, "48b001" ]     # MOV AL,0x1  // gamespeed 60.0f
