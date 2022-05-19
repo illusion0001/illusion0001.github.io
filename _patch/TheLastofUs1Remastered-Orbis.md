@@ -17,8 +17,6 @@ Patch file: `{{ page.patch_file }}`
 
 File to be patched:`eboot.bin`
 
-Author: [illusion](https://twitter.com/illusion0002), [ZEROx](https://github.com/Xcedf)
-
 <details>
 <summary>Contents of patch file (Click to Expand)</summary>
 

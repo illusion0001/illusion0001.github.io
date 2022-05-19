@@ -17,8 +17,6 @@ Patch file: `{{ page.patch_file }}`
 
 File to be patched: `eboot.bin`
 
-Author: [DeathRGH](https://twitter.com/DeathRGH)
-
 <details>
 <summary>Contents of patch file (Click to Expand)</summary>
 

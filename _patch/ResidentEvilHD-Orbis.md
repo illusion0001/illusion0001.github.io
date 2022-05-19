@@ -19,8 +19,6 @@ Patch file: `{{ page.patch_file }}`
 
 File to be patched: `BH1HD\bh1hd.elf`
 
-Author: [illusion](https://twitter.com/illusion0002)
-
 <details>
 <summary>Contents of patch file (Click to Expand)</summary>
 
