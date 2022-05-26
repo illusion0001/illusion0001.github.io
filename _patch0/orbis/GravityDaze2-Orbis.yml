@@ -237,8 +237,9 @@
         - [ bytes, 0x0049b1a4, "657030305f630032" ] # ds "ep00_c\02"
         - [ bytes, 0x0049b1ac, "736d3038" ]         # ds "sm08"
         - [ bytes, 0x0049b1b0, "736d3039" ]         # ds "sm09"
-        # Skip sleeping draw thread
-        - [ bytes, 0x0084ddaa, "eb0c" ] # JMP 0x0084ddb8
+        # Sleep draw thread for constant 8.33ms
+        - [ bytes, 0x0084ddb1, "9090" ] # NOP
+        - [ bytes, 0x0084ddac, "bf8d200000" ] # MOV EDI,0x208d
         # Flag startup
         - [ bytes, 0x00854ae0, "c705616a6a0102000000" ] # MOV dword ptr [0x01efb54b],0x2
         # Loading
@@ -247,21 +248,3 @@
         - [ bytes, 0x013c8f2f, "ebb5" ]           # JMP 0x013c8ee6
         # After loading
         - [ bytes, 0x013c8f80, "8b05c625b300" ] # MOV EAX,dword ptr [0x01efb54c]
-
-# Will overlap!!
-# - game: "Gravity Rush 2"
-#   app_ver: "01.11"
-#   patch_ver: "1.0"
-#   name: "Semi-functional video stutter fix (FOR PATCH DEVELEOPERS ONLY)"
-#   author: "illusion"
-# #   arch: generic_orbis
-# #   patch_list:
-#         # Semi-functional video stutter fix
-#         # DO NOT apply this as the draw thread will stall indefinitely after it has to sleep for 30ms during video playback.
-#         # For patch develeopers only!
-#         # if game_flag =! 2
-#         # Sleep drawthread for 30ms during video playback
-#         - [ bytes, 0x9F0CB, "80 3D 28 B5 A7 01 04 0F 84 D4 2C 3B 00 48 E9 DA 2C 3B 00 48 8D 74 24 40 80 3D 10 B5 A7 01 02 0F 84 3B E3 07 01 C6 05 03 B5 A7 01 04 E9 2F E3 07 01" ]
-#         # Call
-#         - [ bytes, 0x0451DA4, "48 E9 21 D3 C4 FF 90 90" ]
-#         - [ bytes, 0x111D426, "E9 B3 1C F8 FE" ]
