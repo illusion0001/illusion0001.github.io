@@ -1,221 +1,37 @@
 - game: "Gravity Rush 2"
   app_ver: "01.11"
-  patch_ver: "1.0"
+  patch_ver: "1.1"
   name: "60 FPS Unlock (WORK-IN-PROGRESS)"
   author: "illusion"
-  note: "Help wanted! Check the rest of the game and add it to lookup table."
+  note: "Help wanted! Check the rest of the game and add it to lookup table.\nVersion 1.1 since it is a rewrite now has deltatime but lacks level check."
   arch: orbis
   patch_list:
-        # Framerate
-        - [ bytes, 0x00846980, "be00000000" ]   # MOV ESI,0x0
-        # Flag Check Call
-        - [ bytes, 0x01464e4a, "48e82d6103ff" ] # CALL 0x0049af7d
-        # Level Check Call
-        - [ bytes, 0x01627921, "e82b36e7fe" ]   # CALL 0x0049af51
-        - [ bytes, 0x01627926, "eb18" ]         # JMP 0x01627940
-        # Level Check Function
-        # Todo: figure out a better area for temporary memory
-        # is the softlock during ep00_c caused by this location?
-        - [ bytes, 0x0049af50, "c3" ]               # RET
-        - [ bytes, 0x0049af51, "43c6043c00" ]       # MOV byte ptr [R12 + R15*0x1],0x0
-        - [ bytes, 0x0049af56, "6641817c24006570" ] # CMP word ptr [R12 + 0x0],0x7065
-        - [ bytes, 0x0049af5e, "e9ab010000" ]       # JMP 0x0049b10e
-        - [ bytes, 0x0049af63, "eb7c" ]             # JMP 0x0049afe1
-        - [ bytes, 0x0049af65, "8935ad05a601" ]     # MOV dword ptr [0x01efb518],ESI
-        - [ bytes, 0x0049af6b, "e96a000000" ]       # JMP 0x0049afda
-        - [ bytes, 0x0049af70, "498b0c24" ]         # MOV RCX,qword ptr [R12]
-        - [ bytes, 0x0049af74, "48890d8505a601" ]   # MOV qword ptr [0x01efb500],RCX
-        - [ bytes, 0x0049af7b, "ebe6" ]             # JMP 0x0049af63
-        - [ bytes, 0x0049af7d, "4c89158405a601" ]   # MOV qword ptr [0x01efb508],R10
-        - [ bytes, 0x0049af84, "48890d8505a601" ]   # MOV qword ptr [0x01efb510],RCX
-        - [ bytes, 0x0049af8b, "89358705a601" ]     # MOV dword ptr [0x01efb518],ESI
-        - [ bytes, 0x0049af91, "893d8505a601" ]     # MOV dword ptr [0x01efb51c],EDI
-        - [ bytes, 0x0049af97, "4c8d15ad05a601" ]   # LEA R10,[0x1efb54b]
-        - [ bytes, 0x0049af9e, "488d0da705a601" ]   # LEA RCX,[0x1efb54c]
-        - [ bytes, 0x0049afa5, "bf0001114e" ]       # MOV EDI,0x4e110100
-        - [ bytes, 0x0049afaa, "41803a02" ]         # CMP byte ptr [R10],0x2
-        - [ bytes, 0x0049afae, "0f84cc000000" ]     # JZ 0x0049b080
-        - [ bytes, 0x0049afb4, "41803a01" ]         # CMP byte ptr [R10],0x1
-        - [ bytes, 0x0049afb8, "0f84f8000000" ]     # JZ 0x0049b0b6
-        - [ bytes, 0x0049afbe, "41803a03" ]         # CMP byte ptr [R10],0x3
-        - [ bytes, 0x0049afc2, "0f84d9000000" ]     # JZ 0x0049b0a1
-        - [ bytes, 0x0049afc8, "488b0d4105a601" ]   # MOV RCX,qword ptr [0x01efb510]
-        - [ bytes, 0x0049afcf, "8b3d4705a601" ]     # MOV EDI,dword ptr [0x01efb51c]
-        - [ bytes, 0x0049afd5, "e98bffffff" ]       # JMP 0x0049af65
-        - [ bytes, 0x0049afda, "4889fb" ]           # MOV RBX,RDI
-        - [ bytes, 0x0049afdd, "488b03" ]           # MOV RAX,qword ptr [RBX]
-        - [ bytes, 0x0049afe0, "c3" ]               # RET
-        - [ bytes, 0x0049afe1, "48893d4805a601" ]   # MOV qword ptr [0x01efb530],RDI
-        - [ bytes, 0x0049afe8, "4889354905a601" ]   # MOV qword ptr [0x01efb538],RSI
-        - [ bytes, 0x0049afef, "488d3d7a010000" ]   # LEA RDI,[0x49b170]
-        - [ bytes, 0x0049aff6, "488d354e05a601" ]   # LEA RSI,[0x1efb54b]
-        - [ bytes, 0x0049affd, "390c27" ]           # CMP dword ptr [RDI],ECX
-        - [ bytes, 0x0049b000, "747c" ]             # JZ 0x0049b07e
-        - [ bytes, 0x0049b002, "394f08" ]           # CMP dword ptr [RDI + 0x8],ECX
-        - [ bytes, 0x0049b005, "90" ]               # NOP
-        - [ bytes, 0x0049b006, "7476" ]             # JZ 0x0049b07e
-        - [ bytes, 0x0049b008, "48394f10" ]         # CMP qword ptr [RDI + 0x10],RCX
-        - [ bytes, 0x0049b00c, "7470" ]             # JZ 0x0049b07e
-        - [ bytes, 0x0049b00e, "48394f18" ]         # CMP qword ptr [RDI + 0x18],RCX
-        - [ bytes, 0x0049b012, "746a" ]             # JZ 0x0049b07e
-        - [ bytes, 0x0049b014, "48394f20" ]         # CMP qword ptr [RDI + 0x20],RCX
-        - [ bytes, 0x0049b018, "7464" ]             # JZ 0x0049b07e
-        - [ bytes, 0x0049b01a, "394f28" ]           # CMP dword ptr [RDI + 0x28],ECX
-        - [ bytes, 0x0049b01d, "745f" ]             # JZ 0x0049b07e
-        - [ bytes, 0x0049b01f, "48394f2c" ]         # CMP qword ptr [RDI + 0x2c],RCX
-        - [ bytes, 0x0049b023, "7459" ]             # JZ 0x0049b07e
-        - [ bytes, 0x0049b025, "48394f34" ]         # CMP qword ptr [RDI + 0x34],RCX
-        - [ bytes, 0x0049b029, "7453" ]             # JZ 0x0049b07e
-        - [ bytes, 0x0049b02b, "394f3c" ]           # CMP dword ptr [RDI + 0x3c],ECX
-        - [ bytes, 0x0049b02e, "744e" ]             # JZ 0x0049b07e
-        - [ bytes, 0x0049b030, "394f40" ]           # CMP dword ptr [RDI + 0x40],ECX
-        - [ bytes, 0x0049b033, "7449" ]             # JZ 0x0049b07e
-        - [ bytes, 0x0049b035, "90" ]               # NOP
-        - [ bytes, 0x0049b036, "90" ]               # NOP
-        - [ bytes, 0x0049b037, "90" ]               # NOP
-        - [ bytes, 0x0049b038, "90" ]               # NOP
-        - [ bytes, 0x0049b039, "90" ]               # NOP
-        - [ bytes, 0x0049b03a, "90" ]               # NOP
-        - [ bytes, 0x0049b03b, "90" ]               # NOP
-        - [ bytes, 0x0049b03c, "90" ]               # NOP
-        - [ bytes, 0x0049b03d, "90" ]               # NOP
-        - [ bytes, 0x0049b03e, "90" ]               # NOP
-        - [ bytes, 0x0049b03f, "90" ]               # NOP
-        - [ bytes, 0x0049b040, "90" ]               # NOP
-        - [ bytes, 0x0049b041, "90" ]               # NOP
-        - [ bytes, 0x0049b042, "90" ]               # NOP
-        - [ bytes, 0x0049b043, "90" ]               # NOP
-        - [ bytes, 0x0049b044, "90" ]               # NOP
-        - [ bytes, 0x0049b045, "90" ]               # NOP
-        - [ bytes, 0x0049b046, "90" ]               # NOP
-        - [ bytes, 0x0049b047, "90" ]               # NOP
-        - [ bytes, 0x0049b048, "90" ]               # NOP
-        - [ bytes, 0x0049b049, "90" ]               # NOP
-        - [ bytes, 0x0049b04a, "90" ]               # NOP
-        - [ bytes, 0x0049b04b, "90" ]               # NOP
-        - [ bytes, 0x0049b04c, "90" ]               # NOP
-        - [ bytes, 0x0049b04d, "90" ]               # NOP
-        - [ bytes, 0x0049b04e, "90" ]               # NOP
-        - [ bytes, 0x0049b04f, "90" ]               # NOP
-        - [ bytes, 0x0049b050, "90" ]               # NOP
-        - [ bytes, 0x0049b051, "90" ]               # NOP
-        - [ bytes, 0x0049b052, "90" ]               # NOP
-        - [ bytes, 0x0049b053, "90" ]               # NOP
-        - [ bytes, 0x0049b054, "90" ]               # NOP
-        - [ bytes, 0x0049b055, "90" ]               # NOP
-        - [ bytes, 0x0049b056, "90" ]               # NOP
-        - [ bytes, 0x0049b057, "90" ]               # NOP
-        - [ bytes, 0x0049b058, "90" ]               # NOP
-        - [ bytes, 0x0049b059, "90" ]               # NOP
-        - [ bytes, 0x0049b05a, "90" ]               # NOP
-        - [ bytes, 0x0049b05b, "90" ]               # NOP
-        - [ bytes, 0x0049b05c, "90" ]               # NOP
-        - [ bytes, 0x0049b05d, "90" ]               # NOP
-        - [ bytes, 0x0049b05e, "90" ]               # NOP
-        - [ bytes, 0x0049b05f, "90" ]               # NOP
-        - [ bytes, 0x0049b060, "90" ]               # NOP
-        - [ bytes, 0x0049b061, "90" ]               # NOP
-        - [ bytes, 0x0049b062, "90" ]               # NOP
-        - [ bytes, 0x0049b063, "90" ]               # NOP
-        - [ bytes, 0x0049b064, "90" ]               # NOP
-        - [ bytes, 0x0049b065, "90" ]               # NOP
-        - [ bytes, 0x0049b066, "90" ]               # NOP
-        - [ bytes, 0x0049b067, "90" ]               # NOP
-        - [ bytes, 0x0049b068, "90" ]               # NOP
-        - [ bytes, 0x0049b069, "90" ]               # NOP
-        - [ bytes, 0x0049b06a, "90" ]               # NOP
-        - [ bytes, 0x0049b06b, "90" ]               # NOP
-        - [ bytes, 0x0049b06c, "90" ]               # NOP
-        - [ bytes, 0x0049b06d, "90" ]               # NOP
-        - [ bytes, 0x0049b06e, "90" ]               # NOP
-        - [ bytes, 0x0049b06f, "90" ]               # NOP
-        - [ bytes, 0x0049b070, "90" ]               # NOP
-        - [ bytes, 0x0049b071, "90" ]               # NOP
-        - [ bytes, 0x0049b072, "90" ]               # NOP
-        - [ bytes, 0x0049b073, "90" ]               # NOP
-        - [ bytes, 0x0049b074, "90" ]               # NOP
-        - [ bytes, 0x0049b075, "90" ]               # NOP
-        - [ bytes, 0x0049b076, "90" ]               # NOP
-        - [ bytes, 0x0049b077, "90" ]               # NOP
-        - [ bytes, 0x0049b078, "90" ]               # NOP
-        - [ bytes, 0x0049b079, "90" ]               # NOP
-        - [ bytes, 0x0049b07a, "90" ]               # NOP
-        - [ bytes, 0x0049b07b, "90" ]               # NOP
-        - [ bytes, 0x0049b07c, "eb79" ]             # JMP 0x0049b0f7
-        - [ bytes, 0x0049b07e, "eb7c" ]             # JMP 0x0049b0fc
-        - [ bytes, 0x0049b080, "4c8b158104a601" ]   # MOV R10,qword ptr [0x01efb508]
-        - [ bytes, 0x0049b087, "488b0dbe04a601" ]   # MOV RCX,qword ptr [0x01efb54c]
-        - [ bytes, 0x0049b08e, "8b358404a601" ]     # MOV ESI,dword ptr [0x01efb518]
-        - [ bytes, 0x0049b094, "8b3d8204a601" ]     # MOV EDI,dword ptr [0x01efb51c]
-        - [ bytes, 0x0049b09a, "4889fb" ]           # MOV RBX,RDI
-        - [ bytes, 0x0049b09d, "488b03" ]           # MOV RAX,qword ptr [RBX]
-        - [ bytes, 0x0049b0a0, "c3" ]               # RET
-        - [ bytes, 0x0049b0a1, "c7018988083d" ]     # MOV dword ptr [RCX],0x3d088889
-        - [ bytes, 0x0049b0a7, "be01000000" ]       # MOV ESI,0x1
-        - [ bytes, 0x0049b0ac, "e85fc93501" ]       # CALL 0x017f7a10
-        - [ bytes, 0x0049b0b1, "e9caffffff" ]       # JMP 0x0049b080
-        - [ bytes, 0x0049b0b6, "c7018988883c" ]     # MOV dword ptr [RCX],0x3c888889
-        - [ bytes, 0x0049b0bc, "be00000000" ]       # MOV ESI,0x0
-        - [ bytes, 0x0049b0c1, "e84ac93501" ]       # CALL 0x017f7a10
-        - [ bytes, 0x0049b0c6, "e9b5ffffff" ]       # JMP 0x0049b080
-        - [ bytes, 0x0049b0cb, "90" ]               # NOP
-        - [ bytes, 0x0049b0cc, "90" ]               # NOP
-        - [ bytes, 0x0049b0cd, "90" ]               # NOP
-        - [ bytes, 0x0049b0ce, "90" ]               # NOP
-        - [ bytes, 0x0049b0cf, "90" ]               # NOP
-        - [ bytes, 0x0049b0d0, "90" ]               # NOP
-        - [ bytes, 0x0049b0d1, "90" ]               # NOP
-        - [ bytes, 0x0049b0d2, "90" ]               # NOP
-        - [ bytes, 0x0049b0d3, "90" ]               # NOP
-        - [ bytes, 0x0049b0d4, "90" ]               # NOP
-        - [ bytes, 0x0049b0d5, "90" ]               # NOP
-        - [ bytes, 0x0049b0d6, "90" ]               # NOP
-        - [ bytes, 0x0049b0d7, "90" ]               # NOP
-        - [ bytes, 0x0049b0d8, "90" ]               # NOP
-        - [ bytes, 0x0049b0d9, "90" ]               # NOP
-        - [ bytes, 0x0049b0da, "90" ]               # NOP
-        - [ bytes, 0x0049b0db, "90" ]               # NOP
-        - [ bytes, 0x0049b0dc, "90" ]               # NOP
-        - [ bytes, 0x0049b0dd, "90" ]               # NOP
-        - [ bytes, 0x0049b0de, "90" ]               # NOP
-        - [ bytes, 0x0049b0df, "90" ]               # NOP
-        - [ bytes, 0x0049b0e0, "90" ]               # NOP
-        - [ bytes, 0x0049b0e1, "90" ]               # NOP
-        - [ bytes, 0x0049b0e2, "90" ]               # NOP
-        - [ bytes, 0x0049b0e3, "90" ]               # NOP
-        - [ bytes, 0x0049b0e4, "90" ]               # NOP
-        - [ bytes, 0x0049b0e5, "90" ]               # NOP
-        - [ bytes, 0x0049b0e6, "90" ]               # NOP
-        - [ bytes, 0x0049b0e7, "90" ]               # NOP
-        - [ bytes, 0x0049b0e8, "90" ]               # NOP
-        - [ bytes, 0x0049b0e9, "90" ]               # NOP
-        - [ bytes, 0x0049b0ea, "90" ]               # NOP
-        - [ bytes, 0x0049b0eb, "90" ]               # NOP
-        - [ bytes, 0x0049b0ec, "90" ]               # NOP
-        - [ bytes, 0x0049b0ed, "90" ]               # NOP
-        - [ bytes, 0x0049b0ee, "90" ]               # NOP
-        - [ bytes, 0x0049b0ef, "90" ]               # NOP
-        - [ bytes, 0x0049b0f0, "90" ]               # NOP
-        - [ bytes, 0x0049b0f1, "90" ]               # NOP
-        - [ bytes, 0x0049b0f2, "90" ]               # NOP
-        - [ bytes, 0x0049b0f3, "90" ]               # NOP
-        - [ bytes, 0x0049b0f4, "90" ]               # NOP
-        - [ bytes, 0x0049b0f5, "90" ]               # NOP
-        - [ bytes, 0x0049b0f6, "90" ]               # NOP
-        - [ bytes, 0x0049b0f7, "c60601" ]           # MOV byte ptr [RSI],0x1
-        - [ bytes, 0x0049b0fa, "eb03" ]             # JMP 0x0049b0ff
-        - [ bytes, 0x0049b0fc, "c60603" ]           # MOV byte ptr [RSI],0x3
-        - [ bytes, 0x0049b0ff, "488b3d2a04a601" ]   # MOV RDI,qword ptr [0x01efb530]
-        - [ bytes, 0x0049b106, "488b352b04a601" ]   # MOV RSI,qword ptr [0x01efb538]
-        - [ bytes, 0x0049b10d, "c3" ]               # RET
-        - [ bytes, 0x0049b10e, "0f845cfeffff" ]     # JZ 0x0049af70
-        - [ bytes, 0x0049b114, "6641817c2400736d" ] # CMP word ptr [R12 + 0x0],0x6d73
-        - [ bytes, 0x0049b11c, "0f844efeffff" ]     # JZ 0x0049af70
-        - [ bytes, 0x0049b122, "6641817c24006674" ] # CMP word ptr [R12 + 0x0],0x7466
-        - [ bytes, 0x0049b12a, "0f8440feffff" ]     # JZ 0x0049af70
-        - [ bytes, 0x0049b130, "41813c246d696e65" ] # CMP dword ptr [R12],0x656e696d
-        - [ bytes, 0x0049b138, "0f8432feffff" ]     # JZ 0x0049af70
-        - [ bytes, 0x0049b13e, "e99dfeffff" ]       # JMP 0x0049afe0
+        # Sleep draw thread for constant 8.33ms
+        - [ bytes, 0x0084ddb1, "9090" ] # NOP
+        - [ bytes, 0x0084ddac, "bf8d200000" ] # MOV EDI,0x208d
+        - [ bytes, 0x00846980, "be00000000" ] # MOV ESI,0x0
+        - [ bytes32, 0x01802d90, 0x49742400 ] # 1000000.0f # to be div'd
+        # Check if game is loadding
+        - [ bytes, 0x0085e9cc, "e8cd43fa00" ] # CALL 0x01802d9e
+        - [ bytes, 0x01802d9e, "803d9b866f0001" ]   # CMP byte ptr [0x01efb440],0x1 # is level loading?
+        - [ bytes, 0x01802da5, "7412" ]             # JZ 0x01802db9
+        # if != 1, write deltatime
+        - [ bytes, 0x01802da7, "c5222a1d19587500" ] # VCVTSI2SS XMM11,XMM11,dword ptr [0x01f585c8]
+        - [ bytes, 0x01802daf, "c5a25e0dd9ffffff" ] # VDIVSS XMM1,XMM11,dword ptr [0x01802d90]
+        - [ bytes, 0x01802db7, "eb08" ]             # JMP 0x01802dc1
+        # else
+        - [ bytes, 0x01802db9, "c5fa100d63836f00" ] # VMOVSS XMM1,dword ptr [0x01efb124]
+        - [ bytes, 0x01802dc1, "c3" ]               # RET
+        # level load start
+        - [ bytes, 0x013c8f2f, "e8479e4300" ]     # CALL 0x01802d7b
+        - [ bytes, 0x013c8f34, "eb1b" ]           # JMP 0x013c8f51
+        - [ bytes, 0x01802d7b, "c605be866f0001" ] # MOV byte ptr [0x01efb440],0x1
+        - [ bytes, 0x01802d82, "c3" ]             # RET
+          # level load done
+        - [ bytes, 0x013c8f8e, "ebca" ]       # JMP 0x013c8f5a
+        - [ bytes, 0x013c8f5a, "e9249e4300" ] # JMP 0x01802d83
+        - [ bytes, 0x01802d83, "c605b6866f0002" ] # MOV byte ptr [0x01efb440],0x2
+        - [ bytes, 0x01802d8a, "c3" ]             # RET
         # Currently known softlock level lookup table.
         # ep01_d (script failure)
         # ep02_a (igc deadlock)
@@ -226,25 +42,3 @@
         # comic sections all have the same level name (ep01_com)
         # todo: playthrough the story episodes and add any sections that
         # softlock the game to this lookup table
-        # todo: onvert these to utf8
-        - [ bytes, 0x0049b170, "657030315f640078" ] # ds "ep01_d\0x"
-        - [ bytes, 0x0049b178, "657030315f636f6d" ] # ds "ep01_com"
-        - [ bytes, 0x0049b180, "657030325f610078" ] # ds "ep02_a\0x"
-        - [ bytes, 0x0049b188, "657030325f610035" ] # ds "ep02_a\05"
-        - [ bytes, 0x0049b190, "657030315f303034" ] # ds "ep01_004"
-        - [ bytes, 0x0049b198, "65703033" ]         # ds "ep03"
-        - [ bytes, 0x0049b19c, "657030305f630078" ] # ds "ep00_c\0x"
-        - [ bytes, 0x0049b1a4, "657030305f630032" ] # ds "ep00_c\02"
-        - [ bytes, 0x0049b1ac, "736d3038" ]         # ds "sm08"
-        - [ bytes, 0x0049b1b0, "736d3039" ]         # ds "sm09"
-        # Sleep draw thread for constant 8.33ms
-        - [ bytes, 0x0084ddb1, "9090" ] # NOP
-        - [ bytes, 0x0084ddac, "bf8d200000" ] # MOV EDI,0x208d
-        # Flag startup
-        - [ bytes, 0x00854ae0, "c705616a6a0102000000" ] # MOV dword ptr [0x01efb54b],0x2
-        # Loading
-        - [ bytes, 0x013c8ee6, "c6055e26b30002" ] # MOV byte ptr [0x01efb54b],0x2
-        - [ bytes, 0x013c8eed, "eb62" ]           # JMP 0x013c8f51
-        - [ bytes, 0x013c8f2f, "ebb5" ]           # JMP 0x013c8ee6
-        # After loading
-        - [ bytes, 0x013c8f80, "8b05c625b300" ] # MOV EAX,dword ptr [0x01efb54c]
