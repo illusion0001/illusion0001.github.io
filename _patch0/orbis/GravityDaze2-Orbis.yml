@@ -7,13 +7,15 @@
   arch: orbis
   patch_list:
         # Currently known softlock level lookup table.
+        # ep00_c (igc softlock)
         # ep01_d (script failure)
-        # ep02_a (igc deadlock)
-        # ep03_? (script failure, need to double check)
+        # ep02_a (igc softlock)
+        # ep03_p (script failure)
         # sm_08  (double speed timer makes it unplayable)
         # sm_09  (script failure)
-        # todo: playthrough story episodes and add any sections that
-        # softlock the game to this lookup table
+        # todo: playthrough story episodes and add any sections that softlock the game to this table
+
+        # Framerate init
         - [ bytes, 0x00846980, "be00000000" ] # MOV ESI,0x0
         # Sleep draw thread for constant 8.33ms
         - [ bytes, 0x0084dda4, "90" ]         # NOP
@@ -27,6 +29,7 @@
         - [ bytes, 0x0084ddac, "90" ]         # NOP
         - [ bytes, 0x0084ddad, "90" ]         # NOP
         - [ bytes, 0x0084ddae, "bf8d200000" ] # MOV EDI,0x208d
+        # deltatime for game logic
         - [ bytes, 0x0085e9cc, "e8cd43fa00" ]       # CALL 0x01802d9e
         - [ bytes32, 0x01802d90, 0x49742400 ]       # 1000000.0f # to be div'd
         - [ bytes, 0x01802d9e, "803d9b866f0001" ]   # CMP byte ptr [0x01efb440],0x1 # is level loading?
@@ -41,7 +44,7 @@
         - [ bytes, 0x013c8f34, "eb1b" ]           # JMP 0x013c8f51
         - [ bytes, 0x01802d7b, "c605be866f0001" ] # MOV byte ptr [0x01efb440],0x1
         - [ bytes, 0x01802d82, "c3" ]             # RET
-          # level load done
+        # level load done
         - [ bytes, 0x013c8f8e, "ebca" ]           # JMP 0x013c8f5a
         - [ bytes, 0x013c8f5a, "e9249e4300" ]     # JMP 0x01802d83
         - [ bytes, 0x01802d83, "c605b6866f0002" ] # MOV byte ptr [0x01efb440],0x2
@@ -78,7 +81,7 @@
         - [ utf8, 0x01803135, "ep02_a\x00\x00" ] # beginning of episode 2
         - [ utf8, 0x0180313d, "sm08\x00" ]       # side mission on ship
         - [ utf8, 0x01803142, "sm09\x00" ]       # side mission taking photo
-        - [ utf8, 0x01803147, "ep03\x00" ]       # one of the puzzles during episode 3
+        - [ utf8, 0x01803147, "ep03_p\x00\x00" ] # race to mine ore during episode 3
         # level check function
         - [ bytes, 0x01464e4a, "48e8e4e13900" ]   # CALL 0x01803034
         - [ bytes, 0x01802fec, "4889058d846f00" ] # MOV qword ptr [0x01efb480],RAX
@@ -108,9 +111,9 @@
         - [ bytes, 0x0180306c, "7462" ]           # JZ 0x018030d0
         - [ bytes, 0x0180306e, "394b1d" ]         # CMP dword ptr [RBX + 0x1d],ECX
         - [ bytes, 0x01803071, "745d" ]           # JZ 0x018030d0
-        - [ bytes, 0x01803073, "394b22" ]         # CMP dword ptr [RBX + 0x22],ECX
-        - [ bytes, 0x01803076, "7458" ]           # JZ 0x018030d0
-        - [ bytes, 0x01803078, "eb74" ]           # JMP 0x018030ee
+        - [ bytes, 0x01803073, "48394b22" ]       # CMP qword ptr [RBX + 0x22],RCX
+        - [ bytes, 0x01803077, "7457" ]           # JZ 0x018030d0
+        - [ bytes, 0x01803079, "eb73" ]           # JMP 0x018030ee
         - [ bytes, 0x018030d0, "c60569836f0001" ] # MOV byte ptr [0x01efb440],0x1
         - [ bytes, 0x018030d7, "eb15" ]           # JMP 0x018030ee
         - [ bytes, 0x018030ee, "90" ]             # NOP
