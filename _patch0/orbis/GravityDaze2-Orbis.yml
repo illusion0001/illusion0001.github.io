@@ -1,25 +1,39 @@
-- game: "Gravity Rush 2"
+- game: "Gravity Rush (Gravity Daze): 2"
   app_ver: "01.11"
-  patch_ver: "1.1"
+  patch_ver: "2.0"
   name: "60 FPS Unlock (WORK-IN-PROGRESS)"
   author: "illusion"
-  note: "Help wanted! Check the rest of the game and add it to lookup table.\nVersion 1.1 since it is a rewrite now has deltatime but lacks level check."
+  note: "Help wanted! Check the rest of the game and add it to lookup table.\nVersion 2.0 now features deltatime."
   arch: orbis
   patch_list:
-        # Sleep draw thread for constant 8.33ms
-        - [ bytes, 0x0084ddb1, "9090" ] # NOP
-        - [ bytes, 0x0084ddac, "bf8d200000" ] # MOV EDI,0x208d
+        # Currently known softlock level lookup table.
+        # ep01_d (script failure)
+        # ep02_a (igc deadlock)
+        # ep03_? (script failure, need to double check)
+        # sm_08  (double speed timer makes it unplayable)
+        # sm_09  (script failure)
+        # todo: playthrough story episodes and add any sections that
+        # softlock the game to this lookup table
         - [ bytes, 0x00846980, "be00000000" ] # MOV ESI,0x0
-        - [ bytes32, 0x01802d90, 0x49742400 ] # 1000000.0f # to be div'd
-        # Check if game is loadding
-        - [ bytes, 0x0085e9cc, "e8cd43fa00" ] # CALL 0x01802d9e
+        # Sleep draw thread for constant 8.33ms
+        - [ bytes, 0x0084dda4, "90" ]         # NOP
+        - [ bytes, 0x0084dda5, "90" ]         # NOP
+        - [ bytes, 0x0084dda6, "90" ]         # NOP
+        - [ bytes, 0x0084dda7, "90" ]         # NOP
+        - [ bytes, 0x0084dda8, "90" ]         # NOP
+        - [ bytes, 0x0084dda9, "90" ]         # NOP
+        - [ bytes, 0x0084ddaa, "90" ]         # NOP
+        - [ bytes, 0x0084ddab, "90" ]         # NOP
+        - [ bytes, 0x0084ddac, "90" ]         # NOP
+        - [ bytes, 0x0084ddad, "90" ]         # NOP
+        - [ bytes, 0x0084ddae, "bf8d200000" ] # MOV EDI,0x208d
+        - [ bytes, 0x0085e9cc, "e8cd43fa00" ]       # CALL 0x01802d9e
+        - [ bytes32, 0x01802d90, 0x49742400 ]       # 1000000.0f # to be div'd
         - [ bytes, 0x01802d9e, "803d9b866f0001" ]   # CMP byte ptr [0x01efb440],0x1 # is level loading?
         - [ bytes, 0x01802da5, "7412" ]             # JZ 0x01802db9
-        # if != 1, write deltatime
         - [ bytes, 0x01802da7, "c5222a1d19587500" ] # VCVTSI2SS XMM11,XMM11,dword ptr [0x01f585c8]
         - [ bytes, 0x01802daf, "c5a25e0dd9ffffff" ] # VDIVSS XMM1,XMM11,dword ptr [0x01802d90]
         - [ bytes, 0x01802db7, "eb08" ]             # JMP 0x01802dc1
-        # else
         - [ bytes, 0x01802db9, "c5fa100d63836f00" ] # VMOVSS XMM1,dword ptr [0x01efb124]
         - [ bytes, 0x01802dc1, "c3" ]               # RET
         # level load start
@@ -28,17 +42,88 @@
         - [ bytes, 0x01802d7b, "c605be866f0001" ] # MOV byte ptr [0x01efb440],0x1
         - [ bytes, 0x01802d82, "c3" ]             # RET
           # level load done
-        - [ bytes, 0x013c8f8e, "ebca" ]       # JMP 0x013c8f5a
-        - [ bytes, 0x013c8f5a, "e9249e4300" ] # JMP 0x01802d83
+        - [ bytes, 0x013c8f8e, "ebca" ]           # JMP 0x013c8f5a
+        - [ bytes, 0x013c8f5a, "e9249e4300" ]     # JMP 0x01802d83
         - [ bytes, 0x01802d83, "c605b6866f0002" ] # MOV byte ptr [0x01efb440],0x2
         - [ bytes, 0x01802d8a, "c3" ]             # RET
-        # Currently known softlock level lookup table.
-        # ep01_d (script failure)
-        # ep02_a (igc deadlock)
-        # ep03_* (script failure)
-        # sm_08  (double speed timer makes it unplayable)
-        # sm_09  (script failure)
-        # removed check for _d and _com for ep01 because there are too many collision just to fix ep01_d
-        # comic sections all have the same level name (ep01_com)
-        # todo: playthrough the story episodes and add any sections that
-        # softlock the game to this lookup table
+        # level save function
+        - [ bytes, 0x01627921, "e81cb41d00" ]       # CALL 0x01802d42
+        - [ bytes, 0x01802d42, "43c6043c00" ]       # MOV byte ptr [R12 + R15*0x1],0x0
+        - [ bytes, 0x01802d47, "e929020000" ]       # JMP 0x01802f75
+        - [ bytes, 0x01802d54, "488b0db5ffffff" ]   # MOV RCX,qword ptr [0x01802d10]
+        - [ bytes, 0x01802d5b, "493b0c24" ]         # CMP RCX,qword ptr [R12]
+        - [ bytes, 0x01802d5f, "740b" ]             # JZ 0x01802d6c
+        - [ bytes, 0x01802d61, "498b0c24" ]         # MOV RCX,qword ptr [R12]
+        - [ bytes, 0x01802d65, "48890dd8866f00" ]   # MOV qword ptr [0x01efb444],RCX
+        - [ bytes, 0x01802d6c, "c3" ]               # RET
+        - [ bytes, 0x01802f75, "488d0d4f000000" ]   # LEA RCX,[0x1802fcb]
+        - [ bytes, 0x01802f7c, "6641813c24736d" ]   # CMP word ptr [R12],0x6d73
+        - [ bytes, 0x01802f83, "7446" ]             # JZ 0x01802fcb
+        - [ bytes, 0x01802f85, "6641817c24006674" ] # CMP word ptr [R12 + 0x0],0x7466
+        - [ bytes, 0x01802f8d, "743c" ]             # JZ 0x01802fcb
+        - [ bytes, 0x01802f8f, "41813c246d696e65" ] # CMP dword ptr [R12],0x656e696d
+        - [ bytes, 0x01802f97, "7432" ]             # JZ 0x01802fcb
+        - [ bytes, 0x01802f99, "6641817c24006570" ] # CMP word ptr [R12 + 0x0],0x7065
+        - [ bytes, 0x01802fa1, "7428" ]             # JZ 0x01802fcb
+        - [ bytes, 0x01802fa3, "6641817c2400646d" ] # CMP word ptr [R12 + 0x0],0x6d64
+        - [ bytes, 0x01802fab, "741e" ]             # JZ 0x01802fcb
+        - [ bytes, 0x01802fad, "eb14" ]             # JMP 0x01802fc3
+        - [ bytes, 0x01802fc3, "c3" ]               # RET
+        - [ bytes, 0x01802fcb, "e984fdffff" ]       # JMP 0x01802d54
+        # forbidden level names
+        - [ utf8, 0x01802d10, "ep01_com\x00" ]
+        # level names to run at 30fps
+        - [ utf8, 0x01803125, "ep00_c\x00\x00" ] # end of intro
+        - [ utf8, 0x0180312d, "ep01_d\x00\x00" ] # end of episode 1
+        - [ utf8, 0x01803135, "ep02_a\x00\x00" ] # beginning of episode 2
+        - [ utf8, 0x0180313d, "sm08\x00" ]       # side mission on ship
+        - [ utf8, 0x01803142, "sm09\x00" ]       # side mission taking photo
+        - [ utf8, 0x01803147, "ep03\x00" ]       # one of the puzzles during episode 3
+        # level check function
+        - [ bytes, 0x01464e4a, "48e8e4e13900" ]   # CALL 0x01803034
+        - [ bytes, 0x01802fec, "4889058d846f00" ] # MOV qword ptr [0x01efb480],RAX
+        - [ bytes, 0x01802ff3, "48891d8e846f00" ] # MOV qword ptr [0x01efb488],RBX
+        - [ bytes, 0x01802ffa, "48893d8f846f00" ] # MOV qword ptr [0x01efb490],RDI
+        - [ bytes, 0x01803001, "48891590846f00" ] # MOV qword ptr [0x01efb498],RDX
+        - [ bytes, 0x01803008, "eb2c" ]           # JMP 0x01803036
+        - [ bytes, 0x0180300a, "488b056f846f00" ] # MOV RAX,qword ptr [0x01efb480]
+        - [ bytes, 0x01803011, "488b1d70846f00" ] # MOV RBX,qword ptr [0x01efb488]
+        - [ bytes, 0x01803018, "488b3d71846f00" ] # MOV RDI,qword ptr [0x01efb490]
+        - [ bytes, 0x0180301f, "488b1572846f00" ] # MOV RDX,qword ptr [0x01efb498]
+        - [ bytes, 0x01803026, "c3" ]             # RET
+        - [ bytes, 0x01803034, "ebb6" ]           # JMP 0x01802fec
+        - [ bytes, 0x01803036, "488d0503846f00" ] # LEA RAX,[0x1efb440]
+        - [ bytes, 0x0180303d, "488d1de1000000" ] # LEA RBX,[0x1803125]
+        - [ bytes, 0x01803044, "c6400b00" ]       # MOV byte ptr [RAX + 0xb],0x0
+        - [ bytes, 0x01803048, "eb06" ]           # JMP 0x01803050
+        - [ bytes, 0x01803050, "48894814" ]       # MOV qword ptr [RAX + 0x14],RCX
+        - [ bytes, 0x01803054, "488b4804" ]       # MOV RCX,qword ptr [RAX + 0x4]
+        - [ bytes, 0x01803058, "48390b" ]         # CMP qword ptr [RBX],RCX
+        - [ bytes, 0x0180305b, "7473" ]           # JZ 0x018030d0
+        - [ bytes, 0x0180305d, "48394b08" ]       # CMP qword ptr [RBX + 0x8],RCX
+        - [ bytes, 0x01803061, "746d" ]           # JZ 0x018030d0
+        - [ bytes, 0x01803063, "48394b10" ]       # CMP qword ptr [RBX + 0x10],RCX
+        - [ bytes, 0x01803067, "7467" ]           # JZ 0x018030d0
+        - [ bytes, 0x01803069, "394b18" ]         # CMP dword ptr [RBX + 0x18],ECX
+        - [ bytes, 0x0180306c, "7462" ]           # JZ 0x018030d0
+        - [ bytes, 0x0180306e, "394b1d" ]         # CMP dword ptr [RBX + 0x1d],ECX
+        - [ bytes, 0x01803071, "745d" ]           # JZ 0x018030d0
+        - [ bytes, 0x01803073, "394b22" ]         # CMP dword ptr [RBX + 0x22],ECX
+        - [ bytes, 0x01803076, "7458" ]           # JZ 0x018030d0
+        - [ bytes, 0x01803078, "eb74" ]           # JMP 0x018030ee
+        - [ bytes, 0x018030d0, "c60569836f0001" ] # MOV byte ptr [0x01efb440],0x1
+        - [ bytes, 0x018030d7, "eb15" ]           # JMP 0x018030ee
+        - [ bytes, 0x018030ee, "90" ]             # NOP
+        - [ bytes, 0x018030ef, "90" ]             # NOP
+        - [ bytes, 0x018030f0, "bf0001114e" ]     # MOV EDI,0x4e110100
+        - [ bytes, 0x018030f5, "803801" ]         # CMP byte ptr [RAX],0x1
+        - [ bytes, 0x018030f8, "740c" ]           # JZ 0x01803106
+        - [ bytes, 0x018030fa, "be00000000" ]     # MOV ESI,0x0
+        - [ bytes, 0x018030ff, "e80c49ffff" ]     # CALL 0x017f7a10
+        - [ bytes, 0x01803104, "eb0a" ]           # JMP 0x01803110
+        - [ bytes, 0x01803106, "be01000000" ]     # MOV ESI,0x1
+        - [ bytes, 0x0180310b, "e80049ffff" ]     # CALL 0x017f7a10
+        - [ bytes, 0x01803110, "e8f5feffff" ]     # CALL 0x0180300a
+        - [ bytes, 0x01803115, "4889fb" ]         # MOV RBX,RDI
+        - [ bytes, 0x01803118, "488b03" ]         # MOV RAX,qword ptr [RBX]
+        - [ bytes, 0x0180311b, "c3" ]             # RET
