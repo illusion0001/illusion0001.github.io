@@ -6,15 +6,24 @@
   note: "Help wanted! Check the rest of the game and add it to lookup table.\nVersion 2.0 now features deltatime."
   arch: orbis
   patch_list:
+        # forbidden level names
+        - [ utf8, 0x01802d10, "ep01_com\x00" ]
         # Currently known softlock level lookup table.
-        # ep00_c (igc softlock)
-        # ep01_d (script failure)
-        # ep02_a (igc softlock)
-        # ep03_p (script failure)
-        # sm_08  (double speed timer makes it unplayable)
-        # sm_09  (script failure)
         # todo: playthrough story episodes and add any sections that softlock the game to this table
-
+        # level names to run at 30fps
+        - [ utf8, 0x01803125, "ep00_c\x00\x00" ] # end of intro (igc failure)
+        - [ utf8, 0x0180312d, "ep01_d\x00\x00" ] # end of episode 1 (script failure)
+        - [ utf8, 0x01803135, "ep02_a\x00\x00" ] # beginning of episode 2 (igc failure)
+        - [ utf8, 0x0180313d, "sm08\x00" ]       # side mission on ship (double speed timer)
+        - [ utf8, 0x01803142, "sm09\x00" ]       # side mission taking photo (script failure)
+        - [ utf8, 0x01803147, "ep03_p\x00\x00"]  # one of the puzzles during episode 3 (script fialure)
+        - [ utf8, 0x0180314f, "ep07_f\x00\x00"]  # igc failure
+        - [ utf8, 0x01803157, "ep07_h\x00\x00"]  # igc failure
+        - [ utf8, 0x0180315f, "ep08_b\x00\x00"]  # igc failure
+        - [ utf8, 0x01803167, "ep08_d\x00\x00"]  # igc failure
+        - [ utf8, 0x0180316f, "ep09_i\x00\x00"]  # igc failure
+        - [ utf8, 0x01803177, "ep12_f\x00\x00"]  # igc failure
+        - [ utf8, 0x0180317f, "ep13_co\x00"]     # igc failure
         # Framerate init
         - [ bytes, 0x00846980, "be00000000" ] # MOV ESI,0x0
         # Sleep draw thread for constant 8.33ms
@@ -73,15 +82,6 @@
         - [ bytes, 0x01802fad, "eb14" ]             # JMP 0x01802fc3
         - [ bytes, 0x01802fc3, "c3" ]               # RET
         - [ bytes, 0x01802fcb, "e984fdffff" ]       # JMP 0x01802d54
-        # forbidden level names
-        - [ utf8, 0x01802d10, "ep01_com\x00" ]
-        # level names to run at 30fps
-        - [ utf8, 0x01803125, "ep00_c\x00\x00" ] # end of intro
-        - [ utf8, 0x0180312d, "ep01_d\x00\x00" ] # end of episode 1
-        - [ utf8, 0x01803135, "ep02_a\x00\x00" ] # beginning of episode 2
-        - [ utf8, 0x0180313d, "sm08\x00" ]       # side mission on ship
-        - [ utf8, 0x01803142, "sm09\x00" ]       # side mission taking photo
-        - [ utf8, 0x01803147, "ep03_p\x00\x00" ] # race to mine ore during episode 3
         # level check function
         - [ bytes, 0x01464e4a, "48e8e4e13900" ]   # CALL 0x01803034
         - [ bytes, 0x01802fec, "4889058d846f00" ] # MOV qword ptr [0x01efb480],RAX
@@ -102,22 +102,34 @@
         - [ bytes, 0x01803050, "48894814" ]       # MOV qword ptr [RAX + 0x14],RCX
         - [ bytes, 0x01803054, "488b4804" ]       # MOV RCX,qword ptr [RAX + 0x4]
         - [ bytes, 0x01803058, "48390b" ]         # CMP qword ptr [RBX],RCX
-        - [ bytes, 0x0180305b, "7473" ]           # JZ 0x018030d0
+        - [ bytes, 0x0180305b, "7458" ]           # JZ 0x018030b5
         - [ bytes, 0x0180305d, "48394b08" ]       # CMP qword ptr [RBX + 0x8],RCX
-        - [ bytes, 0x01803061, "746d" ]           # JZ 0x018030d0
+        - [ bytes, 0x01803061, "7452" ]           # JZ 0x018030b5
         - [ bytes, 0x01803063, "48394b10" ]       # CMP qword ptr [RBX + 0x10],RCX
-        - [ bytes, 0x01803067, "7467" ]           # JZ 0x018030d0
+        - [ bytes, 0x01803067, "744c" ]           # JZ 0x018030b5
         - [ bytes, 0x01803069, "394b18" ]         # CMP dword ptr [RBX + 0x18],ECX
-        - [ bytes, 0x0180306c, "7462" ]           # JZ 0x018030d0
+        - [ bytes, 0x0180306c, "7447" ]           # JZ 0x018030b5
         - [ bytes, 0x0180306e, "394b1d" ]         # CMP dword ptr [RBX + 0x1d],ECX
-        - [ bytes, 0x01803071, "745d" ]           # JZ 0x018030d0
+        - [ bytes, 0x01803071, "7442" ]           # JZ 0x018030b5
         - [ bytes, 0x01803073, "48394b22" ]       # CMP qword ptr [RBX + 0x22],RCX
-        - [ bytes, 0x01803077, "7457" ]           # JZ 0x018030d0
-        - [ bytes, 0x01803079, "eb73" ]           # JMP 0x018030ee
-        - [ bytes, 0x018030d0, "c60569836f0001" ] # MOV byte ptr [0x01efb440],0x1
-        - [ bytes, 0x018030d7, "eb15" ]           # JMP 0x018030ee
-        - [ bytes, 0x018030ee, "90" ]             # NOP
-        - [ bytes, 0x018030ef, "90" ]             # NOP
+        - [ bytes, 0x01803077, "743c" ]           # JZ 0x018030b5
+        - [ bytes, 0x01803079, "48394b2a" ]       # CMP qword ptr [RBX + 0x2a],RCX
+        - [ bytes, 0x0180307d, "7436" ]           # JZ 0x018030b5
+        - [ bytes, 0x0180307f, "48394b32" ]       # CMP qword ptr [RBX + 0x32],RCX
+        - [ bytes, 0x01803083, "7430" ]           # JZ 0x018030b5
+        - [ bytes, 0x01803085, "48394b3a" ]       # CMP qword ptr [RBX + 0x3a],RCX
+        - [ bytes, 0x01803089, "742a" ]           # JZ 0x018030b5
+        - [ bytes, 0x0180308b, "48394b42" ]       # CMP qword ptr [RBX + 0x42],RCX
+        - [ bytes, 0x0180308f, "7424" ]           # JZ 0x018030b5
+        - [ bytes, 0x01803091, "48394b4a" ]       # CMP qword ptr [RBX + 0x4a],RCX
+        - [ bytes, 0x01803095, "741e" ]           # JZ 0x018030b5
+        - [ bytes, 0x01803097, "48394b52" ]       # CMP qword ptr [RBX + 0x52],RCX
+        - [ bytes, 0x0180309b, "7418" ]           # JZ 0x018030b5
+        - [ bytes, 0x0180309d, "48394b5a" ]       # CMP qword ptr [RBX + 0x5a],RCX
+        - [ bytes, 0x018030a1, "7412" ]           # JZ 0x018030b5
+        - [ bytes, 0x018030a3, "eb13" ]           # JMP 0x018030b8
+        - [ bytes, 0x018030b5, "c60001" ]         # MOV byte ptr [RAX],0x1
+        - [ bytes, 0x018030b8, "eb36" ]           # JMP 0x018030f0
         - [ bytes, 0x018030f0, "bf0001114e" ]     # MOV EDI,0x4e110100
         - [ bytes, 0x018030f5, "803801" ]         # CMP byte ptr [RAX],0x1
         - [ bytes, 0x018030f8, "740c" ]           # JZ 0x01803106
