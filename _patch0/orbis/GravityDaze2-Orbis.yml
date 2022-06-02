@@ -6,10 +6,10 @@
   note: "Help wanted! Check the rest of the game and add it to lookup table.\nVersion 2.0 now features deltatime."
   arch: orbis
   patch_list:
-        # forbidden level names
-        - [ utf8, 0x01802d10, "ep01_com\x00" ]
         # Currently known softlock level lookup table.
         # todo: playthrough story episodes and add any sections that softlock the game to this table
+        # forbidden level names
+        - [ utf8, 0x01802d10, "ep01_com\x00" ]
         # level names to run at 30fps
         - [ utf8, 0x01803125, "ep00_c\x00\x00" ] # end of intro (igc failure)
         - [ utf8, 0x0180312d, "ep01_d\x00\x00" ] # end of episode 1 (script failure)
@@ -41,24 +41,26 @@
         # deltatime for game logic
         - [ bytes, 0x0085e9cc, "e8cd43fa00" ]       # CALL 0x01802d9e
         - [ bytes32, 0x01802d90, 0x49742400 ]       # 1000000.0f # to be div'd
-        - [ bytes, 0x01802d9e, "803d9b866f0001" ]   # CMP byte ptr [0x01efb440],0x1 # is level loading?
-        - [ bytes, 0x01802da5, "7412" ]             # JZ 0x01802db9
-        - [ bytes, 0x01802da7, "c5222a1d19587500" ] # VCVTSI2SS XMM11,XMM11,dword ptr [0x01f585c8]
-        - [ bytes, 0x01802daf, "c5a25e0dd9ffffff" ] # VDIVSS XMM1,XMM11,dword ptr [0x01802d90]
-        - [ bytes, 0x01802db7, "eb08" ]             # JMP 0x01802dc1
-        - [ bytes, 0x01802db9, "c5fa100d63836f00" ] # VMOVSS XMM1,dword ptr [0x01efb124]
-        - [ bytes, 0x01802dc1, "c3" ]               # RET
-        # level load start
+        - [ bytes, 0x01802d9e, "803dcb52300001" ]   # CMP byte ptr [0x01b08070],0x1
+        - [ bytes, 0x01802da5, "741b" ]             # JZ 0x01802dc2
+        - [ bytes, 0x01802da7, "803dc252300003" ]   # CMP byte ptr [0x01b08070],0x3
+        - [ bytes, 0x01802dae, "7412" ]             # JZ 0x01802dc2
+        - [ bytes, 0x01802db0, "c5222a1d10587500" ] # VCVTSI2SS XMM11,XMM11,dword ptr [0x01f585c8]
+        - [ bytes, 0x01802db8, "c5a25e0dd0ffffff" ] # VDIVSS XMM1,XMM11,dword ptr [0x01802d90]
+        - [ bytes, 0x01802dc0, "eb08" ]             # JMP 0x01802dca
+        - [ bytes, 0x01802dc2, "c5fa100d5a836f00" ] # VMOVSS XMM1,dword ptr [0x01efb124]
+        - [ bytes, 0x01802dca, "c3" ]               # RET
+        # level is loading
         - [ bytes, 0x013c8f2f, "e8479e4300" ]     # CALL 0x01802d7b
         - [ bytes, 0x013c8f34, "eb1b" ]           # JMP 0x013c8f51
-        - [ bytes, 0x01802d7b, "c605be866f0001" ] # MOV byte ptr [0x01efb440],0x1
+        - [ bytes, 0x01802d7b, "c605ee52300003" ] # MOV byte ptr [0x01b08070],0x3
         - [ bytes, 0x01802d82, "c3" ]             # RET
-        # level load done
+        # level is done loading
         - [ bytes, 0x013c8f8e, "ebca" ]           # JMP 0x013c8f5a
         - [ bytes, 0x013c8f5a, "e9249e4300" ]     # JMP 0x01802d83
-        - [ bytes, 0x01802d83, "c605b6866f0002" ] # MOV byte ptr [0x01efb440],0x2
+        - [ bytes, 0x01802d83, "c605e652300002" ] # MOV byte ptr [0x01b08070],0x2
         - [ bytes, 0x01802d8a, "c3" ]             # RET
-        # level save function
+        # level save
         - [ bytes, 0x01627921, "e81cb41d00" ]       # CALL 0x01802d42
         - [ bytes, 0x01802d42, "43c6043c00" ]       # MOV byte ptr [R12 + R15*0x1],0x0
         - [ bytes, 0x01802d47, "e929020000" ]       # JMP 0x01802f75
@@ -66,7 +68,7 @@
         - [ bytes, 0x01802d5b, "493b0c24" ]         # CMP RCX,qword ptr [R12]
         - [ bytes, 0x01802d5f, "740b" ]             # JZ 0x01802d6c
         - [ bytes, 0x01802d61, "498b0c24" ]         # MOV RCX,qword ptr [R12]
-        - [ bytes, 0x01802d65, "48890dd8866f00" ]   # MOV qword ptr [0x01efb444],RCX
+        - [ bytes, 0x01802d65, "48890d08533000" ]   # MOV qword ptr [0x01b08074],RCX
         - [ bytes, 0x01802d6c, "c3" ]               # RET
         - [ bytes, 0x01802f75, "488d0d4f000000" ]   # LEA RCX,[0x1802fcb]
         - [ bytes, 0x01802f7c, "6641813c24736d" ]   # CMP word ptr [R12],0x6d73
@@ -82,20 +84,15 @@
         - [ bytes, 0x01802fad, "eb14" ]             # JMP 0x01802fc3
         - [ bytes, 0x01802fc3, "c3" ]               # RET
         - [ bytes, 0x01802fcb, "e984fdffff" ]       # JMP 0x01802d54
-        # level check function
+        # level check
         - [ bytes, 0x01464e4a, "48e8e4e13900" ]   # CALL 0x01803034
-        - [ bytes, 0x01802fec, "4889058d846f00" ] # MOV qword ptr [0x01efb480],RAX
-        - [ bytes, 0x01802ff3, "48891d8e846f00" ] # MOV qword ptr [0x01efb488],RBX
-        - [ bytes, 0x01802ffa, "48893d8f846f00" ] # MOV qword ptr [0x01efb490],RDI
-        - [ bytes, 0x01803001, "48891590846f00" ] # MOV qword ptr [0x01efb498],RDX
-        - [ bytes, 0x01803008, "eb2c" ]           # JMP 0x01803036
-        - [ bytes, 0x0180300a, "488b056f846f00" ] # MOV RAX,qword ptr [0x01efb480]
-        - [ bytes, 0x01803011, "488b1d70846f00" ] # MOV RBX,qword ptr [0x01efb488]
-        - [ bytes, 0x01803018, "488b3d71846f00" ] # MOV RDI,qword ptr [0x01efb490]
-        - [ bytes, 0x0180301f, "488b1572846f00" ] # MOV RDX,qword ptr [0x01efb498]
-        - [ bytes, 0x01803026, "c3" ]             # RET
         - [ bytes, 0x01803034, "ebb6" ]           # JMP 0x01802fec
-        - [ bytes, 0x01803036, "488d0503846f00" ] # LEA RAX,[0x1efb440]
+        - [ bytes, 0x01802fec, "4889059d503000" ] # MOV qword ptr [0x01b08090],RAX
+        - [ bytes, 0x01802ff3, "48891d9e503000" ] # MOV qword ptr [0x01b08098],RBX
+        - [ bytes, 0x01802ffa, "48893d9f503000" ] # MOV qword ptr [0x01b080a0],RDI
+        - [ bytes, 0x01803001, "488915a0846f00" ] # MOV qword ptr [0x01efb4a8],RDX
+        - [ bytes, 0x01803008, "eb2c" ]           # JMP 0x01803036
+        - [ bytes, 0x01803036, "488d0533503000" ] # LEA RAX,[0x1b08070]
         - [ bytes, 0x0180303d, "488d1de1000000" ] # LEA RBX,[0x1803125]
         - [ bytes, 0x01803044, "c6400b00" ]       # MOV byte ptr [RAX + 0xb],0x0
         - [ bytes, 0x01803048, "eb06" ]           # JMP 0x01803050
@@ -142,3 +139,8 @@
         - [ bytes, 0x01803115, "4889fb" ]         # MOV RBX,RDI
         - [ bytes, 0x01803118, "488b03" ]         # MOV RAX,qword ptr [RBX]
         - [ bytes, 0x0180311b, "c3" ]             # RET
+        - [ bytes, 0x0180300a, "488b057f503000" ] # MOV RAX,qword ptr [0x01b08090]
+        - [ bytes, 0x01803011, "488b1d80503000" ] # MOV RBX,qword ptr [0x01b08098]
+        - [ bytes, 0x01803018, "488b3d81503000" ] # MOV RDI,qword ptr [0x01b080a0]
+        - [ bytes, 0x0180301f, "488b1582503000" ] # MOV RDX,qword ptr [0x01b080a8]
+        - [ bytes, 0x01803026, "c3" ]             # RET
