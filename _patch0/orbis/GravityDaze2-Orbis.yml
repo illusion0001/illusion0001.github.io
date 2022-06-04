@@ -1,6 +1,6 @@
 - game: "Gravity Rush (Gravity Daze): 2"
   app_ver: "01.11"
-  patch_ver: "2.0"
+  patch_ver: "2.1"
   name: "60 FPS Unlock (WORK-IN-PROGRESS)"
   author: "illusion"
   note: "Help wanted! Check the rest of the game and add it to lookup table.\nVersion 2.0 now features deltatime."
@@ -9,14 +9,16 @@
         # Currently known softlock level lookup table.
         # todo: playthrough story episodes and add any sections that softlock the game to this table
         # forbidden level names
+        # todo: banish all _com suffix and clear level (asset) name before saving new ones
         - [ utf8, 0x01802d10, "ep01_com\x00" ]
         # level names to run at 30fps
-        - [ utf8, 0x01803125, "ep00_c\x00\x00" ] # end of intro (igc failure)
-        - [ utf8, 0x0180312d, "ep01_d\x00\x00" ] # end of episode 1 (script failure)
-        - [ utf8, 0x01803135, "ep02_a\x00\x00" ] # beginning of episode 2 (igc failure)
-        - [ utf8, 0x0180313d, "sm08\x00" ]       # side mission on ship (double speed timer)
-        - [ utf8, 0x01803142, "sm09\x00" ]       # side mission taking photo (script failure)
-        - [ utf8, 0x01803147, "ep03_p\x00\x00"]  # one of the puzzles during episode 3 (script fialure)
+        # kit
+        - [ utf8, 0x01803125, "ep00_c\x00\x00" ] # igc failure
+        - [ utf8, 0x0180312d, "ep01_d\x00\x00" ] # script failure
+        - [ utf8, 0x01803135, "ep02_a\x00\x00" ] # igc failure
+        - [ utf8, 0x0180313d, "sm08\x00" ]       # double speed timer
+        - [ utf8, 0x01803142, "sm09\x00" ]       # script failure
+        - [ utf8, 0x01803147, "ep03_p\x00\x00"]  # script fialure
         - [ utf8, 0x0180314f, "ep07_f\x00\x00"]  # igc failure
         - [ utf8, 0x01803157, "ep07_h\x00\x00"]  # igc failure
         - [ utf8, 0x0180315f, "ep08_b\x00\x00"]  # igc failure
@@ -24,6 +26,15 @@
         - [ utf8, 0x0180316f, "ep09_i\x00\x00"]  # igc failure
         - [ utf8, 0x01803177, "ep12_f\x00\x00"]  # igc failure
         - [ utf8, 0x0180317f, "ep13_co\x00"]     # igc failure
+        - [ utf8, 0x01803187, "eps15\x00\x00\x00" ]
+        - [ utf8, 0x0180318f, "ep15_e\x00\x00" ] 
+        - [ utf8, 0x01803197, "ep16_a\x00\x00" ] 
+        - [ utf8, 0x0180319f, "ep22_c\x00\x00" ] 
+        - [ utf8, 0x018031a7, "ep23\x00" ]      # todo: implement button combo
+        - [ utf8, 0x018031bd, "sm10\x00"]       # igc failure
+        # crow
+        - [ utf8, 0x018031ad, "dm06_c\x00\x00" ] # igc failure
+        - [ utf8, 0x018031b5, "dm06_d\x00\x00" ] # script failure
         # Framerate init
         - [ bytes, 0x00846980, "be00000000" ] # MOV ESI,0x0
         # Sleep draw thread for constant 8.33ms
@@ -124,9 +135,26 @@
         - [ bytes, 0x0180309b, "7418" ]           # JZ 0x018030b5
         - [ bytes, 0x0180309d, "48394b5a" ]       # CMP qword ptr [RBX + 0x5a],RCX
         - [ bytes, 0x018030a1, "7412" ]           # JZ 0x018030b5
-        - [ bytes, 0x018030a3, "eb13" ]           # JMP 0x018030b8
-        - [ bytes, 0x018030b5, "c60001" ]         # MOV byte ptr [RAX],0x1
-        - [ bytes, 0x018030b8, "eb36" ]           # JMP 0x018030f0
+        - [ bytes, 0x018030a3, "48394b62" ]       # CMP qword ptr [RBX + 0x62],RCX
+        - [ bytes, 0x018030a7, "740c" ]           # JZ 0x018030b5
+        - [ bytes, 0x018030a9, "48394b6a" ]       # CMP qword ptr [RBX + 0x6a],RCX
+        - [ bytes, 0x018030ad, "7406" ]           # JZ 0x018030b5
+        - [ bytes, 0x018030af, "eb06" ]           # JMP 0x018030b7
+        - [ bytes, 0x018030b5, "eb36" ]           # JMP 0x018030ed
+        - [ bytes, 0x018030b7, "48394b72" ]       # CMP qword ptr [RBX + 0x72],RCX
+        - [ bytes, 0x018030bb, "7430" ]           # JZ 0x018030ed
+        - [ bytes, 0x018030bd, "48394b7a" ]       # CMP qword ptr [RBX + 0x7a],RCX
+        - [ bytes, 0x018030c1, "742a" ]           # JZ 0x018030ed
+        - [ bytes, 0x018030c3, "398c2382000000" ] # CMP dword ptr [RBX + 0x82],ECX
+        - [ bytes, 0x018030ca, "7421" ]           # JZ 0x018030ed
+        - [ bytes, 0x018030cc, "48398b88000000" ] # CMP qword ptr [RBX + 0x88],RCX
+        - [ bytes, 0x018030d3, "7418" ]           # JZ 0x018030ed
+        - [ bytes, 0x018030d5, "48398b90000000" ] # CMP qword ptr [RBX + 0x90],RCX
+        - [ bytes, 0x018030dc, "740f" ]           # JZ 0x018030ed
+        - [ bytes, 0x018030de, "398c2398000000" ] # CMP dword ptr [RBX + 0x98],ECX
+        - [ bytes, 0x018030e5, "7406" ]           # JZ 0x018030ed
+        - [ bytes, 0x018030e7, "eb07" ]           # JMP 0x018030f0
+        - [ bytes, 0x018030ed, "c60001" ]         # MOV byte ptr [RAX],0x1
         - [ bytes, 0x018030f0, "bf0001114e" ]     # MOV EDI,0x4e110100
         - [ bytes, 0x018030f5, "803801" ]         # CMP byte ptr [RAX],0x1
         - [ bytes, 0x018030f8, "740c" ]           # JZ 0x01803106
