@@ -1,4 +1,4 @@
-- game: "Uncharted: Drake's Fortune Remastered"
+- game: "Uncharted: Drake's Fortune Remastered (eboot.bin)"
   app_ver: "01.02"
   patch_ver: "1.0"
   name: "Intro Skip"
@@ -7,7 +7,7 @@
   patch_list:
         - [ byte, 0x00d5ca17, 0x1 ]
 
-- game: "Uncharted 2: Among Thieves Remastered"
+- game: "Uncharted 2: Among Thieves Remastered (eboot.bin/big2-ps4_Shipping.elf)"
   app_ver: "01.00"
   patch_ver: "1.0"
   name: "Bug Fix: Quit to Menu Crash"
@@ -28,7 +28,7 @@
         - [ bytes, 0x00acab1b, "4883ff00" ]       # CMP RDI,0x0
         - [ bytes, 0x00acab1f, "c3" ]             # RET
 
-- game: "Uncharted 2: Among Thieves Remastered"
+- game: "Uncharted 2: Among Thieves Remastered (eboot.bin/big2-ps4_Shipping.elf)"
   app_ver: "01.02"
   patch_ver: "1.0"
   name: "Intro Skip"
@@ -37,7 +37,7 @@
   patch_list:
         - [ byte, 0x0145de94, 0x1 ]
 
-- game: "Uncharted 3: Drake's Deception Remastered"
+- game: "Uncharted 3: Drake's Deception Remastered (eboot.bin/big3-ps4_Shipping.elf)"
   app_ver: "01.02"
   patch_ver: "1.0"
   name: "Intro Skip"
