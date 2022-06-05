@@ -8,30 +8,33 @@
   patch_list:
         # Currently known softlock level lookup table.
         # todo: playthrough story episodes and add any sections that softlock the game to this table
+        # todo: banish all _com suffix
+        # todo: implement igc detection for igc failures
         # forbidden level names
-        # todo: banish all _com suffix and clear level (asset) name before saving new ones
         - [ utf8, 0x01802d10, "ep01_com\x00" ]
         # level names to run at 30fps
         # kit
-        - [ utf8, 0x01803125, "ep00_c\x00\x00" ] # igc failure
-        - [ utf8, 0x0180312d, "ep01_d\x00\x00" ] # script failure
-        - [ utf8, 0x01803135, "ep02_a\x00\x00" ] # igc failure
-        - [ utf8, 0x0180313d, "sm08\x00" ]       # double speed timer
-        - [ utf8, 0x01803142, "sm09\x00" ]       # script failure
-        - [ utf8, 0x01803147, "ep03_p\x00\x00"]  # script fialure
-        - [ utf8, 0x0180314f, "ep07_f\x00\x00"]  # igc failure
-        - [ utf8, 0x01803157, "ep07_h\x00\x00"]  # igc failure
-        - [ utf8, 0x0180315f, "ep08_b\x00\x00"]  # igc failure
-        - [ utf8, 0x01803167, "ep08_d\x00\x00"]  # igc failure
-        - [ utf8, 0x0180316f, "ep09_i\x00\x00"]  # igc failure
-        - [ utf8, 0x01803177, "ep12_f\x00\x00"]  # igc failure
-        - [ utf8, 0x0180317f, "ep13_co\x00"]     # igc failure
-        - [ utf8, 0x01803187, "eps15\x00\x00\x00" ]
-        - [ utf8, 0x0180318f, "ep15_e\x00\x00" ] 
-        - [ utf8, 0x01803197, "ep16_a\x00\x00" ] 
-        - [ utf8, 0x0180319f, "ep22_c\x00\x00" ] 
-        - [ utf8, 0x018031a7, "ep23\x00" ]      # todo: implement button combo
-        - [ utf8, 0x018031bd, "sm10\x00"]       # igc failure
+        - [ utf8, 0x01803125, "ep00_c\x00\x00" ]    # igc failure
+        - [ utf8, 0x0180312d, "ep01_d\x00\x00" ]    # script failure
+        - [ utf8, 0x01803135, "ep02_a\x00\x00" ]    # igc failure
+        - [ utf8, 0x0180313d, "sm08\x00" ]          # double speed timer
+        - [ utf8, 0x01803142, "sm09\x00" ]          # script failure
+        - [ utf8, 0x01803147, "ep03_p\x00\x00"]     # script fialure
+        - [ utf8, 0x0180314f, "ep07_f\x00\x00"]     # igc failure
+        - [ utf8, 0x01803157, "ep07_h\x00\x00"]     # igc failure
+        - [ utf8, 0x0180315f, "ep08_b\x00\x00"]     # igc failure
+        - [ utf8, 0x01803167, "ep08_d\x00\x00"]     # igc failure
+        - [ utf8, 0x0180316f, "ep09_i\x00\x00"]     # igc failure
+        - [ utf8, 0x01803177, "ep12_f\x00\x00"]     # igc failure
+        - [ utf8, 0x0180317f, "ep13_co\x00"]        # igc failure
+        - [ utf8, 0x01803187, "eps15\x00\x00\x00" ] # igc failure
+        - [ utf8, 0x0180318f, "ep15_e\x00\x00" ]    # igc failure
+        - [ utf8, 0x01803197, "ep16_a\x00\x00" ]    # igc failure
+        - [ utf8, 0x0180319f, "ep22_c\x00\x00" ]    # script failure
+        - [ utf8, 0x018031a7, "ep23\x00" ]          # script failure # todo: implement button combo
+        - [ utf8, 0x018031bd, "sm10\x00"]           # igc failure
+        - [ utf8, 0x018031c2, "sm12_b\x00\x00"]     # igc failure
+        - [ utf8, 0x018031ca, "sm13\x00"]           # igc failure
         # crow
         - [ utf8, 0x018031ad, "dm06_c\x00\x00" ] # igc failure
         - [ utf8, 0x018031b5, "dm06_d\x00\x00" ] # script failure
@@ -109,52 +112,55 @@
         - [ bytes, 0x01803048, "eb06" ]           # JMP 0x01803050
         - [ bytes, 0x01803050, "48894814" ]       # MOV qword ptr [RAX + 0x14],RCX
         - [ bytes, 0x01803054, "488b4804" ]       # MOV RCX,qword ptr [RAX + 0x4]
-        - [ bytes, 0x01803058, "48390b" ]         # CMP qword ptr [RBX],RCX
-        - [ bytes, 0x0180305b, "7458" ]           # JZ 0x018030b5
-        - [ bytes, 0x0180305d, "48394b08" ]       # CMP qword ptr [RBX + 0x8],RCX
-        - [ bytes, 0x01803061, "7452" ]           # JZ 0x018030b5
-        - [ bytes, 0x01803063, "48394b10" ]       # CMP qword ptr [RBX + 0x10],RCX
-        - [ bytes, 0x01803067, "744c" ]           # JZ 0x018030b5
-        - [ bytes, 0x01803069, "394b18" ]         # CMP dword ptr [RBX + 0x18],ECX
-        - [ bytes, 0x0180306c, "7447" ]           # JZ 0x018030b5
-        - [ bytes, 0x0180306e, "394b1d" ]         # CMP dword ptr [RBX + 0x1d],ECX
-        - [ bytes, 0x01803071, "7442" ]           # JZ 0x018030b5
-        - [ bytes, 0x01803073, "48394b22" ]       # CMP qword ptr [RBX + 0x22],RCX
-        - [ bytes, 0x01803077, "743c" ]           # JZ 0x018030b5
-        - [ bytes, 0x01803079, "48394b2a" ]       # CMP qword ptr [RBX + 0x2a],RCX
-        - [ bytes, 0x0180307d, "7436" ]           # JZ 0x018030b5
-        - [ bytes, 0x0180307f, "48394b32" ]       # CMP qword ptr [RBX + 0x32],RCX
-        - [ bytes, 0x01803083, "7430" ]           # JZ 0x018030b5
-        - [ bytes, 0x01803085, "48394b3a" ]       # CMP qword ptr [RBX + 0x3a],RCX
-        - [ bytes, 0x01803089, "742a" ]           # JZ 0x018030b5
-        - [ bytes, 0x0180308b, "48394b42" ]       # CMP qword ptr [RBX + 0x42],RCX
-        - [ bytes, 0x0180308f, "7424" ]           # JZ 0x018030b5
-        - [ bytes, 0x01803091, "48394b4a" ]       # CMP qword ptr [RBX + 0x4a],RCX
-        - [ bytes, 0x01803095, "741e" ]           # JZ 0x018030b5
-        - [ bytes, 0x01803097, "48394b52" ]       # CMP qword ptr [RBX + 0x52],RCX
-        - [ bytes, 0x0180309b, "7418" ]           # JZ 0x018030b5
-        - [ bytes, 0x0180309d, "48394b5a" ]       # CMP qword ptr [RBX + 0x5a],RCX
-        - [ bytes, 0x018030a1, "7412" ]           # JZ 0x018030b5
-        - [ bytes, 0x018030a3, "48394b62" ]       # CMP qword ptr [RBX + 0x62],RCX
-        - [ bytes, 0x018030a7, "740c" ]           # JZ 0x018030b5
-        - [ bytes, 0x018030a9, "48394b6a" ]       # CMP qword ptr [RBX + 0x6a],RCX
-        - [ bytes, 0x018030ad, "7406" ]           # JZ 0x018030b5
-        - [ bytes, 0x018030af, "eb06" ]           # JMP 0x018030b7
-        - [ bytes, 0x018030b5, "eb36" ]           # JMP 0x018030ed
-        - [ bytes, 0x018030b7, "48394b72" ]       # CMP qword ptr [RBX + 0x72],RCX
-        - [ bytes, 0x018030bb, "7430" ]           # JZ 0x018030ed
-        - [ bytes, 0x018030bd, "48394b7a" ]       # CMP qword ptr [RBX + 0x7a],RCX
-        - [ bytes, 0x018030c1, "742a" ]           # JZ 0x018030ed
-        - [ bytes, 0x018030c3, "398c2382000000" ] # CMP dword ptr [RBX + 0x82],ECX
-        - [ bytes, 0x018030ca, "7421" ]           # JZ 0x018030ed
-        - [ bytes, 0x018030cc, "48398b88000000" ] # CMP qword ptr [RBX + 0x88],RCX
-        - [ bytes, 0x018030d3, "7418" ]           # JZ 0x018030ed
-        - [ bytes, 0x018030d5, "48398b90000000" ] # CMP qword ptr [RBX + 0x90],RCX
-        - [ bytes, 0x018030dc, "740f" ]           # JZ 0x018030ed
-        - [ bytes, 0x018030de, "398c2398000000" ] # CMP dword ptr [RBX + 0x98],ECX
-        - [ bytes, 0x018030e5, "7406" ]           # JZ 0x018030ed
-        - [ bytes, 0x018030e7, "eb07" ]           # JMP 0x018030f0
-        - [ bytes, 0x018030ed, "c60001" ]         # MOV byte ptr [RAX],0x1
+        - [ bytes, 0x01803058, "e98e000000" ]     # JMP 0x018030eb
+        - [ bytes, 0x018030eb, "e8588e0000" ]     # CALL 0x0180bf48
+        - [ bytes, 0x0180bf48, "48390b" ]         # CMP qword ptr [RBX],RCX
+        - [ bytes, 0x0180bf4b, "0f843a120000" ]   # JZ 0x0180d18b
+        - [ bytes, 0x0180bf51, "48394b08" ]       # CMP qword ptr [RBX + 0x8],RCX
+        - [ bytes, 0x0180bf55, "0f8430120000" ]   # JZ 0x0180d18b
+        - [ bytes, 0x0180bf5b, "48394b10" ]       # CMP qword ptr [RBX + 0x10],RCX
+        - [ bytes, 0x0180bf5f, "0f8426120000" ]   # JZ 0x0180d18b
+        - [ bytes, 0x0180bf65, "394b18" ]         # CMP dword ptr [RBX + 0x18],ECX
+        - [ bytes, 0x0180bf68, "0f841d120000" ]   # JZ 0x0180d18b
+        - [ bytes, 0x0180bf6e, "394b1d" ]         # CMP dword ptr [RBX + 0x1d],ECX
+        - [ bytes, 0x0180bf71, "0f8414120000" ]   # JZ 0x0180d18b
+        - [ bytes, 0x0180bf77, "48394b22" ]       # CMP qword ptr [RBX + 0x22],RCX
+        - [ bytes, 0x0180bf7b, "0f840a120000" ]   # JZ 0x0180d18b
+        - [ bytes, 0x0180bf81, "48394b2a" ]       # CMP qword ptr [RBX + 0x2a],RCX
+        - [ bytes, 0x0180bf85, "0f8400120000" ]   # JZ 0x0180d18b
+        - [ bytes, 0x0180bf8b, "48394b32" ]       # CMP qword ptr [RBX + 0x32],RCX
+        - [ bytes, 0x0180bf8f, "0f84f6110000" ]   # JZ 0x0180d18b
+        - [ bytes, 0x0180bf95, "48394b3a" ]       # CMP qword ptr [RBX + 0x3a],RCX
+        - [ bytes, 0x0180bf99, "0f84ec110000" ]   # JZ 0x0180d18b
+        - [ bytes, 0x0180bf9f, "48394b42" ]       # CMP qword ptr [RBX + 0x42],RCX
+        - [ bytes, 0x0180bfa3, "0f84e2110000" ]   # JZ 0x0180d18b
+        - [ bytes, 0x0180bfa9, "48394b4a" ]       # CMP qword ptr [RBX + 0x4a],RCX
+        - [ bytes, 0x0180bfad, "0f84d8110000" ]   # JZ 0x0180d18b
+        - [ bytes, 0x0180bfb3, "48394b52" ]       # CMP qword ptr [RBX + 0x52],RCX
+        - [ bytes, 0x0180bfb7, "0f84ce110000" ]   # JZ 0x0180d18b
+        - [ bytes, 0x0180bfbd, "48394b5a" ]       # CMP qword ptr [RBX + 0x5a],RCX
+        - [ bytes, 0x0180bfc1, "0f84c4110000" ]   # JZ 0x0180d18b
+        - [ bytes, 0x0180bfc7, "48394b62" ]       # CMP qword ptr [RBX + 0x62],RCX
+        - [ bytes, 0x0180bfcb, "0f84ba110000" ]   # JZ 0x0180d18b
+        - [ bytes, 0x0180bfd1, "48394b6a" ]       # CMP qword ptr [RBX + 0x6a],RCX
+        - [ bytes, 0x0180bfd5, "0f84b0110000" ]   # JZ 0x0180d18b
+        - [ bytes, 0x0180bfdb, "48394b72" ]       # CMP qword ptr [RBX + 0x72],RCX
+        - [ bytes, 0x0180bfdf, "0f84a6110000" ]   # JZ 0x0180d18b
+        - [ bytes, 0x0180bfe5, "398b82000000" ]   # CMP dword ptr [RBX + 0x82],ECX
+        - [ bytes, 0x0180bfeb, "0f849a110000" ]   # JZ 0x0180d18b
+        - [ bytes, 0x0180bff1, "48398b88000000" ] # CMP qword ptr [RBX + 0x88],RCX
+        - [ bytes, 0x0180bff8, "0f848d110000" ]   # JZ 0x0180d18b
+        - [ bytes, 0x0180bffe, "48398b90000000" ] # CMP qword ptr [RBX + 0x90],RCX
+        - [ bytes, 0x0180c005, "0f8480110000" ]   # JZ 0x0180d18b
+        - [ bytes, 0x0180c00b, "398b98000000" ]   # CMP dword ptr [RBX + 0x98],ECX
+        - [ bytes, 0x0180c011, "0f8474110000" ]   # JZ 0x0180d18b
+        - [ bytes, 0x0180c017, "48398b9d000000" ] # CMP qword ptr [RBX + 0x9d],RCX
+        - [ bytes, 0x0180c01e, "0f8467110000" ]   # JZ 0x0180d18b
+        - [ bytes, 0x0180c024, "398ba5000000" ]   # CMP dword ptr [RBX + 0xa5],ECX
+        - [ bytes, 0x0180c02a, "0f845b110000" ]   # JZ 0x0180d18b
+        - [ bytes, 0x0180c030, "e959110000" ]     # JMP 0x0180d18e
+        - [ bytes, 0x0180d18b, "c60001" ]         # MOV byte ptr [RAX],0x1
+        - [ bytes, 0x0180d18e, "c3" ]             # RET
         - [ bytes, 0x018030f0, "bf0001114e" ]     # MOV EDI,0x4e110100
         - [ bytes, 0x018030f5, "803801" ]         # CMP byte ptr [RAX],0x1
         - [ bytes, 0x018030f8, "740c" ]           # JZ 0x01803106
