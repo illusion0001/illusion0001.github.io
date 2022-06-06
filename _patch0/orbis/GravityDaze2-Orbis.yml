@@ -37,29 +37,33 @@
         # Framerate init
         - [ bytes, 0x00846980, "be00000000" ] # MOV ESI,0x0
         # Sleep draw thread for constant 8.33ms
-        - [ bytes, 0x0084dda4, "90" ]         # NOP
-        - [ bytes, 0x0084dda5, "90" ]         # NOP
-        - [ bytes, 0x0084dda6, "90" ]         # NOP
-        - [ bytes, 0x0084dda7, "90" ]         # NOP
-        - [ bytes, 0x0084dda8, "90" ]         # NOP
-        - [ bytes, 0x0084dda9, "90" ]         # NOP
-        - [ bytes, 0x0084ddaa, "90" ]         # NOP
+        - [ bytes, 0x0084dda4, "bf46100000" ] # MOV EDI,0x1046
+        - [ bytes, 0x0084dda9, "eb08" ]       # JMP 0x0084ddb3
         - [ bytes, 0x0084ddab, "90" ]         # NOP
-        - [ bytes, 0x0084ddac, "90" ]         # NOP
-        - [ bytes, 0x0084ddad, "90" ]         # NOP
-        - [ bytes, 0x0084ddae, "bf8d200000" ] # MOV EDI,0x208d
         # deltatime for game logic
         - [ bytes, 0x0085e9cc, "e8cd43fa00" ]       # CALL 0x01802d9e
         - [ bytes32, 0x01802d90, 0x49742400 ]       # 1000000.0f # to be div'd
-        - [ bytes, 0x01802d9e, "803dcb52300001" ]   # CMP byte ptr [0x01b08070],0x1
-        - [ bytes, 0x01802da5, "741b" ]             # JZ 0x01802dc2
-        - [ bytes, 0x01802da7, "803dc252300003" ]   # CMP byte ptr [0x01b08070],0x3
-        - [ bytes, 0x01802dae, "7412" ]             # JZ 0x01802dc2
-        - [ bytes, 0x01802db0, "c5222a1d10587500" ] # VCVTSI2SS XMM11,XMM11,dword ptr [0x01f585c8]
-        - [ bytes, 0x01802db8, "c5a25e0dd0ffffff" ] # VDIVSS XMM1,XMM11,dword ptr [0x01802d90]
-        - [ bytes, 0x01802dc0, "eb08" ]             # JMP 0x01802dca
-        - [ bytes, 0x01802dc2, "c5fa100d5a836f00" ] # VMOVSS XMM1,dword ptr [0x01efb124]
-        - [ bytes, 0x01802dca, "c3" ]               # RET
+        - [ bytes64, 0x01802d94, 66667 ]            # Min FPS of 15
+        - [ bytes, 0x01802d9e, "4889150b533000" ]   # MOV qword ptr [0x01b080b0],RDX
+        - [ bytes, 0x01802da5, "48893d0c533000" ]   # MOV qword ptr [0x01b080b8],RDI
+        - [ bytes, 0x01802dac, "488b3de1ffffff" ]   # MOV RDI,qword ptr [0x01802d94]
+        - [ bytes, 0x01802db3, "488d15b6523000" ]   # LEA RDX,[0x1b08070]
+        - [ bytes, 0x01802dba, "48393d07587500" ]   # CMP qword ptr [0x01f585c8],RDI
+        # small optimiaztion
+        # using int before converting and dviding to float should be faster.
+        - [ bytes, 0x01802dc1, "771c" ]             # JA 0x01802ddf
+        - [ bytes, 0x01802dc3, "803a01" ]           # CMP byte ptr [RDX],0x1
+        - [ bytes, 0x01802dc6, "7417" ]             # JZ 0x01802ddf
+        - [ bytes, 0x01802dc8, "803a03" ]           # CMP byte ptr [RDX],0x3
+        - [ bytes, 0x01802dcb, "7412" ]             # JZ 0x01802ddf
+        # only do floating points opreation here
+        - [ bytes, 0x01802dcd, "c5222a1df3577500" ] # VCVTSI2SS XMM11,XMM11,dword ptr [0x01f585c8]
+        - [ bytes, 0x01802dd5, "c5a25e0db3ffffff" ] # VDIVSS XMM1,XMM11,dword ptr [0x01802d90]
+        - [ bytes, 0x01802ddd, "eb08" ]             # JMP 0x01802de7
+        - [ bytes, 0x01802ddf, "c5fa100d3d836f00" ] # VMOVSS XMM1,dword ptr [0x01efb124]
+        - [ bytes, 0x01802de7, "488b15c2523000" ]   # MOV RDX,qword ptr [0x01b080b0]
+        - [ bytes, 0x01802dee, "488b3dc3523000" ]   # MOV RDI,qword ptr [0x01b080b8]
+        - [ bytes, 0x01802df5, "c3" ]               # RET
         # level is loading
         - [ bytes, 0x013c8f2f, "e8479e4300" ]     # CALL 0x01802d7b
         - [ bytes, 0x013c8f34, "eb1b" ]           # JMP 0x013c8f51
@@ -207,9 +211,9 @@
         - [ bytes, 0x0180c030, "e959110000" ]     # JMP 0x0180d18e
         - [ bytes, 0x0180d18b, "c60001" ]         # MOV byte ptr [RAX],0x1
         - [ bytes, 0x0180d18e, "c3" ]             # RET
-
         - [ bytes, 0x01803062, "e989000000" ]     # JMP 0x018030f0
         - [ bytes, 0x018030f0, "bf0001114e" ]     # MOV EDI,0x4e110100
+        # flipmode
         - [ bytes, 0x018030f5, "803801" ]         # CMP byte ptr [RAX],0x1
         - [ bytes, 0x018030f8, "740c" ]           # JZ 0x01803106
         - [ bytes, 0x018030fa, "be00000000" ]     # MOV ESI,0x0
