@@ -1,14 +1,11 @@
 - game: "Gravity Rush (Gravity Daze): 2"
   app_ver: "01.11"
-  patch_ver: "2.1"
-  name: "60 FPS Unlock (WORK-IN-PROGRESS)"
+  patch_ver: "3.0"
+  name: "60 FPS"
   author: "illusion"
-  note: "Help wanted! Check the rest of the game and add it to lookup table.\nVersion 2.0 now features deltatime."
+  note: "Implemented button combos:\nL3 + R3:        30FPS Mode\nL3 + Cross (X): 60FPS Mode"
   arch: orbis
   patch_list:
-        # Currently known softlock level lookup table.
-        # todo: playthrough story episodes and add any sections that softlock the game to this table
-        # todo: banish all _com suffix
         # todo: implement igc detection for igc failures
         # forbidden level names
         - [ utf8, 0x01802d10, "ep01_com\x00" ]
@@ -31,7 +28,6 @@
         - [ utf8, 0x0180318f, "ep15_e\x00\x00" ]    # igc failure
         - [ utf8, 0x01803197, "ep16_a\x00\x00" ]    # igc failure
         - [ utf8, 0x0180319f, "ep22_c\x00\x00" ]    # script failure
-        - [ utf8, 0x018031a7, "ep23\x00" ]          # script failure # todo: implement button combo
         - [ utf8, 0x018031bd, "sm10\x00"]           # igc failure
         - [ utf8, 0x018031c2, "sm12_b\x00\x00"]     # igc failure
         - [ utf8, 0x018031ca, "sm13\x00"]           # igc failure
@@ -116,8 +112,44 @@
         - [ bytes, 0x01803048, "eb06" ]           # JMP 0x01803050
         - [ bytes, 0x01803050, "48894814" ]       # MOV qword ptr [RAX + 0x14],RCX
         - [ bytes, 0x01803054, "488b4804" ]       # MOV RCX,qword ptr [RAX + 0x4]
-        - [ bytes, 0x01803058, "e98e000000" ]     # JMP 0x018030eb
-        - [ bytes, 0x018030eb, "e8588e0000" ]     # CALL 0x0180bf48
+        - [ bytes, 0x01803058, "e8eb8e0000" ]     # CALL 0x0180bf48 # level check
+        - [ bytes, 0x0180305d, "e8b8fd0200" ]     # CALL 0x01832e1a # button check
+        # button check
+        # L3+R3     (768) = set flip to 1 # flipmode 0 + 33ms timestep
+        # L3+X      (260) = set flip to 2 # flipmode 0 + deltatime timestep
+        # L3+Square (264) = set flip to 3 # flipmode 1 + 33ms timestep
+        # addr: 1F1D578/1F1D60C
+        # Buttons    (values are int32)
+        # Cross (X)  4
+        # Square     8
+        # Circle     2
+        # Triangle   1
+        # Dpad Up    1024
+        # Dpad Down  8192
+        # Dpad Left  2048
+        # Dpad Right 4096
+        # L1         64
+        # L2         16
+        # L3         256
+        # R1         128
+        # R2         32
+        # R3         512
+        # Touchpad   32768
+        - [ bytes, 0x01832e1a, "488d3d57a76e00" ] # LEA RDI,[0x1f1d578]
+        - [ bytes, 0x01832e21, "813f00030000" ]   # CMP dword ptr [RDI],0x300
+        - [ bytes, 0x01832e27, "7412" ]           # JZ 0x01832e3b
+        - [ bytes, 0x01832e29, "813f04010000" ]   # CMP dword ptr [RDI],0x104
+        - [ bytes, 0x01832e2f, "740f" ]           # JZ 0x01832e40
+        - [ bytes, 0x01832e31, "813f08010000" ]   # CMP dword ptr [RDI],0x108
+        - [ bytes, 0x01832e37, "740c" ]           # JZ 0x01832e45
+        - [ bytes, 0x01832e39, "eb0d" ]           # JMP 0x01832e48
+        - [ bytes, 0x01832e3b, "c60001" ]         # MOV byte ptr [RAX],0x1
+        - [ bytes, 0x01832e3e, "eb08" ]           # JMP 0x01832e48
+        - [ bytes, 0x01832e40, "c60002" ]         # MOV byte ptr [RAX],0x2
+        - [ bytes, 0x01832e43, "eb03" ]           # JMP 0x01832e48
+        - [ bytes, 0x01832e45, "c60003" ]         # MOV byte ptr [RAX],0x3
+        - [ bytes, 0x01832e48, "c3" ]             # RET
+        # level check
         - [ bytes, 0x0180bf48, "48390b" ]         # CMP qword ptr [RBX],RCX
         - [ bytes, 0x0180bf4b, "0f843a120000" ]   # JZ 0x0180d18b
         - [ bytes, 0x0180bf51, "48394b08" ]       # CMP qword ptr [RBX + 0x8],RCX
@@ -150,8 +182,18 @@
         - [ bytes, 0x0180bfd5, "0f84b0110000" ]   # JZ 0x0180d18b
         - [ bytes, 0x0180bfdb, "48394b72" ]       # CMP qword ptr [RBX + 0x72],RCX
         - [ bytes, 0x0180bfdf, "0f84a6110000" ]   # JZ 0x0180d18b
-        - [ bytes, 0x0180bfe5, "398b82000000" ]   # CMP dword ptr [RBX + 0x82],ECX
-        - [ bytes, 0x0180bfeb, "0f849a110000" ]   # JZ 0x0180d18b
+        - [ bytes, 0x0180bfe5, "90" ]             # NOP
+        - [ bytes, 0x0180bfe6, "90" ]             # NOP
+        - [ bytes, 0x0180bfe7, "90" ]             # NOP
+        - [ bytes, 0x0180bfe8, "90" ]             # NOP
+        - [ bytes, 0x0180bfe9, "90" ]             # NOP
+        - [ bytes, 0x0180bfea, "90" ]             # NOP
+        - [ bytes, 0x0180bfeb, "90" ]             # NOP
+        - [ bytes, 0x0180bfec, "90" ]             # NOP
+        - [ bytes, 0x0180bfed, "90" ]             # NOP
+        - [ bytes, 0x0180bfee, "90" ]             # NOP
+        - [ bytes, 0x0180bfef, "90" ]             # NOP
+        - [ bytes, 0x0180bff0, "90" ]             # NOP
         - [ bytes, 0x0180bff1, "48398b88000000" ] # CMP qword ptr [RBX + 0x88],RCX
         - [ bytes, 0x0180bff8, "0f848d110000" ]   # JZ 0x0180d18b
         - [ bytes, 0x0180bffe, "48398b90000000" ] # CMP qword ptr [RBX + 0x90],RCX
@@ -165,6 +207,8 @@
         - [ bytes, 0x0180c030, "e959110000" ]     # JMP 0x0180d18e
         - [ bytes, 0x0180d18b, "c60001" ]         # MOV byte ptr [RAX],0x1
         - [ bytes, 0x0180d18e, "c3" ]             # RET
+
+        - [ bytes, 0x01803062, "e989000000" ]     # JMP 0x018030f0
         - [ bytes, 0x018030f0, "bf0001114e" ]     # MOV EDI,0x4e110100
         - [ bytes, 0x018030f5, "803801" ]         # CMP byte ptr [RAX],0x1
         - [ bytes, 0x018030f8, "740c" ]           # JZ 0x01803106
