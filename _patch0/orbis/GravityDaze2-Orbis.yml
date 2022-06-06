@@ -226,3 +226,31 @@
         - [ bytes, 0x01803018, "488b3d81503000" ] # MOV RDI,qword ptr [0x01b080a0]
         - [ bytes, 0x0180301f, "488b1582503000" ] # MOV RDX,qword ptr [0x01b080a8]
         - [ bytes, 0x01803026, "c3" ]             # RET
+
+- game: "Gravity Rush (Gravity Daze): 2"
+  app_ver: "01.11"
+  patch_ver: "1.0"
+  name: "Infinite Gravity Energy"
+  author: "illusion"
+  arch: orbis
+  patch_list:
+        - [ bytes, 0x00901c26, "c5fa10058a68fb00" ] # VMOVSS XMM0,dword ptr [0x018b84b8]
+
+- game: "Gravity Rush (Gravity Daze): 2"
+  app_ver: "01.11"
+  patch_ver: "1.0"
+  name: "Most attacks does not hurt player"
+  author: "illusion"
+  arch: orbis
+  patch_list:
+        - [ bytes, 0x009091a6, "9090909090" ] # NOP x5
+
+- game: "Gravity Rush (Gravity Daze): 2"
+  app_ver: "01.11"
+  patch_ver: "1.0"
+  name: "Unlock All Costumes"
+  author: "illusion"
+  arch: orbis
+  patch_list:
+        - [ bytes, 0x0124d664, "c6402101" ]     # MOV byte ptr [RAX + 0x21],0x1 # Unlock items in save file
+        - [ bytes, 0x0124d668, "48e922ffffff" ] # JMP 0x0124d590                # Skip check that costumes are locked
