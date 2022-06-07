@@ -3,7 +3,7 @@
   patch_ver: "3.0"
   name: "60 FPS"
   author: "illusion"
-  note: "Implemented button combos:\nL3 + R3:        30FPS Mode\nL3 + Cross (X): 60FPS Mode"
+  note: "Implemented button combos:\nL3 + R3: 30FPS Mode\nL3 + Cross (X): 60FPS Mode\nR3 + Cross (X): Enable Replace All Text with Level Names (Debug)\nR3 + Square: Disable Replace All Text with Level Names (Debug)"
   arch: orbis
   patch_list:
         # todo: implement igc detection for igc failures
@@ -119,6 +119,7 @@
         - [ bytes, 0x01803058, "e8eb8e0000" ]     # CALL 0x0180bf48 # level check
         - [ bytes, 0x0180305d, "e8b8fd0200" ]     # CALL 0x01832e1a # button check
         # button check
+        # todo: simplify and make buttons toggle
         # L3+R3     (768) = set flip to 1 # flipmode 0 + 33ms timestep
         # L3+X      (260) = set flip to 2 # flipmode 0 + deltatime timestep
         # L3+Square (264) = set flip to 3 # flipmode 1 + 33ms timestep
@@ -211,7 +212,7 @@
         - [ bytes, 0x0180c030, "e959110000" ]     # JMP 0x0180d18e
         - [ bytes, 0x0180d18b, "c60001" ]         # MOV byte ptr [RAX],0x1
         - [ bytes, 0x0180d18e, "c3" ]             # RET
-        - [ bytes, 0x01803062, "e989000000" ]     # JMP 0x018030f0
+        - [ bytes, 0x01803067, "e984000000" ]     # JMP 0x018030f0
         - [ bytes, 0x018030f0, "bf0001114e" ]     # MOV EDI,0x4e110100
         # flipmode
         - [ bytes, 0x018030f5, "803801" ]         # CMP byte ptr [RAX],0x1
@@ -230,6 +231,39 @@
         - [ bytes, 0x01803018, "488b3d81503000" ] # MOV RDI,qword ptr [0x01b080a0]
         - [ bytes, 0x0180301f, "488b1582503000" ] # MOV RDX,qword ptr [0x01b080a8]
         - [ bytes, 0x01803026, "c3" ]             # RET
+        # text replace
+        - [ bytes, 0x015111cf, "e8d0a02e00" ]     # CALL 0x017fb2a4
+        - [ bytes, 0x015111d4, "90" ]             # NOP
+        - [ bytes, 0x015111d5, "90" ]             # NOP
+        - [ bytes, 0x015111d6, "90" ]             # NOP
+        - [ bytes, 0x015111d7, "90" ]             # NOP
+        - [ bytes, 0x015111d8, "90" ]             # NOP
+        - [ bytes, 0x015111d9, "90" ]             # NOP
+        - [ bytes, 0x015111da, "90" ]             # NOP
+        - [ bytes, 0x015111db, "90" ]             # NOP
+        - [ bytes, 0x015111dc, "90" ]             # NOP
+        - [ bytes, 0x017fb2a4, "803d31ce300001" ] # CMP byte ptr [0x01b080dc],0x1
+        - [ bytes, 0x017fb2ab, "7410" ]           # JZ 0x017fb2bd
+        - [ bytes, 0x017fb2ad, "41803c2400" ]     # CMP byte ptr [R12],0x0
+        - [ bytes, 0x017fb2b2, "7510" ]           # JNZ 0x017fb2c4
+        - [ bytes, 0x017fb2b4, "4c8d25ab000000" ] # LEA R12,[0x17fb366]
+        - [ bytes, 0x017fb2bb, "eb07" ]           # JMP 0x017fb2c4
+        - [ bytes, 0x017fb2bd, "4c8d25b0cd3000" ] # LEA R12,[0x1b08074]
+        - [ bytes, 0x017fb2c4, "c3" ]             # RET
+        # button check for text replace
+        # todo: simplify and make button a toggle
+        # R3+Square: toggles on and off
+        - [ bytes, 0x01803062, "e862fe0200" ]     # CALL 0x01832ec9
+        - [ bytes, 0x01832ec9, "488d3da8a66e00" ] # LEA RDI,[0x1f1d578]
+        - [ bytes, 0x01832ed0, "813f04020000" ]   # CMP dword ptr [RDI],0x204
+        - [ bytes, 0x01832ed6, "740a" ]           # JZ 0x01832ee2
+        - [ bytes, 0x01832ed8, "813f08020000" ]   # CMP dword ptr [RDI],0x208
+        - [ bytes, 0x01832ede, "7408" ]           # JZ 0x01832ee8
+        - [ bytes, 0x01832ee0, "eb0a" ]           # JMP 0x01832eec
+        - [ bytes, 0x01832ee2, "c6406c00" ]       # MOV byte ptr [RAX + 0x6c],0x0
+        - [ bytes, 0x01832ee6, "eb04" ]           # JMP 0x01832eec
+        - [ bytes, 0x01832ee8, "c6406c01" ]       # MOV byte ptr [RAX + 0x6c],0x1
+        - [ bytes, 0x01832eec, "c3" ]             # RET
 
 - game: "Gravity Rush (Gravity Daze): 2"
   app_ver: "01.11"
