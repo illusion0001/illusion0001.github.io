@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "Patches and Improvements for MotorStorm Titles (RPCS3)"
-excerpt: "PS3 racing exclusive at 60FPS. No motion blur and Dynamic Resolution Scaling."
+excerpt: "PS3 racing exclusives at 60FPS. No motion blur and Dynamic Resolution Scaling."
 header:
   teaser: "https://img-assets.illusion0001.workers.dev/assets/images/Motorstorm-Framerate-Patch/cover-thumbnail-ms3.png"
   overlay_image: "https://img-assets.illusion0001.workers.dev/assets/images/Motorstorm-Framerate-Patch/cover-thumbnail-ms3.png"
