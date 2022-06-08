@@ -149,6 +149,6 @@ Just for fun, here is a comparison between the different FOV angles.
 
 # Patch
 
-<a href="https://github.com/illusion0001/illusion0001.github.io/blob/main/_patches/AI-Moon-Orbis.md" class="button" role="button"><i class='fas fa-download'></i> Patch Code</a>
+<a href="/_patch/AlienIsolation-Orbis" class="button" role="button"><i class='fas fa-download'></i> Patch Code</a>
 
 {% include_relative _supporters.md %}

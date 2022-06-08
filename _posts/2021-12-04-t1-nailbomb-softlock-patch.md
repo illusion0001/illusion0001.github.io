@@ -276,7 +276,7 @@ For those looking to use the patch on the RPCS3 emulator, you can head over to t
 
 <a href="https://wiki.rpcs3.net/index.php?title=The_Last_of_Us#Patches" class="button" role="button"><i class='fas fa-download'></i> Patch Source Code (RPCS3)</a>
 
-<a href="https://github.com/illusion0001/illusion0001.github.io/blob/main/_patches/tlou1.md#University-Nailbomb-Softlock-Fix" class="button" role="button"><i class='fas fa-download'></i> Patch (PS4)</a>
+<a href="/_patch/TheLastofUs1Remastered-Orbis" class="button" role="button"><i class='fas fa-download'></i> Patch (PS4)</a>
 
 PlayStation 4 users, can follow this guide on how to install the patch [here](/install-instructions). (the following tutorial **does not** cover how to build the update package. only to install the patch into the binary.)
 

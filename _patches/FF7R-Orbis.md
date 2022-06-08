@@ -225,7 +225,6 @@ In file `...\end\content\paks\pakchunk0-ps4.pak`
 <summary>Code (Click to Expand)</summary>
 
 ```ini
-; https://github.com/illusion0001/illusion0001.github.io/commit/6d72ffa2a1fe389a3d614eb6756bea80b51439a4#commitcomment-51227749
 ; https://github.com/dontellmama
 
 ; Find:

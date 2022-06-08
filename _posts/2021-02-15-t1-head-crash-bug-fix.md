@@ -90,7 +90,7 @@ To use patch on the RPCS3 Emulator, simply download and enable through Patch Man
 
 To apply patch and for use on a real PlayStation 3 console, you'll need to decrypt the executable, apply the patch, save and resign the executable.
 
-<a href="https://github.com/illusion0001/illusion0001.github.io/blob/main/_patches/tlou1.md#infecteds-severed-head-crash-bug-fix" class="button" role="button">{{ site.theme_settings.download_icon }} Patch Codes</a>
+<a href="/_patch/TheLastofUs1Remastered-Orbis/" class="button" role="button">{{ site.theme_settings.download_icon }} Patch Codes</a>
 
 ## Credits
 

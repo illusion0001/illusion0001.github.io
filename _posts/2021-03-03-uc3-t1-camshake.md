@@ -181,7 +181,7 @@ To apply patch and for use on an exploitable PlayStation 3 or PlayStation 4 cons
 
 For RPCS3 Emulator, simply download and enable through Patch Manager.
 
-<a href="https://github.com/illusion0001/illusion0001.github.io/blob/main/_patches/tlou1.md#disable-camera-shake" class="button" role="button">{{ site.theme_settings.download_icon }} Patch Codes</a>
+<a href="/_patch/TheLastofUs1Remastered-Orbis" class="button" role="button">{{ site.theme_settings.download_icon }} Patch Codes</a>
 
 ## Credits
 

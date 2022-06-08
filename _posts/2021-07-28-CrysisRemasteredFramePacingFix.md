@@ -161,6 +161,6 @@ Notice how the Green line is more stable than the Orange line.
 
 # Patch
 
-<a href="https://github.com/illusion0001/illusion0001.github.io/blob/main/_patches/CrysisRemastered-Orbis.md#30-fps-limit-proper-frame-pacing" class="button" role="button"><i class='fas fa-download'></i> Patch Code</a>
+<a href="/_patch/CrysisRemastered-Orbis" class="button" role="button"><i class='fas fa-download'></i> Patch Code</a>
 
 {% include_relative _supporters.md %}

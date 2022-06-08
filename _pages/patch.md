@@ -19,7 +19,7 @@ This site lists patches made for use with exploited consoles.
 
 # Contributing
 
-You can submit a pull request to this [repository](https://github.com/illusion0001/illusion0001.github.io/tree/main/_patch0) with your own patches.
+You can submit a pull request to this [repository](https://github.com/illusion0001/console-game-patches) with your own patches.
 
 YML syntax example: [example.yml](https://github.com/illusion0001/py-patcher/blob/137529109cdd58e2b977162e09bdad8849df5301/data/example.yml#L26-L54)
 

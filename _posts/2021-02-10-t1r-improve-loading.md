@@ -117,4 +117,4 @@ Let's test this change in game. The following video showcases this change aswell
 
 To install the patch, open `eboot.bin` with a hex editor and do a search and replace. build and install the patch back onto the console.
 
-<a href="https://github.com/illusion0001/illusion0001.github.io/blob/main/_patches/tlou1.md#improved-loading" class="button" role="button">{{ site.theme_settings.download_icon }} Patch Codes</a>
+<a href="/_patch/TheLastofUs1Remastered-Orbis" class="button" role="button">{{ site.theme_settings.download_icon }} Patch Codes</a>

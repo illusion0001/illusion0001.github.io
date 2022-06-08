@@ -357,7 +357,7 @@ The Compare SUB allows for infinite items - when byte is enabled, parts, item, e
 
 # Patch
 
-<a href="https://github.com/illusion0001/illusion0001.github.io/blob/main/_patches/tlou1.md#improved-cheat-codes" class="button" role="button">{{ site.theme_settings.download_icon }} Patch Codes</a>
+<a href="/_patch/TheLastofUs1Remastered-Orbis" class="button" role="button">{{ site.theme_settings.download_icon }} Patch Codes</a>
 
 ## Credits
 

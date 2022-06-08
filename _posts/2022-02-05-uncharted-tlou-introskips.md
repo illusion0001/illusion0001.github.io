@@ -173,12 +173,12 @@ For those looking to use the patch on the RPCS3 emulator, you can head over to t
 
 PlayStation 4 users, can follow this guide on how to install the patch [here](/install-instructions). (the following tutorial **does not** cover how to build the update package. only to install the patch into the binary.)
 
-<a href="https://github.com/illusion0001/illusion0001.github.io/blob/main/_patches/uncharted-collection.md#intro-skip" class="button" role="button"><i class='fas fa-download'></i> Patch: Uncharted: The Nathan Drake Collection (PS4)</a>
+<a href="/_patch/UnchartedTheNathanDrakeCollection-Orbis" class="button" role="button"><i class='fas fa-download'></i> Patch: Uncharted: The Nathan Drake Collection (PS4)</a>
 
-<a href="https://github.com/illusion0001/illusion0001.github.io/blob/main/_patches/tlou1.md#intro-skip" class="button" role="button"><i class='fas fa-download'></i> Patch: The Last of Us Remastered (PS4)</a>
+<a href="/_patch/TheLastofUs1Remastered-Orbis" class="button" role="button"><i class='fas fa-download'></i> Patch: The Last of Us Remastered (PS4)</a>
 
-<a href="https://github.com/illusion0001/illusion0001.github.io/blob/main/_patches/uncharted4.md#intro-skip" class="button" role="button"><i class='fas fa-download'></i> Patch: Uncharted 4 (PS4)</a>
+<a href="/_patch/Uncharted4AThiefsEnd-Orbis" class="button" role="button"><i class='fas fa-download'></i> Patch: Uncharted 4 (PS4)</a>
 
-<a href="https://github.com/illusion0001/illusion0001.github.io/blob/main/_patches/uncharted-tll.md#intro-skip" class="button" role="button"><i class='fas fa-download'></i> Patch: Uncharted: The Lost Legacy (PS4)</a>
+<a href="/_patch/UnchartedTheLostLegacy-Orbis" class="button" role="button"><i class='fas fa-download'></i> Patch: Uncharted: The Lost Legacy (PS4)</a>
 
 {% include_relative _supporters.md %}

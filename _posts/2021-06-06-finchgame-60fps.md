@@ -185,20 +185,6 @@ Image quailty comparisons, can you guess which is which?
 
 # Patch
 
-<a href="https://github.com/illusion0001/illusion0001.github.io/blob/main/_patches/finchgame-Orbis.md#60fps-unlock" class="button" role="button">{{ site.theme_settings.download_icon }} Patch Code</a>
-
-Patches released since Final Fantasy VII: Remake
-
-<a href="https://github.com/illusion0001/illusion0001.github.io/blob/main/_patches/lis/captainspirit.md" class="button" role="button">{{ site.theme_settings.download_icon }} Awesome Adventures of Captain Spirit</a>
-
-<a href="https://github.com/illusion0001/illusion0001.github.io/blob/main/_patches/FD4_FDP-Orbis.md" class="button" role="button">{{ site.theme_settings.download_icon }} Dark Souls III</a>
-
-<a href="https://github.com/illusion0001/illusion0001.github.io/blob/main/_patches/GhostOfTsushima-Orbis.md" class="button" role="button">{{ site.theme_settings.download_icon }} Ghost Of Tsushima</a>
-
-<a href="https://github.com/illusion0001/illusion0001.github.io/blob/main/_patches/Tresgame-Orbis.md" class="button" role="button">{{ site.theme_settings.download_icon }} Kingdom Hearts: III</a>
-
-<a href="https://github.com/illusion0001/illusion0001.github.io/blob/main/_patches/P5R-Orbis.md" class="button" role="button">{{ site.theme_settings.download_icon }} Persona 5: Royal</a>
-
-<a href="https://github.com/illusion0001/illusion0001.github.io/blob/main/_patches/lis/prombasegame-lis2.md" class="button" role="button">{{ site.theme_settings.download_icon }} Life is Strange 2</a>
+<a href="/_patch/WhatRemainsofEdithFinch-Orbis" class="button" role="button">{{ site.theme_settings.download_icon }} Patch Code</a>
 
 {% include_relative _supporters.md %}

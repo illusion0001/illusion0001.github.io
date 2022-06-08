@@ -156,6 +156,6 @@ Completely pointless but hey, at least we know how the RED Engine lays out it's 
 
 # Patch
 
-<a href="https://github.com/illusion0001/illusion0001.github.io/blob/main/_patches/W3Witcher-Orbis.md" class="button" role="button"><i class='fas fa-download'></i> Patch Code</a>
+<a href="/_patch/TheWitcher3-Orbis" class="button" role="button"><i class='fas fa-download'></i> Patch Code</a>
 
 {% include_relative _supporters.md %}

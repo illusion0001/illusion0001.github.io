@@ -121,7 +121,7 @@ Replaced `DEC` instruction to call to our new location, setup a pointer, compare
 
 # Patch
 
-<a href="https://github.com/illusion0001/illusion0001.github.io/blob/main/_patches/tlou2.md#improved-inf-ammo" class="button" role="button">{{ site.theme_settings.download_icon }} Patch Codes</a>
+<a href="/_patch/TheLastofUsPartII-Orbis" class="button" role="button">{{ site.theme_settings.download_icon }} Patch Codes</a>
 
 # One More Thing
 
@@ -129,7 +129,7 @@ As you may have noticed, The blog now has a new theme.
 
 Switched from [Yet Another Theme](https://github.com/jeffreytse/jekyll-theme-yat) to Silent's version of [Type on Strap](https://github.com/Sylhare/Type-on-Strap) for a more cleaner design and a few QoL changes.
 
-I have also ported the [Infected's Severed Head Crash Bug Fix](https://github.com/illusion0001/illusion0001.github.io/blob/main/_patches/tlou1.md#infecteds-severed-head-crash-bug-fix) to the latest version of The Last of Us Remastered. (1.11)
+I have also ported the [Infected's Severed Head Crash Bug Fix](/_patch/TheLastofUs1Remastered-Orbis) to the latest version of The Last of Us Remastered. (1.11)
 
 Also, here is Naughty Dog code for loading section on 1.11.
 

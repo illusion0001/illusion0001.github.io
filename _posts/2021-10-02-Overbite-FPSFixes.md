@@ -104,6 +104,6 @@ See the video below for a comparison between the patched versions.
 
 # Patch
 
-<a href="https://github.com/illusion0001/illusion0001.github.io/blob/main/_patches/Overbite-Orbis.md" class="button" role="button"><i class='fas fa-download'></i> Patch Code</a>
+<a href="/_patch/MediEvil-Orbis" class="button" role="button"><i class='fas fa-download'></i> Patch Code</a>
 
 {% include_relative _supporters.md %}

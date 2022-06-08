@@ -77,7 +77,7 @@ Success! Doesn't crash now when throwing an object.
 
 To apply patch and for use on a exploitable PlayStation 4 console, you'll need to dump the game, modiify the executable with a hex editor and install the fake patch back onto the console.
 
-<a href="https://github.com/illusion0001/illusion0001.github.io/blob/main/_patches/tlou1.md#infecteds-severed-head-crash-bug-fix" class="button" role="button">{{ site.theme_settings.download_icon }} Patch Codes</a>
+<a href="/_patch/TheLastofUs1Remastered-Orbis" class="button" role="button">{{ site.theme_settings.download_icon }} Patch Codes</a>
 
 ## Credits
 
