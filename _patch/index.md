@@ -1,1 +1,0 @@
-[Game Index](/patch/#patches)

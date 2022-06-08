@@ -1,8 +1,0 @@
-- game: "Uncharted 4"
-  app_ver: "01.33"
-  patch_ver: "1.0"
-  name: "Intro Skip"
-  author: "illusion"
-  arch: generic_orbis
-  patch_list:
-        - [ bytes, 0x127BEC7, "EB 2C" ]

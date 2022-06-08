@@ -19,12 +19,9 @@ jobs:
 
       - name: Pack patch files into zip
         run: |
-          # temp to keep page working for draft
-          cd _posts
-          cp {2022-04-18,1971-01-01}-Fromsoftware-Framepacing.md
-          cd -
-          # very very ugly workaround
-          # find out why it doesn't work without copying
+          git clone https://github.com/illusion0001/console-game-patches.git --depth=1
+          mv console-game-patches/_patch0 .
+          mv console-game-patches/_patch  .
           cp -r _patch __patch
           chmod +x .ci/*.sh
           .ci/zip.sh

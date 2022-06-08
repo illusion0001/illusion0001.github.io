@@ -1,9 +1,0 @@
-- game: "Mafia 2: Definitive Edition"
-  app_ver: "01.02"
-  patch_ver: "1.0"
-  name: "60 FPS Unlock"
-  author: "illusion"
-  note: "CPU/GPU Limited. For use with 9th generation of game consoles."
-  arch: generic_orbis
-  patch_list:
-        - [ bytes, 0xA17D16, "94" ]

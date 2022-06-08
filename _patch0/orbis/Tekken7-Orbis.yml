@@ -1,8 +1,0 @@
-- game: "Tekken 7"
-  app_ver: "04.00"
-  patch_ver: "1.0"
-  name: "Disable Post Processing"
-  author: "illusion"
-  arch: generic_orbis
-  patch_list:
-        - [ bytes, 0x1B01EDC, "48 E9" ]
