@@ -7,6 +7,7 @@ Thanks to the patrons who supported me on various platforms! You guys are awesom
 - ac2pic
 - alessaro92
 - faith
+- GarnetSunset
 - Ioritree
 - Jeff Eberlin
 - YveltalGriffin
@@ -22,3 +23,4 @@ Thanks to the patrons who supported me on various platforms! You guys are awesom
 - John
 - InquisitionImplied
 - YveltalGriffin
+- Maestruleduardo
