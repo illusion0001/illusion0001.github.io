@@ -1,14 +1,26 @@
 name: Deploy to GitHub Pages
 
-on: [ push, workflow_dispatch ]
+on:
+  push:
+    branch: 'main'
+  workflow_dispatch:
 
 jobs:
   jekyll_build:
     runs-on: ubuntu-latest
-
+    if: github.repository == 'illusion0001/illusion0001.github.io'
     steps:
-      - name: Checkout
+      - name: Setup vars
+        run: echo patch_repo="console-game-patches" >> ${{ github.env }}
+
+      - name: Checkout main repository
         uses: actions/checkout@v3
+
+      - name: Checkout patch repository
+        uses: actions/checkout@v3
+        with:
+          repository: 'illusion0001/${{ env.patch_repo }}'
+          path: ${{ env.patch_repo }}
 
       - name: Cache
         uses: actions/cache@v3
@@ -17,17 +29,28 @@ jobs:
           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile') }}
           restore-keys: ${{ runner.os }}-gems-
 
+      - name: Setup Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.x'
+          cache: 'pip'
+          cache-dependency-path: '${{ env.patch_repo }}/requirements.txt'
+
+      - name: Setup dependencies
+        run: pip install -r ${{ env.patch_repo }}/requirements.txt
+
       - name: Pack patch files into zip
         run: |
-          git clone https://github.com/illusion0001/console-game-patches.git --depth=1
-          mv console-game-patches/_patch0 .
-          mv console-game-patches/_patch  .
+          cd ${{ env.patch_repo }}
+          python page-autogen.py
+          mv _patch0 ../
+          mv _patch  ../
+          cd ..
           cp -r _patch __patch
           chmod +x .ci/*.sh
           .ci/zip.sh
 
       - name: Deploy
-        if: github.repository == 'illusion0001/illusion0001.github.io'
         uses: helaili/jekyll-action@master
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
