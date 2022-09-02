@@ -86,11 +86,7 @@ Success! No longer crashes when throwing an object.
 
 # Patch
 
-To use patch on the RPCS3 Emulator, simply download and enable through Patch Manager.
-
-To apply patch and for use on a real PlayStation 3 console, you'll need to decrypt the executable, apply the patch, save and resign the executable.
-
-<a href="/_patch/TheLastofUs1Remastered-Orbis/" class="button" role="button">{{ site.theme_settings.download_icon }} Patch Codes</a>
+{% include_relative _generic_rpcs3_patch_note.md %}
 
 ## Credits
 
