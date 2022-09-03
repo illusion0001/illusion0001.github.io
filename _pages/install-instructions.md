@@ -17,7 +17,7 @@ Games used for the presentation does not have any relevance for the steps.
 
 1) Download the program: [py-patch](https://github.com/illusion0001/py-patcher-bin/releases/latest)
 
-{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/setup/launcher0.png" %}
+{% include img1 image_path="https://drive.google.com/uc?id=1mL9ibo-NNC4B5NJyrw1TnkGuwCbSf_6n" %}
 
 2) Extract the program archive to a folder somewhere on your computer.
 
@@ -34,7 +34,7 @@ Video Guide:
 
 <div align="center">
 <video width="100%" controls muted>
-  <source src="https://img-assets.illusion0001.workers.dev/assets/images/setup/launcher-vidya.mp4" type="video/mp4">
+  <source src="https://drive.google.com/uc?id=1WLGOa8a25UNIysvoIo-_qhIGysjjbCzA" type="video/mp4">
 </video>
 </div>
 
@@ -43,7 +43,7 @@ Video Guide:
 ## Installing Patch using Direct File Address method
 
 <p align="center">
-<img src="https://img-assets.illusion0001.workers.dev/assets/images/setup/addr-setup0.png">
+<img src="https://drive.google.com/uc?id=1SkEVVbBU4u-ayJJlNYZla6-LrX-7m8sS">
 </p>
 
 <p align="center">
@@ -51,7 +51,7 @@ Video Guide:
 </p>
 
 <p align="center">
-<img src="https://img-assets.illusion0001.workers.dev/assets/images/setup/addr-setup1.png">
+<img src="https://drive.google.com/uc?id=10crSOcTZ3YiwlU9vAl-yaj7Ke9A0ps7W">
 </p>
 
 <p align="center">
@@ -59,7 +59,7 @@ Video Guide:
 </p>
 
 <p align="center">
-<img src="https://img-assets.illusion0001.workers.dev/assets/images/setup/addr-setup2.png">
+<img src="https://drive.google.com/uc?id=16yx8ofuBuavUh0VBp2S3co2TuSJbDUNZ">
 <em>Paste Write value from file.</em>
 </p>
 
@@ -68,7 +68,7 @@ Video Guide:
 ## Installing Patch using Array of Bytes method
 
 <p align="center">
-<img src="https://img-assets.illusion0001.workers.dev/assets/images/setup/hxd0.png">
+<img src="https://drive.google.com/uc?id=18Z0g3FRaUbtnhiU2r0r5IsLGNBGmTdJz">
 </p>
 
 <p align="center">
@@ -76,12 +76,12 @@ Video Guide:
 </p>
 
 <p align="center">
-<img src="https://img-assets.illusion0001.workers.dev/assets/images/setup/hxd1.png">
+<img src="https://drive.google.com/uc?id=1W7m3x3mmsyEwG6_GG5EnztJ44wC0cXUx">
 <em>Paste copied first line into search field and change search to Hex Value as well as change direction to all and click 'Search All'.</em>
 </p>
 
 <p align="center">
-<img src="https://img-assets.illusion0001.workers.dev/assets/images/setup/hxd2.png">
+<img src="https://drive.google.com/uc?id=1zzg3Ya7PN5k4NMmU1BA6PyySpj2rtTBQ">
 <em>Copy second line from patch file and Paste Write.</em>
 </p>
 

@@ -5,10 +5,10 @@ excerpt: "House exploring in 60 Frames Per Second on PlayStation 4"
 categories: patches
 tags: finchgame ps4 patches
 header:
-  teaser: "https://img-assets.illusion0001.workers.dev/assets/images/finchgame-60fps/fg-banner2.png"
-  overlay_image: "https://img-assets.illusion0001.workers.dev/assets/images/finchgame-60fps/fg-banner2.png"
+  teaser: "https://drive.google.com/uc?id=1XyPps_OBn4HAz7HAt3q2pYYdNdtMgadB"
+  overlay_image: "https://drive.google.com/uc?id=1XyPps_OBn4HAz7HAt3q2pYYdNdtMgadB"
   overlay_filter: 0.5
-  og_image: "https://img-assets.illusion0001.workers.dev/assets/images/finchgame-60fps/fg-banner.png"
+  og_image: "https://drive.google.com/uc?id=1TrFaILzTNo-Bm7WPw7-5cmv8ctS1JVdg"
 tags: [Articles, Releases]
 # twitter: {card: "summary_large_image"}
 
@@ -36,7 +36,7 @@ This game targets its proformance profile at 1080p and 30FPS at least for Base C
 
 In my [previous article](/patches/2021/05/20/ff7r-end-60fps/) I discovered the inital value for Unreal Engine Screen Percentage and Sync Intervals. Let's have a look in the config files and see if there's anything useful there.
 
-{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/finchgame-60fps/fg-compressed-ini.png" %}
+{% include img1 image_path="https://drive.google.com/uc?id=16bymx-SsKMevPgUOsL-S8vmXlC5ZjR4Y" %}
 
 <div align=center>
 <em>Yikes.. nope</em>
@@ -46,7 +46,7 @@ This is extracted using the [UT4 QuickBMS](http://aluigi.org/bms/unreal_tourname
 
 100.0 float for screen percentage, and 2 for sync interval.
 
-{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/finchgame-60fps/ps4ch-fg1.png" %}
+{% include img1 image_path="https://drive.google.com/uc?id=1ReSghMAWditDmH0sUfUmhgQWH42XhyX0" %}
 
 <div align=center>
 <em>Looks like I found it</em>
@@ -91,19 +91,19 @@ Searching for sync came up with only a couple of releavent results. There's `r.V
 
 A `mov` and `cmp` instructions? Seems to use a pointer that is then allocated in memory but this is *not* eboot space as we'll see later so let's set a breakpoint and see where it takes us.
 
-{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/finchgame-60fps/ps4r-fg2.png" %}
+{% include img1 image_path="https://drive.google.com/uc?id=11TWctjZq1_ZHaDfb6ZR_HPnNNTIlfr2x" %}
 
 <div align=center>
 <em>RAX has our memory location somewhere up high, let's check it out</em>
 </div>
 
-{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/finchgame-60fps/ps4r-fg3.png" %}
+{% include img1 image_path="https://drive.google.com/uc?id=1vfonFC4LUiW5K9FDdyUOnOyTmTn82CZB" %}
 
 A row of values. seems to be 4 byte int. setting one of these values to 0 introduces tearing.
 
 <div align="center">
 <video width="100%" controls >
-  <source src=https://img-assets.illusion0001.workers.dev/assets/images/finchgame-60fps/fg=demo-tear.mp4" type="video/mp4">
+  <source src=https://drive.google.com/uc?id=1M9mYafre-4OasAKB3cNpgLAYYJmoUHdC" type="video/mp4">
 </video>
 <em>Oof, not looking good.</em>
 </div>
@@ -119,7 +119,7 @@ There's a compare instruction here. Let's set our value back to 1 and set this j
 
 <div align="center">
 <video width="100%" controls >
-  <source src=https://img-assets.illusion0001.workers.dev/assets/images/finchgame-60fps/fg=demo-no-tear.mp4" type="video/mp4">
+  <source src=https://drive.google.com/uc?id=1dPWPNlnYxgPTlOgdoBdfUcM-gx-ySO8T" type="video/mp4">
 </video>
 <em>60FPS target and no screen tear! Perfect.</em>
 </div>
@@ -164,7 +164,7 @@ Pretty simple right? This should work in-game, let's test it out.
 
 <div align="center">
 <video width="100%" controls >
-  <source src=https://img-assets.illusion0001.workers.dev/assets/images/finchgame-60fps/fg-demo-after.mp4" type="video/mp4">
+  <source src=https://drive.google.com/uc?id=19S2QgaRuSTn3XARPKibjy4ofi_XassJv" type="video/mp4">
 </video>
 <em>60FPS indoors and of course no tearing to be found.</em>
 </div>
@@ -175,9 +175,9 @@ Image quailty comparisons, can you guess which is which?
 
 {% include_relative _image_note.md %}
 
-{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/finchgame-60fps/fg-before.png" %}
+{% include img1 image_path="https://drive.google.com/uc?id=1HibMLj6K9ne4sBWAjHgG6fXczpM45kgH" %}
 
-{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/finchgame-60fps/fg-after.png" %}
+{% include img1 image_path="https://drive.google.com/uc?id=1F-pzPlxqTjzUW6UndovNtCICiBX2co-9" %}
 
 <div align="center" class="responsive-video-container">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/BQaG989KYcs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

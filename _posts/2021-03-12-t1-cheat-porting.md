@@ -53,7 +53,7 @@ Yes! We can nop out fsub, which subtracts the float value by 0.1, we can achieve
 
 Let's have a look in memory to see what clues we can find to port this to the PS4 version.
 
-{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/t1-cheat-porting/ps3-ch-fl1.png" %}
+{% include img1 image_path="https://drive.google.com/uc?id=1K7HoTugKBgPu5da4EK0RizCcxZbakfVG" %}
 
 Remember `ProcessWeaponFlashlight` and a few float values, as these will be helpful later on.
 
@@ -63,7 +63,7 @@ We can do a quick search through the games memory for the number of parts in Joe
 
 There are 2 results - One address for the HUD, and another for the "real" value. Attempting to modify the HUD value will result in it being overwritten by the real value, so we can ignore the HUD value and focus only on the real value.
 
-{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/t1-cheat-porting/ps3-ch-part1.png" %}
+{% include img1 image_path="https://drive.google.com/uc?id=1XVt9Uj_coxs-I8JZEwX2RyBSlh3hwM7B" %}
 
 Unfortunately, peeking into memory here won't do much, since the real value is dynamic and it's address is always shifting when the game is loaded.
 
@@ -156,11 +156,11 @@ Let's try making our own cheat.
 
 Searching for Tools level, we get 2 results. We can ignore 1 in executable space. As it's only for HUD value.
 
-{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/t1-cheat-porting/ps4-tool1.png" %}
+{% include img1 image_path="https://drive.google.com/uc?id=1CTCH29eElbuOENw_cYWuhKgkC9U59sWl" %}
 
 Tools value has been changed to 127. Let's set a breakpoint on pickup.
 
-{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/t1-cheat-porting/ps4-tool2.png" %}
+{% include img1 image_path="https://drive.google.com/uc?id=1-0ruFp660VKlQK7h_kbTtVZoGzfH-C5U" %}
 
 ```
 00068742 ff 84 bb        INC        dword ptr [RBX + RDI*0x4 + 0x16448]
@@ -193,16 +193,16 @@ Done!
 
 On PS4 we can do a search for the text we noted down earlier: "ProcessWeaponFlashlight" - These floats will become useful later on when we peek into memory.
 
-{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/t1-cheat-porting/ps4-ch-fl0.png" %}
+{% include img1 image_path="https://drive.google.com/uc?id=1cfV3eLkRjgdbY-bOSM-0BdHVURVrP7Oy" %}
 
 4 results; let's check for similarities.
 Found it. Highlighted are the same floats and values. Sweet!
 
-{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/t1-cheat-porting/ps4-ch-fl1.png" %}
+{% include img1 image_path="https://drive.google.com/uc?id=1B10ge2Fqu-5MAk0uOzclqGzVuz7LNxOu" %}
 
 Let's set a breakpoint and see where it takes us.
 
-{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/t1-cheat-porting/ps4r-flr.png" %}
+{% include img1 image_path="https://drive.google.com/uc?id=1oKjJk4kyS0Ljyd3BEZtHeikO7VtR0mmm" %}
 
 ```
 00697b83 c5 f2 5c        VSUBSS     XMM2,XMM1,dword ptr [RAX + 0x18] // subtract by 0.1
@@ -214,7 +214,7 @@ Let's set a breakpoint and see where it takes us.
 
 Let's try changing VMOVSS XMM2 to XMM1.
 
-{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/t1-cheat-porting/ps3-ch-fl2.png" %}
+{% include img1 image_path="https://drive.google.com/uc?id=1DIX7eRTxlZr825G7USPMJ4WJ5zyTBXtD" %}
 
 Success! Achieved the same result and no use of nop.
 
@@ -231,7 +231,7 @@ Same story here but it's just a little different.
 
 On Pickup, the address will shift, but on use or spending it does not.
 
-{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/t1-cheat-porting/ps4ch-part1.png" %}
+{% include img1 image_path="https://drive.google.com/uc?id=1aHJ3E9kgLrwumj7jLaiYthdVTWgh1X2p" %}
 
 ```
 000894dc 66 42 89        MOV        word ptr [RDI + R8*0x2 + 0xf4],AX
@@ -241,7 +241,7 @@ On Pickup, the address will shift, but on use or spending it does not.
 
 Let's try searching for `f4 00 00 00`. 
 
-{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/t1-cheat-porting/ghidra-hint-parts.png" %}
+{% include img1 image_path="https://drive.google.com/uc?id=1poE5rozTCKthpGjOhWfpxMDAWEDH5zLa" %}
 
 ```
 00089022 66 45 89        MOV        word ptr [R15 + RBX*0x2 + 0xf4],R14W
@@ -251,7 +251,7 @@ Let's try searching for `f4 00 00 00`.
 
 How about setting a breakpoint?
 
-{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/t1-cheat-porting/ps4r-part1.png" %}
+{% include img1 image_path="https://drive.google.com/uc?id=1ExPqRGowWajvZrmBGdoM24_yRCcnV7lT" %}
 
 RAX, RCX and R14 stores the newest value ready to be loaded into R13.
 
@@ -261,7 +261,7 @@ Let's try loading our specified value, would it work?
 MOV word ptr [R15 + RBX*0x2 + 0xf4],0x96F
 ```
 
-{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/t1-cheat-porting/ps4-t1-part-edit.png" %}
+{% include img1 image_path="https://drive.google.com/uc?id=1vt5FDjZbyEgU2funT7S__ILkaeLOZLgf" %}
 
 But, we can do better than just loading into a register. How about make it optional?
 

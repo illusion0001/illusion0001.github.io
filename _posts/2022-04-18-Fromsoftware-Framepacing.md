@@ -3,10 +3,10 @@ layout: single
 title: "Framepacing Fixes for Fromsoftware Titles (PS4)"
 excerpt: "Players dealt with bad framepacing on consoles since 2015."
 header:
-  teaser: "https://img-assets.illusion0001.workers.dev/assets/images/Fromsoftware-Framepacing/thumbnail_0a.png"
-  overlay_image: "https://img-assets.illusion0001.workers.dev/assets/images/Fromsoftware-Framepacing/thumbnail_01.png"
+  teaser: "https://drive.google.com/uc?id=1f1i-BAB5mb6CDoGOuk3TtKwzVGCp9SG_"
+  overlay_image: "https://drive.google.com/uc?id=12_4ONkFLi3O52GcRj4f0ywEaTRBRRx8U"
   overlay_filter: 0.5
-  og_image: "https://img-assets.illusion0001.workers.dev/assets/images/images/Fromsoftware-Framepacing/thumbnail_0a.png"
+  og_image: "https://drive.google.com/uc?id=1f1i-BAB5mb6CDoGOuk3TtKwzVGCp9SG_"
 
 categories: patches
 tags: fromsoftware bloodborne darksouls eldenring sekiro patches
@@ -29,7 +29,7 @@ If you have ever played a recent fromsoftware games on console, be it Bloodborne
 
 Let's address the first issue. Improper frame pacing. It is an issue that started to occur on the 8th generation era with Bloodborne.
 
-{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/Fromsoftware-Framepacing/bb-fps0.png" %}
+{% include img1 image_path="https://drive.google.com/uc?id=1shHX-kkp7223R1Pe3XMzOryqOl_tsUzW" %}
 
 <div align=center>
 <em>Yikes. <i class="twa twa-grimacing-face"></i></em>
@@ -37,13 +37,13 @@ Let's address the first issue. Improper frame pacing. It is an issue that starte
 
 Now let's go back to the previous generation, the PS3/Xbox 360 era.
 
-{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/Fromsoftware-Framepacing/ds1-x360-2a.png" %}
+{% include img1 image_path="https://drive.google.com/uc?id=1arDjcAAhD-TF3gmfIrBWqjnc18_FTh1g" %}
 
 Dark Souls on Xbox 360, no issues here. A consistent 30 fps when it meets the framerate target.
 
 How about Demon Souls?
 
-{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/Fromsoftware-Framepacing/des-ps3-3.png" %}
+{% include img1 image_path="https://drive.google.com/uc?id=1bUWo1k9p0LTiXHMW6zCjpoxcBT8RpApF" %}
 
 Yep, no issues here either.
 
@@ -55,7 +55,7 @@ But there's something even more strange. Checkout this [video](https://youtu.be/
 
 <div align="center">
 <video width="100%" controls loop>
-  <source src="https://img-assets.illusion0001.workers.dev/assets/images/Fromsoftware-Framepacing/ds1-vgtech-trimmed-9752-10680.mp4" type="video/mp4">
+  <source src="https://drive.google.com/uc?id=1oTFDTCpRoOhF7UK1rVHfbMtFuo_hP9zc" type="video/mp4">
 </video>
 </div>
 
@@ -80,7 +80,7 @@ Either by changing `Game.FlipMode` in the code to `60FPS_*` or changing minimum 
 
 Here's bloodborne with the frame pacing issues resolved.
 
-{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/Fromsoftware-Framepacing/bb-fps1.png" %}
+{% include img1 image_path="https://drive.google.com/uc?id=10HYbWayElGcMSVbRsl5NpuY3AOaQrcRa" %}
 
 Volla! With just a few lines of code, we get proper and consistent 30 frames per second! Killing two bug reports with one stone.
 
@@ -90,7 +90,7 @@ The same fix also applies for the uncapped framerate on the enhanced consoles in
 
 Here's a little bit of trivia for you, there's already deltatime calculated for the framerate counter among other things.
 
-{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/Fromsoftware-Framepacing/bb-fps3.png" %}
+{% include img1 image_path="https://drive.google.com/uc?id=1FAi3Iy5MvVJlbIK8Ise1mMSrzdkAnVji" %}
 
 But fromsoftware did not use this until the release of Dark Souls 3. Which is also how I ported the framerate patch for Bloodborne by [Lance McDonald](https://twitter.com/manfightdragon) to the [Network Test](/_patch/BloodborneNetworkTest-Orbis/) version.
 
