@@ -8,14 +8,7 @@ permalink: /patch/
 
 This site lists patches made for use with exploited consoles.
 
-# Sponsors and Social Links
-
-- Support on [Buy me a Coffee](https://www.buymeacoffee.com/illusion0001)
-- Support on [GitHub Sponsors](https://github.com/sponsors/illusion0001)
-- Support on [Ko-fi](https://ko-fi.com/illusion0001)
-- Support on [Patreon](https://www.patreon.com/illusion0001)
-- Follow on [YouTube](https://youtube.com/c/illusion0001)
-- Follow on [Twitter](https://twitter.com/illusion0002)
+{% include_relative _soical_links.md %}
 
 # Contributing
 
