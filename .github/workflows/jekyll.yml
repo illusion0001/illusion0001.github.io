@@ -2,7 +2,6 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branch: 'main'
   workflow_dispatch:
 
 jobs:
@@ -10,8 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     if: github.repository == 'illusion0001/illusion0001.github.io'
     steps:
+
       - name: Setup vars
-        run: echo patch_repo="console-game-patches" >> ${{ github.env }}
+        run: |
+          echo patch_repo="console-game-patches" >> ${{ github.env }}
+          echo ghpatch_repo="GoldHEN_Patch_Repository" >> ${{ github.env }}
 
       - name: Checkout main repository
         uses: actions/checkout@v3
@@ -22,6 +24,12 @@ jobs:
           repository: 'illusion0001/${{ env.patch_repo }}'
           path: ${{ env.patch_repo }}
 
+      - name: Checkout patch repository
+        uses: actions/checkout@v3
+        with:
+          repository: 'GoldHEN/${{ env.ghpatch_repo }}'
+          path: ${{ env.ghpatch_repo }}
+
       - name: Cache
         uses: actions/cache@v3
         with:
@@ -29,20 +37,15 @@ jobs:
           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile') }}
           restore-keys: ${{ runner.os }}-gems-
 
-      - name: Setup Python
-        uses: actions/setup-python@v3
-        with:
-          python-version: '3.x'
-          cache: 'pip'
-          cache-dependency-path: '${{ env.patch_repo }}/requirements.txt'
-
       - name: Setup dependencies
         run: pip install -r ${{ env.patch_repo }}/requirements.txt
 
       - name: Pack patch files into zip
         run: |
+          mv ${{ env.ghpatch_repo }}/patches ${{ env.patch_repo }}/patches
           cd ${{ env.patch_repo }}
           python page-autogen.py
+          mv patches ../
           mv _patch0 ../
           mv _patch  ../
           cd ..
@@ -51,6 +54,7 @@ jobs:
           .ci/zip.sh
 
       - name: Deploy
+        if: github.ref_name == 'main'
         uses: helaili/jekyll-action@master
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
