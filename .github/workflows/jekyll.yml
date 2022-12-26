@@ -1,8 +1,10 @@
 name: Deploy to GitHub Pages
 
-on:
-  push:
-  workflow_dispatch:
+on: [ push, workflow_dispatch ]
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   jekyll_build:
@@ -34,7 +36,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: vendor/bundle
-          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile') }}
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: ${{ runner.os }}-gems-
 
       - name: Setup dependencies
@@ -54,9 +56,17 @@ jobs:
           .ci/zip.sh
 
       - name: Deploy
-        if: github.ref_name == 'main'
-        uses: helaili/jekyll-action@master
+        if: |
+          github.repository == 'illusion0001/illusion0001.github.io' &&
+          github.ref_name == 'main'
+        uses: jeffreytse/jekyll-deploy-action@master
         with:
+          provider: 'github'
           token: ${{ secrets.GITHUB_TOKEN }}
-          target_branch: gh-pages
-          jekyll_src: .
+          repository: ''
+          branch: 'gh-pages'
+          jekyll_src: './'
+          jekyll_cfg: '_config.yml'
+          jekyll_baseurl: ''
+          bundler_ver: '>=0'
+          cname: 'illusion0001.com'
