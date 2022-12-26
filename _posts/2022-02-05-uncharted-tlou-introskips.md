@@ -175,7 +175,7 @@ PlayStation 4 users, can follow this guide on how to install the patch [here](/i
 
 <a href="/_patch/UnchartedTheNathanDrakeCollection-Orbis" class="button" role="button"><i class='fas fa-download'></i> Patch: Uncharted: The Nathan Drake Collection (PS4)</a>
 
-<a href="/_patch/TheLastofUs1Remastered-Orbis" class="button" role="button"><i class='fas fa-download'></i> Patch: The Last of Us Remastered (PS4)</a>
+<a href="/_patch/TheLastOfUs1-Orbis" class="button" role="button"><i class='fas fa-download'></i> Patch: The Last of Us Remastered (PS4)</a>
 
 <a href="/_patch/Uncharted4AThiefsEnd-Orbis" class="button" role="button"><i class='fas fa-download'></i> Patch: Uncharted 4 (PS4)</a>
 

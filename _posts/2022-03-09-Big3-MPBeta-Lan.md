@@ -252,6 +252,6 @@ Well that's all for this post, below is where you can find the patch and support
 
 # Patch
 
-<a href="/_patch/Uncharted3MultiplayerBeta-Cell/" class="button" role="button"><i class='fas fa-download'></i> Patch</a>
+<a href="https://github.com/illusion0001/console-game-patches/blob/main/_patch0/cell/Uncharted3MultiplayerBeta-Cell.yml" class="button" role="button"><i class='fas fa-download'></i> Patch Source Code</a>
 
 {% include_relative _supporters.md %}

@@ -8,12 +8,16 @@ toc: true
 toc_sticky: true
 ---
 
+To be updated with new information.
+
+# Legacy guide
+
 These instructions are general and apply to most patch from this website.
 Games used for the presentation does not have any relevance for the steps.
 
 **This guide does not cover how to build the update package itself.** It only covers how to install patches into the binary file.
 
-# Installing Patch Using Automated Program
+## Installing Patch Using Automated Program
 
 1) Download the program: [py-patch](https://github.com/illusion0001/py-patcher-bin/releases/latest)
 
@@ -38,9 +42,9 @@ Video Guide:
 </video>
 </div>
 
-# Legacy methods
+## Legacy methods
 
-## Installing Patch using Direct File Address method
+### Installing Patch using Direct File Address method
 
 <p align="center">
 <img src="https://drive.google.com/uc?id=1SkEVVbBU4u-ayJJlNYZla6-LrX-7m8sS">
@@ -65,7 +69,7 @@ Video Guide:
 
 - Save your changes.
 
-## Installing Patch using Array of Bytes method
+### Installing Patch using Array of Bytes method
 
 <p align="center">
 <img src="https://drive.google.com/uc?id=18Z0g3FRaUbtnhiU2r0r5IsLGNBGmTdJz">
@@ -88,5 +92,3 @@ Video Guide:
 Save your changes.
 
 ***
-
-*Updated on: 2022-03-07*
