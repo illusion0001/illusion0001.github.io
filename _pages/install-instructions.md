@@ -8,7 +8,35 @@ toc: true
 toc_sticky: true
 ---
 
-To be updated with new information.
+# Updated Guide (PS4)
+
+To setup custom game patches on your PS4, you will need to have a jailbreakable console, that is on firmware 9.00 or lower.
+
+- 1) Start by loading GoldHEN 2.3 or newer on your PS4. (See excellent guide by [Wololo](https://wololo.net/2021/12/14/ps4-how-to-run-the-ps4-9-00-jailbreak-full-guide-with-goldhen-payload/).
+- 2) Download the app GoldHEN Cheats Manager, link can be found [here](https://github.com/GoldHEN/GoldHEN_Cheat_Manager/releases/latest).
+- 3) Copy it to the root of your USB drive and install it from the PS4 Package Installer.
+{% include img1 image_path="https://drive.google.com/uc?id=1GhBGlGvW25ipLACwSdpRGq7YLMR4VZq_" %}
+- 4) Once installed, download the plugins from the GoldHEN Plugins Repository [Releases Page](https://github.com/GoldHEN/GoldHEN_Plugins_Repository/releases/latest).
+- 5) Using a FTP client, copy the plugin files to `/data/GoldHEN/plugins`
+- 6) Make a text file called `plugins.ini` if it does not exist, add the following to the file, if the line `[default]` already exist, just add `/data/GoldHEN/plugins/game_patch.prx` to the line below it.
+
+  - Example:
+
+{% include img1 image_path="https://drive.google.com/uc?id=1icMnzbp87m1g6wuwM3J2Cz2ry4a8j5Xm" %}
+
+  - The folders should look like this:
+
+{% include img1 image_path="https://drive.google.com/uc?id=1cvusAH-6Q-98qX6ZDZ1EDdda9ZRbEA66" %}
+
+{% include img1 image_path="https://drive.google.com/uc?id=1op5rkaQ9L9GZ2TBw02UxIPIYyv18g8zH" %}
+
+- 7) Update the database using the GoldHEN Cheats Manager app and you can now start using Custom Game Patches without needing a computer after the setup! 
+
+***
+
+**The guide below is outdated and should not be used!.**
+
+***
 
 # Legacy guide
 
@@ -42,7 +70,7 @@ Video Guide:
 </video>
 </div>
 
-## Legacy methods
+## Legacy Guide
 
 ### Installing Patch using Direct File Address method
 
