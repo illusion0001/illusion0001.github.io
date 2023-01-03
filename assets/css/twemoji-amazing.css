@@ -3753,12 +3753,6 @@ licensed under MIT: https://ellekasai.mit-license.org/
 .twa-keyboard {
     background-image: url("https://twemoji.maxcdn.com/v/latest/svg/2328.svg")
 }
-.twa-keycap {
-    background-image: url("https://twemoji.maxcdn.com/v/latest/svg/23-20e3.svg")
-}
-.twa-keycap {
-    background-image: url("https://twemoji.maxcdn.com/v/latest/svg/2a-20e3.svg")
-}
 .twa-keycap-0 {
     background-image: url("https://twemoji.maxcdn.com/v/latest/svg/30-20e3.svg")
 }
@@ -3791,6 +3785,12 @@ licensed under MIT: https://ellekasai.mit-license.org/
 }
 .twa-keycap-9 {
     background-image: url("https://twemoji.maxcdn.com/v/latest/svg/39-20e3.svg")
+}
+.twa-keycap-number {
+    background-image: url("https://twemoji.maxcdn.com/v/latest/svg/23-20e3.svg")
+}
+.twa-keycap-star {
+    background-image: url("https://twemoji.maxcdn.com/v/latest/svg/2a-20e3.svg")
 }
 .twa-kick-scooter {
     background-image: url("https://twemoji.maxcdn.com/v/latest/svg/1f6f4.svg")
