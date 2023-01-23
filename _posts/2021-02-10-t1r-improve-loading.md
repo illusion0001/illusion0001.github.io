@@ -115,6 +115,4 @@ Let's test this change in game. The following video showcases this change aswell
 
 # Patch
 
-To install the patch, open `eboot.bin` with a hex editor and do a search and replace. build and install the patch back onto the console.
-
-<a href="/_patch/TheLastofUs1Remastered-Orbis" class="button" role="button">{{ site.theme_settings.download_icon }} Patch Codes</a>
+<a href="https://github.com/GoldHEN/GoldHEN_Patch_Repository/blob/3f8d6875f60c0969d674ed31c3dc1f4ad0619720/patches/xml/TheLastOfUs1-Orbis.xml#L10" class="button" role="button">{{ site.theme_settings.download_icon }} Patch Codes</a>

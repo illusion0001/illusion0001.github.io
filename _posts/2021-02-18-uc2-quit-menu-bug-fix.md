@@ -121,7 +121,7 @@ To apply patch and for use on an exploitable PlayStation 3 or PlayStation 4 cons
 
 For RPCS3 Users, Simply download and enable through it's built-in patch manager.
 
-<a href="/_patch/UnchartedTheNathanDrakeCollection-Orbis/" class="button" role="button">{{ site.theme_settings.download_icon }} Patch Codes</a> 
+<a href="https://github.com/GoldHEN/GoldHEN_Patch_Repository/blob/3f8d6875f60c0969d674ed31c3dc1f4ad0619720/patches/xml/UnchartedTheNathanDrakeCollection-Orbis.xml#L198" class="button" role="button">{{ site.theme_settings.download_icon }} Patch Codes</a> 
 
 ## Credits
 

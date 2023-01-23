@@ -77,7 +77,7 @@ Success! Doesn't crash now when throwing an object.
 
 To apply patch and for use on a exploitable PlayStation 4 console, you'll need to dump the game, modiify the executable with a hex editor and install the fake patch back onto the console.
 
-<a href="/_patch/TheLastOfUs1-Orbis/" class="button" role="button">{{ site.theme_settings.download_icon }} Patch Codes</a>
+<a href="https://github.com/GoldHEN/GoldHEN_Patch_Repository/blob/3f8d6875f60c0969d674ed31c3dc1f4ad0619720/patches/xml/TheLastOfUs1-Orbis.xml#L23" class="button" role="button">{{ site.theme_settings.download_icon }} Patch Codes</a>
 
 ## Credits
 
