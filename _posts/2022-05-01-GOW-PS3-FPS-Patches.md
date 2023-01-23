@@ -3,10 +3,10 @@ layout: single
 title: "Framerate Patch and Intro Skip for God Of War 3/Ascension (RPCS3)"
 excerpt: "Experince God of War 3 and Ascension with its addicting hack and slash action at 120FPS and beyond."
 header:
-  teaser: "https://drive.google.com/uc?id=1-E2tuXcvVce6x1f7_EjzCmjZQt1oyCSM"
-  overlay_image: "https://drive.google.com/uc?id=1-E2tuXcvVce6x1f7_EjzCmjZQt1oyCSM"
+  teaser: "https://img-assets.illusion0001.workers.dev/assets/images/GOW-PS3-FPS-Patches/Screen_thumbnail0.png"
+  overlay_image: "https://img-assets.illusion0001.workers.dev/assets/images/GOW-PS3-FPS-Patches/Screen_thumbnail0.png"
   overlay_filter: 0.5
-  og_image: "https://drive.google.com/uc?id=1-E2tuXcvVce6x1f7_EjzCmjZQt1oyCSM"
+  og_image: "https://img-assets.illusion0001.workers.dev/assets/images/GOW-PS3-FPS-Patches/Screen_thumbnail0.png"
 
 categories: patches
 tags: [ rpcs3, "God of War", "GOW3", "GOWA" ]
@@ -35,7 +35,7 @@ It turns out the solution was right in front of me. You see, once you start a ne
 
 <div align="center">
 <video width="100%" controls loop>
-  <source src="https://drive.google.com/uc?id=1AQyJaS6e3dZDjtt0h1e3Ry-lejP4NpWF" type="video/mp4">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/GOW-PS3-FPS-Patches/Game_SkipDemo.mp4" type="video/mp4">
 </video>
 </div>
 
@@ -82,7 +82,7 @@ The code is very similar between them so we won't explain it for both games, but
 
 In memory, the game keeps track of a lot of things during gameplay. The area of interest is `0x006406f0`.
 
-{% include img1 image_path="https://drive.google.com/uc?id=1fe-hlWHOX_wPRue6C8kZ88nHdctrk6aB" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/GOW-PS3-FPS-Patches/Screen_memarea3.png" %}
 
 This area holds: framerate (int32) and frametimes (float32). Setting a breakpoint on the constantly writing floats gives us a few clues, one is it leads to this rather complicated sub at `0x0026b674`, I have not analyzed this one myself but I can tell that it has very important key information which helped us solve the puzzle.
 
@@ -92,11 +92,11 @@ MinFPS = target_FPS / ( 400 / 100 );
 
 This snippet of code divides the maximum framerate by 4 times a 100. Which adds up to 60/4 = 15. Simple. And changing this to 5000 gives us a minimum framerate of 2. Looking just a little closer, there's -1.0 on this load float instruction. 
 
-{% include img1 image_path="https://drive.google.com/uc?id=15-dkYUmaBaFhhzA4JQYxv75RNIsCEwaL" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/GOW-PS3-FPS-Patches/Screen_Ghidra0.png" %}
 
 That looks interesting, let's check it out in memory, and..
 
-{% include img1 image_path="https://drive.google.com/uc?id=1USzAqWJF9-mqsTuffL0bHzSST0BTd-ZI" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/GOW-PS3-FPS-Patches/Screen_FPSConst1.png" %}
 
 A constant of 59.94. How interesting.
 
@@ -117,7 +117,7 @@ How about we change this to 120?
 
 <div align="center">
 <video width="100%" controls autoplay muted loop>
-  <source src="https://drive.google.com/uc?id=1ISmPxktE_b7vRqZuL6z6GHtmfsGb9GKj" type="video/mp4">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/GOW-PS3-FPS-Patches/Game_120FPSDemo4.mp4" type="video/mp4">
 </video>
 </div>
 
@@ -129,13 +129,13 @@ But the game is currently broken. There are two problems,
 
 <div align="center">
 <video width="100%" autoplay muted loop>
-  <source src="https://drive.google.com/uc?id=1P6492mn2q7CtA_TSUAZmwZuDgrdKWw8W" type="video/mp4">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/GOW-PS3-FPS-Patches/Game_ChainBugDemo.mp4" type="video/mp4">
 </video>
 </div>
 
 <div align="center">
 <video width="100%" autoplay muted loop>
-  <source src="https://drive.google.com/uc?id=1zRSbJKuj_pKBVeUjZGzEGpgqLjPhMHCQ" type="video/mp4">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/GOW-PS3-FPS-Patches/Game_WaterBugDemo.mp4" type="video/mp4">
 </video>
 </div>
 

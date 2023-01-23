@@ -5,7 +5,7 @@ excerpt: "Is it a Head? Is it a bottle? No! It's a game bug. Part 1."
 categories: patches
 tags: tlou ps3 rpcs3 patches bugfix
 header:
-  overlay_image: "https://drive.google.com/uc?id=1Nn5omVSUoJeuaup9nImCHJK4G0M2HuQp"
+  overlay_image: "https://img-assets.illusion0001.workers.dev/assets/images/t1r-ps4-head-crash/t1r-head-banner.png"
 
 toc: true
 toc_sticky: true
@@ -29,7 +29,7 @@ Affected Consoles:
 
 <div align="center">
 <video width="100%" controls autoplay muted >
-  <source src="https://drive.google.com/uc?id=17LBx42deR677S0r6OmN3hUmRiS6iJWWU" type="video/mp4">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/t1-ps3-head-crash/t1-head-crash-before.mp4" type="video/mp4">
 </video>
 </div>
 
@@ -37,11 +37,11 @@ Affected Consoles:
 
 When the game crashed, using an emulator we can see that it gives an access violation as well as the address it stopped.
 
-{% include img1 image_path="https://drive.google.com/uc?id=1wxHrDZnVWlRDtdFMobuX3tWBeo0uFC-V" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/t1-ps3-head-crash/t1-head-acess-violation.png" %}
 
 Going to this location in Ghidra gives us some clues.
 
-{% include img1 image_path="https://drive.google.com/uc?id=15pz9KHVrkBT7XE9K_99LS8i1S4CIu_us" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/t1-ps3-head-crash/ghidra-head-crash-hint.png" %}
 
 The game does checks if: 
 
@@ -53,11 +53,11 @@ We can check using a Debugger with a breakpoint set on the crash address.
 
 Hit on the Head.
 
-{% include img1 image_path="https://drive.google.com/uc?id=1TNQL0oH7w2X5GC3sD-4bSsgXjrddBfF1" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/t1-ps3-head-crash/t1-head-debug0.png" %}
 
 Hit on an Enemy.
 
-{% include img1 image_path="https://drive.google.com/uc?id=15CjAw0KXAFkAxyz7BSmIjSpo7XG0pcpN" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/t1-ps3-head-crash/t1-head-debug-spu-data.png" %}
 
 In Register 10 and 29, there's some data here. It seems to be collision data.
 

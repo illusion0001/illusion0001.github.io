@@ -3,10 +3,10 @@ layout: single
 title: "Patches and Improvements for MotorStorm Titles (RPCS3)"
 excerpt: "PS3 racing exclusives at 60FPS. No motion blur and Dynamic Resolution Scaling."
 header:
-  teaser: "https://drive.google.com/uc?id=1vsdO8E0ow4PgTDODutRfZrZz8aDjlxHe"
-  overlay_image: "https://drive.google.com/uc?id=1vsdO8E0ow4PgTDODutRfZrZz8aDjlxHe"
+  teaser: "https://img-assets.illusion0001.workers.dev/assets/images/Motorstorm-Framerate-Patch/cover-thumbnail-ms3.png"
+  overlay_image: "https://img-assets.illusion0001.workers.dev/assets/images/Motorstorm-Framerate-Patch/cover-thumbnail-ms3.png"
   overlay_filter: 0.5
-  og_image: "https://drive.google.com/uc?id=1vsdO8E0ow4PgTDODutRfZrZz8aDjlxHe"
+  og_image: "https://img-assets.illusion0001.workers.dev/assets/images/Motorstorm-Framerate-Patch/cover-thumbnail-ms3.png"
 
 categories: patches
 tags: [ rpcs3, "Motorstorm", "PS3 Motorstorm", "Evolution Studios" ]
@@ -29,7 +29,7 @@ Running the game on the RPCS3 emulator with increased vblank shows disappointing
 
 <div align="center">
 <video width="100%" controls muted loop>
-  <source src="https://drive.google.com/uc?id=1cb_St77XRFPHvBr8dRGEnJ8UNgX1qCEK" type="video/mp4">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/Motorstorm-Framerate-Patch/video-ms1-no-delta-30fps-target.mp4" type="video/mp4">
 </video>
 </div>
 
@@ -45,7 +45,7 @@ Setting the byte 2 to 1 gives us..
 
 <div align="center">
 <video width="100%" controls muted loop>
-  <source src="https://drive.google.com/uc?id=1Zqbi31riFCsSuyuS7UUMCDjYnyR7HFZM" type="video/mp4">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/Motorstorm-Framerate-Patch/video-ms1-no-delta-60fps-target.mp4" type="video/mp4">
 </video>
 </div>
 
@@ -57,7 +57,7 @@ Let's pay a little more attention to what's *down below*, what happens if I set 
 
 <div align="center">
 <video width="100%" controls muted loop>
-  <source src="https://drive.google.com/uc?id=113CqelLSdn9i2Jb8rkoVQgp5ah8WOP_f" type="video/mp4">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/Motorstorm-Framerate-Patch/video-ms1-delta-120fps.mp4" type="video/mp4">
 </video>
 </div>
 
@@ -87,9 +87,9 @@ Two things stood out to me when I played this with the unlocked framerate, the i
 
 Let's start with the most obvious image quality flaw, dynamic resolution scaling. The game scales the resolution based on frametime targets, if it is below its threshold of 33.3ms, the game drops its resolution to 360p at it's lowest, to find it? 720p during the clearest moments and `Decreased Values` when things get blurry.
 
-{% include img1 image_path="https://drive.google.com/uc?id=1RtJQ4cuZC3E7I9R94cAemP_TKiGET2Hk" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/Motorstorm-Framerate-Patch/Screen_MS1-3.png" %}
 
-{% include img1 image_path="https://drive.google.com/uc?id=1oeRmA6TnX_SOq1_0hKbeMNx_YSY2LPpn" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/Motorstorm-Framerate-Patch/Screen_MS1-4.png" %}
 
 I narrowed it down to this subroutine (`0x002634c8`) with a compare float statement and all I have to do is to skip this operation, simple.
 
@@ -97,7 +97,7 @@ I narrowed it down to this subroutine (`0x002634c8`) with a compare float statem
 
 Peeking at the game executable and searching for Blur, I got a few results. `WorldMotionBlurBase` `BlurAccel` and `BlurDecel`. This smells like some sort of configuration key. Let's try memory.
 
-{% include img1 image_path="https://drive.google.com/uc?id=1eZk8u2Ic_X9lfNb_C4gBQPXOChfzq19D" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/Motorstorm-Framerate-Patch/Screen_MS1-5.png" %}
 
 <div align=center>
 <em> Oh, what's that? Game settings? </em>
@@ -124,13 +124,13 @@ VehicleDamageRate(0.81)
 
 </details>
 
-{% include img1 image_path="https://drive.google.com/uc?id=1_IIzYIMUBR_FraJNUpwNcaFSEyLntrmW" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/Motorstorm-Framerate-Patch/Screen_MS1-6.png" %}
 
 Setting these to 0.0f gets rid of the motion blur and it looks good!
 
 <div align="center">
 <video width="100%" controls muted loop>
-  <source src="https://drive.google.com/uc?id=14BOwB9NPhColUf468qo3zRao8fyNQMg9" type="video/mp4">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/Motorstorm-Framerate-Patch/video-ms1-no-blur.mp4" type="video/mp4">
 </video>
 </div>
 
@@ -159,13 +159,13 @@ Comparison Images:
 <em> Before: </em>
 </div>
 
-{% include img1 image_path="https://drive.google.com/uc?id=1wDRsXKYPcroWLlqdB6TmzqP5y1VqPy6F" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/Motorstorm-Framerate-Patch/Screen-MS2-0.png" %}
 
 <div align=center>
 <em> After: </em>
 </div>
 
-{% include img1 image_path="https://drive.google.com/uc?id=1UmyiiUVVpJ7zBjp59y8zBM-oIP__inCu" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/Motorstorm-Framerate-Patch/Screen-MS2-1.png" %}
 
 <div align=center>
 <em> Checkout how crisp that image looks! Very clear and clean of blur. </em>
@@ -173,7 +173,7 @@ Comparison Images:
 
 <div align="center">
 <video width="100%" controls autoplay muted loop>
-  <source src="https://drive.google.com/uc?id=1T1469WJm_8W78BuerecM3wNRyBrc9jhC" type="video/mp4">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/misc/youtube/GravityDazeOverture-Kat-Happy.mp4" type="video/mp4">
 </video>
 </div>
 
@@ -191,7 +191,7 @@ That's going to be it for this post, if you like it be sure to share this with o
 
 Oh and one more thing, I wished we got a remaster for these games on the current platform, would be interesting to see how that plays out. Yes, including Driveclub and my beloved Gravity Rush (Gravity Daze) 2
 
-{% include img1 image_path="https://drive.google.com/uc?id=1cn-90A0I3lk1ENeuPxwDn7baCnV1wOfN" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/memes/capture/screen-console-ports-meme.png" %}
 
 <div align=center>
 <em> <a href="https://youtu.be/tFeXtu-3u78?t=485">Gravity Rush: The Animation - Overture | Parts A & B</a> </em>

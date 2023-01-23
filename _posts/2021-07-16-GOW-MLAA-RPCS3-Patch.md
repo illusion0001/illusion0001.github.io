@@ -3,10 +3,10 @@ layout: single
 title: "Graphics Patches for God of War 3 and Ascension for RPCS3"
 excerpt: "Experience God of War PlayStation 3 titles in Glorius 4K Resolution and Beyond."
 header:
-  teaser: "https://drive.google.com/uc?id=1uRhY-luQzBmKUX_HmVSW1GQ3nzdbbQ1z"
-  overlay_image: "https://drive.google.com/uc?id=1uRhY-luQzBmKUX_HmVSW1GQ3nzdbbQ1z"
+  teaser: "https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img-feature2.png"
+  overlay_image: "https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img-feature2.png"
   overlay_filter: 0.5
-  og_image: "https://drive.google.com/uc?id=1TpEzZ6icwuoYA23YDmVw3HS3XIr-ImvZ"
+  og_image: "https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img-feature.png"
 categories: patches
 tags: [Articles, Releases]
 # twitter: {card: "summary_large_image"}
@@ -26,7 +26,7 @@ Specifically the things you would find when playing a PC game like running at an
 
 Starting with God of War 3, I went into the game display options to look for clues.
 
-{% include img1 image_path="https://drive.google.com/uc?id=1UnK-6MbeLlhP1UmsqXgkuT6JaSKxfOyI" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img0.png" %}
 
 <div align=center>
 <em>In-Game Brightness Menu</em>
@@ -34,7 +34,7 @@ Starting with God of War 3, I went into the game display options to look for clu
 
 Moving this silder around and searching for values I narrowed it down to 4 byte int.
 
-{% include img1 image_path="https://drive.google.com/uc?id=1r_4Sla1XltcLzmsSHDOXwV31jRLVdC3E" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img1.png" %}
 
 <div align=center>
 <em>In-Game Brightness Menu</em>
@@ -44,7 +44,7 @@ Max of `100` and Min of `0`.
 
 Peeking into memory reveals something interesting.
 
-{% include img1 image_path="https://drive.google.com/uc?id=1v-Aisz8Z4Xc3oZ8jjHHlI3ej6n3USDqN" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img2.png" %}
 
 <div align=center>
 <em>Highlighted is Brightness Value</em>
@@ -54,7 +54,7 @@ There is a toggle, in 4 byte int. `0x52BF2C`
 
 Setting it to 0 gives us this.
 
-{% include img1 image_path="https://drive.google.com/uc?id=1c_Jl5xcqVFDKdkIOAvTB7HiO6VDTPYGk" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img3.png" %}
 
 <div align=center>
 <em>Strange colors.</em>
@@ -64,7 +64,7 @@ Hmm, it gives strange results. Let's try patching this to 0 at startup.
 
 `- [ byte, 0x52BF2F, 0 ]`
 
-{% include img1 image_path="https://drive.google.com/uc?id=1kK6bYz8HJBlE34V4OXqDE5lS9_mc1sOv" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img4.png" %}
 
 <div align=center>
 <em>2560x1440 Internal Resolution</em>
@@ -74,7 +74,7 @@ Woah, a crisp clean image. How about in-game?
 
 {% include_relative _image_note.md %}
 
-{% include img1 image_path="https://drive.google.com/uc?id=1N9acgckMznUSeb8De6o5s8eLChvQl1Zv" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img5.png" %}
 
 <div align=center>
 <em>Absolutely Stunning!</em>
@@ -82,7 +82,7 @@ Woah, a crisp clean image. How about in-game?
 
 How about God of War Ascension?
 
-{% include img1 image_path="https://drive.google.com/uc?id=1_81N1rI3WxuKdSSUHR3NXD5t5-m4ASqb" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img6.png" %}
 
 <div align=center>
 <em>In-Game Settings Menu</em>
@@ -90,7 +90,7 @@ How about God of War Ascension?
 
 Oh, a value number next to the brightness setting, how curious.
 
-{% include img1 image_path="https://drive.google.com/uc?id=1e4JT8qxcZBBirfgghVxABUQIT6Y5KsgD" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img7.png" %}
 
 <div align=center>
 <em>GOWA Memory View</em>
@@ -98,7 +98,7 @@ Oh, a value number next to the brightness setting, how curious.
 
 No toggle next to brightness, there is some toggle at the bottom.
 
-{% include img1 image_path="https://drive.google.com/uc?id=1v_zxb8OiFNRe45ZQ-Q72VvuHYaovZWu-" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img8.png" %}
 
 <div align=center>
 <em>GOWA Mysterious toggle disabled</em>
@@ -112,7 +112,7 @@ Let's try the same method I used for God of War 3.
 
 {% include_relative _image_note.md %}
 
-{% include img1 image_path="https://drive.google.com/uc?id=1fJbk3vTNCU5ILsKOs4sND-_TD86Ftlzp" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img9.png" %}
 
 <div align=center>
 <em>2560x1440 Internal Resolution</em>
@@ -167,13 +167,13 @@ Following the branching leads to the last one in the list.
 
 A few testing with `li` and register of `0` comes down to `lwz r5,0x20(r31)`
 
-{% include img1 image_path="https://drive.google.com/uc?id=1PS5As5ff_dy1iMocjQqsM9VyBXtjmNSs" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img10.png" %}
 
 <div align=center>
 <em>Depth of Field: Enabled</em>
 </div>
 
-{% include img1 image_path="https://drive.google.com/uc?id=18ag_hpR6sGj0jfCYG7epmvSk_ayiI6PC" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img11.png" %}
 
 <div align=center>
 <em>Depth of Field: Disabled</em>
@@ -197,27 +197,27 @@ A few nop to the call `0x230c4c` narrowed down to  `0x0023137c`.
 
 However, Graphics Options is a little more involed.
 
-{% include img1 image_path="https://drive.google.com/uc?id=13YE3v-va2dXUCdm4ZxBl4QndAgy5diM5" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/ghidra-gow-img0.png" %}
 
 String refernce and a reverse branch. Hmm.
 
-{% include img1 image_path="https://drive.google.com/uc?id=1Sjq7HEChNzxw25-LS8m3KasFsEbfEicC" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/ghidra-gow-img1.png" %}
 
 Setting a breakpoint on `001c65b8 bl FUN_001b61e0` lead us somewhere.
 
-{% include img1 image_path="https://drive.google.com/uc?id=1KcaLhqmX7cxskk827CXi_QADK5g_zw_o" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img12.png" %}
 
 <div align=center>
 <em>Take notice of Register 3</em>
 </div>
 
-{% include img1 image_path="https://drive.google.com/uc?id=1e1mD-P8hIXUP-YKGp8RyRU3WEXhB5RnD" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img13.png" %}
 
 Setting byte `0x321ACA6B` to 0 disables motion blur.
 
 This method can also be used for Depth of field.
 
-{% include img1 image_path="https://drive.google.com/uc?id=1EGexTBMmZSeoAvGrqMU53ndlamzVhY6x" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/ghidra-gow-img2.png" %}
 
 # Results
 
@@ -233,6 +233,6 @@ This method can also be used for Depth of field.
 
 Patch was made available back in August 2020. You can download through the emulator built-in Patch Manager.
 
-{% include img1 image_path="https://drive.google.com/uc?id=15E5MSUoxwPjo-X0-sq8M8BLEfMXe5Ba5" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_patch_example.png" %}
 
 {% include_relative _supporters.md %}

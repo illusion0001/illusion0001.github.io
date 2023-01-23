@@ -32,11 +32,11 @@ Resolution patching are borked so it is not included here.
 <summary>Screenshots (Click to Expand)</summary>
 
 <p align="center">
-<img src="https://drive.google.com/uc?id=1nBBxEu8HGa4C8rJhPDjeVG-ERUdoLfJv">
+<img src="https://img-assets.illusion0001.workers.dev/assets/images/patches/preview/Zwei_NG/The Evil Within_20211011142742.png">
 </p>
 
 <p align="center">
-<img src="https://drive.google.com/uc?id=1cUUvjNTzNfR-aCRwnb8c6tgkwaoDUFTb">
+<img src="https://img-assets.illusion0001.workers.dev/assets/images/patches/preview/Zwei_NG/The Evil Within_20211011142747.png">
 </p>
 
 </details>

@@ -3,8 +3,8 @@ layout: single
 title: "Bug Fix: The Last of Us Part 2 Broken Aim After Using The Bow"
 excerpt: "Shaky aiming camera after using the bow is now fixed!"
 header:
-  teaser: https://drive.google.com/uc?id=1a-euvDHvVRPHkEETIs5Snm4UKGgEWttm
-  overlay_image: https://drive.google.com/uc?id=1a-euvDHvVRPHkEETIs5Snm4UKGgEWttm
+  teaser: https://img-assets.illusion0001.workers.dev/assets/images/t2-bow-charge-bugfix/t2-thumbnail-page.png
+  overlay_image: https://img-assets.illusion0001.workers.dev/assets/images/t2-bow-charge-bugfix/t2-thumbnail-page.png
   overlay_filter: 0.5
   og_image: https://img-assets.illusion0001.workers.dev/assets/images/t2-bow-charge-bugfix/t2-thumbnail-video-no-text1.png
 
@@ -36,7 +36,7 @@ Good thing is, it was officially fixed by the developers in the Re-Remaster on P
 
 <div align="center">
 <video width="100%" controls loop muted>
-  <source src="https://drive.google.com/uc?id=1L3C1rkZMLTeapMJrTesPLy42GFWYHj0h" type="video/mp4">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/t2-bow-charge-bugfix/t1x-brick-bugfixed.mp4" type="video/mp4">
 </video>
 </div>
 
@@ -48,7 +48,7 @@ in The Last of Us Part 2, Naughty Dog developers implemented a tiredness feature
 
 <div align="center">
 <video width="100%" controls loop muted>
-  <source src="https://drive.google.com/uc?id=1WwLgpxsf8itsRlhSomuS7NM9ADgh4H52" type="video/mp4">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/t2-bow-charge-bugfix/t2-bowcharge-initial.mp4" type="video/mp4">
 </video>
 </div>
 
@@ -78,7 +78,7 @@ Let's try setting this one to 4 seconds.
 
 <div align="center">
 <video width="100%" controls loop muted>
-  <source src="https://drive.google.com/uc?id=1IkrMxWjVbtHx4LFeiiakbwJYxk2DA85O" type="video/mp4">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/t2-bow-charge-bugfix/t2-charge-time-4second.mp4" type="video/mp4">
 </video>
 </div>
 
@@ -90,17 +90,17 @@ A breakpoint leads to this instruction.
 01555a6d VMOVSS XMM0,dword ptr [RAX + RCX*0x4]
 ```
 
-{% include img1 image_path="https://drive.google.com/uc?id=1RwiWFQDgKG9mkrtIwWnUZKssnIPiz7OK" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/t2-bow-charge-bugfix/t2-charge-time-ghidra.png" %}
 
 Hmm, two vector floating reads. What if I step there?
 
-{% include img1 image_path="https://drive.google.com/uc?id=1P1c1HPLTtndT0Vo-amZHHSnRD_puHLiA" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/t2-bow-charge-bugfix/t2-debugger-step-chargestat.png" %}
 
 Aha! `xmm1` seems to contain our current time.
 
 Let's write some small code to display these.
 
-{% include img1 image_path="https://drive.google.com/uc?id=1RqIKyjVQ6li7uLTAjIT7lIc0lAw4M0sJ" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/t2-bow-charge-bugfix/t2-bowcharge-debug-stats.png" %}
 
 Yep, this is it. Now we have the max charge time and the current charge time.
 
@@ -112,7 +112,7 @@ Here I changed the value to `10.0f` and aiming a shotgun does this:
 
 <div align="center">
 <video width="100%" controls loop muted>
-  <source src="https://drive.google.com/uc?id=1Ca1nMESfTOiILYXk7JvE5x1bvmou7yEj" type="video/mp4">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/t2-bow-charge-bugfix/t2-charge-sway-mul-10.mp4" type="video/mp4">
 </video>
 </div>
 
@@ -130,7 +130,7 @@ The write instruction is in the same area as the charge timers, if I stub this f
 
 Let's give it a name.. How about `BowController`? that sounds pretty good.
 
-{% include img1 image_path="https://drive.google.com/uc?id=1RZnrdmbsh6GP7dl8aEWYlIY3FfCjKucJ" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/t2-bow-charge-bugfix/t2-bowcontroller-name-ghidra.png" %}
 
 Alright, we have found all three key piece of the puzzle.
 
@@ -187,7 +187,7 @@ Let's test this change in-game.
 
 <div align="center">
 <video width="100%" controls loop muted>
-  <source src="https://drive.google.com/uc?id=1cF3z2lLy3MxkfGtYiZw9HuiNkNMmCYaz" type="video/mp4">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/t2-bow-charge-bugfix/t2-bowcharge-fix-demo.mp4" type="video/mp4">
 </video>
 </div>
 
@@ -195,7 +195,7 @@ The timer counts up after using the bow, resets after 15 seconds and most import
 
 By the way, for those who want to see the stats for themselves can do so. I have included all the patches shown in this post in the patch file.
 
-{% include img1 image_path="https://drive.google.com/uc?id=16AjsWBmGZz1Y0RUQZtiV_cC11JSwl57R" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/t2-bow-charge-bugfix/t2-debug-bowcharge-stats.png" %}
 
 You will need to enable the following patches:
 

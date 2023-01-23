@@ -4,10 +4,10 @@ title: "Patches for The Order 1886 60FPS, 16:9 Aspect Ratio and More"
 excerpt: "Not so cinematic anymore, eh?"
 categories: patches
 header:
-  teaser: "https://drive.google.com/uc?id=1G9Fd_t83Y3369-VOPxgnieqSbQtDTnyx"
-  overlay_image: "https://drive.google.com/uc?id=1G9Fd_t83Y3369-VOPxgnieqSbQtDTnyx"
+  teaser: "https://img-assets.illusion0001.workers.dev/assets/images/oodle-res-framerate-patches/oddle-res-thumbnail-2.png"
+  overlay_image: "https://img-assets.illusion0001.workers.dev/assets/images/oodle-res-framerate-patches/oddle-res-thumbnail-2.png"
   overlay_filter: 0.5
-  og_image: "https://drive.google.com/uc?id=19VzIGu_yzXdew8qW89qp38YfPDfmnRyt"
+  og_image: "https://img-assets.illusion0001.workers.dev/assets/images/oodle-res-framerate-patches/oddle-res-thumbnail.png"
 tags: [Articles, Releases]
 # twitter: {card: "summary_large_image"}
 
@@ -135,13 +135,13 @@ One is a launch parameter and another is resolution values.
 
 I think I found it!
 
-{% include img1 image_path="https://drive.google.com/uc?id=1GcR0fl28QfuMv4sZdwvsA8ytlqRuwEp4" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/oodle-res-framerate-patches/oddle-res0.png" %}
 
 <div align=center>
 <em>1920x1080 Letterboxed</em>
 </div>
 
-{% include img1 image_path="https://drive.google.com/uc?id=1Z_GTWBdIVKVeKPV6il8zMZsA66-toirY" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/oodle-res-framerate-patches/oddle-res1.png" %}
 
 <div align=center>
 <em>1280x720 Letterboxed</em>
@@ -181,7 +181,7 @@ However, `2.4` came up with some promising results.
 
 Around resolution code too. let's give it `1.778` and see what the game will do about it.
 
-{% include img1 image_path="https://drive.google.com/uc?id=1GFlHpFkSNDGBT-xN1aJa2UkfBURkYcyo" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/oodle-res-framerate-patches/oddle-res2.png" %}
 
 <div align=center>
 <em>Letterbox Removed</em>

@@ -3,10 +3,10 @@ layout: single
 title: "Gravity Rush 2 (Gravity Daze 2) Unofficial 60FPS Patch Now Playable on PS4/PS4 Pro"
 excerpt: "Fight against the Nevis and protect towns at higher framerates."
 header:
-  teaser: https://drive.google.com/uc?id=1VhJqFeS1tcMpzIJp-GAkNYXG5BOrDGaD
-  overlay_image: https://drive.google.com/uc?id=1VhJqFeS1tcMpzIJp-GAkNYXG5BOrDGaD
+  teaser: https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch-Update1/GR2C-ep03.png
+  overlay_image: https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch-Update1/GR2C-ep03.png
   overlay_filter: 0.5
-  og_image: https://drive.google.com/uc?id=1VhJqFeS1tcMpzIJp-GAkNYXG5BOrDGaD
+  og_image: https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch-Update1/GR2C-ep03.png
 
 categories: patches
 tags: [ "ps4", "modded console" , "Gravity Rush 2", "Gravity Daze 2" ]
@@ -33,7 +33,7 @@ What's the first one about? Well, if you have read my [previous post](/patches/2
 
 <div align="center">
 <video width="100%" controls muted>
-  <source src="https://drive.google.com/uc?id=1WWZUGH1P3_Wrrp8KpUue3GbXU6C58LqM" type="video/mp4">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch-Update1/GR2-FrameComp.mp4" type="video/mp4">
 </video>
 </div>
 
@@ -43,13 +43,13 @@ Second update is that the videos no longer slows down and stutters anymore, chec
 
 <div align="center">
 <video width="100%" controls muted loop>
-  <source src="https://drive.google.com/uc?id=1fhR_LNMZ35_d-zVElEHFFLGdngCzvZjm" type="video/mp4">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch-Update1/GR2-Video-Before.mp4" type="video/mp4">
 </video>
 </div>
 
 <div align="center">
 <video width="100%" controls muted loop>
-  <source src="https://drive.google.com/uc?id=1CsLGFSNi8UsIGsWdgRj_-rk9RTWfl96f" type="video/mp4">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch-Update1/GR2-Video-After.mp4" type="video/mp4">
 </video>
 </div>
 
@@ -57,15 +57,15 @@ The first video runs noticeably slower and the sound is out of sync. However, th
 
 I have completed the game and added the necessary level checks for the game to be playable with this patch.
 
-{% include img1 image_path="https://drive.google.com/uc?id=119MWJirh-H9iFRUGW6z-jbid2v9v-z5B" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch-Update1/GR2-Credits1.png" %}
 
-{% include img1 image_path="https://drive.google.com/uc?id=1rY0MRVHEJViGHFRAvkSyrbD3RmQwdE2B" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch-Update1/GR2-Credits0.png" %}
 
-{% include img1 image_path="https://drive.google.com/uc?id=1Q0QJwzq1B3jMfnkEU7WMPaNjAUKf-TE7" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch-Update1/GR2-Credits2.png" %}
 
 Just a reminder that the level checks here is to prevent the game from softlocks and will fall back to the default 30FPS mode. But Episode 23 is a special case. In this episode, you are required to solve puzzles and along the way, there are these sequences.
 
-{% include img1 image_path="https://drive.google.com/uc?id=1eMKfHx3NRICnbLz2ZLuVfUmIsBZMIP3s" %}
+{% include img1 image_path="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch-Update1/GR2-EP23b.png" %}
 
 Which of course, have their scripting tied to the timestep and will never play unless it is 33ms.
 
@@ -83,7 +83,7 @@ Raven's Story is also playable. Softlock protection are also implemented here an
 
 <div align="center">
 <video width="100%" autoplay controls muted loop>
-  <source src="https://drive.google.com/uc?id=11T3ZHUnzrr9HApCXcMeqsToXnKplV4v-" type="video/mp4">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch-Update1/GravityDazeOverture-PatchMeme0.mp4" type="video/mp4">
 </video>
 </div>
 
