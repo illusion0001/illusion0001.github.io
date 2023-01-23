@@ -9,7 +9,7 @@ header:
   og_image: https://img-assets.illusion0001.workers.dev/assets/images/t2-bow-charge-bugfix/t2-thumbnail-video-no-text1.png
 
 categories: patches
-tags: [ "ps4", "modded console" , "The Last of Us Part 2", "Bug Fixes" ]
+tags: [ "ps4", "modded console" , "The Last of Us Part 2", "bugfix" ]
 twitter: {card: "summary_large_image"}
 toc: true
 toc_sticky: true
