@@ -39,21 +39,16 @@ jobs:
           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: ${{ runner.os }}-gems-
 
-      - name: Setup dependencies
-        run: pip install -r ${{ env.patch_repo }}/requirements.txt
-
       - name: Pack patch files into zip
+        working-directory: ${{ env.ghpatch_repo }}
         run: |
-          mv ${{ env.ghpatch_repo }}/patches ${{ env.patch_repo }}/patches
-          cd ${{ env.patch_repo }}
-          python page-autogen.py
-          mv patches ../
-          mv _patch0 ../
-          mv _patch  ../
+          cp -rv ../_patch _patch
+          python ../.ci/page-autogen.py
+          cp -rv patches ../patches
+          cp -rv _patch/ ../
           cd ..
+          cp -rv ${{ env.patch_repo }}/_patch/*.md _patch
           cp -r _patch __patch
-          chmod +x .ci/*.sh
-          .ci/zip.sh
 
       - name: Deploy
         if: |
