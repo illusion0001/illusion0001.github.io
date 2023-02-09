@@ -17,6 +17,5 @@ Monthly supporters:
 
 [Github Sponsors](https://github.com/sponsors/illusion0001):
 
-- projectrez
 - gorshco
 - regal.
