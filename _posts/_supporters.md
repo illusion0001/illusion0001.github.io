@@ -9,7 +9,6 @@ Monthly supporters:
 - alessaro92
 - faith
 - GarnetSunset
-- Jeff Eberlin
 - YveltalGriffin
 - Ciril
 
