@@ -10,12 +10,9 @@ Monthly supporters:
 - faith
 - GarnetSunset
 - Jeff Eberlin
-- ioritree
 - YveltalGriffin
 - Ciril
-- Legendarysnake
 
 [Github Sponsors](https://github.com/sponsors/illusion0001):
 
-- gorshco
 - regal.
