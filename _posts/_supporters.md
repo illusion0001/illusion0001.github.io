@@ -6,6 +6,7 @@ Monthly supporters:
 [Patreon](https://www.patreon.com/illusion0001):
 
 - ac2pic
+- Alexa
 - alessaro92
 - faith
 - GarnetSunset
