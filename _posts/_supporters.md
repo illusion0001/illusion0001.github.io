@@ -8,12 +8,12 @@ Monthly supporters:
 - ac2pic
 - Alexa
 - alessaro92
+- Ciril
 - faith
 - GarnetSunset
 - VIPO777
 - indiePat
 - YveltalGriffin
-- Ciril
 
 [Github Sponsors](https://github.com/sponsors/illusion0001):
 
