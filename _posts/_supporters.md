@@ -11,6 +11,7 @@ Monthly supporters:
 - faith
 - GarnetSunset
 - VIPO777
+- indiePat
 - YveltalGriffin
 - Ciril
 
