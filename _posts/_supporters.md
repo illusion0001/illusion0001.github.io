@@ -17,4 +17,7 @@ Monthly supporters:
 
 [Github Sponsors](https://github.com/sponsors/illusion0001):
 
+- Cerebral-Context
+- gorshco
 - regal.
+- VIPO777
