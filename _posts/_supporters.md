@@ -4,6 +4,7 @@ Thanks to the patrons who supported me on various platforms! You guys are awesom
 
 ### Monthly supporters:
 - [Patreon](https://www.patreon.com/illusion0001):
+
   - ac2pic
   - Alexa
   - Brett
@@ -28,6 +29,7 @@ Thanks to the patrons who supported me on various platforms! You guys are awesom
   - patrick
   - rudi
 - [Github Sponsors](https://github.com/sponsors/illusion0001):
+
   - Cerebral-Context
   - gorshco
   - regal.
