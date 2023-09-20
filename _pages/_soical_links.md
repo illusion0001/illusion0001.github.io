@@ -1,6 +1,5 @@
 # Sponsors and Social Links
 
-- Support on [Buy me a Coffee](https://www.buymeacoffee.com/illusion0001)
 - Support on [GitHub Sponsors](https://github.com/sponsors/illusion0001)
 - Support on [Ko-fi](https://ko-fi.com/illusion0001)
 - Support on [Patreon](https://www.patreon.com/illusion0001)
