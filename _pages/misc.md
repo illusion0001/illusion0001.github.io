@@ -19,4 +19,4 @@ In order of discovery:
 
 - [Wolf and Raven](https://wolf-and-raven.bandcamp.com/music)
 - [Lost Outrider](https://lostoutrider.bandcamp.com/music)
-- [Akia <i class="twa twa-cherry-blossom"></i>](https://aika.studio/)
+- [AIKA <i class="twa twa-cherry-blossom"></i>](https://aikamusics.bandcamp.com/music)
