@@ -8,11 +8,8 @@ Thanks to the patrons who supported me on various platforms! You guys are awesom
   - ac2pic
   - Alexa
   - Brett
-  - Cameron
   - Ciril
-  - Federick
   - GarnetSunset
-  - Manny
   - Mmmmmhno
   - Paul
   - PlayStation5Mods
@@ -20,6 +17,7 @@ Thanks to the patrons who supported me on various platforms! You guys are awesom
   - Ryan
   - Voredy
   - YveltalGriffin
+  - Zackery
   - alessaro92
   - ashenC
   - embee
@@ -28,12 +26,13 @@ Thanks to the patrons who supported me on various platforms! You guys are awesom
   - maplemiyazaki
   - patrick
   - rudi
+
 - [Github Sponsors](https://github.com/sponsors/illusion0001):
 
-  - Cerebral-Context
-  - gorshco
-  - regal.
   - VIPO777
-  - suwagawaki
   - WardFail
   - Whitehawkx
+  - gorshco
+  - jrson83
+  - regal.
+  - suwagawaki
