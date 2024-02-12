@@ -18,22 +18,22 @@ jobs:
           echo ghpatch_repo="GoldHEN_Patch_Repository" >> ${{ github.env }}
 
       - name: Checkout main repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@main
 
       - name: Checkout patch repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@main
         with:
           repository: 'illusion0001/${{ env.patch_repo }}'
           path: ${{ env.patch_repo }}
 
       - name: Checkout patch repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@main
         with:
           repository: 'GoldHEN/${{ env.ghpatch_repo }}'
           path: ${{ env.ghpatch_repo }}
 
       - name: Cache
-        uses: actions/cache@v3
+        uses: actions/cache@main
         with:
           path: vendor/bundle
           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
