@@ -4,7 +4,9 @@ title: Miscellaneous
 permalink: /misc/
 ---
 
-## Favorite sites:
+Personal favorites.
+
+## YouTube Channels
 
 - [Displaced Gamers](https://youtube.com/c/DisplacedGamers): Great source and insight for retro game hacking.
 - [Silent's Blog](https://cookieplmonster.github.io/): inspiration for this very site you're viewing right now!
@@ -13,7 +15,7 @@ permalink: /misc/
 - [Borderline OCD](https://youtube.com/c/BorderlineOCD): Repairs consoles and other electronics and does a fantastic job at it!
 - [4096](https://youtube.com/c/4096k): Motion graphics artist, satisfying videos, give them a watch.
 
-## Favorite music artists:
+## Music Artists
 
 In order of discovery:
 
