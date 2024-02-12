@@ -63,5 +63,5 @@ jobs:
           jekyll_src: './'
           jekyll_cfg: '_config.yml'
           jekyll_baseurl: ''
-          bundler_ver: '>=0'
+          # bundler_ver: '>=0'
           cname: 'illusion0001.com'
