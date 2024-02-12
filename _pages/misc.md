@@ -20,3 +20,17 @@ In order of discovery:
 - [Wolf and Raven](https://wolf-and-raven.bandcamp.com/music)
 - [Lost Outrider](https://lostoutrider.bandcamp.com/music)
 - [AIKA <i class="twa twa-cherry-blossom"></i>](https://aikamusics.bandcamp.com/music)
+
+# Films and Shows
+
+Films/Shows I recently watched in order.
+
+| Title                           | Japanese Title | Date          |
+|---------------------------------|----------------|---------------|
+| Howl's Moving Castle            | ハウルの動く城        | November 2023 |
+| The Boy and the Heron           | 君たちはどう生きるか     | December 2023 |
+| Bocchi The Rock!                | ぼっち・ざ・ろっく！     | January 2024  |
+| Golden Boy                      | GOLDEN BOY     | January 2024  |
+| Miss Kobayashi Dragon Maid (+S) | 小林さんちのメイドラゴン   | January 2024  |
+| Blend S                         | ブレンド・S         | January 2024  |
+| ONIMAI: I'm Now Your Sister!    | お兄ちゃんはおしまい！    | February 2024 |
