@@ -36,3 +36,4 @@ Films/Shows I recently watched in order.
 | Miss Kobayashi Dragon Maid (+S) | 小林さんちのメイドラゴン   | January 2024  |
 | Blend S                         | ブレンド・S         | January 2024  |
 | ONIMAI: I'm Now Your Sister!    | お兄ちゃんはおしまい！    | February 2024 |
+| Lycoris Recoil | リコリス・リコイル | February 2024 |
