@@ -38,4 +38,5 @@ Films/Shows I recently watched in order.
 | ONIMAI: I'm Now Your Sister!    | お兄ちゃんはおしまい！    | February 2024 |
 | Lycoris Recoil | リコリス・リコイル | February 2024 |
 | K-On! (+!!) | けいおん! | February 2024 |
+| K-On! The Movie | 映画 けいおん! | March 2024 |
 | A Silent Voice | 映画 聲の形 | March 2024 |
