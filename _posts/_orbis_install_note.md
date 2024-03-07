@@ -1,0 +1,1 @@
+For PS4 Patches, an installation guide on how to install the patches can be found [here](/install-instructions). (the following tutorial **does not** cover how to build the update package. It only shows how to install the patch into the binary.

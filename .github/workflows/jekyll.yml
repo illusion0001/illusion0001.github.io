@@ -1,0 +1,67 @@
+name: Deploy to GitHub Pages
+
+on: [ push, workflow_dispatch ]
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  jekyll_build:
+    runs-on: ubuntu-latest
+    if: github.repository == 'illusion0001/illusion0001.github.io'
+    steps:
+
+      - name: Setup vars
+        run: |
+          echo patch_repo="console-game-patches" >> ${{ github.env }}
+          echo ghpatch_repo="GoldHEN_Patch_Repository" >> ${{ github.env }}
+
+      - name: Checkout main repository
+        uses: actions/checkout@main
+
+      - name: Checkout patch repository
+        uses: actions/checkout@main
+        with:
+          repository: 'illusion0001/${{ env.patch_repo }}'
+          path: ${{ env.patch_repo }}
+
+      - name: Checkout patch repository
+        uses: actions/checkout@main
+        with:
+          repository: 'GoldHEN/${{ env.ghpatch_repo }}'
+          path: ${{ env.ghpatch_repo }}
+
+      - name: Cache
+        uses: actions/cache@main
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: ${{ runner.os }}-gems-
+
+      - name: Pack patch files into zip
+        working-directory: ${{ env.ghpatch_repo }}
+        run: |
+          cp -rv ../_patch _patch
+          python ../.ci/page-autogen.py
+          cp -rv patches ../patches
+          cp -rv _patch/ ../
+          cd ..
+          cp -rv ${{ env.patch_repo }}/_patch/*.md _patch
+          cp -r _patch __patch
+
+      - name: Deploy
+        if: |
+          github.repository == 'illusion0001/illusion0001.github.io' &&
+          github.ref_name == 'main'
+        uses: jeffreytse/jekyll-deploy-action@master
+        with:
+          provider: 'github'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ''
+          branch: 'gh-pages'
+          jekyll_src: './'
+          jekyll_cfg: '_config.yml'
+          jekyll_baseurl: ''
+          # bundler_ver: '>=0'
+          cname: 'illusion0001.com'

@@ -2,12 +2,12 @@
 
 :root {
   /* Themes */
-  --text-dm-site-title: #ffa4a4;
-  --text-dm-primary: #ffa4a4;
-  --text-dm-secondary: #d4adad;
-  --dm-contrast: #fbff45;
-  --bg-dm-primary: #130202;
-  --bg-dm-secondary: #1c0b0b;
+  --text-dm-site-title: #9decfc;
+  --text-dm-primary: #9a9a9a;
+  --text-dm-secondary: #edeeef;
+  --dm-contrast: #9decfc;
+  --bg-dm-primary: #2f3134;
+  --bg-dm-secondary: #1e2124;
   /* Other vars */
   --border-radius: 2rem;
 }

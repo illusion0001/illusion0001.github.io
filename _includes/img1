@@ -1,0 +1,10 @@
+<div align="center" class="{{ include.class }}">
+  <a href="{{ include.image_path | relative_url }}">
+  <img src="{{ include.image_path | relative_url }}">
+</a>
+  {%- if include.caption -%}
+    <em>
+      {{ include.caption | markdownify | remove: "<p>" | remove: "</p>" }}
+    </em>
+  {%- endif -%}
+  </div>

@@ -1,28 +1,35 @@
-title: Jekyll Material You
+title: illusion's Blog
 markdown: kramdown
 # url: ""
 # baseurl: "/jekyll-theme-material-you"
 
 # for atom feed
 author:
-  name: Sharad Raj Singh Maurya
-  email: dev_sharad@outlook.com
-
+  name: illusion
+  email: illusion3185@gmail.com
+include:
+  - _pages
+  - _patch
 plugins:
   - jemoji
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-feed
 
-collections_dir: all_collections
+permalink: pretty
+paginate_path: /page:num/
+
 collections:
-  posts:
-    output: true
+  - _patch
+
+# collections_dir: all_collections
+# collections:
+#   posts:
+#     output: true
 
 defaults:
   - scope:
       path: "_posts"
     values:
       layout: "post"
-      permalink: /posts/:title/
 exclude: ["sitemap.xml", "feed.xml", "LICENSE", "README.md"]
