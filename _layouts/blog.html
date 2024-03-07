@@ -4,16 +4,16 @@
   <body>
     <main class="blogfeed">
       {% include header.html %} {% include bio.html %}
+      {% for post in site.posts %}
       <section id="articles">
-        {% for post in site.posts %}
         <!--  -->
-        {% if post.thumbnail %}
+        {% if post.header.teaser %}
         <article class="article">
           <div class="article-top">
             <div
               class="article-thumbnail"
               style="
-                background-image: url('{{ post.thumbnail }}');
+                background-image: url('{{ post.header.teaser }}');
               "
             >
               <div class="article-title">

@@ -3,7 +3,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{{site.title}} | {{page.title}}</title>
-  {% if page.layout == "post" %}
+  {% if page.layout == "post" || if page.layout == "single" %}
   <link rel="stylesheet" href="{{site.baseurl}}/assets/css/main.css" />
   <link rel="stylesheet" href="{{site.baseurl}}/assets/css/post.css" />
   <link rel="stylesheet" href="{{site.baseurl}}/assets/css/syntax.css" />
@@ -12,7 +12,10 @@
   {% endif %}
   <link rel="stylesheet" href="{{site.baseurl}}/assets/css/common.css" />
   <script src="{{site.baseurl}}/assets/js/categories.js"></script>
-  {% if page.layout == "post" %}
+  {% if page.layout == "post" || if page.layout == "single"  %}
   <script defer src="{{site.baseurl}}/assets/js/lbox.js"></script>
   {% endif %}
+  <!-- Twemoji -->
+  <!-- src https://github.com/SebastianAigner/twemoji-amazing -->
+  <link rel="stylesheet" href="{{site.baseurl}}/assets/css/twemoji-amazing.css">
 </head>

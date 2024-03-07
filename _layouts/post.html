@@ -5,21 +5,23 @@
     <main class="blogfeed">
       {% include header.html %}
       <section id="article">
-        {% if page.thumbnail %}
+        {% if page.header.teaser %}
         <!--  -->
-        {% assign page_thumbnail = page.thumbnail %}
+        {% assign page_thumbnail = page.header.teaser %}
         <!--  -->
         {% else %}
         <!--  -->
-        {% assign page_thumbnail = '/assets/images/pattern.png' %}
+        {% assign page_thumbnail = '' %}
         <!--  -->
         {% endif %}
+        {% if page.header.teaser %}
         <div
           class="article-thumbnail"
           style="
-            background-image: url('{{ site.baseurl }}/{{ page_thumbnail }}');
+            background-image: url('{{ page_thumbnail }}');
           "
         >
+        {% endif %}
           <h1 class="article-title">{{ page.title }}</h1>
           <div class="article-bottom">
             <small class="article-date">{{page.date | date_to_string}}</small>
