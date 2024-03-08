@@ -1,3 +1,9 @@
+<section id="social-links1">
+  {% for i in site.data.button.button %}
+    <a href="{{i.url}}" target="_blank"> {{i.title}}</a>
+  {%endfor%}
+</section>
+
 <section id="social-links">
 {% for i in site.data.author.contact %}
   <a href="{{i.url}}" target="_blank">
