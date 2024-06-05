@@ -1,6 +1,6 @@
 def main():
     # assume CI is in GH folder
-    for patches in glob.glob('patches/xml/*.xml', recursive=True): 
+    for patches in glob.glob('patches/*/*.xml', recursive=True): 
         with open(patches, 'r') as file:
           md = open('_patch/_template.md', 'r')
           md_body = open('_patch/_template_body.md', 'r')

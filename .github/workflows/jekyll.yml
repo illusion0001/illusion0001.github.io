@@ -15,7 +15,7 @@ jobs:
       - name: Setup vars
         run: |
           echo patch_repo="console-game-patches" >> ${{ github.env }}
-          echo ghpatch_repo="GoldHEN_Patch_Repository" >> ${{ github.env }}
+          echo ghpatch_repo="PS4-PS5-Game-Patch" >> ${{ github.env }}
 
       - name: Checkout main repository
         uses: actions/checkout@main
@@ -23,13 +23,13 @@ jobs:
       - name: Checkout patch repository
         uses: actions/checkout@main
         with:
-          repository: 'illusion0001/${{ env.patch_repo }}'
+          repository: illusion0001/${{ env.patch_repo }}
           path: ${{ env.patch_repo }}
 
       - name: Checkout patch repository
         uses: actions/checkout@main
         with:
-          repository: 'GoldHEN/${{ env.ghpatch_repo }}'
+          repository: illusion0001/${{ env.ghpatch_repo }}
           path: ${{ env.ghpatch_repo }}
 
       - name: Cache
@@ -42,12 +42,14 @@ jobs:
       - name: Pack patch files into zip
         working-directory: ${{ env.ghpatch_repo }}
         run: |
-          cp -rv ../_patch _patch
+          cp -r ../_patch _patch
           python ../.ci/page-autogen.py
-          cp -rv patches ../patches
-          cp -rv _patch/ ../
+          cp -r patches ../patches
+          cp -r _patch/ ../
           cd ..
-          cp -rv ${{ env.patch_repo }}/_patch/*.md _patch
+          # delete old header file
+          rm ${{ env.patch_repo }}/_patch/patch_header.md
+          cp -r ${{ env.patch_repo }}/_patch/*.md _patch
           cp -r _patch __patch
 
       - name: Deploy
