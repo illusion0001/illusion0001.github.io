@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>illusion's Blog | Elden Ring</title>
+  
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+  <!-- Twemoji -->
+  <!-- src https://github.com/SebastianAigner/twemoji-amazing -->
+  <link rel="stylesheet" href="/assets/css/twemoji-amazing.css">
+</head>
+
+  <body>
+    <main class="blogfeed">
+      
+<header>
+  <a class="site-title article-page" href="/">illusion's Blog</a>
+</header>
+
+
+
+
+      <section id="social-links1">
+  
+    <a href="/contact" target="_blank"> Contact</a>
+  
+    <a href="/patch" target="_blank"> Patches</a>
+  
+</section>
+
+<section id="social-links">
+
+  <a href="https://github.com/illusion0001" target="_blank">
+    <img src="/assets/icons/github.svg" alt="" />
+  </a>
+
+  <a href="https://twitter.com/illusion0002" target="_blank">
+    <img src="/assets/icons/twitter.svg" alt="" />
+  </a>
+
+  <a href="mailto:illusion3185@gmail.com" target="_blank">
+    <img src="/assets/icons/email.svg" alt="" />
+  </a>
+
+</section>
+
+      <section id="article">
+        
+        <!--  -->
+        
+        <!--  -->
+        
+        
+          <h1 class="article-title">Elden Ring</h1>
+          <div class="article-bottom">
+            <small class="article-date"></small>
+            <div class="article-categories">
+              
+            </div>
+          </div>
+        </div>
+        <div class="article-content"><p><a href="/patch/#patches">Game Index</a></p>
+
+<h2 id="patches">Patches</h2>
+
+<p>For use with <a href="https://github.com/bucanero/PS4CheatsManager">PS4 Cheats Manager</a>.</p>
+
+<!-- [Installation Guide](/install-instructions/) -->
+
+<p>Download all <a href="https://github.com/illusion0001/PS4-PS5-Game-Patch/releases/latest/download/patch1.zip">patch</a> files.</p>
+
+<p>Opening the file preview below may freeze your browser on mobile Chromium based browsers.</p>
+
+<p>Preview the file on <a href="https://github.com/illusion0001/PS4-PS5-Game-Patch/blob/main/patches/xml/EldenRing-Orbis.xml">GitHub</a>.</p>
+
+<!-- Patch will be built from CI -->
+
+<!-- Patch file: `patches/xml/EldenRing-Orbis.xml` -->
+
+<details>
+<summary>Contents of patch file (Click to Expand)</summary>
+
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;Patch&gt;</span>
+    <span class="nt">&lt;TitleID&gt;</span>
+        <span class="nt">&lt;ID&gt;</span>CUSA28863<span class="nt">&lt;/ID&gt;</span>
+        <span class="nt">&lt;ID&gt;</span>CUSA18723<span class="nt">&lt;/ID&gt;</span>
+        <span class="nt">&lt;ID&gt;</span>CUSA28527<span class="nt">&lt;/ID&gt;</span>
+    <span class="nt">&lt;/TitleID&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Elden Ring"</span>
+              <span class="na">Name=</span><span class="s">"60 FPS (For Base Console)"</span>
+              <span class="na">Note=</span><span class="s">"Unlocks framerate on Base/Slim PS4"</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.00"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x02021e32"</span> <span class="na">Value=</span><span class="s">"48b90900000009000000"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x02021e3c"</span> <span class="na">Value=</span><span class="s">"b805000000"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x02021e41"</span> <span class="na">Value=</span><span class="s">"eb06"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Elden Ring"</span>
+              <span class="na">Name=</span><span class="s">"30 FPS Fix (Proper Frame Pacing)"</span>
+              <span class="na">Note=</span><span class="s">"Fixes framepacing issues at the cost of slightly increased input latency."</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.00"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x02021e32"</span> <span class="na">Value=</span><span class="s">"48b90900000009000000"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x02021e3c"</span> <span class="na">Value=</span><span class="s">"b805000000"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x02021e41"</span> <span class="na">Value=</span><span class="s">"eb06"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x031650c9"</span> <span class="na">Value=</span><span class="s">"4589b534040000"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x031650d0"</span> <span class="na">Value=</span><span class="s">"418bbd30040000"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x031650d7"</span> <span class="na">Value=</span><span class="s">"be01000000"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x031650dc"</span> <span class="na">Value=</span><span class="s">"90909090"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Elden Ring"</span>
+              <span class="na">Name=</span><span class="s">"Resolution Patch (720p for Base)"</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.00"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes32"</span> <span class="na">Address=</span><span class="s">"0x04258d4c"</span> <span class="na">Value=</span><span class="s">"0x00000500"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes32"</span> <span class="na">Address=</span><span class="s">"0x04258d50"</span> <span class="na">Value=</span><span class="s">"0x000002d0"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Elden Ring"</span>
+              <span class="na">Name=</span><span class="s">"Resolution Patch (900p for Base)"</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.00"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes32"</span> <span class="na">Address=</span><span class="s">"0x04258d4c"</span> <span class="na">Value=</span><span class="s">"0x00000640"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes32"</span> <span class="na">Address=</span><span class="s">"0x04258d50"</span> <span class="na">Value=</span><span class="s">"0x00000384"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Elden Ring"</span>
+              <span class="na">Name=</span><span class="s">"Resolution Patch (1080p for Pro)"</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.00"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes32"</span> <span class="na">Address=</span><span class="s">"0x0201466f"</span> <span class="na">Value=</span><span class="s">"0x00000780"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes32"</span> <span class="na">Address=</span><span class="s">"0x02014679"</span> <span class="na">Value=</span><span class="s">"0x00000438"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Elden Ring"</span>
+              <span class="na">Name=</span><span class="s">"Enable MenuMan.EnableTopMenuDebug"</span>
+              <span class="na">Note=</span><span class="s">"Enables Menu Debug, scroll to below system to access during gameplay. (it doesn't have an icon)"</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.00"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0203064b"</span> <span class="na">Value=</span><span class="s">"b801000000"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Elden Ring"</span>
+              <span class="na">Name=</span><span class="s">"Skip Intro Logos"</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.00"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"byte"</span> <span class="na">Address=</span><span class="s">"0x01c6cfaa"</span> <span class="na">Value=</span><span class="s">"0x01"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Elden Ring"</span>
+              <span class="na">Name=</span><span class="s">"60 FPS (For Base Console)"</span>
+              <span class="na">Note=</span><span class="s">"Unlocks framerate on Base/Slim PS4"</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.05"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x02106663"</span> <span class="na">Value=</span><span class="s">"48b90900000009000000"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0210666d"</span> <span class="na">Value=</span><span class="s">"b805000000"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x02106672"</span> <span class="na">Value=</span><span class="s">"eb06"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Elden Ring"</span>
+              <span class="na">Name=</span><span class="s">"30 FPS Fix (Proper Frame Pacing)"</span>
+              <span class="na">Note=</span><span class="s">"Fixes framepacing issues at the cost of slightly increased input latency."</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.05"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x02106663"</span> <span class="na">Value=</span><span class="s">"48b90900000009000000"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0210666d"</span> <span class="na">Value=</span><span class="s">"b805000000"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x02106672"</span> <span class="na">Value=</span><span class="s">"eb06"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0319dcd9"</span> <span class="na">Value=</span><span class="s">"4589b534040000"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0319dce0"</span> <span class="na">Value=</span><span class="s">"418bbd30040000"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0319dce7"</span> <span class="na">Value=</span><span class="s">"be01000000"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0319dcec"</span> <span class="na">Value=</span><span class="s">"90909090"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Elden Ring"</span>
+              <span class="na">Name=</span><span class="s">"Resolution Patch (720p for Base)"</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.05"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes32"</span> <span class="na">Address=</span><span class="s">"0x04258e3c"</span> <span class="na">Value=</span><span class="s">"0x00000500"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes32"</span> <span class="na">Address=</span><span class="s">"0x04258e40"</span> <span class="na">Value=</span><span class="s">"0x000002d0"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Elden Ring"</span>
+              <span class="na">Name=</span><span class="s">"Resolution Patch (900p for Base)"</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.05"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes32"</span> <span class="na">Address=</span><span class="s">"0x04258e3c"</span> <span class="na">Value=</span><span class="s">"0x00000640"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes32"</span> <span class="na">Address=</span><span class="s">"0x04258e40"</span> <span class="na">Value=</span><span class="s">"0x00000384"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Elden Ring"</span>
+              <span class="na">Name=</span><span class="s">"Resolution Patch (1080p for Pro)"</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.05"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes32"</span> <span class="na">Address=</span><span class="s">"0x020486cf"</span> <span class="na">Value=</span><span class="s">"0x00000780"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes32"</span> <span class="na">Address=</span><span class="s">"0x020486d9"</span> <span class="na">Value=</span><span class="s">"0x00000438"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Elden Ring"</span>
+              <span class="na">Name=</span><span class="s">"Enable MenuMan.EnableTopMenuDebug"</span>
+              <span class="na">Note=</span><span class="s">"Enables Menu Debug, scroll to below system to access during gameplay. (it doesn't have an icon)"</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.05"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x02063aab"</span> <span class="na">Value=</span><span class="s">"b801000000"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Elden Ring"</span>
+              <span class="na">Name=</span><span class="s">"Skip Intro Logos"</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.05"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"byte"</span> <span class="na">Address=</span><span class="s">"0x01ca0a7a"</span> <span class="na">Value=</span><span class="s">"0x01"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Elden Ring"</span>
+              <span class="na">Name=</span><span class="s">"60 FPS (For Base Console)"</span>
+              <span class="na">Note=</span><span class="s">"Unlocks framerate on Base/Slim PS4"</span>
+              <span class="na">Author=</span><span class="s">"illusion, Ported by XiangBuChuMingZiNiMei BaiDuTieBa"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.08"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x020e0ab3"</span> <span class="na">Value=</span><span class="s">"48b90900000009000000"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x020e0abd"</span> <span class="na">Value=</span><span class="s">"b805000000"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x020e0ac2"</span> <span class="na">Value=</span><span class="s">"eb06"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Elden Ring"</span>
+              <span class="na">Name=</span><span class="s">"Resolution Patch (720p for Base)"</span>
+              <span class="na">Author=</span><span class="s">"illusion, Ported by XiangBuChuMingZiNiMei BaiDuTieBa"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.08"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes32"</span> <span class="na">Address=</span><span class="s">"0x040b4e7c"</span> <span class="na">Value=</span><span class="s">"0x00000500"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes32"</span> <span class="na">Address=</span><span class="s">"0x040b4e80"</span> <span class="na">Value=</span><span class="s">"0x000002d0"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Elden Ring"</span>
+              <span class="na">Name=</span><span class="s">"Resolution Patch (900p for Base)"</span>
+              <span class="na">Author=</span><span class="s">"illusion, Ported by XiangBuChuMingZiNiMei BaiDuTieBa"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.08"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes32"</span> <span class="na">Address=</span><span class="s">"0x040b4e7c"</span> <span class="na">Value=</span><span class="s">"0x00000640"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes32"</span> <span class="na">Address=</span><span class="s">"0x040b4e80"</span> <span class="na">Value=</span><span class="s">"0x00000384"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Elden Ring"</span>
+              <span class="na">Name=</span><span class="s">"Resolution Patch (1080p for Pro)"</span>
+              <span class="na">Author=</span><span class="s">"illusion, Ported by XiangBuChuMingZiNiMei BaiDuTieBa"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.08"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes32"</span> <span class="na">Address=</span><span class="s">"0x0202172f"</span> <span class="na">Value=</span><span class="s">"0x00000780"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes32"</span> <span class="na">Address=</span><span class="s">"0x02021739"</span> <span class="na">Value=</span><span class="s">"0x00000438"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Elden Ring"</span>
+              <span class="na">Name=</span><span class="s">"Skip Intro Logos"</span>
+              <span class="na">Author=</span><span class="s">"illusion, Ported by XiangBuChuMingZiNiMei BaiDuTieBa"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.08"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"byte"</span> <span class="na">Address=</span><span class="s">"0x01c7a9ea"</span> <span class="na">Value=</span><span class="s">"0x01"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Elden Ring"</span>
+              <span class="na">Name=</span><span class="s">"60 FPS (For Base Console)"</span>
+              <span class="na">Note=</span><span class="s">"Unlocks framerate on Base/Slim PS4"</span>
+              <span class="na">Author=</span><span class="s">"illusion, Ported by XiangBuChuMingZiNiMei BaiDuTieBa"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.09"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x020e7f43"</span> <span class="na">Value=</span><span class="s">"48b90900000009000000"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x020e7f4d"</span> <span class="na">Value=</span><span class="s">"b805000000"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x020e7f52"</span> <span class="na">Value=</span><span class="s">"eb06"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Elden Ring"</span>
+              <span class="na">Name=</span><span class="s">"Resolution Patch (720p for Base)"</span>
+              <span class="na">Author=</span><span class="s">"illusion, Ported by XiangBuChuMingZiNiMei BaiDuTieBa"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.09"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes32"</span> <span class="na">Address=</span><span class="s">"0x04258e7c"</span> <span class="na">Value=</span><span class="s">"0x00000500"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes32"</span> <span class="na">Address=</span><span class="s">"0x04258e80"</span> <span class="na">Value=</span><span class="s">"0x000002d0"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Elden Ring"</span>
+              <span class="na">Name=</span><span class="s">"Resolution Patch (900p for Base)"</span>
+              <span class="na">Author=</span><span class="s">"illusion, Ported by XiangBuChuMingZiNiMei BaiDuTieBa"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.09"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes32"</span> <span class="na">Address=</span><span class="s">"0x04258e7c"</span> <span class="na">Value=</span><span class="s">"0x00000640"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes32"</span> <span class="na">Address=</span><span class="s">"0x04258e80"</span> <span class="na">Value=</span><span class="s">"0x00000384"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Elden Ring"</span>
+              <span class="na">Name=</span><span class="s">"Resolution Patch (1080p for Pro)"</span>
+              <span class="na">Author=</span><span class="s">"illusion, Ported by XiangBuChuMingZiNiMei BaiDuTieBa"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.09"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes32"</span> <span class="na">Address=</span><span class="s">"0x0202885f"</span> <span class="na">Value=</span><span class="s">"0x00000780"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes32"</span> <span class="na">Address=</span><span class="s">"0x02028869"</span> <span class="na">Value=</span><span class="s">"0x00000438"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Elden Ring"</span>
+              <span class="na">Name=</span><span class="s">"Skip Intro Logos"</span>
+              <span class="na">Author=</span><span class="s">"illusion, Ported by XiangBuChuMingZiNiMei BaiDuTieBa"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.09"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"byte"</span> <span class="na">Address=</span><span class="s">"0x01c8032a"</span> <span class="na">Value=</span><span class="s">"0x01"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Elden Ring"</span>
+              <span class="na">Name=</span><span class="s">"60 FPS (For Base Console)"</span>
+              <span class="na">Note=</span><span class="s">"Unlocks framerate on Base/Slim PS4"</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.10"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x020e8083"</span> <span class="na">Value=</span><span class="s">"b805000000"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x020e8088"</span> <span class="na">Value=</span><span class="s">"48b90900000009000000"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x020e8092"</span> <span class="na">Value=</span><span class="s">"0f1f840000000000"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Elden Ring"</span>
+              <span class="na">Name=</span><span class="s">"30 FPS Framepacing Fix"</span>
+              <span class="na">Note=</span><span class="s">"Fixes framepacing issues at the cost of slightly increased input latency."</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.10"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x020e8083"</span> <span class="na">Value=</span><span class="s">"b805000000"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x020e8088"</span> <span class="na">Value=</span><span class="s">"48b90900000009000000"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x020e8092"</span> <span class="na">Value=</span><span class="s">"0f1f840000000000"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x032bd760"</span> <span class="na">Value=</span><span class="s">"be01000000"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x032bd765"</span> <span class="na">Value=</span><span class="s">"ff25a520e600"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Elden Ring"</span>
+              <span class="na">Name=</span><span class="s">"Resolution Patch (720p for Base)"</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.10"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes32"</span> <span class="na">Address=</span><span class="s">"0x04258e7c"</span> <span class="na">Value=</span><span class="s">"0x00000500"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes32"</span> <span class="na">Address=</span><span class="s">"0x04258e80"</span> <span class="na">Value=</span><span class="s">"0x000002d0"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Elden Ring"</span>
+              <span class="na">Name=</span><span class="s">"Resolution Patch (900p for Base)"</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.10"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes32"</span> <span class="na">Address=</span><span class="s">"0x04258e7c"</span> <span class="na">Value=</span><span class="s">"0x00000640"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes32"</span> <span class="na">Address=</span><span class="s">"0x04258e80"</span> <span class="na">Value=</span><span class="s">"0x00000384"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Elden Ring"</span>
+              <span class="na">Name=</span><span class="s">"Resolution Patch (1080p for Pro)"</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.10"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes32"</span> <span class="na">Address=</span><span class="s">"0x0202898f"</span> <span class="na">Value=</span><span class="s">"0x00000780"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes32"</span> <span class="na">Address=</span><span class="s">"0x02028999"</span> <span class="na">Value=</span><span class="s">"0x00000438"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Elden Ring"</span>
+              <span class="na">Name=</span><span class="s">"Skip Intro Logos"</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.10"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"byte"</span> <span class="na">Address=</span><span class="s">"0x01c7f1da"</span> <span class="na">Value=</span><span class="s">"0x01"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Elden Ring"</span>
+              <span class="na">Name=</span><span class="s">"60 FPS (For Base Console)"</span>
+              <span class="na">Note=</span><span class="s">"Unlocks framerate on Base/Slim PS4"</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.12"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x02159013"</span> <span class="na">Value=</span><span class="s">"b805000000"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x02159018"</span> <span class="na">Value=</span><span class="s">"48b90900000009000000"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x02159022"</span> <span class="na">Value=</span><span class="s">"0f1f840000000000"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Elden Ring"</span>
+              <span class="na">Name=</span><span class="s">"30 FPS Framepacing Fix"</span>
+              <span class="na">Note=</span><span class="s">"Fixes framepacing issues at the cost of slightly increased input latency."</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.12"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x02159013"</span> <span class="na">Value=</span><span class="s">"b805000000"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x02159018"</span> <span class="na">Value=</span><span class="s">"48b90900000009000000"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x02159022"</span> <span class="na">Value=</span><span class="s">"0f1f840000000000"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0332f080"</span> <span class="na">Value=</span><span class="s">"be01000000"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0332f085"</span> <span class="na">Value=</span><span class="s">"ff25d535df00"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Elden Ring"</span>
+              <span class="na">Name=</span><span class="s">"Resolution Patch (720p for Base)"</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.12"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes32"</span> <span class="na">Address=</span><span class="s">"0x04258e7c"</span> <span class="na">Value=</span><span class="s">"0x00000500"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes32"</span> <span class="na">Address=</span><span class="s">"0x04258e80"</span> <span class="na">Value=</span><span class="s">"0x000002d0"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Elden Ring"</span>
+              <span class="na">Name=</span><span class="s">"Resolution Patch (900p for Base)"</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.12"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes32"</span> <span class="na">Address=</span><span class="s">"0x04258e7c"</span> <span class="na">Value=</span><span class="s">"0x00000640"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes32"</span> <span class="na">Address=</span><span class="s">"0x04258e80"</span> <span class="na">Value=</span><span class="s">"0x00000384"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Elden Ring"</span>
+              <span class="na">Name=</span><span class="s">"Resolution Patch (1080p for Pro)"</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.12"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes32"</span> <span class="na">Address=</span><span class="s">"0x020980af"</span> <span class="na">Value=</span><span class="s">"0x00000780"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes32"</span> <span class="na">Address=</span><span class="s">"0x020980b9"</span> <span class="na">Value=</span><span class="s">"0x00000438"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Elden Ring"</span>
+              <span class="na">Name=</span><span class="s">"Skip Intro Logos"</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.12"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x01ce2533"</span> <span class="na">Value=</span><span class="s">"41c686c500000001"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Elden Ring"</span>
+              <span class="na">Name=</span><span class="s">"60 FPS (For Base Console)"</span>
+              <span class="na">Note=</span><span class="s">"Unlocks framerate on Base/Slim PS4"</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.13"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0215cd43"</span> <span class="na">Value=</span><span class="s">"b805000000"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0215cd48"</span> <span class="na">Value=</span><span class="s">"48b90900000009000000"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0215cd52"</span> <span class="na">Value=</span><span class="s">"0f1f840000000000"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Elden Ring"</span>
+              <span class="na">Name=</span><span class="s">"30 FPS Framepacing Fix"</span>
+              <span class="na">Note=</span><span class="s">"Fixes framepacing issues at the cost of slightly increased input latency."</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.13"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0215cd43"</span> <span class="na">Value=</span><span class="s">"b805000000"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0215cd48"</span> <span class="na">Value=</span><span class="s">"48b90900000009000000"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0215cd52"</span> <span class="na">Value=</span><span class="s">"0f1f840000000000"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x03332da0"</span> <span class="na">Value=</span><span class="s">"be01000000"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x03332da5"</span> <span class="na">Value=</span><span class="s">"ff25f5f9de00"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Elden Ring"</span>
+              <span class="na">Name=</span><span class="s">"Resolution Patch (720p for Base)"</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.13"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes32"</span> <span class="na">Address=</span><span class="s">"0x04258e7c"</span> <span class="na">Value=</span><span class="s">"0x00000500"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes32"</span> <span class="na">Address=</span><span class="s">"0x04258e80"</span> <span class="na">Value=</span><span class="s">"0x000002d0"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Elden Ring"</span>
+              <span class="na">Name=</span><span class="s">"Resolution Patch (900p for Base)"</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.13"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes32"</span> <span class="na">Address=</span><span class="s">"0x04258e7c"</span> <span class="na">Value=</span><span class="s">"0x00000640"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes32"</span> <span class="na">Address=</span><span class="s">"0x04258e80"</span> <span class="na">Value=</span><span class="s">"0x00000384"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Elden Ring"</span>
+              <span class="na">Name=</span><span class="s">"Resolution Patch (1080p for Pro)"</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.13"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes32"</span> <span class="na">Address=</span><span class="s">"0x0209bd9f"</span> <span class="na">Value=</span><span class="s">"0x00000780"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes32"</span> <span class="na">Address=</span><span class="s">"0x0209bda9"</span> <span class="na">Value=</span><span class="s">"0x00000438"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Elden Ring"</span>
+              <span class="na">Name=</span><span class="s">"Skip Intro Logos"</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.13"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x01ce51c3"</span> <span class="na">Value=</span><span class="s">"41c686c500000001"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+<span class="nt">&lt;/Patch&gt;</span></code></pre></figure>
+
+
+</details>
+</div>
+      </section>
+      <footer>
+  <p>&copy; 2021 - 2024 | illusion's Blog</br>Theme <a href="https://github.com/sharadcodes/jekyll-theme-material-you"> Jekyll Theme Material You</a></p>
+</footer>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>
