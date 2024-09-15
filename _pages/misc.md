@@ -14,6 +14,7 @@ Personal favorites.
 - [VG Tech](https://youtube.com/c/VGTech): Various framerate tests in high quality, no commentary form.
 - [Borderline OCD](https://youtube.com/c/BorderlineOCD): Repairs consoles and other electronics and does a fantastic job at it!
 - [4096](https://youtube.com/c/4096k): Motion graphics artist, satisfying videos, give them a watch.
+- [Quake Speedruns Explained](https://youtube.com/@quakespeedrunsexplained) Excellent explanation of retro Quake demo runs.
 
 ## Music Artists
 
