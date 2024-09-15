@@ -1,0 +1,12 @@
+- patch:
+  site_game_title: &site_game_title "Killzone: Mercenary"
+  title: *site_game_title
+  app_ver: "01.12"
+  app_titleid: [ "PCSF00243", "PCSF00403", "PCSA00107", "PCSC00045", "PCSD00071" ]
+  patch_ver: "1.0"
+  name: "Enable Debug Menu"
+  author: "illusion"
+  arch: ngp
+  entry_prog: 0x100
+  patch_list:
+        - [ bytes32, 0x816a9be8, 0x0000f04f ]

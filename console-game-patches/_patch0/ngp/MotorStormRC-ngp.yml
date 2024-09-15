@@ -1,0 +1,19 @@
+- patch:
+  site_game_title: &site_game_title "Motorstorm RC"
+  title: *site_game_title
+  app_ver: "01.02"
+  app_titleid: [ "PCSA00034" ]
+  patch_ver: "1.0"
+  name: "60 FPS"
+  author: "illusion"
+  note: "You may need to restart races for timers to work."
+  arch: ngp # py-patch 1.58 or newer
+  entry_prog: 0x1000
+  patch_list:
+        - [ bytes16, 0x810b7c10, 0x2101 ] # delta
+        - [ bytes16, 0x810b7c22, 0x2101 ] # flipmode
+        # flipwait
+        - [ bytes16, 0x81283174, 0xe002 ]
+        - [ bytes16, 0x812f42aa, 0xe001 ]
+        - [ bytes16, 0x812f3820, 0xbf00 ]
+        - [ bytes16, 0x812f3822, 0xbf00 ]
