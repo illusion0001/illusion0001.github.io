@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>illusion's Blog | Install Instructions</title>
+  
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+  <!-- Twemoji -->
+  <!-- src https://github.com/SebastianAigner/twemoji-amazing -->
+  <link rel="stylesheet" href="/assets/css/twemoji-amazing.css">
+</head>
+
+  <body>
+    <main class="blogfeed">
+      
+<header>
+  <a class="site-title article-page" href="/">illusion's Blog</a>
+</header>
+
+
+
+
+      <section id="social-links1">
+  
+    <a href="/contact" target="_blank"> Contact</a>
+  
+    <a href="/patch" target="_blank"> Patches</a>
+  
+</section>
+
+<section id="social-links">
+
+  <a href="https://github.com/illusion0001" target="_blank">
+    <img src="/assets/icons/github.svg" alt="" />
+  </a>
+
+  <a href="mailto:illusion3185@gmail.com" target="_blank">
+    <img src="/assets/icons/email.svg" alt="" />
+  </a>
+
+</section>
+
+      <section id="article">
+        
+        <!--  -->
+        
+        <!--  -->
+        
+        
+          <h1 class="article-title">Install Instructions</h1>
+          <div class="article-bottom">
+            <small class="article-date"></small>
+            <div class="article-categories">
+              
+            </div>
+          </div>
+        </div>
+        <div class="article-content"><h1 id="updated-guide-ps4">Updated Guide (PS4)</h1>
+
+<p>To setup custom game patches on your PS4, you will need to have a jailbreakable console, that is on firmware 9.00 or lower.</p>
+
+<ul>
+  <li>1) Start by loading GoldHEN 2.3 or newer on your PS4. (See excellent guide by <a href="https://wololo.net/2021/12/14/ps4-how-to-run-the-ps4-9-00-jailbreak-full-guide-with-goldhen-payload/">Wololo</a>.</li>
+  <li>2) Download the app GoldHEN Cheats Manager, link can be found <a href="https://github.com/GoldHEN/GoldHEN_Cheat_Manager/releases/latest">here</a>.</li>
+  <li>3) Copy it to the root of your USB drive and install it from the PS4 Package Installer.</li>
+</ul>
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/setup/new/vsh-pkginstaller.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/setup/new/vsh-pkginstaller.png" />
+</a></div>
+
+<ul>
+  <li>4) Once installed, download the plugins from the GoldHEN Plugins Repository <a href="https://github.com/GoldHEN/GoldHEN_Plugins_Repository/releases/latest">Releases Page</a>.</li>
+  <li>5) Using a FTP client, copy the plugin files to <code class="language-plaintext highlighter-rouge">/data/GoldHEN/plugins</code></li>
+  <li>
+    <p>6) Make a text file called <code class="language-plaintext highlighter-rouge">plugins.ini</code> if it does not exist, add the following to the file, if the line <code class="language-plaintext highlighter-rouge">[default]</code> already exist, just add <code class="language-plaintext highlighter-rouge">/data/GoldHEN/plugins/game_patch.prx</code> to the line below it.</p>
+
+    <ul>
+      <li>Example:</li>
+    </ul>
+  </li>
+</ul>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/setup/new/win32-plugins-text.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/setup/new/win32-plugins-text.png" />
+</a></div>
+
+<ul>
+  <li>The folders should look like this:</li>
+</ul>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/setup/new/filezilla_plugins-folder.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/setup/new/filezilla_plugins-folder.png" />
+</a></div>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/setup/new/filezilla_plugins-cfg.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/setup/new/filezilla_plugins-cfg.png" />
+</a></div>
+
+<ul>
+  <li>7) Update the database using the GoldHEN Cheats Manager app and you can now start using Custom Game Patches without needing a computer after the setup!</li>
+</ul>
+
+<hr />
+
+<p><strong>The guide below is outdated and should not be used!.</strong></p>
+
+<hr />
+
+<h1 id="legacy-guide">Legacy guide</h1>
+
+<p>These instructions are general and apply to most patch from this website.
+Games used for the presentation does not have any relevance for the steps.</p>
+
+<p><strong>This guide does not cover how to build the update package itself.</strong> It only covers how to install patches into the binary file.</p>
+
+<h2 id="installing-patch-using-automated-program">Installing Patch Using Automated Program</h2>
+
+<p>1) Download the program: <a href="https://github.com/illusion0001/py-patcher-bin/releases/latest">py-patch</a></p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/setup/launcher0.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/setup/launcher0.png" />
+</a></div>
+
+<p>2) Extract the program archive to a folder somewhere on your computer.</p>
+
+<p>3) Double click on the program and follow the on-screen instructions.</p>
+
+<p>4) Install the patched executable back on to the console.</p>
+
+<ul>
+  <li><strong>(PS4 Only)</strong> Build the update package with the newly patched executable file and install it on the console.</li>
+  <li>(If there is a malware detection when runnning the program, it is a false positive.)</li>
+  <li>(Patch files can be updated by using <code class="language-plaintext highlighter-rouge">-dl</code> flag)</li>
+  <li>(An internet connection is required to download/update <a href="/_patch/patch.zip">patch</a> files.)</li>
+</ul>
+
+<p>Video Guide:</p>
+
+<div align="center">
+<video width="100%" controls="" muted="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/setup/launcher-vidya.mp4" type="video/mp4" />
+</video>
+</div>
+
+<h2 id="legacy-guide-1">Legacy Guide</h2>
+
+<h3 id="installing-patch-using-direct-file-address-method">Installing Patch using Direct File Address method</h3>
+
+<p align="center">
+<img src="https://img-assets.illusion0001.workers.dev/assets/images/setup/addr-setup0.png" />
+</p>
+
+<p align="center">
+<em>Open Goto.</em>
+</p>
+
+<p align="center">
+<img src="https://img-assets.illusion0001.workers.dev/assets/images/setup/addr-setup1.png" />
+</p>
+
+<p align="center">
+<em>Paste address from file.</em>
+</p>
+
+<p align="center">
+<img src="https://img-assets.illusion0001.workers.dev/assets/images/setup/addr-setup2.png" />
+<em>Paste Write value from file.</em>
+</p>
+
+<ul>
+  <li>Save your changes.</li>
+</ul>
+
+<h3 id="installing-patch-using-array-of-bytes-method">Installing Patch using Array of Bytes method</h3>
+
+<p align="center">
+<img src="https://img-assets.illusion0001.workers.dev/assets/images/setup/hxd0.png" />
+</p>
+
+<p align="center">
+<em>Open Search.</em>
+</p>
+
+<p align="center">
+<img src="https://img-assets.illusion0001.workers.dev/assets/images/setup/hxd1.png" />
+<em>Paste copied first line into search field and change search to Hex Value as well as change direction to all and click 'Search All'.</em>
+</p>
+
+<p align="center">
+<img src="https://img-assets.illusion0001.workers.dev/assets/images/setup/hxd2.png" />
+<em>Copy second line from patch file and Paste Write.</em>
+</p>
+
+<p>Save your changes.</p>
+
+<hr />
+</div>
+      </section>
+      <footer>
+  <p>&copy; 2021 - 2025 | illusion's Blog</br>Theme <a href="https://github.com/sharadcodes/jekyll-theme-material-you"> Jekyll Theme Material You</a></p>
+</footer>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

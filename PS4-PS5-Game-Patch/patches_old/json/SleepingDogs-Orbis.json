@@ -1,0 +1,32 @@
+{
+  "patch": [
+    {
+      "title": "Sleeping Dogs: Definitive Edition",
+      "app_titleid": [
+        "CUSA01111"
+      ],
+      "app_ver": "01.01",
+      "app_elf": "eboot.bin",
+      "patch_ver": "1.0",
+      "name": "60 FPS Unlock",
+      "author": "illusion",
+      "patch_list": [
+        { "type": "bytes32", "addr": "0x00b0788b", "value": "0x00000000" }
+      ]
+    },
+    {
+      "title": "Sleeping Dogs: Definitive Edition",
+      "app_titleid": [
+        "CUSA01004"
+      ],
+      "app_ver": "01.01",
+      "app_elf": "eboot.bin",
+      "patch_ver": "1.0",
+      "name": "60 FPS Unlock",
+      "author": "illusion",
+      "patch_list": [
+        { "type": "bytes32", "addr": "0x00b07a2b", "value": "0x00000000" }
+      ]
+    }
+  ]
+}

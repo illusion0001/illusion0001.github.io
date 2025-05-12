@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>illusion's Blog | Bug Fix: The Last of Us Part 2 Broken Aim After Using The Bow</title>
+  
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+  <!-- Twemoji -->
+  <!-- src https://github.com/SebastianAigner/twemoji-amazing -->
+  <link rel="stylesheet" href="/assets/css/twemoji-amazing.css">
+</head>
+
+  <body>
+    <main class="blogfeed">
+      
+<header>
+  <a class="site-title article-page" href="/">illusion's Blog</a>
+</header>
+
+
+
+
+      <section id="social-links1">
+  
+    <a href="/contact" target="_blank"> Contact</a>
+  
+    <a href="/patch" target="_blank"> Patches</a>
+  
+</section>
+
+<section id="social-links">
+
+  <a href="https://github.com/illusion0001" target="_blank">
+    <img src="/assets/icons/github.svg" alt="" />
+  </a>
+
+  <a href="mailto:illusion3185@gmail.com" target="_blank">
+    <img src="/assets/icons/email.svg" alt="" />
+  </a>
+
+</section>
+
+      <section id="article">
+        
+        <!--  -->
+        
+        <!--  -->
+        
+        
+        <div
+          class="article-thumbnail"
+          style="
+            background-image: url('https://img-assets.illusion0001.workers.dev/assets/images/t2-bow-charge-bugfix/t2-thumbnail-page.png');
+          "
+        >
+        
+          <h1 class="article-title">Bug Fix: The Last of Us Part 2 Broken Aim After Using The Bow</h1>
+          <div class="article-bottom">
+            <small class="article-date">02 Jan 2023</small>
+            <div class="article-categories">
+              
+              <a href="#!" class="article-category">patches</a>
+              
+            </div>
+          </div>
+        </div>
+        <div class="article-content"><h1 id="introduction">Introduction</h1>
+
+<p>Hello! <i class="twa-2x twa-waving-hand"></i></p>
+
+<p>It has been a while since my last post, why’s that?</p>
+
+<p>I had worked on a few things.</p>
+
+<ul>
+  <li>Plugin system in collabration with <a href="https://github.com/SiSTR0">Sistro</a>, <a href="https://github.com/OSM-Made">OSM</a>, <a href="https://github.com/jocover">jocover</a> and a few other <a href="https://github.com/GoldHEN/GoldHEN_Plugins_Repository#coded-by">developers</a>. A <a href="https://youtu.be/gt_H45SpaAE">video</a> by <a href="https://www.youtube.com/@MODDEDWARFARE">Modded Warfare</a> covered this quite well.</li>
+  <li>This post you are reading right now! That’s right, new year new bugfix!</li>
+</ul>
+
+<p>I have been working on this bug for the past few months on and off and I’m happy to say that it is fixed!</p>
+
+<h2 id="part-1---problem-at-hand">Part 1 - Problem at hand</h2>
+
+<p>This bug sounds even more strange than my previous bug fix post about the <a href="/patches/2021/02/15/t1-head-crash-bug-fix/">Infected Severed Head Crash Bug</a> for the PS3/PS4 games.</p>
+
+<p>Good thing is, it was officially fixed by the developers in the Re-Remaster on PS5!</p>
+
+<div align="center">
+<video width="100%" controls="" loop="" muted="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/t2-bow-charge-bugfix/t1x-brick-bugfixed.mp4" type="video/mp4" />
+</video>
+</div>
+
+<p>Thanks to <a href="https://twitter.com/Kempy161">The Kempy</a> for testing!</p>
+
+<p>Now what exactly is this broken aim bug?</p>
+
+<p>in The Last of Us Part 2, Naughty Dog developers implemented a tiredness feature, where the player charges the bow after a certain amount of time, the aim will become shaky.</p>
+
+<div align="center">
+<video width="100%" controls="" loop="" muted="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/t2-bow-charge-bugfix/t2-bowcharge-initial.mp4" type="video/mp4" />
+</video>
+</div>
+
+<p>But here comes the weird part, they do not reset this factor correctly, leaving the player’s aim shaky even after a few minutes.</p>
+
+<p>The only way to get out of this bugged aiming mode is to Restart to Checkpoint or Quit and reload your save.</p>
+
+<h2 id="part-2---looking-into-the-bug">Part 2 - Looking into the Bug</h2>
+
+<p>Some observations I noticed when I first investigated the bug back in September of 2022 when it was brought to my attention thanks to the speedrunner <a href="https://www.youtube.com/@AnthonyCaliber">Anthony Caliber</a>.</p>
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Kl4PrVXVBEk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<ul>
+  <li>The charge time is always 20 seconds.</li>
+  <li>The camera becomes shaky quite fast after charging the bow for 15 seconds.</li>
+  <li>It can be partially fixed by charging or firing the bow but aiming is still quite shaky, so not entirely fixed.</li>
+</ul>
+
+<p>Let’s search for some values.</p>
+
+<p>I’ll tackle the charge time first, since it is the only constant variable so far.</p>
+
+<p>20 seconds.. timers is usually a float, for example most game delta time calculations, it is a float. <code class="language-plaintext highlighter-rouge">0.03333</code> is 33 milliseconds. and <code class="language-plaintext highlighter-rouge">1.0000</code> is 1000 milliseconds which in turn is 1 second.</p>
+
+<p>After searching for a while and modifiying every <code class="language-plaintext highlighter-rouge">20.0f</code> floats, memory location <code class="language-plaintext highlighter-rouge">0x110F559E14</code> is the address the game reads for the charge time.</p>
+
+<p>Let’s try setting this one to 4 seconds.</p>
+
+<div align="center">
+<video width="100%" controls="" loop="" muted="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/t2-bow-charge-bugfix/t2-charge-time-4second.mp4" type="video/mp4" />
+</video>
+</div>
+
+<p>Check that out, the player can only charge the bow for 4 seconds now.</p>
+
+<p>A breakpoint leads to this instruction.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>01555a6d VMOVSS XMM0,dword ptr [RAX + RCX*0x4]
+</code></pre></div></div>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/t2-bow-charge-bugfix/t2-charge-time-ghidra.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/t2-bow-charge-bugfix/t2-charge-time-ghidra.png" />
+</a></div>
+
+<p>Hmm, two vector floating reads. What if I step there?</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/t2-bow-charge-bugfix/t2-debugger-step-chargestat.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/t2-bow-charge-bugfix/t2-debugger-step-chargestat.png" />
+</a></div>
+
+<p>Aha! <code class="language-plaintext highlighter-rouge">xmm1</code> seems to contain our current time.</p>
+
+<p>Let’s write some small code to display these.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/t2-bow-charge-bugfix/t2-bowcharge-debug-stats.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/t2-bow-charge-bugfix/t2-bowcharge-debug-stats.png" />
+</a></div>
+
+<p>Yep, this is it. Now we have the max charge time and the current charge time.</p>
+
+<p>Now the multiplier. We know that it increases over time and decreases when we charge the bow.</p>
+
+<p>This took a while to find but luckliy, I found it!</p>
+
+<p>Here I changed the value to <code class="language-plaintext highlighter-rouge">10.0f</code> and aiming a shotgun does this:</p>
+
+<div align="center">
+<video width="100%" controls="" loop="" muted="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/t2-bow-charge-bugfix/t2-charge-sway-mul-10.mp4" type="video/mp4" />
+</video>
+</div>
+
+<p>Woah, Ellie needs to take a break from fighting all day huh.</p>
+
+<p>I can’t give any memory location for this one since it is not static (I learned this the hard way). So I set some breakpoints and these two instructions stood out to me.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>015550b7 VMOVSS dword ptr [R14 + 0x4a0],XMM0 ; this one writes when aiming
+0155577d VMOVSS dword ptr [R14 + 0x4a0],XMM0 ; this one writes when charging bow
+015c9011 VMOVSS XMM3,dword ptr [RAX + 0x4a0] ; this one always reads when bow is eqiup
+</code></pre></div></div>
+
+<p>The write instruction is in the same area as the charge timers, if I stub this function <code class="language-plaintext highlighter-rouge">015547a0</code>, the bow no longer works.</p>
+
+<p>Let’s give it a name.. How about <code class="language-plaintext highlighter-rouge">BowController</code>? that sounds pretty good.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/t2-bow-charge-bugfix/t2-bowcontroller-name-ghidra.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/t2-bow-charge-bugfix/t2-bowcontroller-name-ghidra.png" />
+</a></div>
+
+<p>Alright, we have found all three key piece of the puzzle.</p>
+
+<ul>
+  <li>1) Max Charge Time</li>
+  <li>2) Current Charge Time</li>
+  <li>3) Sway multiplier</li>
+</ul>
+
+<h2 id="part-3---fixing-the-bug">Part 3 - Fixing the Bug</h2>
+
+<p>But how will we fix it? I have some ideas.</p>
+
+<ul>
+  <li>Always resetting the multiplier to <code class="language-plaintext highlighter-rouge">1.0f</code>.</li>
+  <li>Implementing a cooldown timer after using the bow.</li>
+</ul>
+
+<p>I will go with the latter, because I think the developers wanted a tiredness effect after using the bow for some time but this bug goes unnoticed, let’s fix it for them.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Pusedo code for the patch, may not be 100% accurate, see sources at</span>
+<span class="c1">// `https://github.com/GoldHEN/GoldHEN_Patch_Repository/blob/a92199c51bf86ffe10e4413928f6a6872928269f/patches/json/TheLastOfUs2-Orbis.json#L547`</span>
+<span class="c1">// for more info.</span>
+
+<span class="cp">#include</span> <span class="cpf">"ndlib/process/clock.h"</span><span class="c1"> // GetProcessDeltaTime</span><span class="cp">
+</span>
+<span class="k">extern</span> <span class="n">bool</span> <span class="n">is_using_bow</span><span class="p">;</span>
+<span class="k">extern</span> <span class="kt">float</span> <span class="n">bow_charge_time</span><span class="p">;</span>
+<span class="k">extern</span> <span class="kt">float</span> <span class="n">bow_max_charge_time</span><span class="p">;</span>
+<span class="k">extern</span> <span class="kt">float</span> <span class="n">weapon_sway_mul</span><span class="p">;</span>
+<span class="kt">float</span> <span class="n">cooldown_timer</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">bow_charge_fix</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">weapon_sway_mul</span> <span class="o">==</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">)</span> <span class="c1">// the default is 1</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">max_cooldown_timer</span> <span class="o">=</span> <span class="mi">15</span><span class="p">.</span><span class="n">f</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">current_timer</span> <span class="o">=</span> <span class="n">GetProcessDeltaTime</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">is_using_bow</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">cooldown_timer</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="n">f</span><span class="p">;</span>
+      <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">cooldown_timer</span> <span class="o">&gt;</span> <span class="n">max_cooldown_timer</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">weapon_sway_mul</span> <span class="o">=</span> <span class="mi">1</span><span class="p">.</span><span class="n">f</span><span class="p">;</span>
+        <span class="n">cooldown_timer</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="n">f</span><span class="p">;</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="c1">// Count timer up</span>
+    <span class="n">cooldown_timer</span> <span class="o">=</span> <span class="n">cooldown_timer</span> <span class="o">+</span> <span class="n">current_timer</span><span class="p">;</span>
+    <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Let’s test this change in-game.</p>
+
+<div align="center">
+<video width="100%" controls="" loop="" muted="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/t2-bow-charge-bugfix/t2-bowcharge-fix-demo.mp4" type="video/mp4" />
+</video>
+</div>
+
+<p>The timer counts up after using the bow, resets after 15 seconds and most importantly, resets the sway multiplier!</p>
+
+<p>By the way, for those who want to see the stats for themselves can do so. I have included all the patches shown in this post in the patch file.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/t2-bow-charge-bugfix/t2-debug-bowcharge-stats.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/t2-bow-charge-bugfix/t2-debug-bowcharge-stats.png" />
+</a></div>
+
+<p>You will need to enable the following patches:</p>
+
+<ul>
+  <li>Enable Dev Menu</li>
+  <li>Bug Fix: Broken Aim After Using The Bow</li>
+</ul>
+
+<p>And in the debug menu, <code class="language-plaintext highlighter-rouge">Dev Menu|Weapons|Bow and Arrow|Show Bow Charging</code> option. The menu can be opened by pressing <code class="language-plaintext highlighter-rouge">L3+Touchpad Right</code></p>
+
+<h1 id="no-fix-for-newer-platforms">No Fix for Newer Platforms?</h1>
+
+<p>You may have noticed that I did not fix the bug in the recently released The Last of Us Part 1 on PS5, that is because the system have not been fully exploited yet.</p>
+
+<p>Though when the PC version comes out, I will fix it if the developers have not fixed it by then.</p>
+
+<h1 id="official-fix-is-possible">Official Fix is Possible</h1>
+
+<p>If someone can get me in touch with the right people, this fix can be done officially! Both for the PS4 and PS5 games.</p>
+
+<p>My contact info:</p>
+
+<ul>
+  <li><a href="https://twitter.com/illusion0002">Twitter</a> @ <code class="language-plaintext highlighter-rouge">illusion0002</code></li>
+  <li>Email: illusion3185@gmail.com</li>
+</ul>
+
+<h1 id="showcase">Showcase</h1>
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/gV7gX8GvfCQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<h1 id="patch">Patch</h1>
+
+<p>I have updated the instructions for use with the new GoldHEN Plugins system.</p>
+
+<ul>
+  <li><a href="/install-instructions/" class="button" role="button"><i class="fas fa-download"></i> Patch Installation Instructions</a></li>
+</ul>
+
+<p>Below is the source code for the patch.</p>
+
+<ul>
+  <li><a href="https://github.com/GoldHEN/GoldHEN_Patch_Repository/blob/a92199c51bf86ffe10e4413928f6a6872928269f/patches/json/TheLastOfUs2-Orbis.json#L547" class="button" role="button"><i class="fas fa-download"></i> Patch Source Code</a></li>
+</ul>
+
+<h2 id="supporters">Supporters</h2>
+
+<p>Thanks to the patrons who supported me on various platforms! You guys are awesome!</p>
+
+<h3 id="monthly-supporters">Monthly supporters:</h3>
+<ul>
+  <li>
+    <p><a href="https://www.patreon.com/illusion0001">Patreon</a>:</p>
+
+    <ul>
+      <li>ac2pic</li>
+      <li>Alexa</li>
+      <li>Brett</li>
+      <li>Ciril</li>
+      <li>GarnetSunset</li>
+      <li>Mmmmmhno</li>
+      <li>Paul</li>
+      <li>PlayStation5Mods</li>
+      <li>RazzySxPB</li>
+      <li>Ryan</li>
+      <li>Voredy</li>
+      <li>YveltalGriffin</li>
+      <li>Zackery</li>
+      <li>alessaro92</li>
+      <li>ashenC</li>
+      <li>embee</li>
+      <li>erdosadam24</li>
+      <li>faith</li>
+      <li>maplemiyazaki</li>
+      <li>patrick</li>
+      <li>rudi</li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="https://github.com/sponsors/illusion0001">Github Sponsors</a>:</p>
+
+    <ul>
+      <li>VIPO777</li>
+      <li>WardFail</li>
+      <li>Whitehawkx</li>
+      <li>gorshco</li>
+      <li>jrson83</li>
+      <li>regal.</li>
+      <li>suwagawaki</li>
+    </ul>
+  </li>
+</ul>
+
+</div>
+      </section>
+      <footer>
+  <p>&copy; 2021 - 2025 | illusion's Blog</br>Theme <a href="https://github.com/sharadcodes/jekyll-theme-material-you"> Jekyll Theme Material You</a></p>
+</footer>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

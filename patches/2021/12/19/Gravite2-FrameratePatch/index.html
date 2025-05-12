@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>illusion's Blog | Initial Framerate Patch Release (Work-In-Progress) for Gravity Rush 2</title>
+  
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+  <!-- Twemoji -->
+  <!-- src https://github.com/SebastianAigner/twemoji-amazing -->
+  <link rel="stylesheet" href="/assets/css/twemoji-amazing.css">
+</head>
+
+  <body>
+    <main class="blogfeed">
+      
+<header>
+  <a class="site-title article-page" href="/">illusion's Blog</a>
+</header>
+
+
+
+
+      <section id="social-links1">
+  
+    <a href="/contact" target="_blank"> Contact</a>
+  
+    <a href="/patch" target="_blank"> Patches</a>
+  
+</section>
+
+<section id="social-links">
+
+  <a href="https://github.com/illusion0001" target="_blank">
+    <img src="/assets/icons/github.svg" alt="" />
+  </a>
+
+  <a href="mailto:illusion3185@gmail.com" target="_blank">
+    <img src="/assets/icons/email.svg" alt="" />
+  </a>
+
+</section>
+
+      <section id="article">
+        
+        <!--  -->
+        
+        <!--  -->
+        
+        
+        <div
+          class="article-thumbnail"
+          style="
+            background-image: url('https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch/GR2-feature-img.png');
+          "
+        >
+        
+          <h1 class="article-title">Initial Framerate Patch Release (Work-In-Progress) for Gravity Rush 2</h1>
+          <div class="article-bottom">
+            <small class="article-date">19 Dec 2021</small>
+            <div class="article-categories">
+              
+              <a href="#!" class="article-category">patches</a>
+              
+            </div>
+          </div>
+        </div>
+        <div class="article-content"><h1 id="intro">Intro</h1>
+
+<p>When I got into framerate patching 8 months ago, I looked at the exclusives on the <a href="https://web.archive.org/web/20211217080552/https://www.playstation.com/en-us/ps4/ps4-games/">PlayStation website</a> and saw 1 title that seem rather interesting and it does not have a PS5 Patch back then and even now. Not even a framerate unlock on Pro hardware. Yes, I’m talking about Gravity Rush 2 or Gravity Daze 2 if you are in Japan.</p>
+
+<h2 id="part-1---went-out-looking">Part 1 - Went out Looking</h2>
+
+<p>What’s so special about this title that took me so long to breakthrough? First is that there are barely any string references, second is they have their own frame limiter for video playback which also clamps down during gameplay.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch/GR2-FPS2a.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch/GR2-FPS2a.png" />
+</a></div>
+
+<div align="center">
+<em>32-33 FPS <i class="twa galciv"></i></em>
+</div>
+
+<p>So where do we start? Fliprate to 0 for 60hz output got us that. 32 to 33 framerate limit. And I went on for months, on and off looking for what this is about. And I even managed to break the framebuffer.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch/GR2-Framebuffer0.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch/GR2-Framebuffer0.png" />
+</a></div>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch/GR2-Framebuffer1.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch/GR2-Framebuffer1.png" />
+</a></div>
+
+<div align="center">
+<em>Nice looking Jigsaw puzzle</em>
+</div>
+
+<p>So I gave up. For a while at least. A few months went by, I decided to take a break and then validate the dozen projects I have, I realized that this game still hadn’t gotten a patch from anyone after I put out my findings over on my git page. So I went looking, after a couple of days, I found it.</p>
+
+<p>Looking at the framerate graph, it averages about 33 fps. Why is this important? Because 33fps is 30 milliseconds per frame! You know what that means.</p>
+
+<p><code class="language-plaintext highlighter-rouge">1000 / 33</code> equals to 30.. ish. But wait, what happens if we plug this number into the executable?</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch/GR2-30msSearch.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch/GR2-30msSearch.png" />
+</a></div>
+
+<p>A couple results, seems boring. Or so I thought..</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">lVar3</span> <span class="o">=</span> <span class="n">sceKernelGetProcessTime</span><span class="p">();</span>
+  <span class="n">uVar4</span> <span class="o">=</span> <span class="n">lVar3</span> <span class="o">-</span> <span class="p">(</span><span class="n">param_1</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">uVar4</span> <span class="o">&lt;</span> <span class="mi">30000</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">sceKernelUsleep</span><span class="p">(</span><span class="mi">30000</span> <span class="o">-</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">uVar4</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="n">scePthreadMutexLock</span><span class="p">();</span>
+  <span class="n">sceGnmSubmitDone</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>What’s this? It sleeps draw thread for 30ms?</p>
+
+<p>Another case of Japanese developers reinventing the wheel. <i class="twa twa-purple-heart"></i> <i class="twa twa-purple-heart"></i> Its wonderful.</p>
+
+<p>But anyway, removing this code gives us, you guess it, unlocked framerate.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch/GR2-FPS3.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch/GR2-FPS3.png" />
+</a></div>
+
+<div align="center">
+<em>First section of the demo, known to be cpu limited area</em>
+</div>
+
+<p>Since I have last published my findings, I have determined that this game is subject to fixed timestep, which means if the game framerate goes above or below the target framerate, it will speed up or slow down. Which in this case is 30 frames a second.</p>
+
+<p>If you have seen my findings a few months back, you have seen that there’s a byte for this particular setup that will purposely set everything to 16.7ms for locked 60 fps gameplay but the thing is, this isn’t perfect.</p>
+
+<p>Some sections will softlock the game because the game tick is running twice as fast; so we must implement a check that will set the game back to 30 fps for those problematic sections, otherwise run freely at up to 60 fps, with slowdown in hardware limited areas because we are still using fixed rate.</p>
+
+<h2 id="part-2---finding-level-names">Part 2 - Finding Level Names</h2>
+
+<p>Saving between two points, the start of epiosde 1 and the end of the epoiode and comparing the results can easily give us the level name we are looking for.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch/GR2-savedata-compare.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch/GR2-savedata-compare.png" />
+</a></div>
+
+<div align="center">
+<em>Thanks to our Patreon Supporter <a href="https://github.com/ac2pic">ac2pic</a> for their knowledge about Gravity Rush save structure.</em>
+</div>
+
+<h2 id="part-3---coding-kat">Part 3 - Coding Kat</h2>
+
+<p>For level names we can search for this in memory then save the string into somewhere in the executable for easier access.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">if</span> <span class="p">(</span><span class="n">in_R12</span> <span class="o">==</span> <span class="s">"ep"</span> <span class="cm">/* story episodes */</span> <span class="o">||</span> <span class="n">in_R12</span> <span class="o">==</span> <span class="s">"ft"</span> <span class="cm">/* free roam */</span> <span class="o">||</span> <span class="n">in_R12</span> <span class="o">==</span> <span class="s">"sm"</span> <span class="cm">/*side missions*/</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="n">level_text</span> <span class="o">=</span> <span class="n">in_R12</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">return</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>The code I’m using here write asset strings into upper portions of memory, so I have to filter out most level prefix names found in the save file. Like <code class="language-plaintext highlighter-rouge">ep</code> for episodes or <code class="language-plaintext highlighter-rouge">sm</code> for side missions.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">lVar3</span> <span class="o">=</span> <span class="n">sceKernelGetProcessTime</span><span class="p">();</span>
+  <span class="n">uVar4</span> <span class="o">=</span> <span class="n">lVar3</span> <span class="o">-</span> <span class="p">(</span><span class="n">param_1</span><span class="p">);</span>
+  <span class="c1">// if (uVar4 &lt; 30000) {</span>
+  <span class="c1">//   sceKernelUsleep(30000 - (int)uVar4);</span>
+  <span class="c1">// }</span>
+  <span class="n">scePthreadMutexLock</span><span class="p">();</span>
+  <span class="n">sceGnmSubmitDone</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>Few commented lines of code, what does this do?</p>
+
+<p>We skipped the code to stall the rendering thread and well it does nothing as you may expect. But there are caveats to this.</p>
+
+<p>Most notable being that if there is nothing to stall the thread, the video playback thread can’t keep up and lags behind as a result, if anyone wants to take the challenge of improving on my initial semi working code, feel free to do so. <a href="https://github.com/illusion0001/illusion0001.github.io/blob/main/_patches/Gravity_Daze_2_Orbis.md#semi-functional-video-stutter-fix-for-patch-develeopers-only">Patch file</a></p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kt">int</span> <span class="n">game_flag</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// default</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">game_flag</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 60hz</span>
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">frametime</span> <span class="o">=</span> <span class="mf">0.01666667</span><span class="p">;</span>
+  <span class="k">const</span> <span class="n">int32</span> <span class="n">fliprate</span>  <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="n">sceVideoOutSetFlipRate</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">fliprate</span><span class="p">);</span>
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">game_flag</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// dangerous if failed on startup or loading levels</span>
+ <span class="k">return</span><span class="p">;</span>              <span class="c1">// But this shouldn't fail because flag is initialized with mode 2</span>
+<span class="p">}</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">game_flag</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 30hz, only use when softlock mode is true</span>
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">frametime</span> <span class="o">=</span> <span class="mf">0.03333334</span><span class="p">;</span>
+  <span class="k">const</span> <span class="n">int32</span> <span class="n">fliprate</span>  <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="n">sceVideoOutSetFlipRate</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">fliprate</span><span class="p">);</span>
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Alright, what does all this do exactly? Let’s go one by one.</p>
+
+<p>The variable game flag is something I created, this is to keep track of what state the game is currently in.</p>
+
+<p>When it is <code class="language-plaintext highlighter-rouge">1</code> set the constant for the fixed timestep to 16.7ms and set the fliprate to 0 for 60hz output. As a reminder, we have already skipped the code to sleep the render thread so this should work.</p>
+
+<p>When it is <code class="language-plaintext highlighter-rouge">2</code> it does nothing, the function gets called and it just exits. This is to prevent any render thread hard lock during the game initialization period.</p>
+
+<p>And <code class="language-plaintext highlighter-rouge">3</code> as you guess, swaps to 30 fps and timestep to 33.3 milliseconds.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">string</span> <span class="n">level_name</span> <span class="o">=</span> <span class="n">ep_xxx</span><span class="p">;</span> <span class="c1">// default</span>
+
+<span class="k">if</span> <span class="p">(</span>   <span class="n">level_name</span> <span class="o">==</span> <span class="n">ep00_c</span> <span class="cm">/* regression, todo: is this caused by our code? */</span> 
+    <span class="o">||</span> <span class="n">level_name</span> <span class="o">==</span> <span class="n">ep01_com</span>
+    <span class="o">||</span> <span class="n">level_name</span> <span class="o">==</span> <span class="n">ep01_d</span> 
+    <span class="o">||</span> <span class="n">level_name</span> <span class="o">==</span> <span class="n">ep02_a</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="n">game_flag</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">// 30hz</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">game_flag</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 60hz</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+<p>This one checks during level changes, if any of the levels matched, set the game back to 30 fps, then 60 once we leave that particular area or level of the game. The example being the end of the intro, first episode and the tutorial of episode 2. Note that the intro having a softlock is a regression potentially in my code? I’ll look into it at a later date but it should not be a big deal.</p>
+
+<h2 id="showcase">Showcase</h2>
+
+<p><strong>A minor correction to the video, the resolution showed in the video was 1920x1080 (1080p) not 1280x720 (720p). A blur has been added to avoid confusion.</strong></p>
+
+<p>This patch is best experinced on PS4 Pro with 1080p output and supersampling disabled.</p>
+
+<div align="center" class="responsive-video-container">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/-vlwychcrx0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</div>
+
+<h1 id="patch">Patch</h1>
+
+<p>For PS4 Patches, an installation guide on how to install the patches can be found <a href="/install-instructions">here</a>. (the following tutorial <strong>does not</strong> cover how to build the update package. It only shows how to install the patch into the binary.</p>
+
+<p><a href="/_patch/GravityDaze2-Orbis/" class="button" role="button"><i class="fas fa-download"></i> Patch Code</a></p>
+
+<h2 id="supporters">Supporters</h2>
+
+<p>Thanks to the patrons who supported me on various platforms! You guys are awesome!</p>
+
+<h3 id="monthly-supporters">Monthly supporters:</h3>
+<ul>
+  <li>
+    <p><a href="https://www.patreon.com/illusion0001">Patreon</a>:</p>
+
+    <ul>
+      <li>ac2pic</li>
+      <li>Alexa</li>
+      <li>Brett</li>
+      <li>Ciril</li>
+      <li>GarnetSunset</li>
+      <li>Mmmmmhno</li>
+      <li>Paul</li>
+      <li>PlayStation5Mods</li>
+      <li>RazzySxPB</li>
+      <li>Ryan</li>
+      <li>Voredy</li>
+      <li>YveltalGriffin</li>
+      <li>Zackery</li>
+      <li>alessaro92</li>
+      <li>ashenC</li>
+      <li>embee</li>
+      <li>erdosadam24</li>
+      <li>faith</li>
+      <li>maplemiyazaki</li>
+      <li>patrick</li>
+      <li>rudi</li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="https://github.com/sponsors/illusion0001">Github Sponsors</a>:</p>
+
+    <ul>
+      <li>VIPO777</li>
+      <li>WardFail</li>
+      <li>Whitehawkx</li>
+      <li>gorshco</li>
+      <li>jrson83</li>
+      <li>regal.</li>
+      <li>suwagawaki</li>
+    </ul>
+  </li>
+</ul>
+
+</div>
+      </section>
+      <footer>
+  <p>&copy; 2021 - 2025 | illusion's Blog</br>Theme <a href="https://github.com/sharadcodes/jekyll-theme-material-you"> Jekyll Theme Material You</a></p>
+</footer>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

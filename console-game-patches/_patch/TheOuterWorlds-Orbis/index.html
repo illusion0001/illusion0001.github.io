@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>illusion's Blog | The Outer Worlds</title>
+  
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+  <!-- Twemoji -->
+  <!-- src https://github.com/SebastianAigner/twemoji-amazing -->
+  <link rel="stylesheet" href="/assets/css/twemoji-amazing.css">
+</head>
+
+  <body>
+    <main class="blogfeed">
+      
+<header>
+  <a class="site-title article-page" href="/">illusion's Blog</a>
+</header>
+
+
+
+
+      <section id="social-links1">
+  
+    <a href="/contact" target="_blank"> Contact</a>
+  
+    <a href="/patch" target="_blank"> Patches</a>
+  
+</section>
+
+<section id="social-links">
+
+  <a href="https://github.com/illusion0001" target="_blank">
+    <img src="/assets/icons/github.svg" alt="" />
+  </a>
+
+  <a href="mailto:illusion3185@gmail.com" target="_blank">
+    <img src="/assets/icons/email.svg" alt="" />
+  </a>
+
+</section>
+
+      <section id="article">
+        
+        <!--  -->
+        
+        <!--  -->
+        
+        
+          <h1 class="article-title">The Outer Worlds</h1>
+          <div class="article-bottom">
+            <small class="article-date"></small>
+            <div class="article-categories">
+              
+            </div>
+          </div>
+        </div>
+        <div class="article-content"><!-- # The Outer Worlds -->
+
+<p><a href="/patch/#patches">Game Index</a></p>
+
+<p><a href="/install-instructions/">Installation Guide</a></p>
+
+<h2 id="60-fps-unlock--resolution-patch-cusa13689">60 FPS Unlock + Resolution Patch (CUSA13689)</h2>
+
+<p>Author: <a href="https://twitter.com/illusion0002">illusion</a></p>
+
+<p>In file <code class="language-plaintext highlighter-rouge">eboot.bin</code></p>
+
+<details>
+<summary>Code 1.00 (Click to Expand)</summary>
+
+
+<figure class="highlight"><pre><code class="language-none" data-lang="none"># call 1
+
+31 C9 45 8B 3C 8F C4 C1 6B 2A C7
+
+31 C9 67 67 E8 8E 90 CE 01 90 90
+
+# call 2
+
+0F 95 C1 C5 FA 10 04 8B C5 FA 10 4D EC
+
+0F 95 C1 E8 15 26 81 00 C5 FA 10 4D EC
+
+# main code
+# 720p target for base
+
+55 48 89 E5 41 57 41 56 41 55 41 54 53 48 81 EC 78 03 00 00 48 8B 05 4D A0 81 02 48 89 95 98 FC FF FF 45 89 C6 41
+
+C7 04 8B 00 00 86 42 C5 FA 10 04 8B EB 11 41 C7 04 8F 01 00 00 00 45 8B 3C 8F C4 C1 6B 2A C7 C3 FF FF 45 89 C6 41
+
+# 900p target for PS4 Pro, untested.
+# apply code above first then search for this.
+
+C7 04 8B 00 00 86 42
+
+C7 04 8B 00 00 7C 42</code></pre></figure>
+
+
+</details>
+</div>
+      </section>
+      <footer>
+  <p>&copy; 2021 - 2025 | illusion's Blog</br>Theme <a href="https://github.com/sharadcodes/jekyll-theme-material-you"> Jekyll Theme Material You</a></p>
+</footer>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

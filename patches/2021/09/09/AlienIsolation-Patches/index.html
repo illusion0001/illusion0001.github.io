@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>illusion's Blog | Patches and Enhancements for Alien: Isolation (PS4)</title>
+  
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+  <!-- Twemoji -->
+  <!-- src https://github.com/SebastianAigner/twemoji-amazing -->
+  <link rel="stylesheet" href="/assets/css/twemoji-amazing.css">
+</head>
+
+  <body>
+    <main class="blogfeed">
+      
+<header>
+  <a class="site-title article-page" href="/">illusion's Blog</a>
+</header>
+
+
+
+
+      <section id="social-links1">
+  
+    <a href="/contact" target="_blank"> Contact</a>
+  
+    <a href="/patch" target="_blank"> Patches</a>
+  
+</section>
+
+<section id="social-links">
+
+  <a href="https://github.com/illusion0001" target="_blank">
+    <img src="/assets/icons/github.svg" alt="" />
+  </a>
+
+  <a href="mailto:illusion3185@gmail.com" target="_blank">
+    <img src="/assets/icons/email.svg" alt="" />
+  </a>
+
+</section>
+
+      <section id="article">
+        
+        <!--  -->
+        
+        <!--  -->
+        
+        
+        <div
+          class="article-thumbnail"
+          style="
+            background-image: url('https://gs2-sec.ww.prod.dl.playstation.net/gs2-sec/appkgo/prod/CUSA00363_00/3/i_b2589b00f5519f8e53bf65225b78d3ab58efac7de467e2f5297cec8fc4f94c65/i/pic0.png');
+          "
+        >
+        
+          <h1 class="article-title">Patches and Enhancements for Alien: Isolation (PS4)</h1>
+          <div class="article-bottom">
+            <small class="article-date">09 Sep 2021</small>
+            <div class="article-categories">
+              
+              <a href="#!" class="article-category">patches</a>
+              
+            </div>
+          </div>
+        </div>
+        <div class="article-content"><p><strong>Update - 9/27/2021
+I just found out it is possible to remove the save dialog on the PC version of AI thanks to ThirteenAG’s <a href="https://github.com/ThirteenAG/AlienIsolation.SkipSaveConfirmationDialog">SkipSaveConfirmationDialog</a>.</strong></p>
+
+<hr />
+
+<h1 id="intro">Intro</h1>
+
+<p>I recently got a copy of <a href="https://www.alienisolation.com/">Alien Isolation</a> for the PlayStation 4, a sci-fi survival horror game developed by <a href="https://www.creative-assembly.com/">Creative Assembly</a> and I was bothered by the save confirmation dialog box and the narrow Field of View. neither can be changed or tweaked on the console version but this is a multi-plat release and of course there’s the PC version which allowed for changing the FOV and graphical settings that is considered optional on that platform.</p>
+
+<p>But there’s no way to remove the save confirmation screen, let’s see what can be done about it.</p>
+
+<h2 id="part-1---researching-save-prompt">Part 1 - Researching Save Prompt</h2>
+
+<p>Let’s start with the save confirmation screen, when us, the player goes to save our progress at the emergency station, will be prompted with the dialogbox mentioned earlier.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/AlienIsolation-Patches/AI-save.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/AlienIsolation-Patches/AI-save.png" />
+</a></div>
+
+<p>Assuming the dialog is a boolean, it can either be a <code class="language-plaintext highlighter-rouge">00</code> or a <code class="language-plaintext highlighter-rouge">01</code>, let’s start by searching for 1 when the prompt is shown and when it is not.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/AlienIsolation-Patches/AI-search0.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/AlienIsolation-Patches/AI-search0.png" />
+</a></div>
+
+<p>That’s a lot of results.. Let’s rinse and repeat until the result list becomes manageable.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/AlienIsolation-Patches/AI-search1.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/AlienIsolation-Patches/AI-search1.png" />
+</a></div>
+
+<p>Ah, 11 results. That’s more like it, let’s set a breakpoint on each of these until it breaks when the dialog pops up.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/AlienIsolation-Patches/AI-search2.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/AlienIsolation-Patches/AI-search2.png" />
+</a></div>
+
+<p>2 Results. First one is a write so we can discard that as it is not important, the second one however is more interesting.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>01197e01 41 80 bc        CMP        byte ptr [R12 + 0x12e1],0x0
+         24 e1 12 
+         00 00 00
+01197e0a 74 0d           JZ         LAB_01197e19
+01197e0c 4c 89 e7        MOV        RDI,R12
+01197e0f be 1b 00        MOV        ESI,0x1b
+         00 00
+01197e14 e9 93 05        JMP        LAB_011983ac
+         00 00
+                     LAB_01197e19                                    XREF[1]:     01197e0a(j)  
+01197e19 4d 8d b4        LEA        R14,[R12 + 0x1040]
+         24 40 10 
+         00 00
+01197e21 41 0f b6        MOVZX      ECX,byte ptr [R12 + 0x1473]
+         8c 24 73 
+         14 00 00
+01197e2a 41 0f b6        MOVZX      EDX,byte ptr [R12 + 0x1471]
+         94 24 71 
+         14 00 00
+01197e33 41 8b bc        MOV        EDI,dword ptr [R12 + 0x48ec]
+         24 ec 48 
+         00 00
+01197e3b 41 8b b4        MOV        ESI,dword ptr [R12 + 0x48f0]
+         24 f0 48 
+         00 00
+...
+011983ac e8 bf 0e        CALL       FUN_01199270
+         00 00
+...
+01199319 48 8d 35        LEA        RSI,[s_AI_UI_DLG_BTN_DONT_SAVE_01f03ab1]         = "AI_UI_DLG_BTN_DONT_SAVE"
+         91 a7 d6 00
+01199343 48 8d 35        LEA        RSI,[s_AI_UI_DLG_BTN_RETRY_01ef8510]             = "AI_UI_DLG_BTN_RETRY"
+         c6 f1 d5 00
+01199371 48 8d 35        LEA        RSI,[s_AI_UI_DLG_WSETUP_CONFIRM_NODEVIC_01f03a   = "AI_UI_DLG_WSETUP_CONFIRM_NODE
+         17 a7 d6 00
+01199378 48 8d 15        LEA        RDX,[s_AI_UI_DLG_WSETUP_CONFIRM_NODEVIC_01f03a   = "AI_UI_DLG_WSETUP_CONFIRM_NODE
+         e8 a6 d6 00
+</code></pre></div></div>
+
+<p>A compare, jump to function, and that function has what seems to be dialog save variables. how about we skip this jump and run the rest of the code?</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>01197e0a eb 0d           JMP        LAB_01197e19 ; skip save confirm code
+</code></pre></div></div>
+
+<div align="center">
+<video width="100%" controls="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/AlienIsolation-Patches/AI-skip.mp4" type="video/mp4" />
+</video>
+<em>It automatically saved and skipped the dialog!</em>
+</div>
+
+<h2 id="part-2---researching-fov">Part 2 - Researching FOV</h2>
+
+<p>On the PC there’s an option to adjust the FOV from 47 to 75. The default seems to be 47 and is a float.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/AlienIsolation-Patches/AI-FOV0.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/AlienIsolation-Patches/AI-FOV0.png" />
+</a></div>
+
+<p>Searching for 47 and adjusting the value back and forth, a lot of them is locked but there’s only one that can be manually adjusted.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/AlienIsolation-Patches/AI-FOV1.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/AlienIsolation-Patches/AI-FOV1.png" />
+</a></div>
+
+<p>I manually set <code class="language-plaintext highlighter-rouge">0x05B0AC00</code> to 100, but this value is not static so let’s have a look in memory and see if we can find it in the console version.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/AlienIsolation-Patches/AI-FOV2.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/AlienIsolation-Patches/AI-FOV2.png" />
+</a></div>
+
+<p>Highlighted in red at the top left is the address and value we just found, the values with red squares indicated that it has changed and is not relevant to us. let’s remember the row of address next to our float value and see if we can find it on the console.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/AlienIsolation-Patches/AI-Console-FOV-0a.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/AlienIsolation-Patches/AI-Console-FOV-0a.png" />
+</a></div>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/AlienIsolation-Patches/AI-Console-FOV-0b.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/AlienIsolation-Patches/AI-Console-FOV-0b.png" />
+</a></div>
+
+<p>I decided to check the first one and sure enough, it was the one we were looking for.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0115b8c6 e8 3a 84        CALL       MyFOVSubroutine ; call
+         1d 00
+                     MyFOVSubroutine                                 XREF[1]:     FUN_0115b770:0115b8c6(c)
+01333d05 c7 84 21        MOV        dword ptr [RCX + 0x38],0x42c80000 ; 100 degrees as example
+         38 00 00 
+         00 00 00 
+01333d10 c5 fa 10        VMOVSS     XMM0,dword ptr [RCX + 0x38] ; move 100.0f into xmm0
+         41 38
+01333d15 c3              RET ; return
+</code></pre></div></div>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/AlienIsolation-Patches/AI-Console-FOV-3.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/AlienIsolation-Patches/AI-Console-FOV-3.png" />
+</a></div>
+
+<div align="center">
+<em>Left = 47, Right = 70, Bottom Middle = 100</em>
+</div>
+
+<p>Just for fun, here is a comparison between the different FOV angles.</p>
+
+<div align="center" class="responsive-video-container">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/r7hd-VvBy80" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</div>
+
+<h1 id="patch">Patch</h1>
+
+<p><a href="/_patch/AlienIsolation-Orbis" class="button" role="button"><i class="fas fa-download"></i> Patch Code</a></p>
+
+<h2 id="supporters">Supporters</h2>
+
+<p>Thanks to the patrons who supported me on various platforms! You guys are awesome!</p>
+
+<h3 id="monthly-supporters">Monthly supporters:</h3>
+<ul>
+  <li>
+    <p><a href="https://www.patreon.com/illusion0001">Patreon</a>:</p>
+
+    <ul>
+      <li>ac2pic</li>
+      <li>Alexa</li>
+      <li>Brett</li>
+      <li>Ciril</li>
+      <li>GarnetSunset</li>
+      <li>Mmmmmhno</li>
+      <li>Paul</li>
+      <li>PlayStation5Mods</li>
+      <li>RazzySxPB</li>
+      <li>Ryan</li>
+      <li>Voredy</li>
+      <li>YveltalGriffin</li>
+      <li>Zackery</li>
+      <li>alessaro92</li>
+      <li>ashenC</li>
+      <li>embee</li>
+      <li>erdosadam24</li>
+      <li>faith</li>
+      <li>maplemiyazaki</li>
+      <li>patrick</li>
+      <li>rudi</li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="https://github.com/sponsors/illusion0001">Github Sponsors</a>:</p>
+
+    <ul>
+      <li>VIPO777</li>
+      <li>WardFail</li>
+      <li>Whitehawkx</li>
+      <li>gorshco</li>
+      <li>jrson83</li>
+      <li>regal.</li>
+      <li>suwagawaki</li>
+    </ul>
+  </li>
+</ul>
+
+</div>
+      </section>
+      <footer>
+  <p>&copy; 2021 - 2025 | illusion's Blog</br>Theme <a href="https://github.com/sharadcodes/jekyll-theme-material-you"> Jekyll Theme Material You</a></p>
+</footer>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

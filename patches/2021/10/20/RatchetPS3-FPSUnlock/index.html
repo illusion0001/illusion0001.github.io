@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>illusion's Blog | Framerate Unlock Patches for Ratchet and Clank PS3 titles (RPCS3)</title>
+  
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+  <!-- Twemoji -->
+  <!-- src https://github.com/SebastianAigner/twemoji-amazing -->
+  <link rel="stylesheet" href="/assets/css/twemoji-amazing.css">
+</head>
+
+  <body>
+    <main class="blogfeed">
+      
+<header>
+  <a class="site-title article-page" href="/">illusion's Blog</a>
+</header>
+
+
+
+
+      <section id="social-links1">
+  
+    <a href="/contact" target="_blank"> Contact</a>
+  
+    <a href="/patch" target="_blank"> Patches</a>
+  
+</section>
+
+<section id="social-links">
+
+  <a href="https://github.com/illusion0001" target="_blank">
+    <img src="/assets/icons/github.svg" alt="" />
+  </a>
+
+  <a href="mailto:illusion3185@gmail.com" target="_blank">
+    <img src="/assets/icons/email.svg" alt="" />
+  </a>
+
+</section>
+
+      <section id="article">
+        
+        <!--  -->
+        
+        <!--  -->
+        
+        
+        <div
+          class="article-thumbnail"
+          style="
+            background-image: url('https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/RC_Feature.png');
+          "
+        >
+        
+          <h1 class="article-title">Framerate Unlock Patches for Ratchet and Clank PS3 titles (RPCS3)</h1>
+          <div class="article-bottom">
+            <small class="article-date">20 Oct 2021</small>
+            <div class="article-categories">
+              
+              <a href="#!" class="article-category">patches</a>
+              
+            </div>
+          </div>
+        </div>
+        <div class="article-content"><h1 id="intro">Intro</h1>
+
+<p>Time for some more framerate PlayStation 3 patches, or to be more specific, RPCS3 patches. You know, an emulator. With the knowledge gained with the previous post, I decided to tackle a series of titles, that is the Ratchet and Clank HD era games. Ranging from Tools of Destruction all the way to the Nexus.</p>
+
+<h2 id="research-and-patching">Research and Patching</h2>
+
+<p>When I first boot up one of their games with the frame limit set to off, I saw this.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_rc_sc0.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_rc_sc0.png" />
+</a></div>
+
+<div align="center">
+<em>82 FPS? Weird limit but alright</em>
+</div>
+
+<p>What about the newer games?</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_rc_sc4.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_rc_sc4.png" />
+</a></div>
+
+<div align="center">
+<em>Another strange arbitrary cap</em>
+</div>
+
+<p>Alright, let’s fire up the debugger and see what we can find.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_rc_dbgsc0.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_rc_dbgsc0.png" />
+</a></div>
+
+<div align="center">
+<em>Is that current frametime?</em>
+</div>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_rc_dbgsc2.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_rc_dbgsc2.png" />
+</a></div>
+
+<div align="center">
+<em>Seems like it is</em>
+</div>
+
+<p>These look like a group of frametime values and after a little bit of trial and error it turns out that <code class="language-plaintext highlighter-rouge">E67B04</code> is the minimum frametime. Take note of the hex value <code class="language-plaintext highlighter-rouge">3C 5A 74 0E</code> or <code class="language-plaintext highlighter-rouge">0.01333</code> in float. let’s try changing this to 0.005.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_rc_sc1.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_rc_sc1.png" />
+</a></div>
+
+<div align="center">
+<em>Oh look, framerate cap increased</em>
+</div>
+
+<p>Is it really increased though? Introducing the tried and true method of… Looking at the ground<i class="twa twa-trade-mark"></i>.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_rc_sc2.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_rc_sc2.png" />
+</a></div>
+
+<div align="center">
+<em>Yes, yes it is increased</em>
+</div>
+
+<p>Doing a search for this value in the executable shows that this is a base value for the min frametime value.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/ghidra_rc_ft0.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/ghidra_rc_ft0.png" />
+</a></div>
+
+<p>But wait, 13ms? wasn’t the cap we see in the game is 12ms?</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_rc_sc3.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_rc_sc3.png" />
+</a></div>
+
+<div align="center">
+<em>Wha? <i class="twa twa-thinking-face"></i></em>
+</div>
+
+<p><a href="https://github.com/isJuhn/">Juhn <i class="twa twa-cat-face"></i></a> the developer behind the <a href="https://github.com/isJuhn/KAMI">KAMI, Kot(Cat) and Mouse Injector</a> did some investigation and found out that this number is multiplied by 0.9</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_rc_dbgsc3.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_rc_dbgsc3.png" />
+</a></div>
+
+<p>A little bit of code explanation,</p>
+
+<p><code class="language-plaintext highlighter-rouge">lfs</code> which loads float from offset to <code class="language-plaintext highlighter-rouge">f13</code> that has the 0.9 value, then loads into <code class="language-plaintext highlighter-rouge">f1</code> with 0.013333 and reads the value.</p>
+
+<p>Then it gets multiplied by the <code class="language-plaintext highlighter-rouge">fmuls</code> instruction and thus get us the 12ms we saw earlier.</p>
+
+<p>That would be it for the rest of the games, right?</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rc_dev_value_meme.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rc_dev_value_meme.png" />
+</a></div>
+
+<p>Starting with A Crack in Time, a later entry in the series, things changed. changing the value we previously discoverd works but has a side effect.</p>
+
+<p><em>(If the video does not play in your web browser, right click and save the video to play it locally.)</em></p>
+
+<div align="center">
+<video width="100%" controls="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rc_rpcs3_fps_before_demo.mp4" type="video/mp4" />
+</video>
+<em>Oh no, Game Patching worse nightmare, double speed.</em>
+</div>
+
+<p>In this case if it exceeds the minimum frametime set by the game it will speed up, it <strong>does not</strong> slow down below the target frametime but it speeds up, if above.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_rc_dbgsc4.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_rc_dbgsc4.png" />
+</a></div>
+
+<p>16.67ms is here to save our day, searching for <code class="language-plaintext highlighter-rouge">3c 88 88 89</code> and changing some values around resolved the issue.</p>
+
+<div align="center">
+<video width="100%" controls="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rc_rpcs3_fps_after_demo.mp4" type="video/mp4" />
+</video>
+<em>Correct game speed, nice.</em>
+</div>
+
+<p>Thought the headache was over? Far from it. Repeating the same method works in memory but there is no such value as <code class="language-plaintext highlighter-rouge">3C 5A 74 0E</code> in the executable.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/ghidra_rc_ft1.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/ghidra_rc_ft1.png" />
+</a></div>
+
+<p>However, setting a breakpoint on that value got us here.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0072c1e4 lfd  f1,0x8(param_1)=&gt;DOUBLE_0072c140 = 0.013333333 // 3f 8b 4e 81 c0 00 00 00
+0072c1e8 fsub f2,f3,f1
+0072c1ec frsp f2,f2
+0072c1f0 fsel f1,f2,f3,f1
+0072c1f4 frsp 1,f1
+0072c1f8 stfs f1,0x4(r31) // &lt;-- breakpoint
+</code></pre></div></div>
+
+<p>Wait a minute, a double? They set the value initally in double, which is twice the bits as float for more accurate decimals and then converts it to float again.</p>
+
+<div align="center">
+<video width="100%" autoplay="" loop="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/memes/tenor/we_do_a_little_trolling_meme.mp4" type="video/mp4" />
+</video>
+</div>
+
+<p>The end results is the same as the rest of the games, unlocked framerate with no speedups.</p>
+
+<p>If you enjoyed reading and would like to support, you can do so by supporting me my <a href="https://www.patreon.com/illusion0001">Patreon</a> page or follow my <a href="https://www.youtube.com/c/illusion0001/featured">YouTube</a> channel and <a href="https://illusion0001.github.io/">Blog</a> for more content like this.</p>
+
+<p>As always, I hope you learned something from these posts, catch you next time!</p>
+
+<h1 id="credits">Credit(s)</h1>
+
+<p><a href="https://github.com/isJuhn/">Juhn <i class="twa twa-cat-face"></i></a> for explanation on framerate limits.</p>
+
+<h1 id="results">Results</h1>
+
+<p>Note that the video below is recorded in slow motion to show the patch at its best.</p>
+
+<div align="center" class="responsive-video-container">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/azrU00bZuIc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</div>
+
+<h1 id="patch">Patch</h1>
+
+<p>For those looking to use the patch on the emulator, you can head over to the patch manager, click on the “Download Latest Patches” and find the patch you wanted to use with your game Title ID and version, click on the checkbox to enable the patch and save changes.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_patch_example.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_patch_example.png" />
+</a></div>
+
+<h2 id="supporters">Supporters</h2>
+
+<p>Thanks to the patrons who supported me on various platforms! You guys are awesome!</p>
+
+<h3 id="monthly-supporters">Monthly supporters:</h3>
+<ul>
+  <li>
+    <p><a href="https://www.patreon.com/illusion0001">Patreon</a>:</p>
+
+    <ul>
+      <li>ac2pic</li>
+      <li>Alexa</li>
+      <li>Brett</li>
+      <li>Ciril</li>
+      <li>GarnetSunset</li>
+      <li>Mmmmmhno</li>
+      <li>Paul</li>
+      <li>PlayStation5Mods</li>
+      <li>RazzySxPB</li>
+      <li>Ryan</li>
+      <li>Voredy</li>
+      <li>YveltalGriffin</li>
+      <li>Zackery</li>
+      <li>alessaro92</li>
+      <li>ashenC</li>
+      <li>embee</li>
+      <li>erdosadam24</li>
+      <li>faith</li>
+      <li>maplemiyazaki</li>
+      <li>patrick</li>
+      <li>rudi</li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="https://github.com/sponsors/illusion0001">Github Sponsors</a>:</p>
+
+    <ul>
+      <li>VIPO777</li>
+      <li>WardFail</li>
+      <li>Whitehawkx</li>
+      <li>gorshco</li>
+      <li>jrson83</li>
+      <li>regal.</li>
+      <li>suwagawaki</li>
+    </ul>
+  </li>
+</ul>
+
+</div>
+      </section>
+      <footer>
+  <p>&copy; 2021 - 2025 | illusion's Blog</br>Theme <a href="https://github.com/sharadcodes/jekyll-theme-material-you"> Jekyll Theme Material You</a></p>
+</footer>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

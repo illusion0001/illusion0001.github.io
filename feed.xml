@@ -1,0 +1,2474 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-05-12T11:46:55+00:00</updated><id>/feed.xml</id><title type="html">illusion’s Blog</title><author><name>illusion</name><email>illusion3185@gmail.com</email></author><entry><title type="html">Bug Fix: The Last of Us Part 2 Broken Aim After Using The Bow</title><link href="/patches/2023/01/02/t2-bow-charge-sway-bugfix/" rel="alternate" type="text/html" title="Bug Fix: The Last of Us Part 2 Broken Aim After Using The Bow" /><published>2023-01-02T00:00:00+00:00</published><updated>2023-01-02T00:00:00+00:00</updated><id>/patches/2023/01/02/t2-bow-charge-sway-bugfix</id><content type="html" xml:base="/patches/2023/01/02/t2-bow-charge-sway-bugfix/"><![CDATA[<h1 id="introduction">Introduction</h1>
+
+<p>Hello! <i class="twa-2x twa-waving-hand"></i></p>
+
+<p>It has been a while since my last post, why’s that?</p>
+
+<p>I had worked on a few things.</p>
+
+<ul>
+  <li>Plugin system in collabration with <a href="https://github.com/SiSTR0">Sistro</a>, <a href="https://github.com/OSM-Made">OSM</a>, <a href="https://github.com/jocover">jocover</a> and a few other <a href="https://github.com/GoldHEN/GoldHEN_Plugins_Repository#coded-by">developers</a>. A <a href="https://youtu.be/gt_H45SpaAE">video</a> by <a href="https://www.youtube.com/@MODDEDWARFARE">Modded Warfare</a> covered this quite well.</li>
+  <li>This post you are reading right now! That’s right, new year new bugfix!</li>
+</ul>
+
+<p>I have been working on this bug for the past few months on and off and I’m happy to say that it is fixed!</p>
+
+<h2 id="part-1---problem-at-hand">Part 1 - Problem at hand</h2>
+
+<p>This bug sounds even more strange than my previous bug fix post about the <a href="/patches/2021/02/15/t1-head-crash-bug-fix/">Infected Severed Head Crash Bug</a> for the PS3/PS4 games.</p>
+
+<p>Good thing is, it was officially fixed by the developers in the Re-Remaster on PS5!</p>
+
+<div align="center">
+<video width="100%" controls="" loop="" muted="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/t2-bow-charge-bugfix/t1x-brick-bugfixed.mp4" type="video/mp4" />
+</video>
+</div>
+
+<p>Thanks to <a href="https://twitter.com/Kempy161">The Kempy</a> for testing!</p>
+
+<p>Now what exactly is this broken aim bug?</p>
+
+<p>in The Last of Us Part 2, Naughty Dog developers implemented a tiredness feature, where the player charges the bow after a certain amount of time, the aim will become shaky.</p>
+
+<div align="center">
+<video width="100%" controls="" loop="" muted="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/t2-bow-charge-bugfix/t2-bowcharge-initial.mp4" type="video/mp4" />
+</video>
+</div>
+
+<p>But here comes the weird part, they do not reset this factor correctly, leaving the player’s aim shaky even after a few minutes.</p>
+
+<p>The only way to get out of this bugged aiming mode is to Restart to Checkpoint or Quit and reload your save.</p>
+
+<h2 id="part-2---looking-into-the-bug">Part 2 - Looking into the Bug</h2>
+
+<p>Some observations I noticed when I first investigated the bug back in September of 2022 when it was brought to my attention thanks to the speedrunner <a href="https://www.youtube.com/@AnthonyCaliber">Anthony Caliber</a>.</p>
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Kl4PrVXVBEk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<ul>
+  <li>The charge time is always 20 seconds.</li>
+  <li>The camera becomes shaky quite fast after charging the bow for 15 seconds.</li>
+  <li>It can be partially fixed by charging or firing the bow but aiming is still quite shaky, so not entirely fixed.</li>
+</ul>
+
+<p>Let’s search for some values.</p>
+
+<p>I’ll tackle the charge time first, since it is the only constant variable so far.</p>
+
+<p>20 seconds.. timers is usually a float, for example most game delta time calculations, it is a float. <code class="language-plaintext highlighter-rouge">0.03333</code> is 33 milliseconds. and <code class="language-plaintext highlighter-rouge">1.0000</code> is 1000 milliseconds which in turn is 1 second.</p>
+
+<p>After searching for a while and modifiying every <code class="language-plaintext highlighter-rouge">20.0f</code> floats, memory location <code class="language-plaintext highlighter-rouge">0x110F559E14</code> is the address the game reads for the charge time.</p>
+
+<p>Let’s try setting this one to 4 seconds.</p>
+
+<div align="center">
+<video width="100%" controls="" loop="" muted="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/t2-bow-charge-bugfix/t2-charge-time-4second.mp4" type="video/mp4" />
+</video>
+</div>
+
+<p>Check that out, the player can only charge the bow for 4 seconds now.</p>
+
+<p>A breakpoint leads to this instruction.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>01555a6d VMOVSS XMM0,dword ptr [RAX + RCX*0x4]
+</code></pre></div></div>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/t2-bow-charge-bugfix/t2-charge-time-ghidra.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/t2-bow-charge-bugfix/t2-charge-time-ghidra.png" />
+</a></div>
+
+<p>Hmm, two vector floating reads. What if I step there?</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/t2-bow-charge-bugfix/t2-debugger-step-chargestat.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/t2-bow-charge-bugfix/t2-debugger-step-chargestat.png" />
+</a></div>
+
+<p>Aha! <code class="language-plaintext highlighter-rouge">xmm1</code> seems to contain our current time.</p>
+
+<p>Let’s write some small code to display these.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/t2-bow-charge-bugfix/t2-bowcharge-debug-stats.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/t2-bow-charge-bugfix/t2-bowcharge-debug-stats.png" />
+</a></div>
+
+<p>Yep, this is it. Now we have the max charge time and the current charge time.</p>
+
+<p>Now the multiplier. We know that it increases over time and decreases when we charge the bow.</p>
+
+<p>This took a while to find but luckliy, I found it!</p>
+
+<p>Here I changed the value to <code class="language-plaintext highlighter-rouge">10.0f</code> and aiming a shotgun does this:</p>
+
+<div align="center">
+<video width="100%" controls="" loop="" muted="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/t2-bow-charge-bugfix/t2-charge-sway-mul-10.mp4" type="video/mp4" />
+</video>
+</div>
+
+<p>Woah, Ellie needs to take a break from fighting all day huh.</p>
+
+<p>I can’t give any memory location for this one since it is not static (I learned this the hard way). So I set some breakpoints and these two instructions stood out to me.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>015550b7 VMOVSS dword ptr [R14 + 0x4a0],XMM0 ; this one writes when aiming
+0155577d VMOVSS dword ptr [R14 + 0x4a0],XMM0 ; this one writes when charging bow
+015c9011 VMOVSS XMM3,dword ptr [RAX + 0x4a0] ; this one always reads when bow is eqiup
+</code></pre></div></div>
+
+<p>The write instruction is in the same area as the charge timers, if I stub this function <code class="language-plaintext highlighter-rouge">015547a0</code>, the bow no longer works.</p>
+
+<p>Let’s give it a name.. How about <code class="language-plaintext highlighter-rouge">BowController</code>? that sounds pretty good.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/t2-bow-charge-bugfix/t2-bowcontroller-name-ghidra.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/t2-bow-charge-bugfix/t2-bowcontroller-name-ghidra.png" />
+</a></div>
+
+<p>Alright, we have found all three key piece of the puzzle.</p>
+
+<ul>
+  <li>1) Max Charge Time</li>
+  <li>2) Current Charge Time</li>
+  <li>3) Sway multiplier</li>
+</ul>
+
+<h2 id="part-3---fixing-the-bug">Part 3 - Fixing the Bug</h2>
+
+<p>But how will we fix it? I have some ideas.</p>
+
+<ul>
+  <li>Always resetting the multiplier to <code class="language-plaintext highlighter-rouge">1.0f</code>.</li>
+  <li>Implementing a cooldown timer after using the bow.</li>
+</ul>
+
+<p>I will go with the latter, because I think the developers wanted a tiredness effect after using the bow for some time but this bug goes unnoticed, let’s fix it for them.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Pusedo code for the patch, may not be 100% accurate, see sources at</span>
+<span class="c1">// `https://github.com/GoldHEN/GoldHEN_Patch_Repository/blob/a92199c51bf86ffe10e4413928f6a6872928269f/patches/json/TheLastOfUs2-Orbis.json#L547`</span>
+<span class="c1">// for more info.</span>
+
+<span class="cp">#include</span> <span class="cpf">"ndlib/process/clock.h"</span><span class="c1"> // GetProcessDeltaTime</span><span class="cp">
+</span>
+<span class="k">extern</span> <span class="n">bool</span> <span class="n">is_using_bow</span><span class="p">;</span>
+<span class="k">extern</span> <span class="kt">float</span> <span class="n">bow_charge_time</span><span class="p">;</span>
+<span class="k">extern</span> <span class="kt">float</span> <span class="n">bow_max_charge_time</span><span class="p">;</span>
+<span class="k">extern</span> <span class="kt">float</span> <span class="n">weapon_sway_mul</span><span class="p">;</span>
+<span class="kt">float</span> <span class="n">cooldown_timer</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">bow_charge_fix</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">weapon_sway_mul</span> <span class="o">==</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">)</span> <span class="c1">// the default is 1</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">max_cooldown_timer</span> <span class="o">=</span> <span class="mi">15</span><span class="p">.</span><span class="n">f</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">current_timer</span> <span class="o">=</span> <span class="n">GetProcessDeltaTime</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">is_using_bow</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">cooldown_timer</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="n">f</span><span class="p">;</span>
+      <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">cooldown_timer</span> <span class="o">&gt;</span> <span class="n">max_cooldown_timer</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">weapon_sway_mul</span> <span class="o">=</span> <span class="mi">1</span><span class="p">.</span><span class="n">f</span><span class="p">;</span>
+        <span class="n">cooldown_timer</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="n">f</span><span class="p">;</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="c1">// Count timer up</span>
+    <span class="n">cooldown_timer</span> <span class="o">=</span> <span class="n">cooldown_timer</span> <span class="o">+</span> <span class="n">current_timer</span><span class="p">;</span>
+    <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Let’s test this change in-game.</p>
+
+<div align="center">
+<video width="100%" controls="" loop="" muted="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/t2-bow-charge-bugfix/t2-bowcharge-fix-demo.mp4" type="video/mp4" />
+</video>
+</div>
+
+<p>The timer counts up after using the bow, resets after 15 seconds and most importantly, resets the sway multiplier!</p>
+
+<p>By the way, for those who want to see the stats for themselves can do so. I have included all the patches shown in this post in the patch file.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/t2-bow-charge-bugfix/t2-debug-bowcharge-stats.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/t2-bow-charge-bugfix/t2-debug-bowcharge-stats.png" />
+</a></div>
+
+<p>You will need to enable the following patches:</p>
+
+<ul>
+  <li>Enable Dev Menu</li>
+  <li>Bug Fix: Broken Aim After Using The Bow</li>
+</ul>
+
+<p>And in the debug menu, <code class="language-plaintext highlighter-rouge">Dev Menu|Weapons|Bow and Arrow|Show Bow Charging</code> option. The menu can be opened by pressing <code class="language-plaintext highlighter-rouge">L3+Touchpad Right</code></p>
+
+<h1 id="no-fix-for-newer-platforms">No Fix for Newer Platforms?</h1>
+
+<p>You may have noticed that I did not fix the bug in the recently released The Last of Us Part 1 on PS5, that is because the system have not been fully exploited yet.</p>
+
+<p>Though when the PC version comes out, I will fix it if the developers have not fixed it by then.</p>
+
+<h1 id="official-fix-is-possible">Official Fix is Possible</h1>
+
+<p>If someone can get me in touch with the right people, this fix can be done officially! Both for the PS4 and PS5 games.</p>
+
+<p>My contact info:</p>
+
+<ul>
+  <li><a href="https://twitter.com/illusion0002">Twitter</a> @ <code class="language-plaintext highlighter-rouge">illusion0002</code></li>
+  <li>Email: illusion3185@gmail.com</li>
+</ul>
+
+<h1 id="showcase">Showcase</h1>
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/gV7gX8GvfCQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<h1 id="patch">Patch</h1>
+
+<p>I have updated the instructions for use with the new GoldHEN Plugins system.</p>
+
+<ul>
+  <li><a href="/install-instructions/" class="button" role="button"><i class="fas fa-download"></i> Patch Installation Instructions</a></li>
+</ul>
+
+<p>Below is the source code for the patch.</p>
+
+<ul>
+  <li><a href="https://github.com/GoldHEN/GoldHEN_Patch_Repository/blob/a92199c51bf86ffe10e4413928f6a6872928269f/patches/json/TheLastOfUs2-Orbis.json#L547" class="button" role="button"><i class="fas fa-download"></i> Patch Source Code</a></li>
+</ul>
+
+<h2 id="supporters">Supporters</h2>
+
+<p>Thanks to the patrons who supported me on various platforms! You guys are awesome!</p>
+
+<h3 id="monthly-supporters">Monthly supporters:</h3>
+<ul>
+  <li>
+    <p><a href="https://www.patreon.com/illusion0001">Patreon</a>:</p>
+
+    <ul>
+      <li>ac2pic</li>
+      <li>Alexa</li>
+      <li>Brett</li>
+      <li>Ciril</li>
+      <li>GarnetSunset</li>
+      <li>Mmmmmhno</li>
+      <li>Paul</li>
+      <li>PlayStation5Mods</li>
+      <li>RazzySxPB</li>
+      <li>Ryan</li>
+      <li>Voredy</li>
+      <li>YveltalGriffin</li>
+      <li>Zackery</li>
+      <li>alessaro92</li>
+      <li>ashenC</li>
+      <li>embee</li>
+      <li>erdosadam24</li>
+      <li>faith</li>
+      <li>maplemiyazaki</li>
+      <li>patrick</li>
+      <li>rudi</li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="https://github.com/sponsors/illusion0001">Github Sponsors</a>:</p>
+
+    <ul>
+      <li>VIPO777</li>
+      <li>WardFail</li>
+      <li>Whitehawkx</li>
+      <li>gorshco</li>
+      <li>jrson83</li>
+      <li>regal.</li>
+      <li>suwagawaki</li>
+    </ul>
+  </li>
+</ul>]]></content><author><name>illusion</name><email>illusion3185@gmail.com</email></author><category term="patches" /><category term="ps4" /><category term="modded console" /><category term="The Last of Us Part 2" /><category term="bugfix" /><summary type="html"><![CDATA[Shaky aiming camera after using the bow is now fixed!]]></summary></entry><entry><title type="html">Gravity Rush 2 (Gravity Daze 2) Unofficial 60FPS Patch Now Playable on PS4/PS4 Pro</title><link href="/patches/2022/06/12/Gravite2-FrameratePatch-Update/" rel="alternate" type="text/html" title="Gravity Rush 2 (Gravity Daze 2) Unofficial 60FPS Patch Now Playable on PS4/PS4 Pro" /><published>2022-06-12T00:00:00+00:00</published><updated>2022-06-12T00:00:00+00:00</updated><id>/patches/2022/06/12/Gravite2-FrameratePatch-Update</id><content type="html" xml:base="/patches/2022/06/12/Gravite2-FrameratePatch-Update/"><![CDATA[<p>Please note that you are required to have a <a href="https://wololo.net/2021/12/14/ps4-how-to-run-the-ps4-9-00-jailbreak-full-guide-with-goldhen-payload/">exploited PlayStation 4</a> console on firmware <strong>9.00</strong> or lower to run the patches mentioned in this article.</p>
+
+<p>Featured on:</p>
+
+<ul>
+  <li><a href="https://noisypixel.net/gravity-rush-2-fan-creates-60-fps-patch/">NoisyPixels</a></li>
+</ul>
+
+<h2 id="improvements">Improvements</h2>
+
+<p>Over the past few months I have been working on rewriting the Gravity Rush 2 (Gravity Daze 2) patch from scratch and there has been some <del>small</del> big improvements.</p>
+
+<ul>
+  <li>The game now runs at correct speed at any framerate.</li>
+  <li>Video stuttering has been fixed.</li>
+  <li>Implemented button combination for easy testing.</li>
+</ul>
+
+<p>What’s the first one about? Well, if you have read my <a href="/patches/2021/12/19/Gravite2-FrameratePatch/">previous post</a> on the matter, you will have notice that timestep was fixed to 60FPS, meaning if the game were to drop any frames, the game would slow down as well, with this update, this has been resolved.</p>
+
+<div align="center">
+<video width="100%" controls="" muted="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch-Update1/GR2-FrameComp.mp4" type="video/mp4" />
+</video>
+</div>
+
+<p>Notice how Kat is running slower on the middle.</p>
+
+<p>Second update is that the videos no longer slows down and stutters anymore, check out these two videos and you’ll see what I mean.</p>
+
+<div align="center">
+<video width="100%" controls="" muted="" loop="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch-Update1/GR2-Video-Before.mp4" type="video/mp4" />
+</video>
+</div>
+
+<div align="center">
+<video width="100%" controls="" muted="" loop="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch-Update1/GR2-Video-After.mp4" type="video/mp4" />
+</video>
+</div>
+
+<p>The first video runs noticeably slower and the sound is out of sync. However, the second video plays just fine.</p>
+
+<p>I have completed the game and added the necessary level checks for the game to be playable with this patch.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch-Update1/GR2-Credits1.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch-Update1/GR2-Credits1.png" />
+</a></div>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch-Update1/GR2-Credits0.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch-Update1/GR2-Credits0.png" />
+</a></div>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch-Update1/GR2-Credits2.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch-Update1/GR2-Credits2.png" />
+</a></div>
+
+<p>Just a reminder that the level checks here is to prevent the game from softlocks and will fall back to the default 30FPS mode. But Episode 23 is a special case. In this episode, you are required to solve puzzles and along the way, there are these sequences.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch-Update1/GR2-EP23b.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch-Update1/GR2-EP23b.png" />
+</a></div>
+
+<p>Which of course, have their scripting tied to the timestep and will never play unless it is 33ms.</p>
+
+<p>To overcome this (or any other softlocks you may find) I have implemented a button combination. these can be pressed at anytime.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Button</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>L3 + X</td>
+      <td>Switch between 30 and 60FPS Modes.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>What does it do exactly?</p>
+
+<p>Pressing this combination will cycle through the framerate target between 30 and 60FPS. It can be used during Episode 23 dialogue sequences since the puzzle sections plays out just fine at 60FPS.</p>
+
+<p>Raven’s Story is also playable. Softlock protection are also implemented here and will fallback to 30FPS in sections that are required.</p>
+
+<div align="center">
+<video width="100%" autoplay="" controls="" muted="" loop="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch-Update1/GravityDazeOverture-PatchMeme0.mp4" type="video/mp4" />
+</video>
+</div>
+
+<div align="center">
+<em> <a href="https://youtu.be/tFeXtu-3u78?t=561">Gravity Rush: The Animation - Overture | Parts A &amp; B</a> </em>
+</div>
+
+<p>As they say, being a hero doesn’t pay the bills.</p>
+
+<p>Oh, you might want to check your calendar to see what day it is. That’s right, today (June 12th) marks the day Gravity Rush for the PS Vita was released in North America! <i class="twa-2x MayruAnimationKit02Dance"></i> Animation made by <a href="https://twitter.com/MayruAnimation/">MayruAnimations</a></p>
+
+<p>Want to see the patch in action? Checkout the video below and you can find the links to support me on GitHub, Patreon and other platforms.</p>
+
+<h2 id="showcase">Showcase</h2>
+
+<p>Base PS4/Slim</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/VPkU-jb7DHc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<p>PS4 Pro</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4xaZPn55RkU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<h2 id="patch">Patch</h2>
+
+<ul>
+  <li><a href="/_patch/GravityDaze2-Orbis/" class="button" role="button"><i class="fas fa-download"></i> Patch Source Code</a></li>
+  <li><a href="/install-instructions/" class="button" role="button"><i class="fas fa-download"></i> Patch Installation Instructions</a></li>
+</ul>
+
+<h2 id="supporters">Supporters</h2>
+
+<p>Thanks to the patrons who supported me on various platforms! You guys are awesome!</p>
+
+<h3 id="monthly-supporters">Monthly supporters:</h3>
+<ul>
+  <li>
+    <p><a href="https://www.patreon.com/illusion0001">Patreon</a>:</p>
+
+    <ul>
+      <li>ac2pic</li>
+      <li>Alexa</li>
+      <li>Brett</li>
+      <li>Ciril</li>
+      <li>GarnetSunset</li>
+      <li>Mmmmmhno</li>
+      <li>Paul</li>
+      <li>PlayStation5Mods</li>
+      <li>RazzySxPB</li>
+      <li>Ryan</li>
+      <li>Voredy</li>
+      <li>YveltalGriffin</li>
+      <li>Zackery</li>
+      <li>alessaro92</li>
+      <li>ashenC</li>
+      <li>embee</li>
+      <li>erdosadam24</li>
+      <li>faith</li>
+      <li>maplemiyazaki</li>
+      <li>patrick</li>
+      <li>rudi</li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="https://github.com/sponsors/illusion0001">Github Sponsors</a>:</p>
+
+    <ul>
+      <li>VIPO777</li>
+      <li>WardFail</li>
+      <li>Whitehawkx</li>
+      <li>gorshco</li>
+      <li>jrson83</li>
+      <li>regal.</li>
+      <li>suwagawaki</li>
+    </ul>
+  </li>
+</ul>]]></content><author><name>illusion</name><email>illusion3185@gmail.com</email></author><category term="patches" /><category term="ps4" /><category term="modded console" /><category term="Gravity Rush 2" /><category term="Gravity Daze 2" /><summary type="html"><![CDATA[Fight against the Nevis and protect towns at higher framerates.]]></summary></entry><entry><title type="html">Patches and Improvements for MotorStorm Titles (RPCS3)</title><link href="/patches/2022/05/10/Motorstorm-Framerate-Patch/" rel="alternate" type="text/html" title="Patches and Improvements for MotorStorm Titles (RPCS3)" /><published>2022-05-10T00:00:00+00:00</published><updated>2022-05-10T00:00:00+00:00</updated><id>/patches/2022/05/10/Motorstorm-Framerate-Patch</id><content type="html" xml:base="/patches/2022/05/10/Motorstorm-Framerate-Patch/"><![CDATA[<p>A beloved classic franchise from Evolution Studios. Where we race against AI and online opponents in muddy race tracks with big trucks, sounds exciting? Because it is!</p>
+
+<h2 id="original-experience">Original Experience</h2>
+
+<p>Motorstorm Titles on PS3 ran at a wobbly 30FPS, 720p with dynamic resolution scaling, that’s right the game has DRS, all the way back in 2006.</p>
+
+<p>Low sample motion blur, although it looks fine at it’s original resolution and framerate but it does not hold up particularly well at high resolution and framerates and at first sight, fixed timestep. <i class="twa-2x kat-angry"></i></p>
+
+<h2 id="hidden-gems---part-1-framerate-modes">Hidden Gems - Part 1 (Framerate Modes)</h2>
+
+<p>Running the game on the RPCS3 emulator with increased vblank shows disappointing results. sped up gameplay.</p>
+
+<div align="center">
+<video width="100%" controls="" muted="" loop="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/Motorstorm-Framerate-Patch/video-ms1-no-delta-30fps-target.mp4" type="video/mp4" />
+</video>
+</div>
+
+<div align="center">
+<em> Look at it go! The game is so fast it might hurt. </em>
+</div>
+
+<p>The hidden gem here is game speed. When you crash your vehicle, the game slows down to 0.125f. And normal gameplay it’s 1.00f. peeking at this area shows some curious values.</p>
+
+<p><code class="language-plaintext highlighter-rouge">3F 80 00 00 00 00 00 02 00 00 00 00 01</code></p>
+
+<p>Setting the byte 2 to 1 gives us..</p>
+
+<div align="center">
+<video width="100%" controls="" muted="" loop="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/Motorstorm-Framerate-Patch/video-ms1-no-delta-60fps-target.mp4" type="video/mp4" />
+</video>
+</div>
+
+<p>60FPS Gameplay? Alright, that’s cool but it’s still fixed timestep and double speed at 120FPS.</p>
+
+<p>Not shippable if you ask me.</p>
+
+<p>Let’s pay a little more attention to what’s <em>down below</em>, what happens if I set this next int32 to 1… <i class="twa-2x kat-smug"></i></p>
+
+<div align="center">
+<video width="100%" controls="" muted="" loop="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/Motorstorm-Framerate-Patch/video-ms1-delta-120fps.mp4" type="video/mp4" />
+</video>
+</div>
+
+<div align="center">
+<em> Is that Deltatime? </em>
+</div>
+
+<p>I apologize if that clip made you all jelly. It did for me seeing it for the first time as well.</p>
+
+<p>The same memory pattern exists in other games all the way to Motorstorm RC.</p>
+
+<p>As for the names, the files were left bare within MotorStorm: Pacific Rift.</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- globalparams.lua: auto-generated by GoStorm2 at 17/07/2007 14:28:25</span>
+<span class="n">FrameRateMode</span><span class="p">(</span><span class="s2">"30Hz Lock"</span><span class="p">)</span>
+<span class="c1">-- Possible values:</span>
+<span class="c1">-- See game_config.xml for more info.</span>
+<span class="c1">-- 30Hz Lock    -- 30 FPS    (No Havok Deltatime) -- Default for all games.</span>
+<span class="c1">-- 60Hz Lock    -- 60 FPS    (No Havok Deltatime)</span>
+<span class="c1">-- Compensation -- Deltatime (Use Havok Deltatime)</span>
+</code></pre></div></div>
+
+<h2 id="blur-blurryness-everywhere---part-2-dynamic-resolution-scaling">Blur, Blurryness Everywhere - Part 2 (Dynamic Resolution Scaling)</h2>
+
+<p>Two things stood out to me when I played this with the unlocked framerate, the image can become blurry out of nowhere and the motion blur doesn’t look as good.</p>
+
+<p>Let’s start with the most obvious image quality flaw, dynamic resolution scaling. The game scales the resolution based on frametime targets, if it is below its threshold of 33.3ms, the game drops its resolution to 360p at it’s lowest, to find it? 720p during the clearest moments and <code class="language-plaintext highlighter-rouge">Decreased Values</code> when things get blurry.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/Motorstorm-Framerate-Patch/Screen_MS1-3.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/Motorstorm-Framerate-Patch/Screen_MS1-3.png" />
+</a></div>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/Motorstorm-Framerate-Patch/Screen_MS1-4.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/Motorstorm-Framerate-Patch/Screen_MS1-4.png" />
+</a></div>
+
+<p>I narrowed it down to this subroutine (<code class="language-plaintext highlighter-rouge">0x002634c8</code>) with a compare float statement and all I have to do is to skip this operation, simple.</p>
+
+<h2 id="blur-blurryness-everywhere---part-3-motion-blur">Blur, Blurryness Everywhere - Part 3 (Motion Blur)</h2>
+
+<p>Peeking at the game executable and searching for Blur, I got a few results. <code class="language-plaintext highlighter-rouge">WorldMotionBlurBase</code> <code class="language-plaintext highlighter-rouge">BlurAccel</code> and <code class="language-plaintext highlighter-rouge">BlurDecel</code>. This smells like some sort of configuration key. Let’s try memory.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/Motorstorm-Framerate-Patch/Screen_MS1-5.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/Motorstorm-Framerate-Patch/Screen_MS1-5.png" />
+</a></div>
+
+<div align="center">
+<em> Oh, what's that? Game settings? </em>
+</div>
+
+<details>
+<summary>advancedsettings.lua (Click to Expand)</summary>
+
+
+<figure class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="c1">-- Taken from NPEA90006/NPEA80017 1.01 at address 0x300767ba</span>
+
+<span class="c1">-- Begin original file:</span>
+<span class="c1">-- advancedsettings.lua: auto-generated by GoStorm2 at 28/02/2007 10:28 am</span>
+<span class="n">WorldMotionBlurBase</span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">55</span><span class="p">)</span>
+<span class="n">CarMotionBlurBase</span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">43</span><span class="p">)</span>
+<span class="n">BoostBlurEnabled</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+<span class="n">BlurAccel</span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">01</span><span class="p">)</span>
+<span class="n">BlurDecel</span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">01</span><span class="p">)</span>
+<span class="n">WorldBlurMax</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">CarBlurMax</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ParticleEmissionRate</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">VehicleDamageRate</span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">81</span><span class="p">)</span></code></pre></figure>
+
+
+</details>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/Motorstorm-Framerate-Patch/Screen_MS1-6.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/Motorstorm-Framerate-Patch/Screen_MS1-6.png" />
+</a></div>
+
+<p>Setting these to 0.0f gets rid of the motion blur and it looks good!</p>
+
+<div align="center">
+<video width="100%" controls="" muted="" loop="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/Motorstorm-Framerate-Patch/video-ms1-no-blur.mp4" type="video/mp4" />
+</video>
+</div>
+
+<h2 id="blur-blurryness-everywhere---part-4-porting-to-newer-games">Blur, Blurryness Everywhere - Part 4 (Porting to Newer Games)</h2>
+
+<p>Get ready because the things we learned in the past two sections of this post is going to be thrown out the window, Starting with Motorstorm Pacific Rift, they changed the settings to use the XML format and the code being much easier to read.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Motorstorm RC for demonstration, similar code is used in Pacific Rift and Apocalypse.</span>
+<span class="c1">// at 0x001a8050 for NPUA80678 01.02</span>
+<span class="n">ParseFile</span><span class="p">(</span><span class="s">"scripts/viewportquality.xml"</span><span class="p">);</span>
+<span class="c1">// -- snip --</span>
+<span class="n">GetSectionKeyName</span>       <span class="o">=</span> <span class="n">ParseSectionKey</span><span class="p">(</span><span class="s">"General"</span><span class="p">);</span>
+<span class="kt">bool</span> <span class="n">GetBoolValFromFile</span> <span class="o">=</span> <span class="n">ParseValueKey</span><span class="p">(</span><span class="s">"enableMotionBlur"</span><span class="p">);</span>
+<span class="c1">// &lt;General enableMotionBlur="true"/&gt;</span>
+<span class="n">enableMotionBlur</span> <span class="o">=</span> <span class="n">GetValFromFile</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Take <code class="language-plaintext highlighter-rouge">enableMotionBlur</code> for example, the game code looks for this key in a file named <code class="language-plaintext highlighter-rouge">viewportquality.xml</code> within the <code class="language-plaintext highlighter-rouge">scripts</code> folder and reads this value, and since this may change depending on user tweaks, let’s always load this variable using the load intermediate instruction.</p>
+
+<p>The same can be done for <code class="language-plaintext highlighter-rouge">variableScaling</code> (Dynamic Resolution Scaling)</p>
+
+<p>Comparison Images:</p>
+
+<div align="center">
+<em> Before: </em>
+</div>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/Motorstorm-Framerate-Patch/Screen-MS2-0.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/Motorstorm-Framerate-Patch/Screen-MS2-0.png" />
+</a></div>
+
+<div align="center">
+<em> After: </em>
+</div>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/Motorstorm-Framerate-Patch/Screen-MS2-1.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/Motorstorm-Framerate-Patch/Screen-MS2-1.png" />
+</a></div>
+
+<div align="center">
+<em> Checkout how crisp that image looks! Very clear and clean of blur. </em>
+</div>
+
+<div align="center">
+<video width="100%" controls="" autoplay="" muted="" loop="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/misc/youtube/GravityDazeOverture-Kat-Happy.mp4" type="video/mp4" />
+</video>
+</div>
+
+<div align="center">
+<em> <a href="https://youtu.be/tFeXtu-3u78?t=70">Gravity Rush: The Animation - Overture | Parts A &amp; B</a> </em>
+</div>
+
+<p>I won’t lie, this is actually me when I figured out that hidden deltatime feature in these games.</p>
+
+<p>I have already covered MLAA in a <a href="/patches/2021/02/11/ms3-mlaa/">previous post</a> of mine for Motorstorm Apocalypse so if you are interested, check it out!</p>
+
+<h2 id="closing-words">Closing Words</h2>
+
+<p>That’s going to be it for this post, if you like it be sure to share this with others and let them know that if they have a powerful PC, high framerate Motorstorm is a reality, enjoy your enhanced video games!</p>
+
+<p>Oh and one more thing, I wished we got a remaster for these games on the current platform, would be interesting to see how that plays out. Yes, including Driveclub and my beloved Gravity Rush (Gravity Daze) 2</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/memes/capture/screen-console-ports-meme.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/memes/capture/screen-console-ports-meme.png" />
+</a></div>
+
+<div align="center">
+<em> <a href="https://youtu.be/tFeXtu-3u78?t=485">Gravity Rush: The Animation - Overture | Parts A &amp; B</a> </em>
+</div>
+
+<p>Ah well, I guess emulation will do just fine on our computers.</p>
+
+<h2 id="showcase">Showcase</h2>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/-AszzQQ7RI0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<h2 id="patch">Patch</h2>
+
+<p>For those looking to use the patch on the emulator, you can head over to the patch manager, click on the “Download Latest Patches” and find the patch you wanted to use with your game Title ID and version, click on the checkbox to enable the patch and save changes.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_patch_example.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_patch_example.png" />
+</a></div>
+
+<h2 id="supporters">Supporters</h2>
+
+<p>Thanks to the patrons who supported me on various platforms! You guys are awesome!</p>
+
+<h3 id="monthly-supporters">Monthly supporters:</h3>
+<ul>
+  <li>
+    <p><a href="https://www.patreon.com/illusion0001">Patreon</a>:</p>
+
+    <ul>
+      <li>ac2pic</li>
+      <li>Alexa</li>
+      <li>Brett</li>
+      <li>Ciril</li>
+      <li>GarnetSunset</li>
+      <li>Mmmmmhno</li>
+      <li>Paul</li>
+      <li>PlayStation5Mods</li>
+      <li>RazzySxPB</li>
+      <li>Ryan</li>
+      <li>Voredy</li>
+      <li>YveltalGriffin</li>
+      <li>Zackery</li>
+      <li>alessaro92</li>
+      <li>ashenC</li>
+      <li>embee</li>
+      <li>erdosadam24</li>
+      <li>faith</li>
+      <li>maplemiyazaki</li>
+      <li>patrick</li>
+      <li>rudi</li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="https://github.com/sponsors/illusion0001">Github Sponsors</a>:</p>
+
+    <ul>
+      <li>VIPO777</li>
+      <li>WardFail</li>
+      <li>Whitehawkx</li>
+      <li>gorshco</li>
+      <li>jrson83</li>
+      <li>regal.</li>
+      <li>suwagawaki</li>
+    </ul>
+  </li>
+</ul>]]></content><author><name>illusion</name><email>illusion3185@gmail.com</email></author><category term="patches" /><category term="rpcs3" /><category term="Motorstorm" /><category term="PS3 Motorstorm" /><category term="Evolution Studios" /><summary type="html"><![CDATA[PS3 racing exclusives at 60FPS. No motion blur and Dynamic Resolution Scaling.]]></summary></entry><entry><title type="html">Framerate Patch and Intro Skip for God Of War 3/Ascension (RPCS3)</title><link href="/patches/2022/05/01/GOW-PS3-FPS-Patches/" rel="alternate" type="text/html" title="Framerate Patch and Intro Skip for God Of War 3/Ascension (RPCS3)" /><published>2022-05-01T00:00:00+00:00</published><updated>2022-05-01T00:00:00+00:00</updated><id>/patches/2022/05/01/GOW-PS3-FPS-Patches</id><content type="html" xml:base="/patches/2022/05/01/GOW-PS3-FPS-Patches/"><![CDATA[<p>The Motorstorm post has been postponed! <del>(Admittedly I haven’t even start writing it)</del></p>
+
+<p>With the recent PC release of <a href="https://store.steampowered.com/app/1593500/God_of_War">God of War (2018)</a> patches for the series are becoming more relevant than ever. This post will be a little on the longer side because there’s a lot to elaborate on. Let’s get into it!</p>
+
+<h2 id="intros-or-no-intros">Intros or No Intros</h2>
+
+<p>The PS3 God of War games has two stages of its intro section. One being the Sony logo and the Santa Monica videos.</p>
+
+<h3 id="simple-text">Simple Text</h3>
+
+<p>Let’s start with the simplest. The background with text. The game spawns <code class="language-plaintext highlighter-rouge">IntroLoaderThread</code> PPU thread for this and the solution here is to skip this process.</p>
+
+<h3 id="harder-videos">Harder Videos</h3>
+
+<p>It took me a while to figure this one out. At first I thought the game referenced the filenames found within the executable, the files being <code class="language-plaintext highlighter-rouge">SMLogo</code> and <code class="language-plaintext highlighter-rouge">openingCredits</code> but removing these references in the executable still plays it, so I gotta come up with a solution.</p>
+
+<p>It turns out the solution was right in front of me. You see, once you start a new game or save it, on subsequent runs, the game enables a boolean on the second intro video, allowing the users to skip the video with the press of the X button. I have a genius idea. What if we always enable this boolean and send the X button input?</p>
+
+<div align="center">
+<video width="100%" controls="" loop="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/GOW-PS3-FPS-Patches/Game_SkipDemo.mp4" type="video/mp4" />
+</video>
+</div>
+
+<p>The game boots up and there’s no intro, but there’s one problem, since this code will always run when there’s a video playing, meaning it will skip every video that plays, so that’s not very desirable. I passed my working code to <a href="https://www.youtube.com/user/ZEROx2085">ZEROx</a> and we came up with a solution:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kt">int</span> <span class="n">controller_button</span> <span class="o">=</span> <span class="n">cellPadGetData</span><span class="p">();</span>
+    <span class="kt">int</span> <span class="n">frame_count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">UserPressedSkipButton</span>  <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">VideoIsFinshed</span>         <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="kt">char</span><span class="p">[]</span> <span class="n">video_name</span> <span class="o">=</span> <span class="n">m2v_files</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">video_name</span> <span class="o">==</span> <span class="s">"SMLogo"</span> <span class="o">||</span> <span class="n">video_name</span> <span class="o">==</span> <span class="s">"openingCredits"</span> <span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">skipAlways</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+    <span class="n">skipOnbuttonPress</span><span class="p">();</span>
+  <span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">skipAlways</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kt">bool</span> <span class="n">UserPressedSkipButton</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="n">VideoIsFinshed</span>        <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">skipOnbuttonPress</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">controller_button</span> <span class="o">==</span> <span class="n">DEFINE_ACTION_BUTTON</span> <span class="cm">/* 64 */</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="kt">bool</span> <span class="n">UserPressedSkipButton</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">VideoIsFinshed</span>        <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>What this code does is it checks if the video filenames match. If they do, we call into the always skip video subroutine. The benefit of this being that it will only skip the intro videos and not the rest of the game, which is handy for those who do not want to watch intros every time they want to play.</p>
+
+<h2 id="static-and-dynamic-framerates">Static and Dynamic Framerates</h2>
+
+<p>In all God of War games, they have deltatime. It calculates the difference between the amount of time it takes to push a frame onto the display and writes that delta between the frames to game logic and other things. But since this is code from the PS2 era, things are weird. They have a specific range the game runs at: 15 to 60FPS. Going below 15FPS will snap to the maximum frametime of 66.67ms, going above 60 will snap to 16.67ms. meaning if you wanted to run the games at 120FPS, you’ll get double speed.</p>
+
+<p>But of course, if there is a will, there is a way, at least for the PS3 titles.</p>
+
+<p>The code is very similar between them so we won’t explain it for both games, but here’s how it goes:</p>
+
+<p>In memory, the game keeps track of a lot of things during gameplay. The area of interest is <code class="language-plaintext highlighter-rouge">0x006406f0</code>.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/GOW-PS3-FPS-Patches/Screen_memarea3.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/GOW-PS3-FPS-Patches/Screen_memarea3.png" />
+</a></div>
+
+<p>This area holds: framerate (int32) and frametimes (float32). Setting a breakpoint on the constantly writing floats gives us a few clues, one is it leads to this rather complicated sub at <code class="language-plaintext highlighter-rouge">0x0026b674</code>, I have not analyzed this one myself but I can tell that it has very important key information which helped us solve the puzzle.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">MinFPS</span> <span class="o">=</span> <span class="n">target_FPS</span> <span class="o">/</span> <span class="p">(</span> <span class="mi">400</span> <span class="o">/</span> <span class="mi">100</span> <span class="p">);</span>
+</code></pre></div></div>
+
+<p>This snippet of code divides the maximum framerate by 4 times a 100. Which adds up to 60/4 = 15. Simple. And changing this to 5000 gives us a minimum framerate of 2. Looking just a little closer, there’s -1.0 on this load float instruction.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/GOW-PS3-FPS-Patches/Screen_Ghidra0.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/GOW-PS3-FPS-Patches/Screen_Ghidra0.png" />
+</a></div>
+
+<p>That looks interesting, let’s check it out in memory, and..</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/GOW-PS3-FPS-Patches/Screen_FPSConst1.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/GOW-PS3-FPS-Patches/Screen_FPSConst1.png" />
+</a></div>
+
+<p>A constant of 59.94. How interesting.</p>
+
+<p>And the code that gives us this value is even more interesting:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">if</span> <span class="p">(</span><span class="n">frame_height</span> <span class="o">==</span> <span class="mi">576</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">SetMaxFPS</span><span class="p">(</span><span class="mf">50.00</span><span class="p">);</span> <span class="c1">// PAL</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="p">{</span>
+    <span class="n">SetMaxFPS</span><span class="p">(</span><span class="mf">59.94</span><span class="p">);</span> <span class="c1">// NTSC</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+<p>It compares if scanline height is 576 for PAL users, and if so sets the max FPS to 50.0, else (usually 480 lines) 59.94.</p>
+
+<p>How about we change this to 120?</p>
+
+<div align="center">
+<video width="100%" controls="" autoplay="" muted="" loop="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/GOW-PS3-FPS-Patches/Game_120FPSDemo4.mp4" type="video/mp4" />
+</video>
+</div>
+
+<p>Is that God of War 3 at up to 120FPS?</p>
+
+<p>Yes, it is.</p>
+
+<p>But the game is currently broken. There are two problems,</p>
+
+<div align="center">
+<video width="100%" autoplay="" muted="" loop="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/GOW-PS3-FPS-Patches/Game_ChainBugDemo.mp4" type="video/mp4" />
+</video>
+</div>
+
+<div align="center">
+<video width="100%" autoplay="" muted="" loop="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/GOW-PS3-FPS-Patches/Game_WaterBugDemo.mp4" type="video/mp4" />
+</video>
+</div>
+
+<p>One with the super slow chain swing and two when kratos dives into the water, causing the game to freak out and be stuck in a loop. The solution? Set the reading float to a static 60.</p>
+
+<p>During our testing, we discovered that this patch (accidentally) fixed a very annoying bug: out-of-sync in-game cinematics.</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/r1sGjetEHz0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<p>That’s an unexpected bug fix! <i class="twa twa-party-popper"></i> The best kind.</p>
+
+<h2 id="closing-words">Closing words</h2>
+
+<p>If there are more bugs that you have found with our patch, please post them in the comments and a save file so we can investigate.</p>
+
+<p>Join in next time where we actually get to see mud tracks and big trucks! Stay tuned!</p>
+
+<h2 id="patch">Patch</h2>
+
+<p>For those looking to use the patch on the emulator, you can head over to the patch manager, click on the “Download Latest Patches” and find the patch you wanted to use with your game Title ID and version, click on the checkbox to enable the patch and save changes.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_patch_example.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_patch_example.png" />
+</a></div>
+
+<h2 id="supporters">Supporters</h2>
+
+<p>Thanks to the patrons who supported me on various platforms! You guys are awesome!</p>
+
+<h3 id="monthly-supporters">Monthly supporters:</h3>
+<ul>
+  <li>
+    <p><a href="https://www.patreon.com/illusion0001">Patreon</a>:</p>
+
+    <ul>
+      <li>ac2pic</li>
+      <li>Alexa</li>
+      <li>Brett</li>
+      <li>Ciril</li>
+      <li>GarnetSunset</li>
+      <li>Mmmmmhno</li>
+      <li>Paul</li>
+      <li>PlayStation5Mods</li>
+      <li>RazzySxPB</li>
+      <li>Ryan</li>
+      <li>Voredy</li>
+      <li>YveltalGriffin</li>
+      <li>Zackery</li>
+      <li>alessaro92</li>
+      <li>ashenC</li>
+      <li>embee</li>
+      <li>erdosadam24</li>
+      <li>faith</li>
+      <li>maplemiyazaki</li>
+      <li>patrick</li>
+      <li>rudi</li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="https://github.com/sponsors/illusion0001">Github Sponsors</a>:</p>
+
+    <ul>
+      <li>VIPO777</li>
+      <li>WardFail</li>
+      <li>Whitehawkx</li>
+      <li>gorshco</li>
+      <li>jrson83</li>
+      <li>regal.</li>
+      <li>suwagawaki</li>
+    </ul>
+  </li>
+</ul>]]></content><author><name>illusion</name><email>illusion3185@gmail.com</email></author><category term="patches" /><category term="rpcs3" /><category term="God of War" /><category term="GOW3" /><category term="GOWA" /><summary type="html"><![CDATA[Experince God of War 3 and Ascension with its addicting hack and slash action at 120FPS and beyond.]]></summary></entry><entry><title type="html">Framepacing Fixes for Fromsoftware Titles (PS4)</title><link href="/patches/2022/04/18/Fromsoftware-Framepacing/" rel="alternate" type="text/html" title="Framepacing Fixes for Fromsoftware Titles (PS4)" /><published>2022-04-18T00:00:00+00:00</published><updated>2022-04-18T00:00:00+00:00</updated><id>/patches/2022/04/18/Fromsoftware-Framepacing</id><content type="html" xml:base="/patches/2022/04/18/Fromsoftware-Framepacing/"><![CDATA[<!--
+If things went to plan, you're probably here from the digital foundry video.
+
+Hi there! (Wave emoji)
+-->
+
+<p>Please note that you are required to have a <a href="https://wololo.net/2021/12/14/ps4-how-to-run-the-ps4-9-00-jailbreak-full-guide-with-goldhen-payload/">exploited PlayStation 4</a> console on firmware <strong>9.00</strong> or lower to run the patches mentioned in this article.</p>
+
+<h1 id="intro">Intro</h1>
+
+<p>If you have ever played a recent fromsoftware games on console, be it Bloodborne, Dark Souls 3 or the recently released Elden Ring. You may have noticed something off about the presentation. One being that it feels more stuttery than other games with a 30 fps cap. And the other is inconsistent framerate on the enhanced consoles. With the framerate going up and down as it pleases depending on what is happening on screen.</p>
+
+<p>Let’s address the first issue. Improper frame pacing. It is an issue that started to occur on the 8th generation era with Bloodborne.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/Fromsoftware-Framepacing/bb-fps0.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/Fromsoftware-Framepacing/bb-fps0.png" />
+</a></div>
+
+<div align="center">
+<em>Yikes. <i class="twa twa-grimacing-face"></i></em>
+</div>
+
+<p>Now let’s go back to the previous generation, the PS3/Xbox 360 era.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/Fromsoftware-Framepacing/ds1-x360-2a.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/Fromsoftware-Framepacing/ds1-x360-2a.png" />
+</a></div>
+
+<p>Dark Souls on Xbox 360, no issues here. A consistent 30 fps when it meets the framerate target.</p>
+
+<p>How about Demon Souls?</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/Fromsoftware-Framepacing/des-ps3-3.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/Fromsoftware-Framepacing/des-ps3-3.png" />
+</a></div>
+
+<p>Yep, no issues here either.</p>
+
+<h2 id="what-went-wrong">What Went Wrong?</h2>
+
+<p>I could only speculate on the decision to implement their own framerate cap for multi plat games is portability. Not having to deal with API calls for each console is a definite win but they did not realize <em>if</em> their timer precision was off, it will cause inconsistency in frame delivery.</p>
+
+<p>But there’s something even more strange. Checkout this <a href="https://youtu.be/BN_4-d1wPQw?t=162">video</a> from VG Tech where they showcase Dark Souls 1 in Backcompat Mode on Xbox One and..</p>
+
+<div align="center">
+<video width="100%" controls="" loop="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/Fromsoftware-Framepacing/ds1-vgtech-trimmed-9752-10680.mp4" type="video/mp4" />
+</video>
+</div>
+
+<p>Bad framepacing on the newer consoles but not original hardware? Very strange indeed. <i class="twa twa-thinking-face"></i></p>
+
+<h2 id="the-simple-fix">The Simple Fix</h2>
+
+<p>So what are the solutions? A very simple fix to this would be to call the relavent API function calls equivalent to the platform.</p>
+
+<p>Here are some suggestions.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Platform</th>
+      <th>API Calls</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>PS3</td>
+      <td>cellGcmSetFlipMode</td>
+    </tr>
+    <tr>
+      <td>PS4/PS5</td>
+      <td>SceVideoOutFlipRate</td>
+    </tr>
+    <tr>
+      <td>Xbox 360</td>
+      <td><a href="https://docs.microsoft.com/ja-jp/previous-versions/windows/desktop/bb322831(v=vs.85)">D3D::PresentInterval</a></td>
+    </tr>
+    <tr>
+      <td>Xbox One/Series S/X</td>
+      <td><a href="https://docs.microsoft.com/ja-jp/windows/win32/api/dxgi/nf-dxgi-idxgiswapchain-present">IDXGISwapChain::Present</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>But calling these functions and giving them appropriate device handle is not enough to fix the issue. We must also lift the game’s broken framerate limiter as well.</p>
+
+<p>Either by changing <code class="language-plaintext highlighter-rouge">Game.FlipMode</code> in the code to <code class="language-plaintext highlighter-rouge">60FPS_*</code> or changing minimum frame update time from 33.33ms to 16.67ms. Let’s see the changes.</p>
+
+<p>Here’s bloodborne with the frame pacing issues resolved.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/Fromsoftware-Framepacing/bb-fps1.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/Fromsoftware-Framepacing/bb-fps1.png" />
+</a></div>
+
+<p>Volla! With just a few lines of code, we get proper and consistent 30 frames per second! Killing two bug reports with one stone.</p>
+
+<p>The same fix also applies for the uncapped framerate on the enhanced consoles in Dark Souls 3 and later titles. though when implementing this in reality, the framerate cap <strong>must</strong> always be an option rather than forcing it on the user.</p>
+
+<h2 id="trivia">Trivia</h2>
+
+<p>Here’s a little bit of trivia for you, there’s already deltatime calculated for the framerate counter among other things.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/Fromsoftware-Framepacing/bb-fps3.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/Fromsoftware-Framepacing/bb-fps3.png" />
+</a></div>
+
+<p>But fromsoftware did not use this until the release of Dark Souls 3. Which is also how I ported the framerate patch for Bloodborne by <a href="https://twitter.com/manfightdragon">Lance McDonald</a> to the <a href="/_patch/BloodborneNetworkTest-Orbis/">Network Test</a> version.</p>
+
+<h2 id="closing-words">Closing words</h2>
+
+<p>That is all I have for you today, you can support me using the links below and thanks to the patrons and you for reading!</p>
+
+<p>Catch you next time where we race against opponents in a sea of mud with big trucks?</p>
+
+<h2 id="showcase">Showcase</h2>
+
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/gxsnY6l-iPI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</div>
+
+<h2 id="patches">Patches</h2>
+
+<ul>
+  <li><a href="/_patch/Bloodborne-Orbis/" class="button" role="button"><i class="fas fa-download"></i> Patch for Bloodborne</a></li>
+  <li><a href="/_patch/DarkSoulsIIITheFireFadesEdition-Orbis/" class="button" role="button"><i class="fas fa-download"></i> Patch for Dark Souls 3</a></li>
+  <li><a href="/_patch/SekiroShadowsDieTwice-Orbis/" class="button" role="button"><i class="fas fa-download"></i> Patch for Sekiro</a></li>
+  <li><a href="/_patch/EldenRingNetworkTest-Orbis/" class="button" role="button"><i class="fas fa-download"></i> Patch for Elden Ring: Network Test</a></li>
+</ul>
+
+<p>Need help with installing the patches?</p>
+
+<p>Check out the <a href="/install-instructions/">Installation Guide</a>.</p>
+
+<h2 id="supporters">Supporters</h2>
+
+<p>Thanks to the patrons who supported me on various platforms! You guys are awesome!</p>
+
+<h3 id="monthly-supporters">Monthly supporters:</h3>
+<ul>
+  <li>
+    <p><a href="https://www.patreon.com/illusion0001">Patreon</a>:</p>
+
+    <ul>
+      <li>ac2pic</li>
+      <li>Alexa</li>
+      <li>Brett</li>
+      <li>Ciril</li>
+      <li>GarnetSunset</li>
+      <li>Mmmmmhno</li>
+      <li>Paul</li>
+      <li>PlayStation5Mods</li>
+      <li>RazzySxPB</li>
+      <li>Ryan</li>
+      <li>Voredy</li>
+      <li>YveltalGriffin</li>
+      <li>Zackery</li>
+      <li>alessaro92</li>
+      <li>ashenC</li>
+      <li>embee</li>
+      <li>erdosadam24</li>
+      <li>faith</li>
+      <li>maplemiyazaki</li>
+      <li>patrick</li>
+      <li>rudi</li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="https://github.com/sponsors/illusion0001">Github Sponsors</a>:</p>
+
+    <ul>
+      <li>VIPO777</li>
+      <li>WardFail</li>
+      <li>Whitehawkx</li>
+      <li>gorshco</li>
+      <li>jrson83</li>
+      <li>regal.</li>
+      <li>suwagawaki</li>
+    </ul>
+  </li>
+</ul>]]></content><author><name>illusion</name><email>illusion3185@gmail.com</email></author><category term="patches" /><category term="fromsoftware" /><category term="bloodborne" /><category term="darksouls" /><category term="eldenring" /><category term="sekiro" /><category term="patches" /><summary type="html"><![CDATA[Players dealt with bad framepacing on consoles since 2015.]]></summary></entry><entry><title type="html">Uncharted 3 Multiplayer Beta Now Playable Without PSN (PS3)</title><link href="/patches/2022/03/09/Big3-MPBeta-Lan/" rel="alternate" type="text/html" title="Uncharted 3 Multiplayer Beta Now Playable Without PSN (PS3)" /><published>2022-03-09T00:00:00+00:00</published><updated>2022-03-09T00:00:00+00:00</updated><id>/patches/2022/03/09/Big3-MPBeta-Lan</id><content type="html" xml:base="/patches/2022/03/09/Big3-MPBeta-Lan/"><![CDATA[<h1 id="intro">Intro</h1>
+
+<p>It is no secret that I have been on the Uncharted Reloaded team for a while, a group of dedicated and talented individuals in an attempt to revive the multiplayer servers that was offline since it’s closure in 2019.</p>
+
+<h2 id="the-problem">The Problem</h2>
+
+<p>Recently I was tasked with solving a crash in one of the multiplayer public beta upon entering a secret LAN mode.</p>
+
+<p>Yes, this is the same beta that was ran during June 28th to July 14th back in 2011. More details <a href="https://blog.playstation.com/2011/06/28/uncharted-3-multiplayer-beta-details/">here</a>.</p>
+
+<p>Normally it is not possible to access this mode because on the start screen, you’ll be prompted to sign in to PlayStation Network.</p>
+
+<div align="center">
+<video width="100%" controls="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/GameOS-XMB-0c.mp4" type="video/mp4" />
+</video>
+</div>
+
+<p>It is possible to have access to the menus that was previous locked behind a PSN sign in prompt. Before you ask, this <strong>does not</strong> get rid of PSN authentication, it simply unlocks the menu. The code probably goes something like this.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="n">sku</span> <span class="o">==</span> <span class="n">NPUA07618</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">LockMenuFeature</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="n">LockMenuFeature</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+<p>The game has a so called blacklist of titleIDs that will restrict access to certain features, such as gore, violence and others, there is a simple trick to get around this but first let me show you something special.</p>
+
+<div align="center">
+<video width="100%" controls="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/Cell-XMB-0b.mp4" type="video/mp4" />
+</video>
+</div>
+
+<p>That’s right, Yours truly (finally) got a PlayStation 3!</p>
+
+<p>Special thanks goes to the <a href="https://www.patreon.com/illusion0001">Patrons</a>, Vampyre, a member of the team and <em>you</em> for supporting me to be able to get a hold of such not-so rare piece of hardware.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/DiscPhoto-1-Scaled.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/DiscPhoto-1-Scaled.png" />
+</a></div>
+
+<p>It is a Slim model PS3, check it out, quite a beauty isn’t it? This will become useful later on.</p>
+
+<p>Now back to the task at hand.</p>
+
+<h2 id="infinite-solutions-infinite-possibility">Infinite Solutions, Infinite Possibility</h2>
+
+<p>What is this simple trick you may ask? Well it is quite simple, by changing the SKU ID, which consists of the Game’s Title ID that you can find printed on the spine of the case or disc.</p>
+
+<figure class="half ">
+  
+    
+      <a href="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/DiscPhoto-2-Scaled.png">
+          <img src="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/DiscPhoto-2-Scaled.png" alt="" />
+      </a>
+    
+  
+    
+      <a href="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/DiscPhoto-3-Scaled.png">
+          <img src="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/DiscPhoto-3-Scaled.png" alt="" />
+      </a>
+    
+  
+  
+</figure>
+
+<p>Oh wait, is that too small? Let me zoom in.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/DiscPhoto-4-Scaled.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/DiscPhoto-4-Scaled.png" />
+</a></div>
+
+<div align="center">
+<em>I apologize if I ruin the illusion that printed material are full color but they are not. <i class="twa thinkhappy"></i></em>
+</div>
+
+<p>For SKU blacklist, in this case it only restricts the use of the main menu.</p>
+
+<p>What will happen if the SKU is changed?</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/GameOS-XMB-11stack.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/GameOS-XMB-11stack.png" />
+</a></div>
+
+<p>With this one simple trick, we can have access to the whole menu, which includes but not limited to: Online Mode used during the beta, a Local Multiplayer mode and a options menu with a blank controller page. Will get back to that in a moment.</p>
+
+<p>The funny thing about this SKU check code is it will fallback to whatever the default is set to (in this case its <code class="language-plaintext highlighter-rouge">UP9000-BCUS98233_00</code>) if the string does not match. Hot singles in your <code class="language-plaintext highlighter-rouge">strcmp</code> (string compare)? With that knowledge the SKU can be anything but the blacklisted ID of the game.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/CE-0b.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/CE-0b.png" />
+</a></div>
+
+<div align="center">
+<em><a href="https://www.youtube.com/user/ZEROx2085">ZEROx</a> says hi! Part of the code was written by him. :)</em>
+</div>
+
+<p>As for LAN mode, why is it a curiosity? Because upon entering a local username, it crashes with an assertion.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{PPU[0x100200e] Thread (NetInit) [0x008eaebc]} SIG: Thread terminated due to fatal error.
+
+LookupSymbolValue: Symbol '0x6f1c3f87' ("") not found!
+(consider the alternate LookupSymbol)
+</code></pre></div></div>
+
+<p>A script file cannot be found, how strange. such is life I suppose.</p>
+
+<p>So I had a brilliant idea, mess around in the game’s memory in the area where the SKU is located.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/CE-0c.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/CE-0c.png" />
+</a></div>
+
+<p>At first I thought I was out of luck but fear not, with a little bit of trial and error of changing true to false, there is a solution.</p>
+
+<p>You may have already noticed there is some <code class="language-plaintext highlighter-rouge">01</code> at the top. If you guess correctly that it should be <code class="language-plaintext highlighter-rouge">00</code> you would be correct!</p>
+
+<div align="center">
+<video width="100%" controls="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/RPCS3-login.mp4" type="video/mp4" />
+</video>
+</div>
+
+<p>The crash is solved! But it doesn’t go anywhere, or does it?</p>
+
+<div align="center">
+ <audio controls="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/misc/JakeChudnowMoonMen.mp3" type="audio/mpeg" />
+Your browser does not support the audio element.
+</audio>
+</div>
+
+<div align="center">
+<em>Jake Chudnow  - Moon Men (<a href="https://youtu.be/sIN3gRV2T7A">Unreleased</a>)</em>
+</div>
+
+<p>Let’s try it on a real PS3.</p>
+
+<div align="center">
+<video width="100%" controls="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/GameOS-XMB-011.mp4" type="video/mp4" />
+</video>
+</div>
+
+<p>Oh my. It works? What’s with the poor performance on the menu?</p>
+
+<p>Here, let’s put some numbers on the screen.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/GameOS-XMB-0f.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/GameOS-XMB-0f.png" />
+</a></div>
+
+<p>It turns out you were never supposed to be able to enter this menu, and Uncharted TV is setup for an online only environment. The rapid flicker and slowdowns are caused by the game trying to do the following:</p>
+
+<p>Spawn video decoding threads -&gt; tries to find video files on a non existent server (they were shutdown a while ago) -&gt; despawn threads -&gt; cycle repeat indefinitely.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://d2i32rosu1so9x.cloudfront.net/1.mp4
+http://d2i32rosu1so9x.cloudfront.net/2.mp4
+http://d2i32rosu1so9x.cloudfront.net/u3-reveal.mp4
+http://d2i32rosu1so9x.cloudfront.net/u3-e32011-trailer.mp4
+http://d2i32rosu1so9x.cloudfront.net/5.mp4
+http://d2i32rosu1so9x.cloudfront.net/6.mp4
+</code></pre></div></div>
+
+<p>Some of the URLs the game tries to access for videos.</p>
+
+<p>A solution to this would be to outright get rid of Uncharted TV and stop the game from spawning video threads and causing slow down or if we do eventually get the online functionality working, host our own videos instead.</p>
+
+<p>Alright, where do we begin?</p>
+
+<p>Luckily the video panel goes away when you enter the options menu and comes back when the user returns, with a little bit of back and forth scanning. I narrowed it down to this address. <code class="language-plaintext highlighter-rouge">1224C60</code> setting this byte to 0 will temporary turn off the video panel but the video threads are still being spawned in. Time for a breakpoint. There are two write addresses, let’s have a look.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>00700834
+0070158C
+</code></pre></div></div>
+
+<p>Oh wow, check this out, this is exactly what we are after. It even has text reference to the thread name and the relevant calls to spawn a new ppu thread.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)(</span><span class="n">DAT_01224d18</span> <span class="o">+</span> <span class="mh">0x2124</span><span class="p">)</span> <span class="o">==</span> <span class="sc">'\0'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">FUN_00700804</span><span class="p">(</span><span class="n">param_1</span><span class="p">);</span>
+    <span class="n">FUN_00c93f28</span><span class="p">(</span><span class="n">param_1</span><span class="p">,</span><span class="n">param_2</span><span class="p">);</span>
+    <span class="n">iVar12</span> <span class="o">=</span> <span class="n">FUN_0070015c</span><span class="p">(</span><span class="n">param_1</span><span class="p">,</span><span class="mh">0x1e</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">iVar12</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="o">*</span><span class="p">(</span><span class="n">undefined4</span> <span class="o">*</span><span class="p">)((</span><span class="kt">int</span><span class="p">)</span><span class="n">puVar7</span> <span class="o">+</span> <span class="mh">0x84</span><span class="p">)</span> <span class="o">=</span> <span class="mh">0x21</span><span class="p">;</span>
+      <span class="p">...</span>
+      <span class="o">*</span><span class="p">(</span><span class="n">undefined</span> <span class="o">*</span><span class="p">)(</span><span class="n">param_1</span> <span class="o">+</span> <span class="mh">0x120</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// enable uctv byte</span>
+      <span class="o">**</span><span class="p">(</span><span class="n">undefined</span> <span class="o">*</span><span class="p">)(</span><span class="n">param_1</span> <span class="o">+</span> <span class="mh">0x1bc</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="n">sys_ppu_thread_create</span><span class="p">(</span><span class="n">param_1</span> <span class="o">+</span> <span class="mh">0x98</span><span class="p">,</span><span class="o">&amp;</span><span class="n">PTR_FUN_010ae048</span><span class="p">,</span><span class="n">param_1</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mh">0x8000</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s">"YouTubeStream"</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Since the code turns it on, let’s turn it off.</p>
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/GameOS-XMB-0e.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/GameOS-XMB-0e.png" />
+</a></div>
+
+<div align="center">
+<em>That doesn't look good. <i class="twa-2x twa-eyes"></i></em>
+</div>
+
+<p>It’s worse than before and the video panel is not even shown, well something must have went wrong in the code. Should we take another look?</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      <span class="k">if</span> <span class="p">(((</span><span class="o">*</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)(</span><span class="n">param_1</span> <span class="o">+</span> <span class="mh">0xb0</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)(</span><span class="n">param_1</span> <span class="o">+</span> <span class="mh">0xa4</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">))</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">iVar12</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">uVar15</span> <span class="o">=</span> <span class="mh">0xffffffff</span><span class="p">;</span> <span class="c1">// -1</span>
+        <span class="n">FUN_00c97c30</span><span class="p">(</span><span class="n">iVar12</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mh">0xe1000</span><span class="p">);</span>
+        <span class="p">...</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Ah, it could have been that if that byte was 0 it could have return -1 which is <code class="language-plaintext highlighter-rouge">ffffffff</code> in hex and caused it to run into the issue we were having earlier, let’s return 0 and skip the code that tries to spawn the threads and accompanying video panel.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/GameOS-XMB-010.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/GameOS-XMB-010.png" />
+</a></div>
+
+<div align="center">
+<em>Hella yes! We got our performance back, and no mosh pit of slowdowns, shaka brah!</em>
+</div>
+
+<p>Here comes the moment of truth, will other players be able to connect after the various patches has been applied?</p>
+
+<figure class="third ">
+  
+    
+      <a href="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/GameOS-XMB-12.png">
+          <img src="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/GameOS-XMB-12.png" alt="" />
+      </a>
+    
+  
+    
+      <a href="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/GameOS-XMB-13.png">
+          <img src="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/GameOS-XMB-13.png" alt="" />
+      </a>
+    
+  
+    
+      <a href="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/GameOS-XMB-15.png">
+          <img src="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/GameOS-XMB-15.png" alt="" />
+      </a>
+    
+  
+  
+</figure>
+
+<div align="center">
+<em>Hooray! <i class="twa twa-party-popper"></i> (You can click on the images to view them bigger now.)</em>
+</div>
+
+<p>What about the blank controller page I mentioned earlier? After loading into the multiplayer menu, the assets necessary for it is also loaded.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/GameOS-XMB-14.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/GameOS-XMB-14.png" />
+</a></div>
+
+<h2 id="closing-words">Closing Words</h2>
+
+<p>Well that’s all for this post, below is where you can find the patch and support me as a independent patch creator. Have a good rest of your day! I’ll catch you next time.</p>
+
+<h1 id="credits">Credits</h1>
+
+<p><a href="https://discord.gg/qr6SjGM4gH">Uncharted Reloaded</a> and Vampyre for their support.</p>
+
+<p><a href="https://www.youtube.com/user/ZEROx2085">ZEROx</a> for help with some of the written code.</p>
+
+<h1 id="patch">Patch</h1>
+
+<p><a href="https://github.com/illusion0001/console-game-patches/blob/main/_patch0/cell/Uncharted3MultiplayerBeta-Cell.yml" class="button" role="button"><i class="fas fa-download"></i> Patch Source Code</a></p>
+
+<h2 id="supporters">Supporters</h2>
+
+<p>Thanks to the patrons who supported me on various platforms! You guys are awesome!</p>
+
+<h3 id="monthly-supporters">Monthly supporters:</h3>
+<ul>
+  <li>
+    <p><a href="https://www.patreon.com/illusion0001">Patreon</a>:</p>
+
+    <ul>
+      <li>ac2pic</li>
+      <li>Alexa</li>
+      <li>Brett</li>
+      <li>Ciril</li>
+      <li>GarnetSunset</li>
+      <li>Mmmmmhno</li>
+      <li>Paul</li>
+      <li>PlayStation5Mods</li>
+      <li>RazzySxPB</li>
+      <li>Ryan</li>
+      <li>Voredy</li>
+      <li>YveltalGriffin</li>
+      <li>Zackery</li>
+      <li>alessaro92</li>
+      <li>ashenC</li>
+      <li>embee</li>
+      <li>erdosadam24</li>
+      <li>faith</li>
+      <li>maplemiyazaki</li>
+      <li>patrick</li>
+      <li>rudi</li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="https://github.com/sponsors/illusion0001">Github Sponsors</a>:</p>
+
+    <ul>
+      <li>VIPO777</li>
+      <li>WardFail</li>
+      <li>Whitehawkx</li>
+      <li>gorshco</li>
+      <li>jrson83</li>
+      <li>regal.</li>
+      <li>suwagawaki</li>
+    </ul>
+  </li>
+</ul>]]></content><author><name>illusion</name><email>illusion3185@gmail.com</email></author><category term="patches" /><category term="uncharted" /><category term="ps3" /><category term="rpcs3" /><category term="patches" /><summary type="html"><![CDATA[Online or Offline, you decide.]]></summary></entry><entry><title type="html">Intro Skip Patches for Uncharted and The Last of Us</title><link href="/patches/2022/02/05/uncharted-tlou-introskips/" rel="alternate" type="text/html" title="Intro Skip Patches for Uncharted and The Last of Us" /><published>2022-02-05T00:00:00+00:00</published><updated>2022-02-05T00:00:00+00:00</updated><id>/patches/2022/02/05/uncharted-tlou-introskips</id><content type="html" xml:base="/patches/2022/02/05/uncharted-tlou-introskips/"><![CDATA[<p>Please note that you are required to have a <a href="https://wololo.net/2021/12/14/ps4-how-to-run-the-ps4-9-00-jailbreak-full-guide-with-goldhen-payload/">exploited PlayStation 4</a> console on firmware <strong>9.00</strong> or lower to run the patches mentioned in this article.</p>
+
+<h1 id="intro">Intro</h1>
+
+<p>With the recent release of the Uncharted Collection on the PS5 I thought it would be fun to try to skip the intro and understand a little more how the bootflow works.</p>
+
+<h2 id="part-1---task-id-differences">Part 1 - Task ID differences</h2>
+
+<p>If you remember from a <a href="/patches/2021/12/04/t1-nailbomb-softlock-patch/">previous post</a> where I discussed on finding task ID, the layout goes something like this.</p>
+
+<p>String (ASCII)</p>
+
+<p>Address pointer (32 or 64 Bit depending on the platform)</p>
+
+<p>Task ID (usually 32 but 64 Bit in The Last of Us: Part 2 with the change to entirely 64 bit hashes).</p>
+
+<p>32 Bit Pointer and Hashes (PS3, Big Endian, Uncharted 3)</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/uncharted-t1-introskips/ND_task_ID_e00.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/uncharted-t1-introskips/ND_task_ID_e00.png" />
+</a></div>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/uncharted-t1-introskips/ND_task_ID_e01.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/uncharted-t1-introskips/ND_task_ID_e01.png" />
+</a></div>
+
+<p>64 Bit Pointer and Hashes (PS4, Litle Endian, The Last of Us: Part 2)</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/uncharted-t1-introskips/ND_task_ID_e02.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/uncharted-t1-introskips/ND_task_ID_e02.png" />
+</a></div>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/uncharted-t1-introskips/ND_task_ID_e03.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/uncharted-t1-introskips/ND_task_ID_e03.png" />
+</a></div>
+
+<h2 id="part-2---intros-or-no-intros">Part 2 - Intros or No Intros</h2>
+
+<p>HD era naughty dog games have this task called <code class="language-plaintext highlighter-rouge">ndi</code> which stands for <strong>N</strong>aughty <strong>D</strong>og <strong>I</strong>ntro. Simple enough. The ID associated with this task has not changed since Uncharted 1, which is <code class="language-plaintext highlighter-rouge">0xed857351</code> and <code class="language-plaintext highlighter-rouge">menu</code> with its ID being <code class="language-plaintext highlighter-rouge">0xd006e7b5</code>.</p>
+
+<p>Now why is this important? Because the game’s code looks up these id on what to load. For instance here is a snippet of code from Uncharted 3.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      <span class="c1">// taken from uc3 ps3 code</span>
+      <span class="c1">// language-selection is exclusive to uncharted 3</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">skip_ndi</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">task</span> <span class="o">=</span> <span class="mh">0x66b93942</span><span class="p">;</span> <span class="c1">// language-selection</span>
+       <span class="c1">// bootflow goes like this: </span>
+       <span class="c1">// t1, uc4, and uc-tll</span>
+       <span class="c1">// ndi -&gt; menu</span>
+       <span class="c1">// uc3</span>
+       <span class="c1">// language-selection -&gt; ndi (handled by language-selection flow) -&gt; menu</span>
+       <span class="c1">// uc1 and uc2</span>
+       <span class="c1">// autosave-warning -&gt; ndi -&gt; menu</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">task</span> <span class="o">=</span> <span class="mh">0xd006e7b5</span><span class="p">;</span> <span class="c1">// menu</span>
+      <span class="p">}</span>
+</code></pre></div></div>
+
+<p>Code is simple enough, in this case, if this condition is true, it will skip over <code class="language-plaintext highlighter-rouge">language_selection</code> and <code class="language-plaintext highlighter-rouge">ndi</code>.
+The very same process can be repeated for the following games.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Uncharted 1: Drake's Fortune   (PS4 only)
+Uncharted 2: Among Thieves     (PS3/PS4)
+Uncharted 3: Drake's Deception (PS3/PS4)
+The Last of Us                 (PS3/PS4)
+Uncharted 4: A Thief's End
+Uncharted: The Lost Legacy
+The Last of Us: Part 2         (not yet possible)
+</code></pre></div></div>
+
+<p>As to why Uncharted 1 intro skip is not yet possible on the PS3?</p>
+
+<p>Because the compiled script file on that version is not the easiest thing to read. Well same for Uncharted 2 but in that case searching for the menu task ID and always booting into that does the trick but not for the first game.</p>
+
+<p>As for The Last of Us Part 2, the intro is baked directly into the <code class="language-plaintext highlighter-rouge">menu</code> task. Which also explains why there are no <code class="language-plaintext highlighter-rouge">ndi</code> task to be found in the task list.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/uncharted-t1-introskips/t2_task_menu.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/uncharted-t1-introskips/t2_task_menu.png" />
+</a></div>
+
+<p>I think it is still possible if I look hard enough into the game’s code or it could simply be a case of…</p>
+
+<div align="center">
+<video width="100%" autoplay="" loop="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/memes/tenor/skill_issue_meme.mp4" type="video/mp4" />
+</video>
+</div>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/uncharted-t1-introskips/u1_ps3_taskbin.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/uncharted-t1-introskips/u1_ps3_taskbin.png" />
+</a></div>
+
+<div align="center">
+<em>Uncharted 1 task script file</em>
+</div>
+
+<p>Yeah.. I wouldn’t touch this script file with a ten foot pole.</p>
+
+<h2 id="part-3---porting-to-newer-system">Part 3 - Porting to newer system</h2>
+
+<p>Let’s see if the PS4 version is any difficult for the PS3 era titles. Thankfully, Bluepoint did all of the hard work for us on the trilogy collection and we can simply enable Boolean to skip over the video that plays during the <code class="language-plaintext highlighter-rouge">ndi</code> task and call it a day.</p>
+
+<p><code class="language-plaintext highlighter-rouge">bp_skipintromovies</code> this is a command line parameter, it only exists in Uncharted 1 and 2 but it shows that they probably got bored watching the intro so they implemented this cvar. :p</p>
+
+<p>This Boolean is used when the user switches games from the option menu.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/uncharted-t1-introskips/u3_appchooser.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/uncharted-t1-introskips/u3_appchooser.png" />
+</a></div>
+
+<p>However, things are not as cut and dry as I would have thought.</p>
+
+<p>In Uncharted 3, this string cannot be found. Another solution must have existed. And there is a solution to this. A while ago back in 2021..? When I was looking for a way to optimize the developer menu enable code I came across this magnificent piece of code.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">if</span> <span class="p">(</span><span class="mh">0x027b9d22</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// is game launched from app chooser?</span>
+    <span class="mh">0x027baf7e</span> <span class="o">=</span>  <span class="nb">true</span><span class="p">;</span>
+    <span class="mh">0x027baf6a</span> <span class="o">=</span>  <span class="nb">true</span><span class="p">;</span>
+    <span class="mh">0x027baf67</span> <span class="o">=</span>  <span class="nb">true</span><span class="p">;</span>
+    <span class="mh">0x027baf69</span> <span class="o">=</span>  <span class="nb">true</span><span class="p">;</span>
+    <span class="mh">0x027baf64</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span> <span class="c1">// dev menu bool</span>
+    <span class="mh">0x027b9d21</span> <span class="o">=</span>  <span class="nb">true</span><span class="p">;</span>
+    <span class="mh">0x027b9d6c</span> <span class="o">=</span>  <span class="nb">true</span><span class="p">;</span> <span class="c1">// skip ndi bool</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+<p>The last one happens to be the same one that skips the intro in the public beta version of the original game. I can simply turn this Boolean off and there we go. Uncharted 3 on the PS4 intro is skipped. Nothing to be worried about as there are no multiplayer components to this one.</p>
+
+<p>I got the motivation to do intro skips was from fixing a bug where Uncharted 3 Public Beta on the PS3 would crash upon entering the Lan menu, which will be an upcoming post for those curious about it.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/uncharted-t1-introskips/u3_ps3_public_beta_tease.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/uncharted-t1-introskips/u3_ps3_public_beta_tease.png" />
+</a></div>
+
+<div align="center">
+<em><i class="twa-2x twa-eyes"></i></em>
+</div>
+
+<h2 id="closing-words">Closing Words</h2>
+
+<p>Well that’s all for this post, below are the showcase video, where you can find the patch and support me as a independent patch creator.</p>
+
+<p>Have a good rest of your day! I’ll catch you next time.</p>
+
+<h1 id="credits">Credits</h1>
+
+<p><a href="https://www.youtube.com/user/ZEROx2085">ZEROx</a> for porting to the PS3 version.</p>
+
+<p><a href="https://www.youtube.com/c/Freako/">Freako</a> and <a href="https://www.youtube.com/user/HdHereidme">HereisMe</a> for publishing their knowledge about reversing Naughty Dog Titles.</p>
+
+<h2 id="showcase">Showcase</h2>
+
+<div align="center" class="responsive-video-container">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Ord-myNMg2E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</div>
+
+<h1 id="patch">Patch</h1>
+
+<p>This patch is available for PS3 (RPCS3), and PS4.</p>
+
+<p>For those looking to use the patch on the RPCS3 emulator, you can head over to the patch manager, click on the “<strong>Download Latest Patches</strong>” button and find the patch you wanted to use with your game Title ID and version, click on the checkbox to enable the patch and save changes.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_patch_example.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_patch_example.png" />
+</a></div>
+
+<p><a href="https://wiki.rpcs3.net/index.php?title=Uncharted_2:_Among_Thieves#Patches" class="button" role="button"><i class="fas fa-download"></i> Patch Source Code: Uncharted 2 (RPCS3)</a></p>
+
+<p><a href="https://wiki.rpcs3.net/index.php?title=Uncharted_3:_Drake%27s_Deception#Patches" class="button" role="button"><i class="fas fa-download"></i> Patch Source Code: Uncharted 3 (RPCS3)</a></p>
+
+<p><a href="https://wiki.rpcs3.net/index.php?title=The_Last_of_Us#Patches" class="button" role="button"><i class="fas fa-download"></i> Patch Source Code: The Last of Us (RPCS3)</a></p>
+
+<p>PlayStation 4 users, can follow this guide on how to install the patch <a href="/install-instructions">here</a>. (the following tutorial <strong>does not</strong> cover how to build the update package. only to install the patch into the binary.)</p>
+
+<p><a href="/_patch/UnchartedTheNathanDrakeCollection-Orbis" class="button" role="button"><i class="fas fa-download"></i> Patch: Uncharted: The Nathan Drake Collection (PS4)</a></p>
+
+<p><a href="/_patch/TheLastOfUs1-Orbis" class="button" role="button"><i class="fas fa-download"></i> Patch: The Last of Us Remastered (PS4)</a></p>
+
+<p><a href="/_patch/Uncharted4AThiefsEnd-Orbis" class="button" role="button"><i class="fas fa-download"></i> Patch: Uncharted 4 (PS4)</a></p>
+
+<p><a href="/_patch/UnchartedTheLostLegacy-Orbis" class="button" role="button"><i class="fas fa-download"></i> Patch: Uncharted: The Lost Legacy (PS4)</a></p>
+
+<h2 id="supporters">Supporters</h2>
+
+<p>Thanks to the patrons who supported me on various platforms! You guys are awesome!</p>
+
+<h3 id="monthly-supporters">Monthly supporters:</h3>
+<ul>
+  <li>
+    <p><a href="https://www.patreon.com/illusion0001">Patreon</a>:</p>
+
+    <ul>
+      <li>ac2pic</li>
+      <li>Alexa</li>
+      <li>Brett</li>
+      <li>Ciril</li>
+      <li>GarnetSunset</li>
+      <li>Mmmmmhno</li>
+      <li>Paul</li>
+      <li>PlayStation5Mods</li>
+      <li>RazzySxPB</li>
+      <li>Ryan</li>
+      <li>Voredy</li>
+      <li>YveltalGriffin</li>
+      <li>Zackery</li>
+      <li>alessaro92</li>
+      <li>ashenC</li>
+      <li>embee</li>
+      <li>erdosadam24</li>
+      <li>faith</li>
+      <li>maplemiyazaki</li>
+      <li>patrick</li>
+      <li>rudi</li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="https://github.com/sponsors/illusion0001">Github Sponsors</a>:</p>
+
+    <ul>
+      <li>VIPO777</li>
+      <li>WardFail</li>
+      <li>Whitehawkx</li>
+      <li>gorshco</li>
+      <li>jrson83</li>
+      <li>regal.</li>
+      <li>suwagawaki</li>
+    </ul>
+  </li>
+</ul>]]></content><author><name>illusion</name><email>illusion3185@gmail.com</email></author><category term="patches" /><category term="uncharted" /><category term="tlou" /><category term="ps4" /><category term="patches" /><summary type="html"><![CDATA[Introduction logos are no more.]]></summary></entry><entry><title type="html">Initial Framerate Patch Release (Work-In-Progress) for Gravity Rush 2</title><link href="/patches/2021/12/19/Gravite2-FrameratePatch/" rel="alternate" type="text/html" title="Initial Framerate Patch Release (Work-In-Progress) for Gravity Rush 2" /><published>2021-12-19T00:00:00+00:00</published><updated>2021-12-19T00:00:00+00:00</updated><id>/patches/2021/12/19/Gravite2-FrameratePatch</id><content type="html" xml:base="/patches/2021/12/19/Gravite2-FrameratePatch/"><![CDATA[<h1 id="intro">Intro</h1>
+
+<p>When I got into framerate patching 8 months ago, I looked at the exclusives on the <a href="https://web.archive.org/web/20211217080552/https://www.playstation.com/en-us/ps4/ps4-games/">PlayStation website</a> and saw 1 title that seem rather interesting and it does not have a PS5 Patch back then and even now. Not even a framerate unlock on Pro hardware. Yes, I’m talking about Gravity Rush 2 or Gravity Daze 2 if you are in Japan.</p>
+
+<h2 id="part-1---went-out-looking">Part 1 - Went out Looking</h2>
+
+<p>What’s so special about this title that took me so long to breakthrough? First is that there are barely any string references, second is they have their own frame limiter for video playback which also clamps down during gameplay.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch/GR2-FPS2a.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch/GR2-FPS2a.png" />
+</a></div>
+
+<div align="center">
+<em>32-33 FPS <i class="twa galciv"></i></em>
+</div>
+
+<p>So where do we start? Fliprate to 0 for 60hz output got us that. 32 to 33 framerate limit. And I went on for months, on and off looking for what this is about. And I even managed to break the framebuffer.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch/GR2-Framebuffer0.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch/GR2-Framebuffer0.png" />
+</a></div>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch/GR2-Framebuffer1.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch/GR2-Framebuffer1.png" />
+</a></div>
+
+<div align="center">
+<em>Nice looking Jigsaw puzzle</em>
+</div>
+
+<p>So I gave up. For a while at least. A few months went by, I decided to take a break and then validate the dozen projects I have, I realized that this game still hadn’t gotten a patch from anyone after I put out my findings over on my git page. So I went looking, after a couple of days, I found it.</p>
+
+<p>Looking at the framerate graph, it averages about 33 fps. Why is this important? Because 33fps is 30 milliseconds per frame! You know what that means.</p>
+
+<p><code class="language-plaintext highlighter-rouge">1000 / 33</code> equals to 30.. ish. But wait, what happens if we plug this number into the executable?</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch/GR2-30msSearch.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch/GR2-30msSearch.png" />
+</a></div>
+
+<p>A couple results, seems boring. Or so I thought..</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">lVar3</span> <span class="o">=</span> <span class="n">sceKernelGetProcessTime</span><span class="p">();</span>
+  <span class="n">uVar4</span> <span class="o">=</span> <span class="n">lVar3</span> <span class="o">-</span> <span class="p">(</span><span class="n">param_1</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">uVar4</span> <span class="o">&lt;</span> <span class="mi">30000</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">sceKernelUsleep</span><span class="p">(</span><span class="mi">30000</span> <span class="o">-</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">uVar4</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="n">scePthreadMutexLock</span><span class="p">();</span>
+  <span class="n">sceGnmSubmitDone</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>What’s this? It sleeps draw thread for 30ms?</p>
+
+<p>Another case of Japanese developers reinventing the wheel. <i class="twa twa-purple-heart"></i> <i class="twa twa-purple-heart"></i> Its wonderful.</p>
+
+<p>But anyway, removing this code gives us, you guess it, unlocked framerate.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch/GR2-FPS3.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch/GR2-FPS3.png" />
+</a></div>
+
+<div align="center">
+<em>First section of the demo, known to be cpu limited area</em>
+</div>
+
+<p>Since I have last published my findings, I have determined that this game is subject to fixed timestep, which means if the game framerate goes above or below the target framerate, it will speed up or slow down. Which in this case is 30 frames a second.</p>
+
+<p>If you have seen my findings a few months back, you have seen that there’s a byte for this particular setup that will purposely set everything to 16.7ms for locked 60 fps gameplay but the thing is, this isn’t perfect.</p>
+
+<p>Some sections will softlock the game because the game tick is running twice as fast; so we must implement a check that will set the game back to 30 fps for those problematic sections, otherwise run freely at up to 60 fps, with slowdown in hardware limited areas because we are still using fixed rate.</p>
+
+<h2 id="part-2---finding-level-names">Part 2 - Finding Level Names</h2>
+
+<p>Saving between two points, the start of epiosde 1 and the end of the epoiode and comparing the results can easily give us the level name we are looking for.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch/GR2-savedata-compare.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/Gravite2-FrameratePatch/GR2-savedata-compare.png" />
+</a></div>
+
+<div align="center">
+<em>Thanks to our Patreon Supporter <a href="https://github.com/ac2pic">ac2pic</a> for their knowledge about Gravity Rush save structure.</em>
+</div>
+
+<h2 id="part-3---coding-kat">Part 3 - Coding Kat</h2>
+
+<p>For level names we can search for this in memory then save the string into somewhere in the executable for easier access.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">if</span> <span class="p">(</span><span class="n">in_R12</span> <span class="o">==</span> <span class="s">"ep"</span> <span class="cm">/* story episodes */</span> <span class="o">||</span> <span class="n">in_R12</span> <span class="o">==</span> <span class="s">"ft"</span> <span class="cm">/* free roam */</span> <span class="o">||</span> <span class="n">in_R12</span> <span class="o">==</span> <span class="s">"sm"</span> <span class="cm">/*side missions*/</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="n">level_text</span> <span class="o">=</span> <span class="n">in_R12</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">return</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>The code I’m using here write asset strings into upper portions of memory, so I have to filter out most level prefix names found in the save file. Like <code class="language-plaintext highlighter-rouge">ep</code> for episodes or <code class="language-plaintext highlighter-rouge">sm</code> for side missions.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">lVar3</span> <span class="o">=</span> <span class="n">sceKernelGetProcessTime</span><span class="p">();</span>
+  <span class="n">uVar4</span> <span class="o">=</span> <span class="n">lVar3</span> <span class="o">-</span> <span class="p">(</span><span class="n">param_1</span><span class="p">);</span>
+  <span class="c1">// if (uVar4 &lt; 30000) {</span>
+  <span class="c1">//   sceKernelUsleep(30000 - (int)uVar4);</span>
+  <span class="c1">// }</span>
+  <span class="n">scePthreadMutexLock</span><span class="p">();</span>
+  <span class="n">sceGnmSubmitDone</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>Few commented lines of code, what does this do?</p>
+
+<p>We skipped the code to stall the rendering thread and well it does nothing as you may expect. But there are caveats to this.</p>
+
+<p>Most notable being that if there is nothing to stall the thread, the video playback thread can’t keep up and lags behind as a result, if anyone wants to take the challenge of improving on my initial semi working code, feel free to do so. <a href="https://github.com/illusion0001/illusion0001.github.io/blob/main/_patches/Gravity_Daze_2_Orbis.md#semi-functional-video-stutter-fix-for-patch-develeopers-only">Patch file</a></p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kt">int</span> <span class="n">game_flag</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// default</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">game_flag</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 60hz</span>
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">frametime</span> <span class="o">=</span> <span class="mf">0.01666667</span><span class="p">;</span>
+  <span class="k">const</span> <span class="n">int32</span> <span class="n">fliprate</span>  <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="n">sceVideoOutSetFlipRate</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">fliprate</span><span class="p">);</span>
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">game_flag</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// dangerous if failed on startup or loading levels</span>
+ <span class="k">return</span><span class="p">;</span>              <span class="c1">// But this shouldn't fail because flag is initialized with mode 2</span>
+<span class="p">}</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">game_flag</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 30hz, only use when softlock mode is true</span>
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">frametime</span> <span class="o">=</span> <span class="mf">0.03333334</span><span class="p">;</span>
+  <span class="k">const</span> <span class="n">int32</span> <span class="n">fliprate</span>  <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="n">sceVideoOutSetFlipRate</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">fliprate</span><span class="p">);</span>
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Alright, what does all this do exactly? Let’s go one by one.</p>
+
+<p>The variable game flag is something I created, this is to keep track of what state the game is currently in.</p>
+
+<p>When it is <code class="language-plaintext highlighter-rouge">1</code> set the constant for the fixed timestep to 16.7ms and set the fliprate to 0 for 60hz output. As a reminder, we have already skipped the code to sleep the render thread so this should work.</p>
+
+<p>When it is <code class="language-plaintext highlighter-rouge">2</code> it does nothing, the function gets called and it just exits. This is to prevent any render thread hard lock during the game initialization period.</p>
+
+<p>And <code class="language-plaintext highlighter-rouge">3</code> as you guess, swaps to 30 fps and timestep to 33.3 milliseconds.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">string</span> <span class="n">level_name</span> <span class="o">=</span> <span class="n">ep_xxx</span><span class="p">;</span> <span class="c1">// default</span>
+
+<span class="k">if</span> <span class="p">(</span>   <span class="n">level_name</span> <span class="o">==</span> <span class="n">ep00_c</span> <span class="cm">/* regression, todo: is this caused by our code? */</span> 
+    <span class="o">||</span> <span class="n">level_name</span> <span class="o">==</span> <span class="n">ep01_com</span>
+    <span class="o">||</span> <span class="n">level_name</span> <span class="o">==</span> <span class="n">ep01_d</span> 
+    <span class="o">||</span> <span class="n">level_name</span> <span class="o">==</span> <span class="n">ep02_a</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="n">game_flag</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">// 30hz</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">game_flag</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 60hz</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+<p>This one checks during level changes, if any of the levels matched, set the game back to 30 fps, then 60 once we leave that particular area or level of the game. The example being the end of the intro, first episode and the tutorial of episode 2. Note that the intro having a softlock is a regression potentially in my code? I’ll look into it at a later date but it should not be a big deal.</p>
+
+<h2 id="showcase">Showcase</h2>
+
+<p><strong>A minor correction to the video, the resolution showed in the video was 1920x1080 (1080p) not 1280x720 (720p). A blur has been added to avoid confusion.</strong></p>
+
+<p>This patch is best experinced on PS4 Pro with 1080p output and supersampling disabled.</p>
+
+<div align="center" class="responsive-video-container">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/-vlwychcrx0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</div>
+
+<h1 id="patch">Patch</h1>
+
+<p>For PS4 Patches, an installation guide on how to install the patches can be found <a href="/install-instructions">here</a>. (the following tutorial <strong>does not</strong> cover how to build the update package. It only shows how to install the patch into the binary.</p>
+
+<p><a href="/_patch/GravityDaze2-Orbis/" class="button" role="button"><i class="fas fa-download"></i> Patch Code</a></p>
+
+<h2 id="supporters">Supporters</h2>
+
+<p>Thanks to the patrons who supported me on various platforms! You guys are awesome!</p>
+
+<h3 id="monthly-supporters">Monthly supporters:</h3>
+<ul>
+  <li>
+    <p><a href="https://www.patreon.com/illusion0001">Patreon</a>:</p>
+
+    <ul>
+      <li>ac2pic</li>
+      <li>Alexa</li>
+      <li>Brett</li>
+      <li>Ciril</li>
+      <li>GarnetSunset</li>
+      <li>Mmmmmhno</li>
+      <li>Paul</li>
+      <li>PlayStation5Mods</li>
+      <li>RazzySxPB</li>
+      <li>Ryan</li>
+      <li>Voredy</li>
+      <li>YveltalGriffin</li>
+      <li>Zackery</li>
+      <li>alessaro92</li>
+      <li>ashenC</li>
+      <li>embee</li>
+      <li>erdosadam24</li>
+      <li>faith</li>
+      <li>maplemiyazaki</li>
+      <li>patrick</li>
+      <li>rudi</li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="https://github.com/sponsors/illusion0001">Github Sponsors</a>:</p>
+
+    <ul>
+      <li>VIPO777</li>
+      <li>WardFail</li>
+      <li>Whitehawkx</li>
+      <li>gorshco</li>
+      <li>jrson83</li>
+      <li>regal.</li>
+      <li>suwagawaki</li>
+    </ul>
+  </li>
+</ul>]]></content><author><name>illusion</name><email>illusion3185@gmail.com</email></author><category term="patches" /><category term="Articles" /><category term="Releases" /><summary type="html"><![CDATA[A fast paced game means fast framerate, right?]]></summary></entry><entry><title type="html">University Nailbomb Softlock Fix for The Last of Us (PS3, PS4)</title><link href="/patches/2021/12/04/t1-nailbomb-softlock-patch/" rel="alternate" type="text/html" title="University Nailbomb Softlock Fix for The Last of Us (PS3, PS4)" /><published>2021-12-04T00:00:00+00:00</published><updated>2021-12-04T00:00:00+00:00</updated><id>/patches/2021/12/04/t1-nailbomb-softlock-patch</id><content type="html" xml:base="/patches/2021/12/04/t1-nailbomb-softlock-patch/"><![CDATA[<p><i class="twa twa-warning"></i> <i class="twa twa-warning"></i> <strong>Warning: This post contains spoilers for the video game, The Last of Us. If you have not yet completed the game, you should do so or if you simply don’t care, you can read through. You have been warned.</strong> <i class="twa twa-warning"></i> <i class="twa twa-warning"></i></p>
+
+<hr />
+
+<h1 id="intro">Intro</h1>
+
+<p>A few weeks back I was browsing through <a href="https://www.youtube.com/channel/UC4PlYBhe8mzGFW4lmIkIQsg">AnthonyCaliber</a> videos. Showcasing various glitches in The Last of Us Remastered. Most of the glitches in the video are out of bounds and does not prevent progressing through the game but there is one glitch that caught my eye.</p>
+
+<div align="center">
+<video width="100%" controls="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/T1-AC-nailbomb-section-trimmed.mp4" type="video/mp4" />
+</video>
+<em>(Credit: <a href="https://www.youtube.com/channel/UC4PlYBhe8mzGFW4lmIkIQsg">AnthonyCaliber</a>) <a href="https://youtu.be/L_JrpN96uBg?t=6482">Original Video (Timestamped 01:48:02)</a></em>
+</div>
+
+<p>Once I saw this, a great idea popped into my head. Either to give the player infinite health during this section or making the nailbomb ineffective. I went with the latter option as the former caused issues. As you might’ve seen from the video, if the two hunters die then the camera will freeze but the player can still move so that is a no go. My plan is to research into the weapons, which in this case the nailbomb and how the game knows what task or level it’s currently on.</p>
+
+<h2 id="part-1---research">Part 1 - Research</h2>
+
+<p>Let’s start by seeing how the game keeps track of what level or task we are on. Thanks to the work of Freako and HereisMe. Some of this has already been worked out and is published. 
+In the <a href="https://discord.com/invite/VWEbKZsTNb">Naughty Dog Modding</a> server, Freako has kindly provided all the info that he knows about the game in an archive which will become very useful as this post goes on. So let’s have a look at it.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/nd-task-research-folder.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/nd-task-research-folder.png" />
+</a></div>
+
+<div align="center">
+<em>TLOU Research folder</em>
+</div>
+
+<p>A few folders, the ones we’re interested in are <code class="language-plaintext highlighter-rouge">tasks</code> and <code class="language-plaintext highlighter-rouge">weapon-loadout</code>.
+Inside the task folder is a text file and some example files. This text file list where things are, what’s been discovered, etc.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/t1-task-struct-2.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/t1-task-struct-2.png" />
+</a></div>
+
+<div align="center">
+<em>Basic Task.bin data structure. (Credit: <a href="https://www.youtube.com/c/Freako/">Freako</a>)</em>
+</div>
+
+<p>The image is barebones but enough for us to understand. From the text file on how to find a given task is as follows: get string address, find string offset as address. The identifier is found right next to the string. Obviously this is for the ps3 version soo, give me a moment while I extract the PS4 version. Alright here’s the list of task we’ll need to keep track and to later patch.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>uni-4-lab-rebar-ambush
+uni-4-lab-rebar-aiming
+uni-4-lab-help-off-rebar
+uni-4-lab-injured-escape-start
+uni-4-lab-injured-escape-vault
+</code></pre></div></div>
+
+<p>Since we’re on x86_amd64 (PlayStation4), the CPU architecture is little funny. You see there’s this thing called a little or big endian and it gets confusing if you’re new, like me. Say you have a value, <code class="language-plaintext highlighter-rouge">09 87 65 43 21 00 00 00</code> this is how it would be represented on big endian, which is what the PlayStation 3 uses. But on x86, it’s little endian which means, these bytes are swapped. Now it is <code class="language-plaintext highlighter-rouge">43 65 87 09 00 00 00 21</code>. Wrap your head around that when you have to keep track of things, worse of all, hexadecimal data displayed via printf is byte swapped! So what’s the point?</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/Jackie-Chan-confused-be-le-meme.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/Jackie-Chan-confused-be-le-meme.png" />
+</a></div>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/t1-taskid-0.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/t1-taskid-0.png" />
+</a></div>
+
+<div align="center">
+<em>Real thinking hours. <i class="twa thinkhappy"></i></em>
+</div>
+
+<p>Anyways, here’s the task ids</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>uni-4-lab-rebar-ambush          // F0 8E BC 40
+uni-4-lab-rebar-aiming          // CF F0 66 A4
+uni-4-lab-help-off-rebar        // 6A 60 B6 9A
+uni-4-lab-injured-escape-start  // 5C 5D 81 11
+uni-4-lab-injured-escape-vault  // C8 5F D3 4A
+</code></pre></div></div>
+
+<p>Alright, now for the weapons, fortunately, there’s only one we need to know what the ID is and that is the nailbomb, already figured out by the legend that is HereisMe.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0x18A76844 == WeaponIdNailBomb()
+</code></pre></div></div>
+
+<p>Reverse that and that’s what our id is on ps4.</p>
+
+<h2 id="part-2---reproducing-the-issue">Part 2 - Reproducing the issue</h2>
+
+<p>Now to the reproduction steps. Following what Anthony did, got us the same result, the hunter dies and the camera is stuck. Or the nailbomb explodes and the player is put into an indefinite loop. A softlock.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/t1-camera-stuck-1.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/t1-camera-stuck-1.png" />
+</a></div>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/t1-camera-stuck-1a.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/t1-camera-stuck-1a.png" />
+</a></div>
+
+<div align="center">
+<em>This camera is not moving</em>
+</div>
+
+<div align="center">
+<video width="100%" controls="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/t1-nailbomb-softlock-demo1.mp4" type="video/mp4" />
+</video>
+<em>Indefinite respawns and nailbomb exploding.</em>
+</div>
+
+<p><em><strong>InCase</strong> anyone is wondering, yes I do know that you can restart encounters to “resolve” these issues but it should not even happen in the first place.</em> <i class="twa twa-eyes"></i></p>
+
+<h2 id="part-3---patching">Part 3 - Patching</h2>
+
+<p>I made the decision to get rid of the explosion but left the nailbomb intact. The player can shoot and it will do absolutely nothing.</p>
+
+<p>Searching for the string of nailbomb, nada. what about bomb?</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/t1-ghidra-smokeb-search-4.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/t1-ghidra-smokeb-search-4.png" />
+</a></div>
+
+<div align="center">
+<em>...a smoke bomb string reference</em>
+</div>
+
+<p>Welp, that was a disappointment alright.</p>
+
+<p>Hey, what about that weapon ID earlier? This yielded some results. I will now introduce you, to the method of lazy reversing. Look for a branch and skip it or put a return from subroutine at the beginning of the function.</p>
+
+<p>Alright, let’s have a look at some of these references.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/t1-ghidra-weaponid-search-3.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/t1-ghidra-weaponid-search-3.png" />
+</a></div>
+
+<div align="center">
+<em>That's a lotta results</em>
+</div>
+
+<p>Most of these don’t do anything interesting and there’s only one reference that did do something.</p>
+
+<p>This reference disables the damage output.</p>
+
+<div align="center">
+<video width="100%" controls="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/t1-nailbomb-damage-demo-0.mp4" type="video/mp4" />
+</video>
+<em>That does something.</em>
+</div>
+
+<p>Okay, now what? if we use this code for our fix, it could work but the explosions particles would still go off. Looks a little distracting, don’t you think?</p>
+
+<p>Oh look, there’s an error message that I missed. <code class="language-plaintext highlighter-rouge">Explosion Missing Parameters</code> these unfortunately doesn’t print anything on to the screen but it gives us a clue. the word explosion can be used to find other references.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">if</span> <span class="p">(</span><span class="n">local_2b0</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">FUN_01c84620</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
+    <span class="n">FUN_01c84a80</span><span class="p">(</span><span class="s">"Explosion Missing Parameters"</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="c1">// ...</span>
+    <span class="k">if</span> <span class="p">((</span><span class="kt">bool</span><span class="p">)</span><span class="n">uVar31</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">uVar30</span> <span class="o">=</span> <span class="n">uVar2</span> <span class="o">&lt;</span> <span class="mh">0x18a76844</span><span class="p">;</span>
+</code></pre></div></div>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/t1-ghidra-explode-strings-7.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/t1-ghidra-explode-strings-7.png" />
+</a></div>
+
+<div align="center">
+<em>That is a lot of results</em>
+</div>
+
+<p>The refernce that disables the particles is around <code class="language-plaintext highlighter-rouge">SpawnExplosionEffects - no explosion settings</code> string.</p>
+
+<p>Let’s give it a try.</p>
+
+<div align="center">
+<video width="100%" controls="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/t1-nailbomb-oneline-demo-2.mp4" type="video/mp4" />
+</video>
+</div>
+
+<p>Hmm, it still blows up. even if there is no particles. that’s distracting if you ask me.</p>
+
+<p>Wait a minute, there’s two <code class="language-plaintext highlighter-rouge">SpawnExplosion</code> strings.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/t1-ghidra-spawnexplode-search-5.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/t1-ghidra-spawnexplode-search-5.png" />
+</a></div>
+
+<p><code class="language-plaintext highlighter-rouge">SpawnExplosion - can't find explosion settings</code> sounds interesting.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/t1-ghidra-explode-calls-6.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/t1-ghidra-explode-calls-6.png" />
+</a></div>
+
+<div align="center">
+<em>Related function calls</em>
+</div>
+
+<p>Hmm, let’s have a look at the call references to this function. Alright time to bisect what does what. Some of these did what we saw before and some even crashed the game outright, so that’s not good. How do I test this you may ask?</p>
+
+<p>Removing the call. using the no operation instruction.</p>
+
+<p>There is one call that stood out. <code class="language-plaintext highlighter-rouge">0x016a299a</code></p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">if</span> <span class="p">((</span><span class="n">param_1</span> <span class="o">+</span> <span class="mh">0x40</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// ...</span>
+    <span class="n">FUN_01a7f5c0</span><span class="p">(</span><span class="n">param_1</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">return</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Close to a return.. hmm, what could that mean?</p>
+
+<p>There’s a branch up here, let’s skip it.</p>
+
+<div align="center">
+<video width="100%" controls="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/t1-nailbomb-processing-demo-3.mp4" type="video/mp4" />
+</video>
+<em>Ahh-yes!</em>
+</div>
+
+<p>Not only does this not blow-up, it does absolutely nothing when an npc goes near it!</p>
+
+<p>Time for the patch.</p>
+
+<p>Keep in mind that this is my interpretation of the code I wrote in assembly but the pseudocode should be readable enough to your average amateur programmers.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">if</span> <span class="p">(</span><span class="n">task</span> <span class="o">==</span> <span class="mh">0x40bc8ef0</span> <span class="o">||</span> <span class="mh">0xa466f0cf</span> <span class="o">||</span> <span class="mh">0x9ab6606a</span> <span class="o">||</span> <span class="mh">0x11815d5c</span> <span class="o">||</span> <span class="mh">0x4ad35fc8</span> <span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">// uni-4-lab-rebar-ambush         40bc8ef0</span>
+    <span class="c1">// uni-4-lab-rebar-aiming         a466f0cf</span>
+    <span class="c1">// uni-4-lab-help-off-rebar       9ab6066a</span>
+    <span class="c1">// uni-4-lab-injured-escape-start 11815d5c</span>
+    <span class="c1">// uni-4-lab-injured-vault        4ad35fc8</span>
+            <span class="c1">// </span>
+    <span class="k">return</span><span class="p">;</span> <span class="c1">// disable nailbomb explosion output</span>
+  <span class="p">}</span>
+  <span class="c1">// enable nailbomb explosion, normal path</span>
+  <span class="n">SpawnExplosion</span><span class="p">();</span>
+  <span class="n">SpawnExplosionEffects</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>Looks good! time to try it out.</p>
+
+<div align="center">
+<video width="100%" controls="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/t1-nailbomb-typo.mp4" type="video/mp4" />
+</video>
+</div>
+
+<p>Oh no, what happened?</p>
+
+<p>As it turns out, I made a minor typo. I was comparing against 0x9ab6<strong>60</strong>6a and not the supposed 0x9ab6<strong>06</strong>6a. A simple fix solved this.</p>
+
+<p>If you enjoyed reading and would like to support, you can do so by supporting me my <a href="https://www.patreon.com/illusion0001">Patreon</a> page or follow my <a href="https://www.youtube.com/c/illusion0001/featured">YouTube</a> channel and <a href="https://illusion0001.github.io/">Blog</a> for more content like this.</p>
+
+<p>As always, I hope you learned something from these posts, catch you next time!</p>
+
+<p>Enjoy your one-less bug video game!</p>
+
+<h1 id="result">Result</h1>
+
+<div align="center" class="responsive-video-container">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/wDJmLgw2oF4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</div>
+
+<h1 id="credits">Credits</h1>
+
+<p>Special thanks to:</p>
+
+<p><a href="https://www.youtube.com/user/ZEROx2085">ZEROx</a> for porting to the PS3 version.</p>
+
+<p><a href="https://www.youtube.com/c/Freako/">Freako</a> and <a href="https://www.youtube.com/user/HdHereidme">HereisMe</a> for publishing their knowledge about reversing Naughty Dog Titles.</p>
+
+<h1 id="patch">Patch</h1>
+
+<p>This patch is available for PS3 (RPCS3), and PS4.</p>
+
+<p>For those looking to use the patch on the RPCS3 emulator, you can head over to the patch manager, click on the “<strong>Download Latest Patches</strong>” button and find the patch you wanted to use with your game Title ID and version, click on the checkbox to enable the patch and save changes.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_patch_example.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_patch_example.png" />
+</a></div>
+
+<p><a href="https://wiki.rpcs3.net/index.php?title=The_Last_of_Us#Patches" class="button" role="button"><i class="fas fa-download"></i> Patch Source Code (RPCS3)</a></p>
+
+<p><a href="/_patch/TheLastOfUs1-Orbis" class="button" role="button"><i class="fas fa-download"></i> Patch (PS4)</a></p>
+
+<p>PlayStation 4 users, can follow this guide on how to install the patch <a href="/install-instructions">here</a>. (the following tutorial <strong>does not</strong> cover how to build the update package. only to install the patch into the binary.)</p>
+
+<h2 id="supporters">Supporters</h2>
+
+<p>Thanks to the patrons who supported me on various platforms! You guys are awesome!</p>
+
+<h3 id="monthly-supporters">Monthly supporters:</h3>
+<ul>
+  <li>
+    <p><a href="https://www.patreon.com/illusion0001">Patreon</a>:</p>
+
+    <ul>
+      <li>ac2pic</li>
+      <li>Alexa</li>
+      <li>Brett</li>
+      <li>Ciril</li>
+      <li>GarnetSunset</li>
+      <li>Mmmmmhno</li>
+      <li>Paul</li>
+      <li>PlayStation5Mods</li>
+      <li>RazzySxPB</li>
+      <li>Ryan</li>
+      <li>Voredy</li>
+      <li>YveltalGriffin</li>
+      <li>Zackery</li>
+      <li>alessaro92</li>
+      <li>ashenC</li>
+      <li>embee</li>
+      <li>erdosadam24</li>
+      <li>faith</li>
+      <li>maplemiyazaki</li>
+      <li>patrick</li>
+      <li>rudi</li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="https://github.com/sponsors/illusion0001">Github Sponsors</a>:</p>
+
+    <ul>
+      <li>VIPO777</li>
+      <li>WardFail</li>
+      <li>Whitehawkx</li>
+      <li>gorshco</li>
+      <li>jrson83</li>
+      <li>regal.</li>
+      <li>suwagawaki</li>
+    </ul>
+  </li>
+</ul>]]></content><author><name>illusion</name><email>illusion3185@gmail.com</email></author><category term="patches" /><category term="Articles" /><category term="Releases" /><summary type="html"><![CDATA[A nailbomb, and a door, equals a softlock.]]></summary></entry><entry><title type="html">Framerate Unlock Patches for Ratchet and Clank PS3 titles (RPCS3)</title><link href="/patches/2021/10/20/RatchetPS3-FPSUnlock/" rel="alternate" type="text/html" title="Framerate Unlock Patches for Ratchet and Clank PS3 titles (RPCS3)" /><published>2021-10-20T00:00:00+00:00</published><updated>2021-10-20T00:00:00+00:00</updated><id>/patches/2021/10/20/RatchetPS3-FPSUnlock</id><content type="html" xml:base="/patches/2021/10/20/RatchetPS3-FPSUnlock/"><![CDATA[<h1 id="intro">Intro</h1>
+
+<p>Time for some more framerate PlayStation 3 patches, or to be more specific, RPCS3 patches. You know, an emulator. With the knowledge gained with the previous post, I decided to tackle a series of titles, that is the Ratchet and Clank HD era games. Ranging from Tools of Destruction all the way to the Nexus.</p>
+
+<h2 id="research-and-patching">Research and Patching</h2>
+
+<p>When I first boot up one of their games with the frame limit set to off, I saw this.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_rc_sc0.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_rc_sc0.png" />
+</a></div>
+
+<div align="center">
+<em>82 FPS? Weird limit but alright</em>
+</div>
+
+<p>What about the newer games?</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_rc_sc4.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_rc_sc4.png" />
+</a></div>
+
+<div align="center">
+<em>Another strange arbitrary cap</em>
+</div>
+
+<p>Alright, let’s fire up the debugger and see what we can find.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_rc_dbgsc0.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_rc_dbgsc0.png" />
+</a></div>
+
+<div align="center">
+<em>Is that current frametime?</em>
+</div>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_rc_dbgsc2.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_rc_dbgsc2.png" />
+</a></div>
+
+<div align="center">
+<em>Seems like it is</em>
+</div>
+
+<p>These look like a group of frametime values and after a little bit of trial and error it turns out that <code class="language-plaintext highlighter-rouge">E67B04</code> is the minimum frametime. Take note of the hex value <code class="language-plaintext highlighter-rouge">3C 5A 74 0E</code> or <code class="language-plaintext highlighter-rouge">0.01333</code> in float. let’s try changing this to 0.005.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_rc_sc1.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_rc_sc1.png" />
+</a></div>
+
+<div align="center">
+<em>Oh look, framerate cap increased</em>
+</div>
+
+<p>Is it really increased though? Introducing the tried and true method of… Looking at the ground<i class="twa twa-trade-mark"></i>.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_rc_sc2.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_rc_sc2.png" />
+</a></div>
+
+<div align="center">
+<em>Yes, yes it is increased</em>
+</div>
+
+<p>Doing a search for this value in the executable shows that this is a base value for the min frametime value.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/ghidra_rc_ft0.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/ghidra_rc_ft0.png" />
+</a></div>
+
+<p>But wait, 13ms? wasn’t the cap we see in the game is 12ms?</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_rc_sc3.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_rc_sc3.png" />
+</a></div>
+
+<div align="center">
+<em>Wha? <i class="twa twa-thinking-face"></i></em>
+</div>
+
+<p><a href="https://github.com/isJuhn/">Juhn <i class="twa twa-cat-face"></i></a> the developer behind the <a href="https://github.com/isJuhn/KAMI">KAMI, Kot(Cat) and Mouse Injector</a> did some investigation and found out that this number is multiplied by 0.9</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_rc_dbgsc3.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_rc_dbgsc3.png" />
+</a></div>
+
+<p>A little bit of code explanation,</p>
+
+<p><code class="language-plaintext highlighter-rouge">lfs</code> which loads float from offset to <code class="language-plaintext highlighter-rouge">f13</code> that has the 0.9 value, then loads into <code class="language-plaintext highlighter-rouge">f1</code> with 0.013333 and reads the value.</p>
+
+<p>Then it gets multiplied by the <code class="language-plaintext highlighter-rouge">fmuls</code> instruction and thus get us the 12ms we saw earlier.</p>
+
+<p>That would be it for the rest of the games, right?</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rc_dev_value_meme.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rc_dev_value_meme.png" />
+</a></div>
+
+<p>Starting with A Crack in Time, a later entry in the series, things changed. changing the value we previously discoverd works but has a side effect.</p>
+
+<p><em>(If the video does not play in your web browser, right click and save the video to play it locally.)</em></p>
+
+<div align="center">
+<video width="100%" controls="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rc_rpcs3_fps_before_demo.mp4" type="video/mp4" />
+</video>
+<em>Oh no, Game Patching worse nightmare, double speed.</em>
+</div>
+
+<p>In this case if it exceeds the minimum frametime set by the game it will speed up, it <strong>does not</strong> slow down below the target frametime but it speeds up, if above.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_rc_dbgsc4.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_rc_dbgsc4.png" />
+</a></div>
+
+<p>16.67ms is here to save our day, searching for <code class="language-plaintext highlighter-rouge">3c 88 88 89</code> and changing some values around resolved the issue.</p>
+
+<div align="center">
+<video width="100%" controls="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rc_rpcs3_fps_after_demo.mp4" type="video/mp4" />
+</video>
+<em>Correct game speed, nice.</em>
+</div>
+
+<p>Thought the headache was over? Far from it. Repeating the same method works in memory but there is no such value as <code class="language-plaintext highlighter-rouge">3C 5A 74 0E</code> in the executable.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/ghidra_rc_ft1.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/ghidra_rc_ft1.png" />
+</a></div>
+
+<p>However, setting a breakpoint on that value got us here.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0072c1e4 lfd  f1,0x8(param_1)=&gt;DOUBLE_0072c140 = 0.013333333 // 3f 8b 4e 81 c0 00 00 00
+0072c1e8 fsub f2,f3,f1
+0072c1ec frsp f2,f2
+0072c1f0 fsel f1,f2,f3,f1
+0072c1f4 frsp 1,f1
+0072c1f8 stfs f1,0x4(r31) // &lt;-- breakpoint
+</code></pre></div></div>
+
+<p>Wait a minute, a double? They set the value initally in double, which is twice the bits as float for more accurate decimals and then converts it to float again.</p>
+
+<div align="center">
+<video width="100%" autoplay="" loop="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/memes/tenor/we_do_a_little_trolling_meme.mp4" type="video/mp4" />
+</video>
+</div>
+
+<p>The end results is the same as the rest of the games, unlocked framerate with no speedups.</p>
+
+<p>If you enjoyed reading and would like to support, you can do so by supporting me my <a href="https://www.patreon.com/illusion0001">Patreon</a> page or follow my <a href="https://www.youtube.com/c/illusion0001/featured">YouTube</a> channel and <a href="https://illusion0001.github.io/">Blog</a> for more content like this.</p>
+
+<p>As always, I hope you learned something from these posts, catch you next time!</p>
+
+<h1 id="credits">Credit(s)</h1>
+
+<p><a href="https://github.com/isJuhn/">Juhn <i class="twa twa-cat-face"></i></a> for explanation on framerate limits.</p>
+
+<h1 id="results">Results</h1>
+
+<p>Note that the video below is recorded in slow motion to show the patch at its best.</p>
+
+<div align="center" class="responsive-video-container">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/azrU00bZuIc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</div>
+
+<h1 id="patch">Patch</h1>
+
+<p>For those looking to use the patch on the emulator, you can head over to the patch manager, click on the “Download Latest Patches” and find the patch you wanted to use with your game Title ID and version, click on the checkbox to enable the patch and save changes.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_patch_example.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_patch_example.png" />
+</a></div>
+
+<h2 id="supporters">Supporters</h2>
+
+<p>Thanks to the patrons who supported me on various platforms! You guys are awesome!</p>
+
+<h3 id="monthly-supporters">Monthly supporters:</h3>
+<ul>
+  <li>
+    <p><a href="https://www.patreon.com/illusion0001">Patreon</a>:</p>
+
+    <ul>
+      <li>ac2pic</li>
+      <li>Alexa</li>
+      <li>Brett</li>
+      <li>Ciril</li>
+      <li>GarnetSunset</li>
+      <li>Mmmmmhno</li>
+      <li>Paul</li>
+      <li>PlayStation5Mods</li>
+      <li>RazzySxPB</li>
+      <li>Ryan</li>
+      <li>Voredy</li>
+      <li>YveltalGriffin</li>
+      <li>Zackery</li>
+      <li>alessaro92</li>
+      <li>ashenC</li>
+      <li>embee</li>
+      <li>erdosadam24</li>
+      <li>faith</li>
+      <li>maplemiyazaki</li>
+      <li>patrick</li>
+      <li>rudi</li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="https://github.com/sponsors/illusion0001">Github Sponsors</a>:</p>
+
+    <ul>
+      <li>VIPO777</li>
+      <li>WardFail</li>
+      <li>Whitehawkx</li>
+      <li>gorshco</li>
+      <li>jrson83</li>
+      <li>regal.</li>
+      <li>suwagawaki</li>
+    </ul>
+  </li>
+</ul>]]></content><author><name>illusion</name><email>illusion3185@gmail.com</email></author><category term="patches" /><category term="Articles" /><category term="Releases" /><summary type="html"><![CDATA[PS5 does not yet have a remaster, but the PC does, through an emulator.]]></summary></entry></feed>

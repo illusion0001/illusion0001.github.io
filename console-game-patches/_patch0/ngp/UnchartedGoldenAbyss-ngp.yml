@@ -1,0 +1,21 @@
+- patch:
+  title: "Uncharted: Golden Abyss"
+  app_ver: "01.03"
+  patch_ver: "1.0"
+  name: "Intro Skip"
+  author: "illusion"
+  arch: ngp # py-patch 1.58 or newer
+  entry_prog: 0xa0
+  patch_list:
+        - [ bytes16, 0x810011d2, 0x5460 ]
+
+- patch:
+  title: "Uncharted: Golden Abyss"
+  app_ver: "01.03"
+  patch_ver: "1.0"
+  name: "Enable Debug Menu"
+  author: "illusion"
+  arch: ngp # py-patch 1.58 or newer
+  entry_prog: 0xa0
+  patch_list:
+        - [ bytes16, 0x8110a2c8, 0x2000 ]

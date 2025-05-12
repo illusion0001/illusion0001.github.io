@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>illusion's Blog | Patches for Beyond Two Souls 60FPS, Blackbars Remover and More</title>
+  
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+  <!-- Twemoji -->
+  <!-- src https://github.com/SebastianAigner/twemoji-amazing -->
+  <link rel="stylesheet" href="/assets/css/twemoji-amazing.css">
+</head>
+
+  <body>
+    <main class="blogfeed">
+      
+<header>
+  <a class="site-title article-page" href="/">illusion's Blog</a>
+</header>
+
+
+
+
+      <section id="social-links1">
+  
+    <a href="/contact" target="_blank"> Contact</a>
+  
+    <a href="/patch" target="_blank"> Patches</a>
+  
+</section>
+
+<section id="social-links">
+
+  <a href="https://github.com/illusion0001" target="_blank">
+    <img src="/assets/icons/github.svg" alt="" />
+  </a>
+
+  <a href="mailto:illusion3185@gmail.com" target="_blank">
+    <img src="/assets/icons/email.svg" alt="" />
+  </a>
+
+</section>
+
+      <section id="article">
+        
+        <!--  -->
+        
+        <!--  -->
+        
+        
+        <div
+          class="article-thumbnail"
+          style="
+            background-image: url('https://img-assets.illusion0001.workers.dev/assets/images/QDR.Infraworld-Res-Letterbox-Patch/QDR.Infraworld.png');
+          "
+        >
+        
+          <h1 class="article-title">Patches for Beyond Two Souls 60FPS, Blackbars Remover and More</h1>
+          <div class="article-bottom">
+            <small class="article-date">01 Jul 2021</small>
+            <div class="article-categories">
+              
+              <a href="#!" class="article-category">patches</a>
+              
+            </div>
+          </div>
+        </div>
+        <div class="article-content"><p>Please note that you are required to have a <a href="https://wololo.net/2021/12/14/ps4-how-to-run-the-ps4-9-00-jailbreak-full-guide-with-goldhen-payload/">exploited PlayStation 4</a> console on firmware <strong>9.00</strong> or lower to run the patches mentioned in this article.</p>
+
+<h1 id="intro">Intro</h1>
+
+<p>Quantic Dream pushing last gen hardware to the limits on PS3, now remastered on PS4. Fans of the original PS3 version wished for the removal of the blackbars and myself for 60 Frames Per Second. annnnd we got none of that in the remaster.</p>
+
+<p>Fine, I’ll do it myself.</p>
+
+<h2 id="part-1---resolution-and-framerate-unlocking">Part 1 - Resolution and Framerate Unlocking</h2>
+
+<p>Searching for framerate limiter came up easy; a simple search for kernel function <code class="language-plaintext highlighter-rouge">sceVideoOutSetFlipRate</code> lands us here:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>007d953e be 01 00        MOV        ESI,0x1
+         00 00
+007d9543 e8 98 dd        CALL       sceVideoOutSetFlipRate
+         a7 00
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">MOV</code> to <code class="language-plaintext highlighter-rouge">ESI</code> with <code class="language-plaintext highlighter-rouge">0x0</code> does the trick easliy.</p>
+
+<p>Resolution? Same deal. 4 byte int of <code class="language-plaintext highlighter-rouge">1920</code> came up with a few results but two results is of intrest.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>004003c2 c7 45 c0        MOV        dword ptr [RBP + local_48],0x780
+         80 07 00 00
+004003c9 c7 45 b0        MOV        dword ptr [RBP + local_58],0x438
+         38 04 00 00
+004003d0 be 80 07        MOV        ESI,0x780
+         00 00
+004003d5 ba 38 04        MOV        EDX,0x438
+         00 00
+004003da eb 03           JMP        LAB_004003df
+</code></pre></div></div>
+
+<p>The first row does nothing but the second row does.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/QDR.Infraworld-Res-Letterbox-Patch/QDR.Infraworld.Res.0.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/QDR.Infraworld-Res-Letterbox-Patch/QDR.Infraworld.Res.0.png" />
+</a></div>
+
+<div align="center">
+<em>1600x900 Letterboxed</em>
+</div>
+
+<p>Why 900p? Yes 720p will allow for less GPU time but it caused visual issues.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/QDR.Infraworld-Res-Letterbox-Patch/QDR.Infraworld.Res.2.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/QDR.Infraworld-Res-Letterbox-Patch/QDR.Infraworld.Res.2.png" />
+</a></div>
+
+<div align="center">
+<em>1600x900</em>
+</div>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/QDR.Infraworld-Res-Letterbox-Patch/QDR.Infraworld.Res.3.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/QDR.Infraworld-Res-Letterbox-Patch/QDR.Infraworld.Res.3.png" />
+</a></div>
+
+<div align="center">
+<em>1280x720</em>
+</div>
+
+<h2 id="part-2---letterbox-be-gone">Part 2 - Letterbox Be Gone</h2>
+
+<p>I searched for Ratio and found this. <code class="language-plaintext highlighter-rouge">UseCinemaRatio</code></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                     **************************************************************
+                     *                  FUNCTION                                  *
+                     **************************************************************
+                     FUN_00404260                    XREF[1]:     FUN_00400200:00400686(c)
+...
+00404277 48 8d 05        LEA        RAX,[PTR_s_UseCinemaRatio_0164eff8]
+         7a ad 24 01
+...
+00400686 e8 d5 3b        CALL       FUN_00404260
+         00 00
+0040068b 0f b6 f8        MOVZX      EDI,AL
+0040068e e8 ad 13        CALL       FUN_00461a40
+         06 00
+</code></pre></div></div>
+
+<p>Hmm, <code class="language-plaintext highlighter-rouge">MOVZX</code> from <code class="language-plaintext highlighter-rouge">AL</code> to <code class="language-plaintext highlighter-rouge">EDI</code> and a function call.. What could this be.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                     **************************************************************
+                     *                  FUNCTION                                  *
+                     **************************************************************
+                     undefined FUN_00461a40()
+             undefined         AL:1           &lt;RETURN&gt;
+                     FUN_00461a40                    XREF[3]:     FUN_00400200:0040068e(c), 
+                                                  01382d28(*), 01479398  
+00461a40 48 8d 05        LEA        RAX,[DAT_01860ed3]
+         8c f4 3f 01
+00461a47 0f b6 08        MOVZX      ECX,byte ptr [RAX]=&gt;DAT_01860ed3
+00461a4a 40 0f b6 f7     MOVZX      ESI,DIL
+00461a4e 39 f1           CMP        ECX,ESI
+00461a50 74 1b           JZ         LAB_00461a6d
+00461a52 40 88 38        MOV        byte ptr [RAX]=&gt;DAT_01860ed3,DIL
+                     LAB_00461a6d
+00461a6d c3              RET
+</code></pre></div></div>
+
+<p>Looks a little complicated. <code class="language-plaintext highlighter-rouge">UseCinemaRatio</code> variable might load a byte from somewhere, <code class="language-plaintext highlighter-rouge">MOVZX EDI,AL</code> then moves the value into register <code class="language-plaintext highlighter-rouge">EDI</code>.</p>
+
+<p>A simple jump switch from <code class="language-plaintext highlighter-rouge">Jump Zero</code> to <code class="language-plaintext highlighter-rouge">Jump Not Zero</code> did the trick!</p>
+
+<p>This skips storing byte and went straight to return.</p>
+
+<h1 id="results">Results</h1>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/QDR.Infraworld-Res-Letterbox-Patch/QDR.Infraworld.Res.1.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/QDR.Infraworld-Res-Letterbox-Patch/QDR.Infraworld.Res.1.png" />
+</a></div>
+
+<div align="center">
+<em>1600x900 Letterbox Removed</em>
+</div>
+
+<div align="center" class="responsive-video-container">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/CVIpLNH454o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</div>
+
+<h1 id="patch">Patch</h1>
+
+<p><a href="/_patch/BeyondTwoSouls-Orbis" class="button" role="button"><i class="fas fa-download"></i> Patch Code</a></p>
+
+<h2 id="supporters">Supporters</h2>
+
+<p>Thanks to the patrons who supported me on various platforms! You guys are awesome!</p>
+
+<h3 id="monthly-supporters">Monthly supporters:</h3>
+<ul>
+  <li>
+    <p><a href="https://www.patreon.com/illusion0001">Patreon</a>:</p>
+
+    <ul>
+      <li>ac2pic</li>
+      <li>Alexa</li>
+      <li>Brett</li>
+      <li>Ciril</li>
+      <li>GarnetSunset</li>
+      <li>Mmmmmhno</li>
+      <li>Paul</li>
+      <li>PlayStation5Mods</li>
+      <li>RazzySxPB</li>
+      <li>Ryan</li>
+      <li>Voredy</li>
+      <li>YveltalGriffin</li>
+      <li>Zackery</li>
+      <li>alessaro92</li>
+      <li>ashenC</li>
+      <li>embee</li>
+      <li>erdosadam24</li>
+      <li>faith</li>
+      <li>maplemiyazaki</li>
+      <li>patrick</li>
+      <li>rudi</li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="https://github.com/sponsors/illusion0001">Github Sponsors</a>:</p>
+
+    <ul>
+      <li>VIPO777</li>
+      <li>WardFail</li>
+      <li>Whitehawkx</li>
+      <li>gorshco</li>
+      <li>jrson83</li>
+      <li>regal.</li>
+      <li>suwagawaki</li>
+    </ul>
+  </li>
+</ul>
+
+</div>
+      </section>
+      <footer>
+  <p>&copy; 2021 - 2025 | illusion's Blog</br>Theme <a href="https://github.com/sharadcodes/jekyll-theme-material-you"> Jekyll Theme Material You</a></p>
+</footer>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

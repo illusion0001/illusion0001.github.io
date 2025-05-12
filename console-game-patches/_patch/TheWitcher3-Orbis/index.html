@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>illusion's Blog | The Witcher 3</title>
+  
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+  <!-- Twemoji -->
+  <!-- src https://github.com/SebastianAigner/twemoji-amazing -->
+  <link rel="stylesheet" href="/assets/css/twemoji-amazing.css">
+</head>
+
+  <body>
+    <main class="blogfeed">
+      
+<header>
+  <a class="site-title article-page" href="/">illusion's Blog</a>
+</header>
+
+
+
+
+      <section id="social-links1">
+  
+    <a href="/contact" target="_blank"> Contact</a>
+  
+    <a href="/patch" target="_blank"> Patches</a>
+  
+</section>
+
+<section id="social-links">
+
+  <a href="https://github.com/illusion0001" target="_blank">
+    <img src="/assets/icons/github.svg" alt="" />
+  </a>
+
+  <a href="mailto:illusion3185@gmail.com" target="_blank">
+    <img src="/assets/icons/email.svg" alt="" />
+  </a>
+
+</section>
+
+      <section id="article">
+        
+        <!--  -->
+        
+        <!--  -->
+        
+        
+          <h1 class="article-title">The Witcher 3</h1>
+          <div class="article-bottom">
+            <small class="article-date"></small>
+            <div class="article-categories">
+              
+            </div>
+          </div>
+        </div>
+        <div class="article-content"><!-- # The Witcher 3 -->
+
+<p><a href="/patch/#patches">Game Index</a></p>
+
+<p><a href="/install-instructions/">Installation Guide</a></p>
+
+<h2 id="60-fps-unlock">60 FPS Unlock</h2>
+
+<p><a href="https://illusion0001.github.io/patches/2021/07/07/W3Witcher-ResPatch/">Article</a></p>
+
+<p>Author: <a href="https://twitter.com/illusion0002">illusion</a></p>
+
+<p>In file <code class="language-plaintext highlighter-rouge">eboot.bin</code></p>
+
+<details>
+<summary>Code for 1.62 (Click to Expand)</summary>
+
+
+<figure class="highlight"><pre><code class="language-none" data-lang="none">BE 01 00 00 00 E8 7A E2 BC 00
+
+BE 00 00 00 00 E8 7A E2 BC 00</code></pre></figure>
+
+
+</details>
+
+<h2 id="resolution-patch">Resolution Patch</h2>
+
+<p>Currently for Base Console, Pro Backbuffer is included but untested.</p>
+
+<p><a href="https://illusion0001.github.io/patches/2021/07/07/W3Witcher-ResPatch/">Article</a></p>
+
+<p>Author: <a href="https://twitter.com/illusion0002">illusion</a></p>
+
+<p>In file <code class="language-plaintext highlighter-rouge">eboot.bin</code></p>
+
+<details>
+<summary>Code for 1.62 (Click to Expand)</summary>
+
+
+<figure class="highlight"><pre><code class="language-none" data-lang="none"># Base
+# targeting 1280x720
+B9 80 07 00 00 41 B8 38 04 00 00
+
+B9 00 05 00 00 41 B8 D0 02 00 00
+
+# Neo
+B9 80 07 00 00 41 B8 70 08 00 00
+
+# targeting ??x??</code></pre></figure>
+
+
+</details>
+
+<h2 id="display-framerate-stats">Display Framerate Stats</h2>
+
+<p>Author: <a href="https://twitter.com/illusion0002">illusion</a></p>
+
+<p><a href="https://illusion0001.github.io/patches/2021/07/07/W3Witcher-ResPatch/">Article</a></p>
+
+<p>In file <code class="language-plaintext highlighter-rouge">eboot.bin</code></p>
+
+<details>
+<summary>Code for 1.62 (Click to Expand)</summary>
+
+
+<figure class="highlight"><pre><code class="language-none" data-lang="none">49 89 DC 0F 84 33 01 00 00 C4 C1 7A 10
+
+49 89 DC 0F 85 33 01 00 00 C4 C1 7A 10</code></pre></figure>
+
+
+</details>
+</div>
+      </section>
+      <footer>
+  <p>&copy; 2021 - 2025 | illusion's Blog</br>Theme <a href="https://github.com/sharadcodes/jekyll-theme-material-you"> Jekyll Theme Material You</a></p>
+</footer>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

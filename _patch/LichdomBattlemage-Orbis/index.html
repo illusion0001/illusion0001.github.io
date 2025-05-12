@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>illusion's Blog | Lichdom: Battlemage</title>
+  
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+  <!-- Twemoji -->
+  <!-- src https://github.com/SebastianAigner/twemoji-amazing -->
+  <link rel="stylesheet" href="/assets/css/twemoji-amazing.css">
+</head>
+
+  <body>
+    <main class="blogfeed">
+      
+<header>
+  <a class="site-title article-page" href="/">illusion's Blog</a>
+</header>
+
+
+
+
+      <section id="social-links1">
+  
+    <a href="/contact" target="_blank"> Contact</a>
+  
+    <a href="/patch" target="_blank"> Patches</a>
+  
+</section>
+
+<section id="social-links">
+
+  <a href="https://github.com/illusion0001" target="_blank">
+    <img src="/assets/icons/github.svg" alt="" />
+  </a>
+
+  <a href="mailto:illusion3185@gmail.com" target="_blank">
+    <img src="/assets/icons/email.svg" alt="" />
+  </a>
+
+</section>
+
+      <section id="article">
+        
+        <!--  -->
+        
+        <!--  -->
+        
+        
+          <h1 class="article-title">Lichdom: Battlemage</h1>
+          <div class="article-bottom">
+            <small class="article-date"></small>
+            <div class="article-categories">
+              
+            </div>
+          </div>
+        </div>
+        <div class="article-content"><!-- # Lichdom: Battlemage -->
+
+<p><a href="/patch/#patches">Game Index</a></p>
+
+<p><a href="/install-instructions/">Installation Guide</a></p>
+
+<h2 id="30-fps-limit-proper-frame-pacing">30 FPS Limit (Proper Frame-Pacing)</h2>
+
+<p>Author: <a href="https://twitter.com/illusion0002">illusion</a></p>
+
+<p>In file <code class="language-plaintext highlighter-rouge">eboot.bin</code></p>
+
+<details>
+<summary>Code (Click to Expand)</summary>
+
+
+<figure class="highlight"><pre><code class="language-none" data-lang="none"># code jump
+
+31 F6 E8 B1 5D 1E 01
+
+EB 5D E8 B1 5D 1E 01
+
+# 0x1 to sceVideoOutSetFlipRate
+
+E8 73 4C 1E 01 90 66 90 B8 FF FF FF FF C3 66 2E 0F 1F 84 00 00 00 00 00
+
+E8 73 4C 1E 01 90 66 90 B8 FF FF FF FF C3 C3 BE 01 00 00 00 EB 9C 00 00
+
+## notes:
+# Kernel function will provide fixed rate of update time.
+# 0x0 16.67ms -- 60hz
+# 0x1 33.33ms -- 30hz fix bad frame pacing.
+# 0x2 50.00ms -- 20hz
+##</code></pre></figure>
+
+
+</details>
+
+<h2 id="resolution-patch">Resolution Patch</h2>
+
+<p>Author: <a href="https://twitter.com/illusion0002">illusion</a></p>
+
+<p>In file <code class="language-plaintext highlighter-rouge">eboot.bin</code></p>
+
+<details>
+<summary>Code (Click to Expand)</summary>
+
+
+<figure class="highlight"><pre><code class="language-none" data-lang="none">BE 40 06 00 00 48 8B BB 08 7B 00 00 48 8B 07 FF 50 48 48 8B BB 10 7B 00 00 BE 84 03 00 00
+
+# 1280x720
+# CE has internal scaler meaning it can go below 1280x720
+# Going above 1600x900 is probably possible.
+
+BE 00 05 00 00 48 8B BB 08 7B 00 00 48 8B 07 FF 50 48 48 8B BB 10 7B 00 00 BE D0 02 00 00</code></pre></figure>
+
+
+</details>
+
+<!-- 
+# dev note:
+# when increasing beyond 1600x900
+# defines must be changed to match other backbuffer!
+# does it even work? 
+-->
+</div>
+      </section>
+      <footer>
+  <p>&copy; 2021 - 2025 | illusion's Blog</br>Theme <a href="https://github.com/sharadcodes/jekyll-theme-material-you"> Jekyll Theme Material You</a></p>
+</footer>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

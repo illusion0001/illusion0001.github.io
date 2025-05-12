@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>illusion's Blog | Framepacing Fixes for Fromsoftware Titles (PS4)</title>
+  
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+  <!-- Twemoji -->
+  <!-- src https://github.com/SebastianAigner/twemoji-amazing -->
+  <link rel="stylesheet" href="/assets/css/twemoji-amazing.css">
+</head>
+
+  <body>
+    <main class="blogfeed">
+      
+<header>
+  <a class="site-title article-page" href="/">illusion's Blog</a>
+</header>
+
+
+
+
+      <section id="social-links1">
+  
+    <a href="/contact" target="_blank"> Contact</a>
+  
+    <a href="/patch" target="_blank"> Patches</a>
+  
+</section>
+
+<section id="social-links">
+
+  <a href="https://github.com/illusion0001" target="_blank">
+    <img src="/assets/icons/github.svg" alt="" />
+  </a>
+
+  <a href="mailto:illusion3185@gmail.com" target="_blank">
+    <img src="/assets/icons/email.svg" alt="" />
+  </a>
+
+</section>
+
+      <section id="article">
+        
+        <!--  -->
+        
+        <!--  -->
+        
+        
+        <div
+          class="article-thumbnail"
+          style="
+            background-image: url('https://img-assets.illusion0001.workers.dev/assets/images/Fromsoftware-Framepacing/thumbnail_0a.png');
+          "
+        >
+        
+          <h1 class="article-title">Framepacing Fixes for Fromsoftware Titles (PS4)</h1>
+          <div class="article-bottom">
+            <small class="article-date">18 Apr 2022</small>
+            <div class="article-categories">
+              
+              <a href="#!" class="article-category">patches</a>
+              
+            </div>
+          </div>
+        </div>
+        <div class="article-content"><!--
+If things went to plan, you're probably here from the digital foundry video.
+
+Hi there! (Wave emoji)
+-->
+
+<p>Please note that you are required to have a <a href="https://wololo.net/2021/12/14/ps4-how-to-run-the-ps4-9-00-jailbreak-full-guide-with-goldhen-payload/">exploited PlayStation 4</a> console on firmware <strong>9.00</strong> or lower to run the patches mentioned in this article.</p>
+
+<h1 id="intro">Intro</h1>
+
+<p>If you have ever played a recent fromsoftware games on console, be it Bloodborne, Dark Souls 3 or the recently released Elden Ring. You may have noticed something off about the presentation. One being that it feels more stuttery than other games with a 30 fps cap. And the other is inconsistent framerate on the enhanced consoles. With the framerate going up and down as it pleases depending on what is happening on screen.</p>
+
+<p>Let’s address the first issue. Improper frame pacing. It is an issue that started to occur on the 8th generation era with Bloodborne.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/Fromsoftware-Framepacing/bb-fps0.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/Fromsoftware-Framepacing/bb-fps0.png" />
+</a></div>
+
+<div align="center">
+<em>Yikes. <i class="twa twa-grimacing-face"></i></em>
+</div>
+
+<p>Now let’s go back to the previous generation, the PS3/Xbox 360 era.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/Fromsoftware-Framepacing/ds1-x360-2a.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/Fromsoftware-Framepacing/ds1-x360-2a.png" />
+</a></div>
+
+<p>Dark Souls on Xbox 360, no issues here. A consistent 30 fps when it meets the framerate target.</p>
+
+<p>How about Demon Souls?</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/Fromsoftware-Framepacing/des-ps3-3.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/Fromsoftware-Framepacing/des-ps3-3.png" />
+</a></div>
+
+<p>Yep, no issues here either.</p>
+
+<h2 id="what-went-wrong">What Went Wrong?</h2>
+
+<p>I could only speculate on the decision to implement their own framerate cap for multi plat games is portability. Not having to deal with API calls for each console is a definite win but they did not realize <em>if</em> their timer precision was off, it will cause inconsistency in frame delivery.</p>
+
+<p>But there’s something even more strange. Checkout this <a href="https://youtu.be/BN_4-d1wPQw?t=162">video</a> from VG Tech where they showcase Dark Souls 1 in Backcompat Mode on Xbox One and..</p>
+
+<div align="center">
+<video width="100%" controls="" loop="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/Fromsoftware-Framepacing/ds1-vgtech-trimmed-9752-10680.mp4" type="video/mp4" />
+</video>
+</div>
+
+<p>Bad framepacing on the newer consoles but not original hardware? Very strange indeed. <i class="twa twa-thinking-face"></i></p>
+
+<h2 id="the-simple-fix">The Simple Fix</h2>
+
+<p>So what are the solutions? A very simple fix to this would be to call the relavent API function calls equivalent to the platform.</p>
+
+<p>Here are some suggestions.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Platform</th>
+      <th>API Calls</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>PS3</td>
+      <td>cellGcmSetFlipMode</td>
+    </tr>
+    <tr>
+      <td>PS4/PS5</td>
+      <td>SceVideoOutFlipRate</td>
+    </tr>
+    <tr>
+      <td>Xbox 360</td>
+      <td><a href="https://docs.microsoft.com/ja-jp/previous-versions/windows/desktop/bb322831(v=vs.85)">D3D::PresentInterval</a></td>
+    </tr>
+    <tr>
+      <td>Xbox One/Series S/X</td>
+      <td><a href="https://docs.microsoft.com/ja-jp/windows/win32/api/dxgi/nf-dxgi-idxgiswapchain-present">IDXGISwapChain::Present</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>But calling these functions and giving them appropriate device handle is not enough to fix the issue. We must also lift the game’s broken framerate limiter as well.</p>
+
+<p>Either by changing <code class="language-plaintext highlighter-rouge">Game.FlipMode</code> in the code to <code class="language-plaintext highlighter-rouge">60FPS_*</code> or changing minimum frame update time from 33.33ms to 16.67ms. Let’s see the changes.</p>
+
+<p>Here’s bloodborne with the frame pacing issues resolved.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/Fromsoftware-Framepacing/bb-fps1.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/Fromsoftware-Framepacing/bb-fps1.png" />
+</a></div>
+
+<p>Volla! With just a few lines of code, we get proper and consistent 30 frames per second! Killing two bug reports with one stone.</p>
+
+<p>The same fix also applies for the uncapped framerate on the enhanced consoles in Dark Souls 3 and later titles. though when implementing this in reality, the framerate cap <strong>must</strong> always be an option rather than forcing it on the user.</p>
+
+<h2 id="trivia">Trivia</h2>
+
+<p>Here’s a little bit of trivia for you, there’s already deltatime calculated for the framerate counter among other things.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/Fromsoftware-Framepacing/bb-fps3.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/Fromsoftware-Framepacing/bb-fps3.png" />
+</a></div>
+
+<p>But fromsoftware did not use this until the release of Dark Souls 3. Which is also how I ported the framerate patch for Bloodborne by <a href="https://twitter.com/manfightdragon">Lance McDonald</a> to the <a href="/_patch/BloodborneNetworkTest-Orbis/">Network Test</a> version.</p>
+
+<h2 id="closing-words">Closing words</h2>
+
+<p>That is all I have for you today, you can support me using the links below and thanks to the patrons and you for reading!</p>
+
+<p>Catch you next time where we race against opponents in a sea of mud with big trucks?</p>
+
+<h2 id="showcase">Showcase</h2>
+
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/gxsnY6l-iPI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</div>
+
+<h2 id="patches">Patches</h2>
+
+<ul>
+  <li><a href="/_patch/Bloodborne-Orbis/" class="button" role="button"><i class="fas fa-download"></i> Patch for Bloodborne</a></li>
+  <li><a href="/_patch/DarkSoulsIIITheFireFadesEdition-Orbis/" class="button" role="button"><i class="fas fa-download"></i> Patch for Dark Souls 3</a></li>
+  <li><a href="/_patch/SekiroShadowsDieTwice-Orbis/" class="button" role="button"><i class="fas fa-download"></i> Patch for Sekiro</a></li>
+  <li><a href="/_patch/EldenRingNetworkTest-Orbis/" class="button" role="button"><i class="fas fa-download"></i> Patch for Elden Ring: Network Test</a></li>
+</ul>
+
+<p>Need help with installing the patches?</p>
+
+<p>Check out the <a href="/install-instructions/">Installation Guide</a>.</p>
+
+<h2 id="supporters">Supporters</h2>
+
+<p>Thanks to the patrons who supported me on various platforms! You guys are awesome!</p>
+
+<h3 id="monthly-supporters">Monthly supporters:</h3>
+<ul>
+  <li>
+    <p><a href="https://www.patreon.com/illusion0001">Patreon</a>:</p>
+
+    <ul>
+      <li>ac2pic</li>
+      <li>Alexa</li>
+      <li>Brett</li>
+      <li>Ciril</li>
+      <li>GarnetSunset</li>
+      <li>Mmmmmhno</li>
+      <li>Paul</li>
+      <li>PlayStation5Mods</li>
+      <li>RazzySxPB</li>
+      <li>Ryan</li>
+      <li>Voredy</li>
+      <li>YveltalGriffin</li>
+      <li>Zackery</li>
+      <li>alessaro92</li>
+      <li>ashenC</li>
+      <li>embee</li>
+      <li>erdosadam24</li>
+      <li>faith</li>
+      <li>maplemiyazaki</li>
+      <li>patrick</li>
+      <li>rudi</li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="https://github.com/sponsors/illusion0001">Github Sponsors</a>:</p>
+
+    <ul>
+      <li>VIPO777</li>
+      <li>WardFail</li>
+      <li>Whitehawkx</li>
+      <li>gorshco</li>
+      <li>jrson83</li>
+      <li>regal.</li>
+      <li>suwagawaki</li>
+    </ul>
+  </li>
+</ul>
+
+</div>
+      </section>
+      <footer>
+  <p>&copy; 2021 - 2025 | illusion's Blog</br>Theme <a href="https://github.com/sharadcodes/jekyll-theme-material-you"> Jekyll Theme Material You</a></p>
+</footer>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

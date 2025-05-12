@@ -1,0 +1,54 @@
+{
+  "patch": [
+    {
+      "title": "Grand Theft Auto V",
+      "app_titleid": [
+        "CUSA00419",
+        "CUSA00411",
+        "CUSA00880"
+      ],
+      "app_ver": "01.00",
+      "app_elf": "eboot.bin",
+      "patch_ver": "1.0",
+      "name": "60 FPS Unlock",
+      "author": "illusion",
+      "note": "CPU Limited.",
+      "patch_list": [
+        { "type": "bytes32", "addr": "0x00e6bf3e", "value": "0x00000001" }
+      ]
+    },
+    {
+      "title": "Grand Theft Auto V",
+      "app_titleid": [
+        "CUSA00419",
+        "CUSA00411",
+        "CUSA00880"
+      ],
+      "app_ver": "01.38",
+      "app_elf": "eboot.bin",
+      "patch_ver": "1.0",
+      "name": "60 FPS Unlock",
+      "author": "illusion, GraFfiX_221211",
+      "patch_list": [
+        { "type": "bytes32", "addr": "0x01137b5e", "value": "0x00000001" }
+      ]
+    },
+    {
+      "title": "Grand Theft Auto V",
+      "app_titleid": [
+        "CUSA00419",
+        "CUSA00411",
+        "CUSA00880"
+      ],
+      "app_ver": "01.38",
+      "app_elf": "eboot.bin",
+      "patch_ver": "1.0",
+      "name": "Skip Intro",
+      "author": "illusion",
+      "patch_list": [
+        { "type": "bytes32", "addr": "0x0333a794", "value": "0x00000000" },
+        { "type": "bytes32", "addr": "0x02c6afb8", "value": "0x00000000" }
+      ]
+    }
+  ]
+}

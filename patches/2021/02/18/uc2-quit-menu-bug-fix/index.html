@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>illusion's Blog | Fixing A Rare Bug in Uncharted 2 (PlayStation 3/4)</title>
+  
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+  <!-- Twemoji -->
+  <!-- src https://github.com/SebastianAigner/twemoji-amazing -->
+  <link rel="stylesheet" href="/assets/css/twemoji-amazing.css">
+</head>
+
+  <body>
+    <main class="blogfeed">
+      
+<header>
+  <a class="site-title article-page" href="/">illusion's Blog</a>
+</header>
+
+
+
+
+      <section id="social-links1">
+  
+    <a href="/contact" target="_blank"> Contact</a>
+  
+    <a href="/patch" target="_blank"> Patches</a>
+  
+</section>
+
+<section id="social-links">
+
+  <a href="https://github.com/illusion0001" target="_blank">
+    <img src="/assets/icons/github.svg" alt="" />
+  </a>
+
+  <a href="mailto:illusion3185@gmail.com" target="_blank">
+    <img src="/assets/icons/email.svg" alt="" />
+  </a>
+
+</section>
+
+      <section id="article">
+        
+        <!--  -->
+        
+        <!--  -->
+        
+        
+          <h1 class="article-title">Fixing A Rare Bug in Uncharted 2 (PlayStation 3/4)</h1>
+          <div class="article-bottom">
+            <small class="article-date">18 Feb 2021</small>
+            <div class="article-categories">
+              
+              <a href="#!" class="article-category">patches</a>
+              
+            </div>
+          </div>
+        </div>
+        <div class="article-content"><p>Please note that you are required to have a <a href="https://wololo.net/2021/12/14/ps4-how-to-run-the-ps4-9-00-jailbreak-full-guide-with-goldhen-payload/">exploited PlayStation 4</a> console on firmware <strong>9.00</strong> or lower to run the patches mentioned in this article.</p>
+
+<h1 id="intro">Intro</h1>
+
+<p>There’s a rare bug in Uncharted 2 where if a player goes out of the normal playzone, dies, and quit to the menu, the game would crash.</p>
+
+<p>Affected Consoles:</p>
+
+<ul>
+  <li>
+    <p><del>PlayStation 3</del> Unofficially Patched</p>
+  </li>
+  <li>
+    <p><del>PlayStation 4</del> Unofficially Patched</p>
+  </li>
+</ul>
+
+<p>The issue still persists on latest patch 1.02 on PS4</p>
+
+<h2 id="first-sight">First Sight</h2>
+
+<p>Looking at instructions and fault address, assuming that 4b4 is SPU instruction and 0x620 for PS4, seems to be reading from an invalid memory address (access violation)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PS3 Stop Instruction:
+
+00262e04 a0 1c 04 b4     lhz        r0,DAT_000004b4(r28)
+
+Log from RPCS3
+
+Thread (main_thread) [0x00262e04]} VM: Access violation reading location 0x4b4 (unmapped memory)
+
+PS4 Stop Instruction:
+
+000ade75 66 41 83        CMP        word ptr [R15 + 0x620],0x0
+         bf 20 06 
+         00 00 00
+
+Mira Log from PS4
+
+# reason: page fault (user read data, page not present)
+# fault address: 0000000000000620
+# rip: 00000000004ade75 
+</code></pre></div></div>
+
+<p>Data stops processing and left the registers with 0 when quitting to the menu during this specific case, causing the game to crash.</p>
+
+<p>RPCS3: Breakpoint runtime.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/uc2-quit-menu-bug-fix/uc2-dbg-before.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/uc2-quit-menu-bug-fix/uc2-dbg-before.png" />
+</a></div>
+
+<p>RPCS3: Crash.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/uc2-quit-menu-bug-fix/uc2-dbg-after-death.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/uc2-quit-menu-bug-fix/uc2-dbg-after-death.png" />
+</a></div>
+
+<p>On Playstation 4, this is similar but in register R15 instead.</p>
+
+<p>PS4: Reaper Breakpoint runtime.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/uc2-quit-menu-bug-fix/ps4r-uc2-dbg1.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/uc2-quit-menu-bug-fix/ps4r-uc2-dbg1.png" />
+</a></div>
+
+<p>PS4: Mira backtrace.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/uc2-quit-menu-bug-fix/ps4-uc2-crash-backtrace-mira.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/uc2-quit-menu-bug-fix/ps4-uc2-crash-backtrace-mira.png" />
+</a></div>
+
+<p>Looking at register data. R28 (PS3) and R15 (PS4) gets used during gameplay and are always executed and have data.</p>
+
+<h2 id="resolution">Resolution</h2>
+
+<p>We add a check to compare against the base register (28 for PS3 and 15 for PS4 respectively)</p>
+
+<p>Skip to load 1 into their needed register skip and return to normal code if isn’t 0.</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1"># quit to menu fix ppc ver</span>
+  <span class="pi">-</span> <span class="pi">[</span> <span class="nv">be32</span><span class="pi">,</span> <span class="nv">0x00262e04</span><span class="pi">,</span> <span class="nv">0x488ce301</span> <span class="pi">]</span> <span class="c1">#Call to code cave</span>
+  <span class="pi">-</span> <span class="pi">[</span> <span class="nv">be32</span><span class="pi">,</span> <span class="nv">0x00b31104</span><span class="pi">,</span> <span class="nv">0x2f9c0000</span> <span class="pi">]</span> <span class="c1">#Compare r28 to 0</span>
+  <span class="pi">-</span> <span class="pi">[</span> <span class="nv">be32</span><span class="pi">,</span> <span class="nv">0x00b31108</span><span class="pi">,</span> <span class="nv">0x409e000c</span> <span class="pi">]</span> <span class="c1">#Skip to lhz if !=0</span>
+  <span class="pi">-</span> <span class="pi">[</span> <span class="nv">be32</span><span class="pi">,</span> <span class="nv">0x00b3110c</span><span class="pi">,</span> <span class="nv">0x38000001</span> <span class="pi">]</span> <span class="c1">#r0 = 1</span>
+  <span class="pi">-</span> <span class="pi">[</span> <span class="nv">be32</span><span class="pi">,</span> <span class="nv">0x00b31110</span><span class="pi">,</span> <span class="nv">0x48000008</span> <span class="pi">]</span> <span class="c1">#Go to return</span>
+  <span class="pi">-</span> <span class="pi">[</span> <span class="nv">be32</span><span class="pi">,</span> <span class="nv">0x00b31114</span><span class="pi">,</span> <span class="nv">0xa01c04b4</span> <span class="pi">]</span> <span class="c1">#Default lhz</span>
+  <span class="pi">-</span> <span class="pi">[</span> <span class="nv">be32</span><span class="pi">,</span> <span class="nv">0x00b31118</span><span class="pi">,</span> <span class="nv">0x4e800020</span> <span class="pi">]</span> <span class="c1">#Return</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  // quit to menu fix x86 ver
+000ade75 e8 87 cc        CALL       SUB_006cab01 // code cave
+         61 00
+                             SUB_006cab01
+006cab01 49 83 ff 00     CMP        R15,0x0 // compare r15 to 0
+006cab05 0f 85 09        JNZ        LAB_006cab14 // go to lea
+         00 00 00
+006cab0b 48 c7 c7        MOV        RDI,0x1 // move rdi with 1
+         01 00 00 00
+006cab12 eb 07           JMP        LAB_006cab1b // Go to Compare
+                     LAB_006cab14
+006cab14 49 8d bf        LEA        RDI,[R15 + 0x620] // Lea from rdi to r15 + 620, no LEA in original code, does CMP instead
+         20 06 00 00
+                     LAB_006cab1b
+006cab1b 48 83 ff 00     CMP        RDI,0x0 // if rdi 0
+006cab1f c3              RET // Return
+</code></pre></div></div>
+
+<p>Let’s implement this fix and see the results.</p>
+
+<div align="center" class="responsive-video-container">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/UdDs6-ZT8gw?start=31" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</div>
+
+<p>Awesome! No longer crashing when quitting to the menu.</p>
+
+<h1 id="patch">Patch</h1>
+
+<p>To apply patch and for use on an exploitable PlayStation 3 or PlayStation 4 console, you’ll to modify the executable with a hex editor and install it back onto the console.</p>
+
+<p>For RPCS3 Users, Simply download and enable through it’s built-in patch manager.</p>
+
+<p><a href="https://github.com/GoldHEN/GoldHEN_Patch_Repository/blob/3f8d6875f60c0969d674ed31c3dc1f4ad0619720/patches/xml/UnchartedTheNathanDrakeCollection-Orbis.xml#L198" class="button" role="button"> Patch Codes</a></p>
+
+<h2 id="credits">Credits</h2>
+
+<p>Thanks to <a href="https://www.youtube.com/user/ZEROx2085">ZEROx</a> for implementing fix in PowerPC Version.</p>
+</div>
+      </section>
+      <footer>
+  <p>&copy; 2021 - 2025 | illusion's Blog</br>Theme <a href="https://github.com/sharadcodes/jekyll-theme-material-you"> Jekyll Theme Material You</a></p>
+</footer>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>illusion's Blog | Grand Theft Auto V</title>
+  
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+  <!-- Twemoji -->
+  <!-- src https://github.com/SebastianAigner/twemoji-amazing -->
+  <link rel="stylesheet" href="/assets/css/twemoji-amazing.css">
+</head>
+
+  <body>
+    <main class="blogfeed">
+      
+<header>
+  <a class="site-title article-page" href="/">illusion's Blog</a>
+</header>
+
+
+
+
+      <section id="social-links1">
+  
+    <a href="/contact" target="_blank"> Contact</a>
+  
+    <a href="/patch" target="_blank"> Patches</a>
+  
+</section>
+
+<section id="social-links">
+
+  <a href="https://github.com/illusion0001" target="_blank">
+    <img src="/assets/icons/github.svg" alt="" />
+  </a>
+
+  <a href="mailto:illusion3185@gmail.com" target="_blank">
+    <img src="/assets/icons/email.svg" alt="" />
+  </a>
+
+</section>
+
+      <section id="article">
+        
+        <!--  -->
+        
+        <!--  -->
+        
+        
+          <h1 class="article-title">Grand Theft Auto V</h1>
+          <div class="article-bottom">
+            <small class="article-date"></small>
+            <div class="article-categories">
+              
+            </div>
+          </div>
+        </div>
+        <div class="article-content"><p><a href="/patch/#patches">Game Index</a></p>
+
+<h2 id="patches">Patches</h2>
+
+<p>For use with <a href="https://github.com/bucanero/PS4CheatsManager">PS4 Cheats Manager</a>.</p>
+
+<!-- [Installation Guide](/install-instructions/) -->
+
+<p>Download all <a href="https://github.com/illusion0001/PS4-PS5-Game-Patch/releases/latest/download/patch1.zip">patch</a> files.</p>
+
+<p>Opening the file preview below may freeze your browser on mobile Chromium based browsers.</p>
+
+<p>Preview the file on <a href="https://github.com/illusion0001/PS4-PS5-Game-Patch/blob/main/patches/xml/GrandTheftAutoV-Orbis.xml">GitHub</a>.</p>
+
+<!-- Patch will be built from CI -->
+
+<!-- Patch file: `patches/xml/GrandTheftAutoV-Orbis.xml` -->
+
+<details>
+<summary>Contents of patch file (Click to Expand)</summary>
+
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;Patch&gt;</span>
+    <span class="nt">&lt;TitleID&gt;</span>
+        <span class="nt">&lt;ID&gt;</span>CUSA00411<span class="nt">&lt;/ID&gt;</span>
+        <span class="nt">&lt;ID&gt;</span>CUSA00419<span class="nt">&lt;/ID&gt;</span>
+        <span class="nt">&lt;ID&gt;</span>CUSA00880<span class="nt">&lt;/ID&gt;</span>
+    <span class="nt">&lt;/TitleID&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Grand Theft Auto V"</span>
+              <span class="na">Name=</span><span class="s">"Skip Logo Video and Legal Screens"</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"mask"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"mask"</span> <span class="na">Address=</span><span class="s">"e8 ?? ?? ?? ?? 84 c0 0f 84 ?? ?? ?? ?? 48 8b 3b c6 87 9b 00 00 00 01"</span> <span class="na">Value=</span><span class="s">"b800000000"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"mask"</span> <span class="na">Address=</span><span class="s">"42 8b 3c b3 e8 ?? ?? ?? ?? 42 83 3c b3 01"</span> <span class="na">Value=</span><span class="s">"c60300909090909090"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"mask"</span> <span class="na">Address=</span><span class="s">"48 8d 05 ?? ?? ?? ?? 83 3c 98 01 0f 85 ?? ?? ?? ?? 48 8d 3d ?? ?? ?? ?? 48 8d 35 ?? ?? ?? ??"</span> <span class="na">Value=</span><span class="s">"48e9"</span> <span class="na">Offset=</span><span class="s">"+11"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"mask"</span> <span class="na">Address=</span><span class="s">"48 63 df 48 8d 05 ?? ?? ?? ?? 44 8b 34 98"</span> <span class="na">Value=</span><span class="s">"4531f690"</span> <span class="na">Offset=</span><span class="s">"+10"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Grand Theft Auto V"</span>
+              <span class="na">Name=</span><span class="s">"60 FPS Unlock"</span>
+              <span class="na">Note=</span><span class="s">"CPU Limited."</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"mask"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"mask"</span> <span class="na">Address=</span><span class="s">"bf 02 00 00 00 31 f6 e8 ?? ?? ?? ?? 48 8b 3b 48 8b 07 ff 50 ?? e8 ?? ?? ?? ??"</span> <span class="na">Value=</span><span class="s">"bf01000000"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Grand Theft Auto V"</span>
+              <span class="na">Name=</span><span class="s">"Enable Snow in Singleplayer"</span>
+              <span class="na">Note=</span><span class="s">"Source: https://pastebin.com/sxXqG1LB https://pastebin.com/F1QBJ0Zf"</span>
+              <span class="na">Author=</span><span class="s">"rfoodxmodz, x3shakir"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"mask"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="c">&lt;!--
+            // https://pastebin.com/sxXqG1LB
+            // can't include C brackets in xml comments
+                memcpy_p(0x096FEBC + process_base), "\x90\x90", 2);
+                memcpy_p(0x096FF3E + process_base), "\x90\x90", 2);
+                memcpy_p(0x096FF4C + process_base), "\x90\x90", 2);
+                memcpy_p(0x096FEDB + process_base), "\xEB", 1);
+                memcpy_p(0x096FF0F + process_base), "\xEB", 1);
+                memcpy_p(0x096FF65 + process_base), "\x90\x90\x90\x90\x90\x90", 6);
+
+            // https://pastebin.com/F1QBJ0Zf
+            #if GAME_VERSION == 100
+                memcpy((void *)(0x0789CDA + 0x400000), "\x90\x90", 2);
+                memcpy((void *)(0x0789CF9 + 0x400000), "\xEB", 1);
+                memcpy((void *)(0x0789D2D + 0x400000), "\xEB", 1);
+                memcpy((void *)(0x0789D49 + 0x400000), "\x90\x90\x90\x90\x90\x90", 6);
+            #elif GAME_VERSION == 127
+                memcpy((void *)(0x096375A + 0x400000), "\x90\x90", 2);
+                memcpy((void *)(0x096377A + 0x400000), "\xEB", 1);
+                memcpy((void *)(0x09637AE + 0x400000), "\xEB", 1);
+                memcpy((void *)(0x09637EF + 0x400000), "\x90\x90\x90\x90\x90\x90", 6);
+                memcpy((void *)(0x0963803 + 0x400000), "\x90\x90\x90\x90\x90\x90", 6);
+            #elif GAME_VERSION == 138
+                memcpy((void *)(0x096A4FA + 0x400000), "\x90\x90", 2);
+                memcpy((void *)(0x096A51A + 0x400000), "\xEB", 1);
+                memcpy((void *)(0x096A54E + 0x400000), "\xEB", 1);
+                memcpy((void *)(0x096A58F + 0x400000), "\x90\x90\x90\x90\x90\x90", 6);
+                memcpy((void *)(0x096A5A3 + 0x400000), "\x90\x90\x90\x90\x90\x90", 6);
+            #elif GAME_VERSION == 146
+                memcpy((void *)(0x0965C1A + 0x400000), "\x90\x90", 2);
+                memcpy((void *)(0x0965C3A + 0x400000), "\xEB", 1);
+                memcpy((void *)(0x0965C6E + 0x400000), "\xEB", 1);
+                memcpy((void *)(0x0965CAF + 0x400000), "\x90\x90\x90\x90\x90\x90", 6);
+                memcpy((void *)(0x0965CC3 + 0x400000), "\x90\x90\x90\x90\x90\x90", 6);
+            #elif GAME_VERSION == 147
+                memcpy((void *)(0x0968F8A + 0x400000), "\x90\x90", 2);
+                memcpy((void *)(0x0968FAA + 0x400000), "\xEB", 1);
+                memcpy((void *)(0x0968FDE + 0x400000), "\xEB", 1);
+                memcpy((void *)(0x096901F + 0x400000), "\x90\x90\x90\x90\x90\x90", 6);
+                memcpy((void *)(0x0969033 + 0x400000), "\x90\x90\x90\x90\x90\x90", 6);
+            #elif GAME_VERSION == 148
+                memcpy((void *)(0x096FEBC + 0x400000), "\x90\x90", 2);
+                memcpy((void *)(0x096FEDB + 0x400000), "\xEB", 1);
+                memcpy((void *)(0x096FF0F + 0x400000), "\xEB", 1);
+                memcpy((void *)(0x096FF3E + 0x400000), "\x90\x90", 2);
+                memcpy((void *)(0x096FF4C + 0x400000), "\x90\x90", 2);
+                memcpy((void *)(0x096FF65 + 0x400000), "\x90\x90\x90\x90\x90\x90", 6);
+            #elif GAME_VERSION == 149
+                memcpy((void *)(0x082C169 + 0x400000), "\x90\x90", 2);
+                memcpy((void *)(0x082C188 + 0x400000), "\xEB", 1);
+                memcpy((void *)(0x082C1BC + 0x400000), "\xEB", 1);
+                memcpy((void *)(0x082C1E7 + 0x400000), "\x90\x90\x90\x90\x90\x90", 6);
+                memcpy((void *)(0x082C1FC + 0x400000), "\x90\x90\x90\x90\x90\x90", 6);
+            #endif
+            --&gt;</span>
+            <span class="c">&lt;!-- Base version patterns --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"mask"</span> <span class="na">Address=</span><span class="s">"74 ?? 39 83 e8 0c 00 00 0f 95 c1"</span> <span class="na">Value=</span><span class="s">"9090"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"mask"</span> <span class="na">Address=</span><span class="s">"74 ?? 48 8d 15 ?? ?? ?? ?? b8 01 00 00 00 2b 02 eb ?? 48"</span> <span class="na">Value=</span><span class="s">"eb"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"mask"</span> <span class="na">Address=</span><span class="s">"74 ?? b8 01 00 00 00 29 d0 eb ?? 89 d0 48 8d 15 ?? ?? ?? ?? 80 3a 00"</span> <span class="na">Value=</span><span class="s">"eb"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"mask"</span> <span class="na">Address=</span><span class="s">"0f 85 ?? ?? ?? ?? 48 63 c0 48 8d 0d ?? ?? ?? ?? 8a 04 01 84 c0"</span> <span class="na">Value=</span><span class="s">"909090909090"</span><span class="nt">/&gt;</span>
+            <span class="c">&lt;!-- Update versions --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"mask"</span> <span class="na">Address=</span><span class="s">"74 ?? 41 39 87 70 0e 00 00 0f 95 c3"</span> <span class="na">Value=</span><span class="s">"9090"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"mask"</span> <span class="na">Address=</span><span class="s">"74 ?? 48 8d 0d ?? ?? ?? ?? b8 01 00 00 00 2b 01 eb ?? 48 83"</span> <span class="na">Value=</span><span class="s">"eb"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"mask"</span> <span class="na">Address=</span><span class="s">"74 ?? b8 01 00 00 00 29 c8 eb ?? 89 c8 48 63 c0 48 8d 0d ?? ?? ?? ?? 44 8a 24 01"</span> <span class="na">Value=</span><span class="s">"eb"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"mask"</span> <span class="na">Address=</span><span class="s">"0f 84 ?? ?? ?? ?? bf 40 00 00 00 e8 ?? ?? ?? ?? 34 01"</span> <span class="na">Value=</span><span class="s">"909090909090"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"mask"</span> <span class="na">Address=</span><span class="s">"0f 85 ?? ?? ?? ?? 45 84 e4 0f 85 ?? ?? ?? ?? 49 8b 45 00"</span> <span class="na">Value=</span><span class="s">"909090909090"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+<span class="nt">&lt;/Patch&gt;</span></code></pre></figure>
+
+
+</details>
+</div>
+      </section>
+      <footer>
+  <p>&copy; 2021 - 2025 | illusion's Blog</br>Theme <a href="https://github.com/sharadcodes/jekyll-theme-material-you"> Jekyll Theme Material You</a></p>
+</footer>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

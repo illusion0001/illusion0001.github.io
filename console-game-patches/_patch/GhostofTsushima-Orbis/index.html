@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>illusion's Blog | Ghost Of Tsushima</title>
+  
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+  <!-- Twemoji -->
+  <!-- src https://github.com/SebastianAigner/twemoji-amazing -->
+  <link rel="stylesheet" href="/assets/css/twemoji-amazing.css">
+</head>
+
+  <body>
+    <main class="blogfeed">
+      
+<header>
+  <a class="site-title article-page" href="/">illusion's Blog</a>
+</header>
+
+
+
+
+      <section id="social-links1">
+  
+    <a href="/contact" target="_blank"> Contact</a>
+  
+    <a href="/patch" target="_blank"> Patches</a>
+  
+</section>
+
+<section id="social-links">
+
+  <a href="https://github.com/illusion0001" target="_blank">
+    <img src="/assets/icons/github.svg" alt="" />
+  </a>
+
+  <a href="mailto:illusion3185@gmail.com" target="_blank">
+    <img src="/assets/icons/email.svg" alt="" />
+  </a>
+
+</section>
+
+      <section id="article">
+        
+        <!--  -->
+        
+        <!--  -->
+        
+        
+          <h1 class="article-title">Ghost Of Tsushima</h1>
+          <div class="article-bottom">
+            <small class="article-date"></small>
+            <div class="article-categories">
+              
+            </div>
+          </div>
+        </div>
+        <div class="article-content"><!-- # Ghost Of Tsushima -->
+
+<p><a href="/patch/#patches">Game Index</a></p>
+
+<p><a href="/install-instructions/">Installation Guide</a></p>
+
+<h2 id="60-fps-unlock">60 FPS Unlock</h2>
+
+<p>Author: <a href="https://twitter.com/illusion0002">illusion</a></p>
+
+<p>This isn’t very useful right now because it only unlocks the framerate, nothing more.</p>
+
+<p>GPU limited in normal gameplay, meaning you won’t go above 32~fps without looking at the sky.</p>
+
+<p><strong>Must be used with <a href="#resolution-patch">resolution patch</a></strong></p>
+
+<p>In file <code class="language-plaintext highlighter-rouge">eboot.bin</code></p>
+
+<details>
+<summary>Code 1.00 (Click to Expand)</summary>
+
+
+<figure class="highlight"><pre><code class="language-none" data-lang="none">39 05 CA B1 01 02 74 16 89 05 C2 B1 01 02
+
+39 05 CA B1 01 02 EB 16 89 05 C2 B1 01 02</code></pre></figure>
+
+
+</details>
+
+<details>
+<summary>Code 1.12 (Click to Expand)</summary>
+
+
+<figure class="highlight"><pre><code class="language-none" data-lang="none">39 05 5A DA 18 02 74 16 89 05 52 DA 18 02
+
+39 05 5A DA 18 02 EB 16 89 05 52 DA 18 02</code></pre></figure>
+
+
+</details>
+
+<h2 id="resolution-patch">Resolution Patch</h2>
+
+<p>Author: <a href="https://twitter.com/illusion0002">illusion</a></p>
+
+<p>This isn’t very useful right now because it breaks occlusion on Base Console. (See notes)</p>
+
+<p>Pro works (reported by tester.)</p>
+
+<p><strong>Must be used with <a href="#60-fps-unlock">framerate patch</a></strong>!</p>
+
+<p>In file <code class="language-plaintext highlighter-rouge">eboot.bin</code></p>
+
+<details>
+<summary>Code 1.00 (Base Only) (Click to Expand)</summary>
+
+
+<figure class="highlight"><pre><code class="language-none" data-lang="none">0F 84 7C 00 00 00 48 B8 00 0F 00 00 70 08 00 00 48 B9 80 0C 00 00 08 07 00 00 48 89 05 D7 7D 2F 01 48 89 0D DC 7D 2F 01 C6 05 0E B5 02 02 01
+
+0F 85 7C 00 00 00 48 B8 80 07 00 00 38 04 00 00 48 B9 C0 03 00 00 1C 02 00 00 48 89 05 D7 7D 2F 01 48 89 0D DC 7D 2F 01 C6 05 0E B5 02 02 00
+
+# some notes:
+# jnz to use pro path on base, (this doesn't fix culling)
+# https://cdn.discordapp.com/attachments/842452358968508446/851187186011340871/0_42.mp4
+# using pro path allows for full control over buffer render targets.
+# as base use rcx for both front and back, this can be separated of course
+# but would reqiure extra code
+### set front buffer to 1920x1080
+# 48 B8 00 0F 00 00 70 08 00 00
+# 48 B8 80 07 00 00 38 04 00 00
+###
+### set back buffer to 960x540
+# 48 B9 80 0C 00 00 08 07 00 00
+# 48 B9 C0 03 00 00 1C 02 00 00
+###
+### disable temporal upscale
+## otherwise you'll get this:
+# https://cdn.discordapp.com/attachments/650395105479360514/854487869535551508/20210616_090846_00496201.png
+# https://cdn.discordapp.com/attachments/650395105479360514/854487883100192788/20210616_090923_00844421.png
+# C6 05 0E B5 02 02 01
+# C6 05 0E B5 02 02 00
+###</code></pre></figure>
+
+
+</details>
+
+<details>
+<summary>Code 1.00/1.12 (Pro Only) (Click to Expand)</summary>
+
+
+<figure class="highlight"><pre><code class="language-none" data-lang="none"># set back buffer to 1600x900
+48 B9 80 0C 00 00 08 07 00 00
+
+48 B9 40 06 00 00 84 03 00 00</code></pre></figure>
+
+
+</details>
+
+<h2 id="disable-temporal-upscale">Disable Temporal Upscale</h2>
+
+<p><strong>Must be used with <a href="#resolution-patch">resolution patch</a></strong></p>
+
+<p>In file <code class="language-plaintext highlighter-rouge">eboot.bin</code></p>
+
+<details>
+<summary>Code 1.00 (Click to Expand)</summary>
+
+
+<figure class="highlight"><pre><code class="language-none" data-lang="none">C6 05 0E B5 02 02 01
+
+C6 05 0E B5 02 02 00</code></pre></figure>
+
+
+</details>
+
+<details>
+<summary>Code 1.12 (Click to Expand)</summary>
+
+
+<figure class="highlight"><pre><code class="language-none" data-lang="none">C6 05 98 D3 19 02 01
+
+C6 05 98 D3 19 02 00</code></pre></figure>
+
+
+</details>
+</div>
+      </section>
+      <footer>
+  <p>&copy; 2021 - 2025 | illusion's Blog</br>Theme <a href="https://github.com/sharadcodes/jekyll-theme-material-you"> Jekyll Theme Material You</a></p>
+</footer>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

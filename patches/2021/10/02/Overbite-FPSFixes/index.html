@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>illusion's Blog | Patches for MediEvil (PS4 Remake)</title>
+  
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+  <!-- Twemoji -->
+  <!-- src https://github.com/SebastianAigner/twemoji-amazing -->
+  <link rel="stylesheet" href="/assets/css/twemoji-amazing.css">
+</head>
+
+  <body>
+    <main class="blogfeed">
+      
+<header>
+  <a class="site-title article-page" href="/">illusion's Blog</a>
+</header>
+
+
+
+
+      <section id="social-links1">
+  
+    <a href="/contact" target="_blank"> Contact</a>
+  
+    <a href="/patch" target="_blank"> Patches</a>
+  
+</section>
+
+<section id="social-links">
+
+  <a href="https://github.com/illusion0001" target="_blank">
+    <img src="/assets/icons/github.svg" alt="" />
+  </a>
+
+  <a href="mailto:illusion3185@gmail.com" target="_blank">
+    <img src="/assets/icons/email.svg" alt="" />
+  </a>
+
+</section>
+
+      <section id="article">
+        
+        <!--  -->
+        
+        <!--  -->
+        
+        
+        <div
+          class="article-thumbnail"
+          style="
+            background-image: url('https://img-assets.illusion0001.workers.dev/assets/images/Overbite-FPSFixes/overbite-thumbnail.png');
+          "
+        >
+        
+          <h1 class="article-title">Patches for MediEvil (PS4 Remake)</h1>
+          <div class="article-bottom">
+            <small class="article-date">02 Oct 2021</small>
+            <div class="article-categories">
+              
+              <a href="#!" class="article-category">patches</a>
+              
+            </div>
+          </div>
+        </div>
+        <div class="article-content"><h1 id="intro">Intro</h1>
+
+<p>Another classic gets a complete overhaul in Graphics, Gameplay and the works but of course not all things are perfect and this game is no exception. When I first boot up the game for the first time, went into the options menu and it got me curious.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/Overbite-FPSFixes/overbite-settings.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/Overbite-FPSFixes/overbite-settings.png" />
+</a></div>
+
+<p>A 30FPS Cap option in the menu, but is it any good?</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/Overbite-FPSFixes/overbite-fps-borked.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/Overbite-FPSFixes/overbite-fps-borked.png" />
+</a></div>
+
+<div align="center">
+<em>No, it is not.. :(</em>
+</div>
+
+<p>Time for a fix and a good ol’ resolution patch for 60FPS in some cases.</p>
+
+<h2 id="part-1---patching-resolution">Part 1 - Patching Resolution</h2>
+
+<p>Patching resolution in Unreal Engine 4 games has become easier than ever, usually you can guess 100.0(float) as the target and find the correct one in memory.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">MyResOverride</span><span class="p">();</span> <span class="c1">// call</span>
+                 <span class="c1">// vars renamed for easier reading</span>
+
+<span class="kt">void</span> <span class="nf">MyResOverride</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+
+<span class="p">{</span>
+  <span class="n">var</span><span class="p">.</span><span class="n">ResScale</span> <span class="o">=</span> <span class="mh">0x42860000</span><span class="p">;</span> <span class="c1">// write to memory 67.00f</span>
+  <span class="n">vmovss_avx</span><span class="p">(</span><span class="n">var</span><span class="p">.</span><span class="n">ResScale</span><span class="p">);</span>  <span class="c1">// read to xmm0, original instruction</span>
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Easy as that.</p>
+
+<p>I heard that the PS4 Pro version does not have support for 4K displays, meaning if you run the game on a 4K TV Set, it will still output at 1080p.</p>
+
+<h2 id="part-2---fixing-frame-pacing">Part 2 - Fixing Frame-Pacing</h2>
+
+<p>In Unreal Engine, there is two ways at least that I know of to cap the framerate.</p>
+
+<p>There is Sync Interval, which will cap to frametime.</p>
+
+<p>And there is Max FPS, which instead will cap to framerate but very loosely as we saw earlier.</p>
+
+<p>Toggling the option in the menu on and off lands on a float, when on it is set to 30.0(float) and when off it’s set to 60.0(float), pretty simple.</p>
+
+<p>A way to fix this is to completely ignore Max FPS and instead use the sync interval variable instead. it provides much better frametime stability and no stutters.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">FpsFunction</span><span class="p">();</span> <span class="c1">// call</span>
+                 <span class="c1">// vars renamed for easier reading</span>
+
+<span class="kt">void</span> <span class="nf">FpsFunction</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+
+<span class="p">{</span>
+  <span class="n">vucomiss_avx</span><span class="p">(</span><span class="n">var</span><span class="p">.</span><span class="n">MaxFPS</span><span class="p">);</span>   <span class="c1">// original memory address</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">var</span><span class="p">.</span><span class="n">MaxFPS</span><span class="p">)</span> <span class="o">==</span> <span class="mf">30.00</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 0x41f00000</span>
+    <span class="n">var</span><span class="p">.</span><span class="n">SyncInterval</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>     <span class="c1">// 30.0hz (33.3ms)</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="p">{</span>
+    <span class="n">var</span><span class="p">.</span><span class="n">SyncInterval</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>     <span class="c1">// 60.0hz (16.6ms)</span>
+                              <span class="c1">// (unlimited with vsync off)</span>
+  <span class="p">}</span>
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>What this code does is it checks if the value in memory is <code class="language-plaintext highlighter-rouge">30.00</code> or not, if it is, set <code class="language-plaintext highlighter-rouge">var.SyncInterval</code> to 2 for 30FPS or else, set it 0 which is the default.</p>
+
+<p>To the developers, can we get this fix in a official patch? and even better, 4K support.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/Overbite-FPSFixes/overbite-meme-final.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/Overbite-FPSFixes/overbite-meme-final.png" />
+</a></div>
+
+<div align="center">
+<em>Fun Fact: this meme almost went unused.</em>
+</div>
+
+<h1 id="results">Results</h1>
+
+<p>See the video below for a comparison between the patched versions.</p>
+
+<div align="center" class="responsive-video-container">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/_FyHCSwze_8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</div>
+
+<h1 id="patch">Patch</h1>
+
+<p><a href="/_patch/MediEvil-Orbis" class="button" role="button"><i class="fas fa-download"></i> Patch Code</a></p>
+
+<h2 id="supporters">Supporters</h2>
+
+<p>Thanks to the patrons who supported me on various platforms! You guys are awesome!</p>
+
+<h3 id="monthly-supporters">Monthly supporters:</h3>
+<ul>
+  <li>
+    <p><a href="https://www.patreon.com/illusion0001">Patreon</a>:</p>
+
+    <ul>
+      <li>ac2pic</li>
+      <li>Alexa</li>
+      <li>Brett</li>
+      <li>Ciril</li>
+      <li>GarnetSunset</li>
+      <li>Mmmmmhno</li>
+      <li>Paul</li>
+      <li>PlayStation5Mods</li>
+      <li>RazzySxPB</li>
+      <li>Ryan</li>
+      <li>Voredy</li>
+      <li>YveltalGriffin</li>
+      <li>Zackery</li>
+      <li>alessaro92</li>
+      <li>ashenC</li>
+      <li>embee</li>
+      <li>erdosadam24</li>
+      <li>faith</li>
+      <li>maplemiyazaki</li>
+      <li>patrick</li>
+      <li>rudi</li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="https://github.com/sponsors/illusion0001">Github Sponsors</a>:</p>
+
+    <ul>
+      <li>VIPO777</li>
+      <li>WardFail</li>
+      <li>Whitehawkx</li>
+      <li>gorshco</li>
+      <li>jrson83</li>
+      <li>regal.</li>
+      <li>suwagawaki</li>
+    </ul>
+  </li>
+</ul>
+
+</div>
+      </section>
+      <footer>
+  <p>&copy; 2021 - 2025 | illusion's Blog</br>Theme <a href="https://github.com/sharadcodes/jekyll-theme-material-you"> Jekyll Theme Material You</a></p>
+</footer>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

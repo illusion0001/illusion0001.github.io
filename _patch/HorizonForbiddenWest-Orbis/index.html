@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>illusion's Blog | Horizon Forbidden West</title>
+  
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+  <!-- Twemoji -->
+  <!-- src https://github.com/SebastianAigner/twemoji-amazing -->
+  <link rel="stylesheet" href="/assets/css/twemoji-amazing.css">
+</head>
+
+  <body>
+    <main class="blogfeed">
+      
+<header>
+  <a class="site-title article-page" href="/">illusion's Blog</a>
+</header>
+
+
+
+
+      <section id="social-links1">
+  
+    <a href="/contact" target="_blank"> Contact</a>
+  
+    <a href="/patch" target="_blank"> Patches</a>
+  
+</section>
+
+<section id="social-links">
+
+  <a href="https://github.com/illusion0001" target="_blank">
+    <img src="/assets/icons/github.svg" alt="" />
+  </a>
+
+  <a href="mailto:illusion3185@gmail.com" target="_blank">
+    <img src="/assets/icons/email.svg" alt="" />
+  </a>
+
+</section>
+
+      <section id="article">
+        
+        <!--  -->
+        
+        <!--  -->
+        
+        
+          <h1 class="article-title">Horizon Forbidden West</h1>
+          <div class="article-bottom">
+            <small class="article-date"></small>
+            <div class="article-categories">
+              
+            </div>
+          </div>
+        </div>
+        <div class="article-content"><p><a href="/patch/#patches">Game Index</a></p>
+
+<h2 id="patches">Patches</h2>
+
+<p>For use with <a href="https://github.com/bucanero/PS4CheatsManager">PS4 Cheats Manager</a>.</p>
+
+<!-- [Installation Guide](/install-instructions/) -->
+
+<p>Download all <a href="https://github.com/illusion0001/PS4-PS5-Game-Patch/releases/latest/download/patch1.zip">patch</a> files.</p>
+
+<p>Opening the file preview below may freeze your browser on mobile Chromium based browsers.</p>
+
+<p>Preview the file on <a href="https://github.com/illusion0001/PS4-PS5-Game-Patch/blob/main/patches/xml/HorizonForbiddenWest-Orbis.xml">GitHub</a>.</p>
+
+<!-- Patch will be built from CI -->
+
+<!-- Patch file: `patches/xml/HorizonForbiddenWest-Orbis.xml` -->
+
+<details>
+<summary>Contents of patch file (Click to Expand)</summary>
+
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;Patch&gt;</span>
+    <span class="nt">&lt;TitleID&gt;</span>
+        <span class="nt">&lt;ID&gt;</span>CUSA28561<span class="nt">&lt;/ID&gt;</span>
+        <span class="nt">&lt;ID&gt;</span>CUSA24705<span class="nt">&lt;/ID&gt;</span>
+        <span class="nt">&lt;ID&gt;</span>CUSA28563<span class="nt">&lt;/ID&gt;</span>
+    <span class="nt">&lt;/TitleID&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Horizon Forbidden West"</span>
+              <span class="na">Name=</span><span class="s">"60 FPS [Update]"</span>
+              <span class="na">Note=</span><span class="s">"For update version, patch version 2 fixes stuttering."</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"2.0"</span>
+              <span class="na">AppVer=</span><span class="s">"mask"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"mask"</span> <span class="na">Address=</span><span class="s">"88 88 28 05 00 00 c6 80 29 05 00 00 01"</span> <span class="na">Value=</span><span class="s">"b90101000066898c2028050000"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Horizon Forbidden West"</span>
+              <span class="na">Name=</span><span class="s">"Disable Inital Boot on First Startup [Update]"</span>
+              <span class="na">Note=</span><span class="s">"For update version, skips long intro video and first time language selection screen."</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"mask"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"mask"</span> <span class="na">Address=</span><span class="s">"48 85 c0 74 ? 80 b8 e3 00 00 00 00 0f 95 c0 c3 31 c0 c3"</span> <span class="na">Value=</span><span class="s">"b1018888e300000088881801000088c8c3"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+<span class="c">&lt;!--
+    &lt;Metadata Title="Horizon Forbidden West"
+              Name="60 FPS"
+              Author="illusion"
+              PatchVer="1.0"
+              AppVer="01.18"
+              AppElf="eboot.bin"&gt;
+        &lt;PatchList&gt;
+            &lt;Line Type="bytes" Address="0x02b7ac40" Value="31c0c3"/&gt;
+        &lt;/PatchList&gt;
+    &lt;/Metadata&gt;
+    &lt;Metadata Title="Horizon Forbidden West"
+              Name="60 FPS"
+              Author="illusion"
+              PatchVer="1.0"
+              AppVer="01.17"
+              AppElf="eboot.bin"&gt;
+        &lt;PatchList&gt;
+            &lt;Line Type="bytes" Address="0x00566f83" Value="be00000000"/&gt;
+        &lt;/PatchList&gt;
+    &lt;/Metadata&gt;
+    &lt;Metadata Title="Horizon Forbidden West"
+              Name="Disable Inital Boot on First Startup"
+              Note="Skips long intro video and first time language selection screen."
+              Author="illusion"
+              PatchVer="1.0"
+              AppVer="01.17"
+              AppElf="eboot.bin"&gt;
+        &lt;PatchList&gt;
+            &lt;Line Type="bytes" Address="0x019e1bb7" Value="c6801801000001"/&gt;
+            &lt;Line Type="bytes" Address="0x019e1bbe" Value="b001"/&gt;
+            &lt;Line Type="bytes" Address="0x019e1bc0" Value="c3"/&gt;
+        &lt;/PatchList&gt;
+    &lt;/Metadata&gt;
+--&gt;</span>
+<span class="nt">&lt;/Patch&gt;</span></code></pre></figure>
+
+
+</details>
+</div>
+      </section>
+      <footer>
+  <p>&copy; 2021 - 2025 | illusion's Blog</br>Theme <a href="https://github.com/sharadcodes/jekyll-theme-material-you"> Jekyll Theme Material You</a></p>
+</footer>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

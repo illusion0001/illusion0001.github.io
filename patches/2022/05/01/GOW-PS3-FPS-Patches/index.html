@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>illusion's Blog | Framerate Patch and Intro Skip for God Of War 3/Ascension (RPCS3)</title>
+  
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+  <!-- Twemoji -->
+  <!-- src https://github.com/SebastianAigner/twemoji-amazing -->
+  <link rel="stylesheet" href="/assets/css/twemoji-amazing.css">
+</head>
+
+  <body>
+    <main class="blogfeed">
+      
+<header>
+  <a class="site-title article-page" href="/">illusion's Blog</a>
+</header>
+
+
+
+
+      <section id="social-links1">
+  
+    <a href="/contact" target="_blank"> Contact</a>
+  
+    <a href="/patch" target="_blank"> Patches</a>
+  
+</section>
+
+<section id="social-links">
+
+  <a href="https://github.com/illusion0001" target="_blank">
+    <img src="/assets/icons/github.svg" alt="" />
+  </a>
+
+  <a href="mailto:illusion3185@gmail.com" target="_blank">
+    <img src="/assets/icons/email.svg" alt="" />
+  </a>
+
+</section>
+
+      <section id="article">
+        
+        <!--  -->
+        
+        <!--  -->
+        
+        
+        <div
+          class="article-thumbnail"
+          style="
+            background-image: url('https://img-assets.illusion0001.workers.dev/assets/images/GOW-PS3-FPS-Patches/Screen_thumbnail0.png');
+          "
+        >
+        
+          <h1 class="article-title">Framerate Patch and Intro Skip for God Of War 3/Ascension (RPCS3)</h1>
+          <div class="article-bottom">
+            <small class="article-date">01 May 2022</small>
+            <div class="article-categories">
+              
+              <a href="#!" class="article-category">patches</a>
+              
+            </div>
+          </div>
+        </div>
+        <div class="article-content"><p>The Motorstorm post has been postponed! <del>(Admittedly I haven’t even start writing it)</del></p>
+
+<p>With the recent PC release of <a href="https://store.steampowered.com/app/1593500/God_of_War">God of War (2018)</a> patches for the series are becoming more relevant than ever. This post will be a little on the longer side because there’s a lot to elaborate on. Let’s get into it!</p>
+
+<h2 id="intros-or-no-intros">Intros or No Intros</h2>
+
+<p>The PS3 God of War games has two stages of its intro section. One being the Sony logo and the Santa Monica videos.</p>
+
+<h3 id="simple-text">Simple Text</h3>
+
+<p>Let’s start with the simplest. The background with text. The game spawns <code class="language-plaintext highlighter-rouge">IntroLoaderThread</code> PPU thread for this and the solution here is to skip this process.</p>
+
+<h3 id="harder-videos">Harder Videos</h3>
+
+<p>It took me a while to figure this one out. At first I thought the game referenced the filenames found within the executable, the files being <code class="language-plaintext highlighter-rouge">SMLogo</code> and <code class="language-plaintext highlighter-rouge">openingCredits</code> but removing these references in the executable still plays it, so I gotta come up with a solution.</p>
+
+<p>It turns out the solution was right in front of me. You see, once you start a new game or save it, on subsequent runs, the game enables a boolean on the second intro video, allowing the users to skip the video with the press of the X button. I have a genius idea. What if we always enable this boolean and send the X button input?</p>
+
+<div align="center">
+<video width="100%" controls="" loop="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/GOW-PS3-FPS-Patches/Game_SkipDemo.mp4" type="video/mp4" />
+</video>
+</div>
+
+<p>The game boots up and there’s no intro, but there’s one problem, since this code will always run when there’s a video playing, meaning it will skip every video that plays, so that’s not very desirable. I passed my working code to <a href="https://www.youtube.com/user/ZEROx2085">ZEROx</a> and we came up with a solution:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kt">int</span> <span class="n">controller_button</span> <span class="o">=</span> <span class="n">cellPadGetData</span><span class="p">();</span>
+    <span class="kt">int</span> <span class="n">frame_count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">UserPressedSkipButton</span>  <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">VideoIsFinshed</span>         <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="kt">char</span><span class="p">[]</span> <span class="n">video_name</span> <span class="o">=</span> <span class="n">m2v_files</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">video_name</span> <span class="o">==</span> <span class="s">"SMLogo"</span> <span class="o">||</span> <span class="n">video_name</span> <span class="o">==</span> <span class="s">"openingCredits"</span> <span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">skipAlways</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+    <span class="n">skipOnbuttonPress</span><span class="p">();</span>
+  <span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">skipAlways</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kt">bool</span> <span class="n">UserPressedSkipButton</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="n">VideoIsFinshed</span>        <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">skipOnbuttonPress</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">controller_button</span> <span class="o">==</span> <span class="n">DEFINE_ACTION_BUTTON</span> <span class="cm">/* 64 */</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="kt">bool</span> <span class="n">UserPressedSkipButton</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">VideoIsFinshed</span>        <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>What this code does is it checks if the video filenames match. If they do, we call into the always skip video subroutine. The benefit of this being that it will only skip the intro videos and not the rest of the game, which is handy for those who do not want to watch intros every time they want to play.</p>
+
+<h2 id="static-and-dynamic-framerates">Static and Dynamic Framerates</h2>
+
+<p>In all God of War games, they have deltatime. It calculates the difference between the amount of time it takes to push a frame onto the display and writes that delta between the frames to game logic and other things. But since this is code from the PS2 era, things are weird. They have a specific range the game runs at: 15 to 60FPS. Going below 15FPS will snap to the maximum frametime of 66.67ms, going above 60 will snap to 16.67ms. meaning if you wanted to run the games at 120FPS, you’ll get double speed.</p>
+
+<p>But of course, if there is a will, there is a way, at least for the PS3 titles.</p>
+
+<p>The code is very similar between them so we won’t explain it for both games, but here’s how it goes:</p>
+
+<p>In memory, the game keeps track of a lot of things during gameplay. The area of interest is <code class="language-plaintext highlighter-rouge">0x006406f0</code>.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/GOW-PS3-FPS-Patches/Screen_memarea3.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/GOW-PS3-FPS-Patches/Screen_memarea3.png" />
+</a></div>
+
+<p>This area holds: framerate (int32) and frametimes (float32). Setting a breakpoint on the constantly writing floats gives us a few clues, one is it leads to this rather complicated sub at <code class="language-plaintext highlighter-rouge">0x0026b674</code>, I have not analyzed this one myself but I can tell that it has very important key information which helped us solve the puzzle.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">MinFPS</span> <span class="o">=</span> <span class="n">target_FPS</span> <span class="o">/</span> <span class="p">(</span> <span class="mi">400</span> <span class="o">/</span> <span class="mi">100</span> <span class="p">);</span>
+</code></pre></div></div>
+
+<p>This snippet of code divides the maximum framerate by 4 times a 100. Which adds up to 60/4 = 15. Simple. And changing this to 5000 gives us a minimum framerate of 2. Looking just a little closer, there’s -1.0 on this load float instruction.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/GOW-PS3-FPS-Patches/Screen_Ghidra0.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/GOW-PS3-FPS-Patches/Screen_Ghidra0.png" />
+</a></div>
+
+<p>That looks interesting, let’s check it out in memory, and..</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/GOW-PS3-FPS-Patches/Screen_FPSConst1.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/GOW-PS3-FPS-Patches/Screen_FPSConst1.png" />
+</a></div>
+
+<p>A constant of 59.94. How interesting.</p>
+
+<p>And the code that gives us this value is even more interesting:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">if</span> <span class="p">(</span><span class="n">frame_height</span> <span class="o">==</span> <span class="mi">576</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">SetMaxFPS</span><span class="p">(</span><span class="mf">50.00</span><span class="p">);</span> <span class="c1">// PAL</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="p">{</span>
+    <span class="n">SetMaxFPS</span><span class="p">(</span><span class="mf">59.94</span><span class="p">);</span> <span class="c1">// NTSC</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+<p>It compares if scanline height is 576 for PAL users, and if so sets the max FPS to 50.0, else (usually 480 lines) 59.94.</p>
+
+<p>How about we change this to 120?</p>
+
+<div align="center">
+<video width="100%" controls="" autoplay="" muted="" loop="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/GOW-PS3-FPS-Patches/Game_120FPSDemo4.mp4" type="video/mp4" />
+</video>
+</div>
+
+<p>Is that God of War 3 at up to 120FPS?</p>
+
+<p>Yes, it is.</p>
+
+<p>But the game is currently broken. There are two problems,</p>
+
+<div align="center">
+<video width="100%" autoplay="" muted="" loop="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/GOW-PS3-FPS-Patches/Game_ChainBugDemo.mp4" type="video/mp4" />
+</video>
+</div>
+
+<div align="center">
+<video width="100%" autoplay="" muted="" loop="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/GOW-PS3-FPS-Patches/Game_WaterBugDemo.mp4" type="video/mp4" />
+</video>
+</div>
+
+<p>One with the super slow chain swing and two when kratos dives into the water, causing the game to freak out and be stuck in a loop. The solution? Set the reading float to a static 60.</p>
+
+<p>During our testing, we discovered that this patch (accidentally) fixed a very annoying bug: out-of-sync in-game cinematics.</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/r1sGjetEHz0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<p>That’s an unexpected bug fix! <i class="twa twa-party-popper"></i> The best kind.</p>
+
+<h2 id="closing-words">Closing words</h2>
+
+<p>If there are more bugs that you have found with our patch, please post them in the comments and a save file so we can investigate.</p>
+
+<p>Join in next time where we actually get to see mud tracks and big trucks! Stay tuned!</p>
+
+<h2 id="patch">Patch</h2>
+
+<p>For those looking to use the patch on the emulator, you can head over to the patch manager, click on the “Download Latest Patches” and find the patch you wanted to use with your game Title ID and version, click on the checkbox to enable the patch and save changes.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_patch_example.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_patch_example.png" />
+</a></div>
+
+<h2 id="supporters">Supporters</h2>
+
+<p>Thanks to the patrons who supported me on various platforms! You guys are awesome!</p>
+
+<h3 id="monthly-supporters">Monthly supporters:</h3>
+<ul>
+  <li>
+    <p><a href="https://www.patreon.com/illusion0001">Patreon</a>:</p>
+
+    <ul>
+      <li>ac2pic</li>
+      <li>Alexa</li>
+      <li>Brett</li>
+      <li>Ciril</li>
+      <li>GarnetSunset</li>
+      <li>Mmmmmhno</li>
+      <li>Paul</li>
+      <li>PlayStation5Mods</li>
+      <li>RazzySxPB</li>
+      <li>Ryan</li>
+      <li>Voredy</li>
+      <li>YveltalGriffin</li>
+      <li>Zackery</li>
+      <li>alessaro92</li>
+      <li>ashenC</li>
+      <li>embee</li>
+      <li>erdosadam24</li>
+      <li>faith</li>
+      <li>maplemiyazaki</li>
+      <li>patrick</li>
+      <li>rudi</li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="https://github.com/sponsors/illusion0001">Github Sponsors</a>:</p>
+
+    <ul>
+      <li>VIPO777</li>
+      <li>WardFail</li>
+      <li>Whitehawkx</li>
+      <li>gorshco</li>
+      <li>jrson83</li>
+      <li>regal.</li>
+      <li>suwagawaki</li>
+    </ul>
+  </li>
+</ul>
+
+</div>
+      </section>
+      <footer>
+  <p>&copy; 2021 - 2025 | illusion's Blog</br>Theme <a href="https://github.com/sharadcodes/jekyll-theme-material-you"> Jekyll Theme Material You</a></p>
+</footer>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

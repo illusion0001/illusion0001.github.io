@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>illusion's Blog | Mafia: Definitive Edition</title>
+  
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+  <!-- Twemoji -->
+  <!-- src https://github.com/SebastianAigner/twemoji-amazing -->
+  <link rel="stylesheet" href="/assets/css/twemoji-amazing.css">
+</head>
+
+  <body>
+    <main class="blogfeed">
+      
+<header>
+  <a class="site-title article-page" href="/">illusion's Blog</a>
+</header>
+
+
+
+
+      <section id="social-links1">
+  
+    <a href="/contact" target="_blank"> Contact</a>
+  
+    <a href="/patch" target="_blank"> Patches</a>
+  
+</section>
+
+<section id="social-links">
+
+  <a href="https://github.com/illusion0001" target="_blank">
+    <img src="/assets/icons/github.svg" alt="" />
+  </a>
+
+  <a href="mailto:illusion3185@gmail.com" target="_blank">
+    <img src="/assets/icons/email.svg" alt="" />
+  </a>
+
+</section>
+
+      <section id="article">
+        
+        <!--  -->
+        
+        <!--  -->
+        
+        
+          <h1 class="article-title">Mafia: Definitive Edition</h1>
+          <div class="article-bottom">
+            <small class="article-date"></small>
+            <div class="article-categories">
+              
+            </div>
+          </div>
+        </div>
+        <div class="article-content"><p><a href="/patch/#patches">Game Index</a></p>
+
+<h2 id="patches">Patches</h2>
+
+<p>For use with <a href="https://github.com/bucanero/PS4CheatsManager">PS4 Cheats Manager</a>.</p>
+
+<!-- [Installation Guide](/install-instructions/) -->
+
+<p>Download all <a href="https://github.com/illusion0001/PS4-PS5-Game-Patch/releases/latest/download/patch1.zip">patch</a> files.</p>
+
+<p>Opening the file preview below may freeze your browser on mobile Chromium based browsers.</p>
+
+<p>Preview the file on <a href="https://github.com/illusion0001/PS4-PS5-Game-Patch/blob/main/patches/xml/Mafia1Remake-Orbis.xml">GitHub</a>.</p>
+
+<!-- Patch will be built from CI -->
+
+<!-- Patch file: `patches/xml/Mafia1Remake-Orbis.xml` -->
+
+<details>
+<summary>Contents of patch file (Click to Expand)</summary>
+
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;Patch&gt;</span>
+    <span class="nt">&lt;TitleID&gt;</span>
+        <span class="nt">&lt;ID&gt;</span>CUSA18097<span class="nt">&lt;/ID&gt;</span>
+        <span class="nt">&lt;ID&gt;</span>CUSA18100<span class="nt">&lt;/ID&gt;</span>
+        <span class="nt">&lt;ID&gt;</span>CUSA19278<span class="nt">&lt;/ID&gt;</span>
+    <span class="nt">&lt;/TitleID&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Mafia: Definitive Edition"</span>
+              <span class="na">Name=</span><span class="s">"60 FPS Unlock"</span>
+              <span class="na">Note=</span><span class="s">"CPU/GPU Limited."</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"mask"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"mask"</span> <span class="na">Address=</span><span class="s">"e8 ?? ?? ?? ?? 85 c0 75 ?? 8b 7b 08 41 8b 76 04 31 d2"</span> <span class="na">Value=</span><span class="s">"b801000000"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- use vsync on base --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"mask"</span> <span class="na">Address=</span><span class="s">"41 8b 7c 24 08 31 f6 45 85 f6 40 0f 94 c6"</span> <span class="na">Value=</span><span class="s">"418b7c240831f60f1f8000000000"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- global --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"mask"</span> <span class="na">Address=</span><span class="s">"89 88 08 3d 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 25 73 2f 25 73 00"</span> <span class="na">Value=</span><span class="s">"8988083c"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- menu --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"mask"</span> <span class="na">Address=</span><span class="s">"83 f8 ff 74 ?? 41 c7 47 24 21 00 00 00 41 c7 47 18 21 00 00 00"</span> <span class="na">Value=</span><span class="s">"41c7471808000000660f1f4400000f1f8000000000"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- gameplay --&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Mafia: Definitive Edition"</span>
+              <span class="na">Name=</span><span class="s">"Resolution Patch (1080p PS4 Pro/720p Base PS4)"</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"mask"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"mask"</span> <span class="na">Address=</span><span class="s">"ba 00 0a 00 00 41 bc 80 07 00 00 b9 a0 05 00 00 41 bd 38 04 00 00"</span> <span class="na">Value=</span><span class="s">"ba8007000041bc00050000b93804000041bdd0020000"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Mafia: Definitive Edition"</span>
+              <span class="na">Name=</span><span class="s">"Skip Logo Videos"</span>
+              <span class="na">Author=</span><span class="s">"PCGamingWiki Contributors, illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"mask"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"mask"</span> <span class="na">Address=</span><span class="s">"43 5f 53 70 6c 61 73 68 53 63 72 65 65 6e 73 53 74 61 74 65 00"</span> <span class="na">Value=</span><span class="s">"00"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"mask"</span> <span class="na">Address=</span><span class="s">"2f 76 69 64 65 6f 2f 5f 6c 6f 67 6f 5f 32 6b 5f 68 31 33 5f 62 75 6c 6c 65 74 2e 62 69 6b 00"</span> <span class="na">Value=</span><span class="s">"00"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+<span class="nt">&lt;/Patch&gt;</span></code></pre></figure>
+
+
+</details>
+</div>
+      </section>
+      <footer>
+  <p>&copy; 2021 - 2025 | illusion's Blog</br>Theme <a href="https://github.com/sharadcodes/jekyll-theme-material-you"> Jekyll Theme Material You</a></p>
+</footer>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>illusion's Blog | Dark Souls III: Network Stress Test</title>
+  
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+  <!-- Twemoji -->
+  <!-- src https://github.com/SebastianAigner/twemoji-amazing -->
+  <link rel="stylesheet" href="/assets/css/twemoji-amazing.css">
+</head>
+
+  <body>
+    <main class="blogfeed">
+      
+<header>
+  <a class="site-title article-page" href="/">illusion's Blog</a>
+</header>
+
+
+
+
+      <section id="social-links1">
+  
+    <a href="/contact" target="_blank"> Contact</a>
+  
+    <a href="/patch" target="_blank"> Patches</a>
+  
+</section>
+
+<section id="social-links">
+
+  <a href="https://github.com/illusion0001" target="_blank">
+    <img src="/assets/icons/github.svg" alt="" />
+  </a>
+
+  <a href="mailto:illusion3185@gmail.com" target="_blank">
+    <img src="/assets/icons/email.svg" alt="" />
+  </a>
+
+</section>
+
+      <section id="article">
+        
+        <!--  -->
+        
+        <!--  -->
+        
+        
+          <h1 class="article-title">Dark Souls III: Network Stress Test</h1>
+          <div class="article-bottom">
+            <small class="article-date"></small>
+            <div class="article-categories">
+              
+            </div>
+          </div>
+        </div>
+        <div class="article-content"><p><a href="/patch/#patches">Game Index</a></p>
+
+<h2 id="patches">Patches</h2>
+
+<p>For use with <a href="https://github.com/bucanero/PS4CheatsManager">PS4 Cheats Manager</a>.</p>
+
+<!-- [Installation Guide](/install-instructions/) -->
+
+<p>Download all <a href="https://github.com/illusion0001/PS4-PS5-Game-Patch/releases/latest/download/patch1.zip">patch</a> files.</p>
+
+<p>Opening the file preview below may freeze your browser on mobile Chromium based browsers.</p>
+
+<p>Preview the file on <a href="https://github.com/illusion0001/PS4-PS5-Game-Patch/blob/main/patches/xml/DarkSoulsIIINetworkStressTest-Orbis.xml">GitHub</a>.</p>
+
+<!-- Patch will be built from CI -->
+
+<!-- Patch file: `patches/xml/DarkSoulsIIINetworkStressTest-Orbis.xml` -->
+
+<details>
+<summary>Contents of patch file (Click to Expand)</summary>
+
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;Patch&gt;</span>
+    <span class="nt">&lt;TitleID&gt;</span>
+        <span class="nt">&lt;ID&gt;</span>CUSA03500<span class="nt">&lt;/ID&gt;</span>
+    <span class="nt">&lt;/TitleID&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Dark Souls III: Network Stress Test"</span>
+              <span class="na">Name=</span><span class="s">"60 FPS Unlock (With Delta Time)"</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.00"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0278c407"</span> <span class="na">Value=</span><span class="s">"c7430805000000eb07"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0278c50c"</span> <span class="na">Value=</span><span class="s">"41b601"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Dark Souls III: Network Stress Test"</span>
+              <span class="na">Name=</span><span class="s">"30 FPS Fix (Proper Frame Pacing)"</span>
+              <span class="na">Note=</span><span class="s">"Caps framerate to 30 with proper frame pacing."</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.00"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0278c407"</span> <span class="na">Value=</span><span class="s">"c7430805000000eb07"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x02dbdb44"</span> <span class="na">Value=</span><span class="s">"488b1ded10f102be01000000eb03"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Dark Souls III: Network Stress Test"</span>
+              <span class="na">Name=</span><span class="s">"720p Resolution"</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.00"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x05d22d84"</span> <span class="na">Value=</span><span class="s">"00050000d0020000"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Dark Souls III: Network Stress Test"</span>
+              <span class="na">Name=</span><span class="s">"900p Resolution"</span>
+              <span class="na">Author=</span><span class="s">"Whitehawkx"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.00"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x05d22d84"</span> <span class="na">Value=</span><span class="s">"4006000084030000"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Dark Souls III: Network Stress Test"</span>
+              <span class="na">Name=</span><span class="s">"Bypass Network Check"</span>
+              <span class="na">Author=</span><span class="s">"Unknown"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.00"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x02309e80"</span> <span class="na">Value=</span><span class="s">"e91c02"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Dark Souls III: Network Stress Test"</span>
+              <span class="na">Name=</span><span class="s">"Developer Debug Menu"</span>
+              <span class="na">Author=</span><span class="s">"Whitehawkx"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.00"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x02766352"</span> <span class="na">Value=</span><span class="s">"01"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Dark Souls III: Network Stress Test"</span>
+              <span class="na">Name=</span><span class="s">"Top Menu Debug"</span>
+              <span class="na">Note=</span><span class="s">"Hidden Pause Menu"</span>
+              <span class="na">Author=</span><span class="s">"Whitehawkx"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.00"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x01defd96"</span> <span class="na">Value=</span><span class="s">"b201"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Dark Souls III: Network Stress Test"</span>
+              <span class="na">Name=</span><span class="s">"All Menu Options"</span>
+              <span class="na">Note=</span><span class="s">"Enables equipment, item and status menus"</span>
+              <span class="na">Author=</span><span class="s">"Whitehawkx, Lance McDonald"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.00"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x022a29a9"</span> <span class="na">Value=</span><span class="s">"90"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x022a29aa"</span> <span class="na">Value=</span><span class="s">"90"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x022a29ab"</span> <span class="na">Value=</span><span class="s">"90"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x022a29ac"</span> <span class="na">Value=</span><span class="s">"90"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x022a29ad"</span> <span class="na">Value=</span><span class="s">"90"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x022a29ae"</span> <span class="na">Value=</span><span class="s">"90"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Dark Souls III: Network Stress Test"</span>
+              <span class="na">Name=</span><span class="s">"Enable Video Recording"</span>
+              <span class="na">Note=</span><span class="s">"Re-enables built-in video recording (share button)"</span>
+              <span class="na">Author=</span><span class="s">"Whitehawkx"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.00"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0276375c"</span> <span class="na">Value=</span><span class="s">"c745ec00000000"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Dark Souls III: Network Stress Test"</span>
+              <span class="na">Name=</span><span class="s">"Restore Debug Dash"</span>
+              <span class="na">Note=</span><span class="s">"Press L3 to activate/deactivate then hold L2 to increase or L1 to decrease your current altitude."</span>
+              <span class="na">Author=</span><span class="s">"stagvant"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.00"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x01e9f691"</span> <span class="na">Value=</span><span class="s">"e9d0e63e03"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x01e9f696"</span> <span class="na">Value=</span><span class="s">"0f1f00"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528dd66"</span> <span class="na">Value=</span><span class="s">"c5fa11857cffffff"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528dd6e"</span> <span class="na">Value=</span><span class="s">"488b0d1bdcc700"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528dd75"</span> <span class="na">Value=</span><span class="s">"488b3df43cbd00"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528dd7c"</span> <span class="na">Value=</span><span class="s">"488b3505dcc700"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528dd83"</span> <span class="na">Value=</span><span class="s">"488b8140010000"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528dd8a"</span> <span class="na">Value=</span><span class="s">"4885c0"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528dd8d"</span> <span class="na">Value=</span><span class="s">"7507"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528dd8f"</span> <span class="na">Value=</span><span class="s">"488b8680000000"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528dd96"</span> <span class="na">Value=</span><span class="s">"4939c5"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528dd99"</span> <span class="na">Value=</span><span class="s">"0f85fa18c1fc"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528dd9f"</span> <span class="na">Value=</span><span class="s">"4c8bd9"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528dda2"</span> <span class="na">Value=</span><span class="s">"488d0d9564c800"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528dda9"</span> <span class="na">Value=</span><span class="s">"488b4738"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528ddad"</span> <span class="na">Value=</span><span class="s">"488b4008"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528ddb1"</span> <span class="na">Value=</span><span class="s">"488d5808"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528ddb5"</span> <span class="na">Value=</span><span class="s">"488bd0"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528ddb8"</span> <span class="na">Value=</span><span class="s">"eb06"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528ddba"</span> <span class="na">Value=</span><span class="s">"488bde"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528ddbd"</span> <span class="na">Value=</span><span class="s">"488bd6"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528ddc0"</span> <span class="na">Value=</span><span class="s">"488b33"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528ddc3"</span> <span class="na">Value=</span><span class="s">"807e1900"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528ddc7"</span> <span class="na">Value=</span><span class="s">"750c"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528ddc9"</span> <span class="na">Value=</span><span class="s">"488d5e10"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528ddcd"</span> <span class="na">Value=</span><span class="s">"48394e20"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528ddd1"</span> <span class="na">Value=</span><span class="s">"7ced"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528ddd3"</span> <span class="na">Value=</span><span class="s">"ebe5"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528ddd5"</span> <span class="na">Value=</span><span class="s">"4839c2"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528ddd8"</span> <span class="na">Value=</span><span class="s">"741b"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528ddda"</span> <span class="na">Value=</span><span class="s">"48394a20"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528ddde"</span> <span class="na">Value=</span><span class="s">"488bc8"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528dde1"</span> <span class="na">Value=</span><span class="s">"7f12"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528dde3"</span> <span class="na">Value=</span><span class="s">"488bca"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528dde6"</span> <span class="na">Value=</span><span class="s">"4839c1"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528dde9"</span> <span class="na">Value=</span><span class="s">"740a"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528ddeb"</span> <span class="na">Value=</span><span class="s">"c6413001"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528ddef"</span> <span class="na">Value=</span><span class="s">"4c8b7128"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528ddf3"</span> <span class="na">Value=</span><span class="s">"eb08"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528ddf5"</span> <span class="na">Value=</span><span class="s">"e8862a5afc"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528ddfa"</span> <span class="na">Value=</span><span class="s">"4c8bf0"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528ddfd"</span> <span class="na">Value=</span><span class="s">"be18000000"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528de02"</span> <span class="na">Value=</span><span class="s">"498bfe"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528de05"</span> <span class="na">Value=</span><span class="s">"e80628b4fb"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528de0a"</span> <span class="na">Value=</span><span class="s">"498b8d50180000"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528de11"</span> <span class="na">Value=</span><span class="s">"488b4968"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528de15"</span> <span class="na">Value=</span><span class="s">"84c0"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528de17"</span> <span class="na">Value=</span><span class="s">"7405"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528de19"</span> <span class="na">Value=</span><span class="s">"4180734801"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528de1e"</span> <span class="na">Value=</span><span class="s">"41807b4800"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528de23"</span> <span class="na">Value=</span><span class="s">"0f8481000000"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528de29"</span> <span class="na">Value=</span><span class="s">"c681bc01000001"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528de30"</span> <span class="na">Value=</span><span class="s">"0f280dc992feff"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528de37"</span> <span class="na">Value=</span><span class="s">"0f590d72a5f1ff"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528de3e"</span> <span class="na">Value=</span><span class="s">"498b7d50"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528de42"</span> <span class="na">Value=</span><span class="s">"488b7f08"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528de46"</span> <span class="na">Value=</span><span class="s">"488bbf50180000"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528de4d"</span> <span class="na">Value=</span><span class="s">"488b7f68"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528de51"</span> <span class="na">Value=</span><span class="s">"e89a80b9fc"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528de56"</span> <span class="na">Value=</span><span class="s">"0f2945c0"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528de5a"</span> <span class="na">Value=</span><span class="s">"be1a000000"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528de5f"</span> <span class="na">Value=</span><span class="s">"498bfe"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528de62"</span> <span class="na">Value=</span><span class="s">"e8a927b4fb"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528de67"</span> <span class="na">Value=</span><span class="s">"84c0"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528de69"</span> <span class="na">Value=</span><span class="s">"7403"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528de6b"</span> <span class="na">Value=</span><span class="s">"0f58c1"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528de6e"</span> <span class="na">Value=</span><span class="s">"be1b000000"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528de73"</span> <span class="na">Value=</span><span class="s">"498bfe"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528de76"</span> <span class="na">Value=</span><span class="s">"e89527b4fb"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528de7b"</span> <span class="na">Value=</span><span class="s">"84c0"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528de7d"</span> <span class="na">Value=</span><span class="s">"7403"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528de7f"</span> <span class="na">Value=</span><span class="s">"0f5cc1"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528de82"</span> <span class="na">Value=</span><span class="s">"488d75c0"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528de86"</span> <span class="na">Value=</span><span class="s">"0f2906"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528de89"</span> <span class="na">Value=</span><span class="s">"498bfd"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528de8c"</span> <span class="na">Value=</span><span class="s">"e8df90c1fc"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528de91"</span> <span class="na">Value=</span><span class="s">"0f1f4000"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528de95"</span> <span class="na">Value=</span><span class="s">"c5fa10857cffffff"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528de9d"</span> <span class="na">Value=</span><span class="s">"f30f59055735ebff"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528dea5"</span> <span class="na">Value=</span><span class="s">"e9ef17c1fc"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528deaa"</span> <span class="na">Value=</span><span class="s">"c681bc01000000"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0528deb1"</span> <span class="na">Value=</span><span class="s">"e9e317c1fc"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+<span class="nt">&lt;/Patch&gt;</span></code></pre></figure>
+
+
+</details>
+</div>
+      </section>
+      <footer>
+  <p>&copy; 2021 - 2025 | illusion's Blog</br>Theme <a href="https://github.com/sharadcodes/jekyll-theme-material-you"> Jekyll Theme Material You</a></p>
+</footer>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

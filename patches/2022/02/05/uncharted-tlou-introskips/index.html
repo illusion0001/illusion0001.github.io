@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>illusion's Blog | Intro Skip Patches for Uncharted and The Last of Us</title>
+  
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+  <!-- Twemoji -->
+  <!-- src https://github.com/SebastianAigner/twemoji-amazing -->
+  <link rel="stylesheet" href="/assets/css/twemoji-amazing.css">
+</head>
+
+  <body>
+    <main class="blogfeed">
+      
+<header>
+  <a class="site-title article-page" href="/">illusion's Blog</a>
+</header>
+
+
+
+
+      <section id="social-links1">
+  
+    <a href="/contact" target="_blank"> Contact</a>
+  
+    <a href="/patch" target="_blank"> Patches</a>
+  
+</section>
+
+<section id="social-links">
+
+  <a href="https://github.com/illusion0001" target="_blank">
+    <img src="/assets/icons/github.svg" alt="" />
+  </a>
+
+  <a href="mailto:illusion3185@gmail.com" target="_blank">
+    <img src="/assets/icons/email.svg" alt="" />
+  </a>
+
+</section>
+
+      <section id="article">
+        
+        <!--  -->
+        
+        <!--  -->
+        
+        
+        <div
+          class="article-thumbnail"
+          style="
+            background-image: url('https://img-assets.illusion0001.workers.dev/assets/images/uncharted-t1-introskips/intro_noicon_thumbnail.png');
+          "
+        >
+        
+          <h1 class="article-title">Intro Skip Patches for Uncharted and The Last of Us</h1>
+          <div class="article-bottom">
+            <small class="article-date">05 Feb 2022</small>
+            <div class="article-categories">
+              
+              <a href="#!" class="article-category">patches</a>
+              
+            </div>
+          </div>
+        </div>
+        <div class="article-content"><p>Please note that you are required to have a <a href="https://wololo.net/2021/12/14/ps4-how-to-run-the-ps4-9-00-jailbreak-full-guide-with-goldhen-payload/">exploited PlayStation 4</a> console on firmware <strong>9.00</strong> or lower to run the patches mentioned in this article.</p>
+
+<h1 id="intro">Intro</h1>
+
+<p>With the recent release of the Uncharted Collection on the PS5 I thought it would be fun to try to skip the intro and understand a little more how the bootflow works.</p>
+
+<h2 id="part-1---task-id-differences">Part 1 - Task ID differences</h2>
+
+<p>If you remember from a <a href="/patches/2021/12/04/t1-nailbomb-softlock-patch/">previous post</a> where I discussed on finding task ID, the layout goes something like this.</p>
+
+<p>String (ASCII)</p>
+
+<p>Address pointer (32 or 64 Bit depending on the platform)</p>
+
+<p>Task ID (usually 32 but 64 Bit in The Last of Us: Part 2 with the change to entirely 64 bit hashes).</p>
+
+<p>32 Bit Pointer and Hashes (PS3, Big Endian, Uncharted 3)</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/uncharted-t1-introskips/ND_task_ID_e00.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/uncharted-t1-introskips/ND_task_ID_e00.png" />
+</a></div>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/uncharted-t1-introskips/ND_task_ID_e01.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/uncharted-t1-introskips/ND_task_ID_e01.png" />
+</a></div>
+
+<p>64 Bit Pointer and Hashes (PS4, Litle Endian, The Last of Us: Part 2)</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/uncharted-t1-introskips/ND_task_ID_e02.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/uncharted-t1-introskips/ND_task_ID_e02.png" />
+</a></div>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/uncharted-t1-introskips/ND_task_ID_e03.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/uncharted-t1-introskips/ND_task_ID_e03.png" />
+</a></div>
+
+<h2 id="part-2---intros-or-no-intros">Part 2 - Intros or No Intros</h2>
+
+<p>HD era naughty dog games have this task called <code class="language-plaintext highlighter-rouge">ndi</code> which stands for <strong>N</strong>aughty <strong>D</strong>og <strong>I</strong>ntro. Simple enough. The ID associated with this task has not changed since Uncharted 1, which is <code class="language-plaintext highlighter-rouge">0xed857351</code> and <code class="language-plaintext highlighter-rouge">menu</code> with its ID being <code class="language-plaintext highlighter-rouge">0xd006e7b5</code>.</p>
+
+<p>Now why is this important? Because the game’s code looks up these id on what to load. For instance here is a snippet of code from Uncharted 3.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      <span class="c1">// taken from uc3 ps3 code</span>
+      <span class="c1">// language-selection is exclusive to uncharted 3</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">skip_ndi</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">task</span> <span class="o">=</span> <span class="mh">0x66b93942</span><span class="p">;</span> <span class="c1">// language-selection</span>
+       <span class="c1">// bootflow goes like this: </span>
+       <span class="c1">// t1, uc4, and uc-tll</span>
+       <span class="c1">// ndi -&gt; menu</span>
+       <span class="c1">// uc3</span>
+       <span class="c1">// language-selection -&gt; ndi (handled by language-selection flow) -&gt; menu</span>
+       <span class="c1">// uc1 and uc2</span>
+       <span class="c1">// autosave-warning -&gt; ndi -&gt; menu</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">task</span> <span class="o">=</span> <span class="mh">0xd006e7b5</span><span class="p">;</span> <span class="c1">// menu</span>
+      <span class="p">}</span>
+</code></pre></div></div>
+
+<p>Code is simple enough, in this case, if this condition is true, it will skip over <code class="language-plaintext highlighter-rouge">language_selection</code> and <code class="language-plaintext highlighter-rouge">ndi</code>.
+The very same process can be repeated for the following games.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Uncharted 1: Drake's Fortune   (PS4 only)
+Uncharted 2: Among Thieves     (PS3/PS4)
+Uncharted 3: Drake's Deception (PS3/PS4)
+The Last of Us                 (PS3/PS4)
+Uncharted 4: A Thief's End
+Uncharted: The Lost Legacy
+The Last of Us: Part 2         (not yet possible)
+</code></pre></div></div>
+
+<p>As to why Uncharted 1 intro skip is not yet possible on the PS3?</p>
+
+<p>Because the compiled script file on that version is not the easiest thing to read. Well same for Uncharted 2 but in that case searching for the menu task ID and always booting into that does the trick but not for the first game.</p>
+
+<p>As for The Last of Us Part 2, the intro is baked directly into the <code class="language-plaintext highlighter-rouge">menu</code> task. Which also explains why there are no <code class="language-plaintext highlighter-rouge">ndi</code> task to be found in the task list.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/uncharted-t1-introskips/t2_task_menu.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/uncharted-t1-introskips/t2_task_menu.png" />
+</a></div>
+
+<p>I think it is still possible if I look hard enough into the game’s code or it could simply be a case of…</p>
+
+<div align="center">
+<video width="100%" autoplay="" loop="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/memes/tenor/skill_issue_meme.mp4" type="video/mp4" />
+</video>
+</div>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/uncharted-t1-introskips/u1_ps3_taskbin.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/uncharted-t1-introskips/u1_ps3_taskbin.png" />
+</a></div>
+
+<div align="center">
+<em>Uncharted 1 task script file</em>
+</div>
+
+<p>Yeah.. I wouldn’t touch this script file with a ten foot pole.</p>
+
+<h2 id="part-3---porting-to-newer-system">Part 3 - Porting to newer system</h2>
+
+<p>Let’s see if the PS4 version is any difficult for the PS3 era titles. Thankfully, Bluepoint did all of the hard work for us on the trilogy collection and we can simply enable Boolean to skip over the video that plays during the <code class="language-plaintext highlighter-rouge">ndi</code> task and call it a day.</p>
+
+<p><code class="language-plaintext highlighter-rouge">bp_skipintromovies</code> this is a command line parameter, it only exists in Uncharted 1 and 2 but it shows that they probably got bored watching the intro so they implemented this cvar. :p</p>
+
+<p>This Boolean is used when the user switches games from the option menu.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/uncharted-t1-introskips/u3_appchooser.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/uncharted-t1-introskips/u3_appchooser.png" />
+</a></div>
+
+<p>However, things are not as cut and dry as I would have thought.</p>
+
+<p>In Uncharted 3, this string cannot be found. Another solution must have existed. And there is a solution to this. A while ago back in 2021..? When I was looking for a way to optimize the developer menu enable code I came across this magnificent piece of code.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">if</span> <span class="p">(</span><span class="mh">0x027b9d22</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// is game launched from app chooser?</span>
+    <span class="mh">0x027baf7e</span> <span class="o">=</span>  <span class="nb">true</span><span class="p">;</span>
+    <span class="mh">0x027baf6a</span> <span class="o">=</span>  <span class="nb">true</span><span class="p">;</span>
+    <span class="mh">0x027baf67</span> <span class="o">=</span>  <span class="nb">true</span><span class="p">;</span>
+    <span class="mh">0x027baf69</span> <span class="o">=</span>  <span class="nb">true</span><span class="p">;</span>
+    <span class="mh">0x027baf64</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span> <span class="c1">// dev menu bool</span>
+    <span class="mh">0x027b9d21</span> <span class="o">=</span>  <span class="nb">true</span><span class="p">;</span>
+    <span class="mh">0x027b9d6c</span> <span class="o">=</span>  <span class="nb">true</span><span class="p">;</span> <span class="c1">// skip ndi bool</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+<p>The last one happens to be the same one that skips the intro in the public beta version of the original game. I can simply turn this Boolean off and there we go. Uncharted 3 on the PS4 intro is skipped. Nothing to be worried about as there are no multiplayer components to this one.</p>
+
+<p>I got the motivation to do intro skips was from fixing a bug where Uncharted 3 Public Beta on the PS3 would crash upon entering the Lan menu, which will be an upcoming post for those curious about it.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/uncharted-t1-introskips/u3_ps3_public_beta_tease.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/uncharted-t1-introskips/u3_ps3_public_beta_tease.png" />
+</a></div>
+
+<div align="center">
+<em><i class="twa-2x twa-eyes"></i></em>
+</div>
+
+<h2 id="closing-words">Closing Words</h2>
+
+<p>Well that’s all for this post, below are the showcase video, where you can find the patch and support me as a independent patch creator.</p>
+
+<p>Have a good rest of your day! I’ll catch you next time.</p>
+
+<h1 id="credits">Credits</h1>
+
+<p><a href="https://www.youtube.com/user/ZEROx2085">ZEROx</a> for porting to the PS3 version.</p>
+
+<p><a href="https://www.youtube.com/c/Freako/">Freako</a> and <a href="https://www.youtube.com/user/HdHereidme">HereisMe</a> for publishing their knowledge about reversing Naughty Dog Titles.</p>
+
+<h2 id="showcase">Showcase</h2>
+
+<div align="center" class="responsive-video-container">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Ord-myNMg2E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</div>
+
+<h1 id="patch">Patch</h1>
+
+<p>This patch is available for PS3 (RPCS3), and PS4.</p>
+
+<p>For those looking to use the patch on the RPCS3 emulator, you can head over to the patch manager, click on the “<strong>Download Latest Patches</strong>” button and find the patch you wanted to use with your game Title ID and version, click on the checkbox to enable the patch and save changes.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_patch_example.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_patch_example.png" />
+</a></div>
+
+<p><a href="https://wiki.rpcs3.net/index.php?title=Uncharted_2:_Among_Thieves#Patches" class="button" role="button"><i class="fas fa-download"></i> Patch Source Code: Uncharted 2 (RPCS3)</a></p>
+
+<p><a href="https://wiki.rpcs3.net/index.php?title=Uncharted_3:_Drake%27s_Deception#Patches" class="button" role="button"><i class="fas fa-download"></i> Patch Source Code: Uncharted 3 (RPCS3)</a></p>
+
+<p><a href="https://wiki.rpcs3.net/index.php?title=The_Last_of_Us#Patches" class="button" role="button"><i class="fas fa-download"></i> Patch Source Code: The Last of Us (RPCS3)</a></p>
+
+<p>PlayStation 4 users, can follow this guide on how to install the patch <a href="/install-instructions">here</a>. (the following tutorial <strong>does not</strong> cover how to build the update package. only to install the patch into the binary.)</p>
+
+<p><a href="/_patch/UnchartedTheNathanDrakeCollection-Orbis" class="button" role="button"><i class="fas fa-download"></i> Patch: Uncharted: The Nathan Drake Collection (PS4)</a></p>
+
+<p><a href="/_patch/TheLastOfUs1-Orbis" class="button" role="button"><i class="fas fa-download"></i> Patch: The Last of Us Remastered (PS4)</a></p>
+
+<p><a href="/_patch/Uncharted4AThiefsEnd-Orbis" class="button" role="button"><i class="fas fa-download"></i> Patch: Uncharted 4 (PS4)</a></p>
+
+<p><a href="/_patch/UnchartedTheLostLegacy-Orbis" class="button" role="button"><i class="fas fa-download"></i> Patch: Uncharted: The Lost Legacy (PS4)</a></p>
+
+<h2 id="supporters">Supporters</h2>
+
+<p>Thanks to the patrons who supported me on various platforms! You guys are awesome!</p>
+
+<h3 id="monthly-supporters">Monthly supporters:</h3>
+<ul>
+  <li>
+    <p><a href="https://www.patreon.com/illusion0001">Patreon</a>:</p>
+
+    <ul>
+      <li>ac2pic</li>
+      <li>Alexa</li>
+      <li>Brett</li>
+      <li>Ciril</li>
+      <li>GarnetSunset</li>
+      <li>Mmmmmhno</li>
+      <li>Paul</li>
+      <li>PlayStation5Mods</li>
+      <li>RazzySxPB</li>
+      <li>Ryan</li>
+      <li>Voredy</li>
+      <li>YveltalGriffin</li>
+      <li>Zackery</li>
+      <li>alessaro92</li>
+      <li>ashenC</li>
+      <li>embee</li>
+      <li>erdosadam24</li>
+      <li>faith</li>
+      <li>maplemiyazaki</li>
+      <li>patrick</li>
+      <li>rudi</li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="https://github.com/sponsors/illusion0001">Github Sponsors</a>:</p>
+
+    <ul>
+      <li>VIPO777</li>
+      <li>WardFail</li>
+      <li>Whitehawkx</li>
+      <li>gorshco</li>
+      <li>jrson83</li>
+      <li>regal.</li>
+      <li>suwagawaki</li>
+    </ul>
+  </li>
+</ul>
+
+</div>
+      </section>
+      <footer>
+  <p>&copy; 2021 - 2025 | illusion's Blog</br>Theme <a href="https://github.com/sharadcodes/jekyll-theme-material-you"> Jekyll Theme Material You</a></p>
+</footer>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

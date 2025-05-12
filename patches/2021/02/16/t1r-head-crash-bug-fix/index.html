@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>illusion's Blog | Solving the Infected's Severed Head Crash Bug in The Last of Us (PlayStation 4)</title>
+  
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+  <!-- Twemoji -->
+  <!-- src https://github.com/SebastianAigner/twemoji-amazing -->
+  <link rel="stylesheet" href="/assets/css/twemoji-amazing.css">
+</head>
+
+  <body>
+    <main class="blogfeed">
+      
+<header>
+  <a class="site-title article-page" href="/">illusion's Blog</a>
+</header>
+
+
+
+
+      <section id="social-links1">
+  
+    <a href="/contact" target="_blank"> Contact</a>
+  
+    <a href="/patch" target="_blank"> Patches</a>
+  
+</section>
+
+<section id="social-links">
+
+  <a href="https://github.com/illusion0001" target="_blank">
+    <img src="/assets/icons/github.svg" alt="" />
+  </a>
+
+  <a href="mailto:illusion3185@gmail.com" target="_blank">
+    <img src="/assets/icons/email.svg" alt="" />
+  </a>
+
+</section>
+
+      <section id="article">
+        
+        <!--  -->
+        
+        <!--  -->
+        
+        
+          <h1 class="article-title">Solving the Infected's Severed Head Crash Bug in The Last of Us (PlayStation 4)</h1>
+          <div class="article-bottom">
+            <small class="article-date">16 Feb 2021</small>
+            <div class="article-categories">
+              
+              <a href="#!" class="article-category">patches</a>
+              
+            </div>
+          </div>
+        </div>
+        <div class="article-content"><p>Please note that you are required to have a <a href="https://wololo.net/2021/12/14/ps4-how-to-run-the-ps4-9-00-jailbreak-full-guide-with-goldhen-payload/">exploited PlayStation 4</a> console on firmware <strong>9.00</strong> or lower to run the patches mentioned in this article.</p>
+
+<h1 id="intro">Intro</h1>
+
+<p>Usually, when an NPC, actor, or Player’s buddies does an action where they would cut Infected’s Head off, they leave behind a severed head.</p>
+
+<p>If a Player decided to throw an object, let’s say a brick or bottle. The game would crash. Why’s that?</p>
+
+<p>Affected Consoles:</p>
+
+<ul>
+  <li>
+    <p><del>PlayStation 3</del> <a href="/patches/2021/02/15/t1-head-crash-bug-fix/">Unofficially Patched</a></p>
+  </li>
+  <li>
+    <p><del>PlayStation 4</del> <a href="/patches/2021/02/16/t1r-head-crash-bug-fix/">Unofficially Patched</a> (<a href="https://youtu.be/KCnMwV-jOoU">Video</a>)</p>
+  </li>
+  <li>
+    <p>PlayStation 5 <a href="https://youtu.be/HQ7oOmx4mmg?t=127">Video</a></p>
+  </li>
+  <li>
+    <p>PS4/PS5 versions issue still persists on latest patch 1.11</p>
+  </li>
+</ul>
+
+<div align="center">
+<video width="100%" controls="" muted="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/t1r-ps4-head-crash/t1r-head-crash-before.mp4" type="video/mp4" />
+</video>
+</div>
+
+<h2 id="cut-to-the-chase">Cut to the Chase</h2>
+
+<p>Most of the explaination was already covered in our PS3 version, see that post for more details.</p>
+
+<p><a href="/patches/2021/02/15/t1-head-crash-bug-fix/">Solving the Infected’s Severed Head Crash Bug in The Last of Us (PlayStation 3)</a></p>
+
+<p>We were only able to get the debugger <a href="https://www.psxhax.com/threads/ps4reaper-ps4-rte-debugger-and-trainer-maker-by-shiningami.6077/">PS4 Reaper</a> working once due to connection and attaching issues but that was enough for what we needed.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/t1r-ps4-head-crash/ps4r-register.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/t1r-ps4-head-crash/ps4r-register.png" />
+</a></div>
+
+<p>Guessing from PS3 registers, It could be RBX that is holding collision data.</p>
+
+<h2 id="solution">Solution</h2>
+
+<p>We can do a check if RBX isn’t 0 we can skip and run normally.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>006bc849 e8 d0 53        CALL       SUB_00c21c1e // jump to code cave
+         56 00
+~~~
+00c21c1e 48 89 85        MOV        qword ptr [RBP + -0xc20],RAX // pervious instruction overwritten by Call
+         e0 f3 ff ff
+00c21c25 48 83 fb 00     CMP        RBX,0x0 // check if rbx isn't 0
+00c21c29 0f 84 04        JZ         LAB_00c21c33 // skip
+         00 00 00
+00c21c2f 48 8b 43 40     MOV        RAX,qword ptr [RBX + 0x40] // load as normal
+                     LAB_00c21c33
+00c21c33 c3              RET // return
+</code></pre></div></div>
+
+<p>Let’s implement this fix and see the results.</p>
+
+<div align="center" class="responsive-video-container">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/a5QEZGT7HOU?start=10" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</div>
+
+<p>Success! Doesn’t crash now when throwing an object.</p>
+
+<h1 id="patch">Patch</h1>
+
+<p>To apply patch and for use on a exploitable PlayStation 4 console, you’ll need to dump the game, modiify the executable with a hex editor and install the fake patch back onto the console.</p>
+
+<p><a href="https://github.com/GoldHEN/GoldHEN_Patch_Repository/blob/3f8d6875f60c0969d674ed31c3dc1f4ad0619720/patches/xml/TheLastOfUs1-Orbis.xml#L23" class="button" role="button"> Patch Codes</a></p>
+
+<h2 id="credits">Credits</h2>
+
+<p>Thank you to <a href="https://www.youtube.com/user/ZEROx2085">ZEROx</a> for improving over my inital patch. and for believing in x86!</p>
+</div>
+      </section>
+      <footer>
+  <p>&copy; 2021 - 2025 | illusion's Blog</br>Theme <a href="https://github.com/sharadcodes/jekyll-theme-material-you"> Jekyll Theme Material You</a></p>
+</footer>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

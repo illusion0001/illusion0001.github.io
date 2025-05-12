@@ -1,0 +1,39 @@
+- patch:
+  gr1-vita-title: &gr1-vita-title "Gravity Rush (Gravity Daze)"
+  site_game_title: *gr1-vita-title
+  title: *gr1-vita-title
+  app_ver: "01.00"
+  patch_ver: "0.1"
+  name: "60 FPS (WIP)"
+  author: "illusion"
+  note: "Handwritten Deltatime.\nKnown Issues: Double Speed UI and animations."
+  arch: ngp
+  entry_prog: 0x1000
+  patch_list:
+        # keeping comments for eaiser reading, will remove
+        - [ bytes32, 0x8100692c, 0xe292f0d5 ] # blx 0x814dbe54
+        - [ bytes16, 0x81006930, 0xbf00 ] # nop
+        - [ bytes16, 0x81006932, 0xbf00 ] # nop
+        - [ bytes16, 0x81006934, 0xbf00 ] # nop
+        - [ bytes32, 0x814dbe54, 0xe3091b18 ] # movw r1,#0x9b18
+        - [ bytes32, 0x814dbe58, 0xe3481166 ] # movt r1,#0x8166
+        - [ bytes32, 0x814dbe5c, 0xe5010000 ] # str r0,[r1,#0x0]
+        - [ bytes32, 0x814dbe60, 0xe3a03b09 ] # mov r3,#0x2400
+        - [ bytes32, 0x814dbe64, 0xe3443974 ] # movt r3,#0x4974
+        - [ bytes32, 0x814dbe68, 0xe58130dc ] # str r3,[r1,#0xdc]
+        - [ bytes32, 0x814dbe6c, 0xe5112000 ] # ldr r2,[r1,#0x0]
+        - [ bytes32, 0x814dbe70, 0xe59100c8 ] # ldr r0,[r1,#0xc8]
+        - [ bytes32, 0x814dbe74, 0xe0422000 ] # sub r2,r2,r0
+        - [ bytes32, 0x814dbe78, 0xe58120cc ] # str r2,[r1,#0xcc]
+        - [ bytes32, 0x814dbe7c, 0xe59120cc ] # ldr r2,[r1,#0xcc]
+        - [ bytes32, 0x814dbe80, 0xee002a10 ] # vmov s0,r2
+        - [ bytes32, 0x814dbe84, 0xeef80ac0 ] # vcvt.f32.s32 s1,s0
+        - [ bytes32, 0x814dbe88, 0xed911a37 ] # vldr.32 s2,[r1,#0xdc]
+        - [ bytes32, 0x814dbe8c, 0xee800a81 ] # vdiv.f32 s0,s1,s2
+        - [ bytes32, 0x814dbe90, 0xe5112000 ] # ldr r2,[r1,#0x0]
+        - [ bytes32, 0x814dbe94, 0xe58120c8 ] # str r2,[r1,#0xc8]
+        - [ bytes32, 0x814dbe98, 0xe308127c ] # movw r1,#0x827c
+        - [ bytes32, 0x814dbe9c, 0xe3481152 ] # movt r1,#0x8152
+        - [ bytes32, 0x814dbea0, 0xed810a01 ] # vstr.32 s0,[r1,#0x4]
+                                              # thanks to reddit user Lukeazade11134 for finding this addr
+        - [ bytes32, 0x814dbea4, 0xe12fff1e ] # bx lr

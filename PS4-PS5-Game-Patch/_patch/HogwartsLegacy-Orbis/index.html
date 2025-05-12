@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>illusion's Blog | Hogwarts Legacy</title>
+  
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+  <!-- Twemoji -->
+  <!-- src https://github.com/SebastianAigner/twemoji-amazing -->
+  <link rel="stylesheet" href="/assets/css/twemoji-amazing.css">
+</head>
+
+  <body>
+    <main class="blogfeed">
+      
+<header>
+  <a class="site-title article-page" href="/">illusion's Blog</a>
+</header>
+
+
+
+
+      <section id="social-links1">
+  
+    <a href="/contact" target="_blank"> Contact</a>
+  
+    <a href="/patch" target="_blank"> Patches</a>
+  
+</section>
+
+<section id="social-links">
+
+  <a href="https://github.com/illusion0001" target="_blank">
+    <img src="/assets/icons/github.svg" alt="" />
+  </a>
+
+  <a href="mailto:illusion3185@gmail.com" target="_blank">
+    <img src="/assets/icons/email.svg" alt="" />
+  </a>
+
+</section>
+
+      <section id="article">
+        
+        <!--  -->
+        
+        <!--  -->
+        
+        
+          <h1 class="article-title">Hogwarts Legacy</h1>
+          <div class="article-bottom">
+            <small class="article-date"></small>
+            <div class="article-categories">
+              
+            </div>
+          </div>
+        </div>
+        <div class="article-content"><p><a href="/patch/#patches">Game Index</a></p>
+
+<h2 id="patches">Patches</h2>
+
+<p>For use with <a href="https://github.com/bucanero/PS4CheatsManager">PS4 Cheats Manager</a>.</p>
+
+<!-- [Installation Guide](/install-instructions/) -->
+
+<p>Download all <a href="https://github.com/illusion0001/PS4-PS5-Game-Patch/releases/latest/download/patch1.zip">patch</a> files.</p>
+
+<p>Opening the file preview below may freeze your browser on mobile Chromium based browsers.</p>
+
+<p>Preview the file on <a href="https://github.com/illusion0001/PS4-PS5-Game-Patch/blob/main/patches/xml/HogwartsLegacy-Orbis.xml">GitHub</a>.</p>
+
+<!-- Patch will be built from CI -->
+
+<!-- Patch file: `patches/xml/HogwartsLegacy-Orbis.xml` -->
+
+<details>
+<summary>Contents of patch file (Click to Expand)</summary>
+
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;Patch&gt;</span>
+    <span class="nt">&lt;TitleID&gt;</span>
+        <span class="nt">&lt;ID&gt;</span>CUSA12771<span class="nt">&lt;/ID&gt;</span>
+        <span class="nt">&lt;ID&gt;</span>CUSA12824<span class="nt">&lt;/ID&gt;</span>
+    <span class="nt">&lt;/TitleID&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Hogwarts Legacy"</span>
+              <span class="na">Name=</span><span class="s">"60 FPS"</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"mask"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"mask"</span> <span class="na">Address=</span><span class="s">"83 f8 03 bb 03 00 00 00 41 8b 7e ?? 0f 42 d8 ff cb 85 c0 0f 44 d8 89 de"</span> <span class="na">Value=</span><span class="s">"b800000000"</span> <span class="na">Offset=</span><span class="s">"+24"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"mask"</span> <span class="na">Address=</span><span class="s">"83 f9 03 ba 03 00 00 00 0f 42 d1 31 db ff ca 85 c0 0f 4f da 41 39 5f 60 74 ?? 41 8b 7f 2c 89 de"</span> <span class="na">Value=</span><span class="s">"b800000000"</span> <span class="na">Offset=</span><span class="s">"+32"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Hogwarts Legacy"</span>
+              <span class="na">Name=</span><span class="s">"Force PS4 Pro to output at 1080p on 4K display"</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"mask"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"mask"</span> <span class="na">Address=</span><span class="s">"0f 85 ?? ?? ?? ?? 81 7d ac 39 04 00 00 72 ?? 48 8d 05 ?? ?? ?? ?? 48 39 05 ?? ?? ?? ??"</span> <span class="na">Value=</span><span class="s">"48e9"</span> <span class="na">Offset=</span><span class="s">"0"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"mask"</span> <span class="na">Address=</span><span class="s">"75 ?? 81 7d bc 39 04 00 00 72 ?? 48 b8 00 0f 00 00 70 08 00 00"</span> <span class="na">Value=</span><span class="s">"eb"</span> <span class="na">Offset=</span><span class="s">"0"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Hogwarts Legacy"</span>
+              <span class="na">Name=</span><span class="s">"Resolution Patch (MASTER CODE) (ENABLE FIRST)"</span>
+              <span class="na">Note=</span><span class="s">"This patch will break uncap framerate option ingame, use 60 FPS Patch or Restart game after saving to fix."</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"mask"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"mask_jump32"</span> <span class="na">Address=</span><span class="s">"c5 fa 10 04 8b c5 fa 5e 05 ?? ?? ?? ?? c5 f8 28 4d ?? c5 f8 28 55 ?? c5 f2 5d c0 c5 f2 c2 ca 01 c4 e3 79 4a c2 10 c4 c1 78 2e 46 20"</span> <span class="na">Value=</span><span class="s">"833ccb00750ec7048b0000c842c704cb01000000c5fa10048b"</span> <span class="na">Offset=</span><span class="s">"0"</span> <span class="na">Size=</span><span class="s">"5"</span> <span class="na">Target=</span><span class="s">"4d 61 6c 6c 6f 63 42 69 6e 6e 65 64 32 20"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Hogwarts Legacy"</span>
+              <span class="na">Name=</span><span class="s">"Resolution Patch 83.3%"</span>
+              <span class="na">Note=</span><span class="s">"This patch will break uncap framerate option ingame, use 60 FPS Patch or Restart game after saving to fix."</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"mask"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"mask"</span> <span class="na">Address=</span><span class="s">"83 3c cb 00 75 0e c7 04 8b"</span> <span class="na">Value=</span><span class="s">"9a99a642"</span> <span class="na">Offset=</span><span class="s">"+9"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Hogwarts Legacy"</span>
+              <span class="na">Name=</span><span class="s">"Resolution Patch 66.7%"</span>
+              <span class="na">Note=</span><span class="s">"This patch will break uncap framerate option ingame, use 60 FPS Patch or Restart game after saving to fix."</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"mask"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"mask"</span> <span class="na">Address=</span><span class="s">"83 3c cb 00 75 0e c7 04 8b"</span> <span class="na">Value=</span><span class="s">"66668542"</span> <span class="na">Offset=</span><span class="s">"+9"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Hogwarts Legacy"</span>
+              <span class="na">Name=</span><span class="s">"Resolution Patch 50.0%"</span>
+              <span class="na">Note=</span><span class="s">"This patch will break uncap framerate option ingame, use 60 FPS Patch or Restart game after saving to fix."</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"mask"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"mask"</span> <span class="na">Address=</span><span class="s">"83 3c cb 00 75 0e c7 04 8b"</span> <span class="na">Value=</span><span class="s">"00004842"</span> <span class="na">Offset=</span><span class="s">"+9"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Hogwarts Legacy"</span>
+              <span class="na">Name=</span><span class="s">"Resolution Patch 25.0%"</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"mask"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"mask"</span> <span class="na">Address=</span><span class="s">"83 3c cb 00 75 0e c7 04 8b"</span> <span class="na">Value=</span><span class="s">"0000c841"</span> <span class="na">Offset=</span><span class="s">"+9"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+<span class="nt">&lt;/Patch&gt;</span></code></pre></figure>
+
+
+</details>
+</div>
+      </section>
+      <footer>
+  <p>&copy; 2021 - 2025 | illusion's Blog</br>Theme <a href="https://github.com/sharadcodes/jekyll-theme-material-you"> Jekyll Theme Material You</a></p>
+</footer>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

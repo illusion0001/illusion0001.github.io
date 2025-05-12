@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>illusion's Blog | Control</title>
+  
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+  <!-- Twemoji -->
+  <!-- src https://github.com/SebastianAigner/twemoji-amazing -->
+  <link rel="stylesheet" href="/assets/css/twemoji-amazing.css">
+</head>
+
+  <body>
+    <main class="blogfeed">
+      
+<header>
+  <a class="site-title article-page" href="/">illusion's Blog</a>
+</header>
+
+
+
+
+      <section id="social-links1">
+  
+    <a href="/contact" target="_blank"> Contact</a>
+  
+    <a href="/patch" target="_blank"> Patches</a>
+  
+</section>
+
+<section id="social-links">
+
+  <a href="https://github.com/illusion0001" target="_blank">
+    <img src="/assets/icons/github.svg" alt="" />
+  </a>
+
+  <a href="mailto:illusion3185@gmail.com" target="_blank">
+    <img src="/assets/icons/email.svg" alt="" />
+  </a>
+
+</section>
+
+      <section id="article">
+        
+        <!--  -->
+        
+        <!--  -->
+        
+        
+          <h1 class="article-title">Control</h1>
+          <div class="article-bottom">
+            <small class="article-date"></small>
+            <div class="article-categories">
+              
+            </div>
+          </div>
+        </div>
+        <div class="article-content"><p><a href="/patch/#patches">Game Index</a></p>
+
+<h2 id="patches">Patches</h2>
+
+<p>For use with <a href="https://github.com/bucanero/PS4CheatsManager">PS4 Cheats Manager</a>.</p>
+
+<!-- [Installation Guide](/install-instructions/) -->
+
+<p>Download all <a href="https://github.com/illusion0001/PS4-PS5-Game-Patch/releases/latest/download/patch1.zip">patch</a> files.</p>
+
+<p>Opening the file preview below may freeze your browser on mobile Chromium based browsers.</p>
+
+<p>Preview the file on <a href="https://github.com/illusion0001/PS4-PS5-Game-Patch/blob/main/patches/xml/Control-Orbis.xml">GitHub</a>.</p>
+
+<!-- Patch will be built from CI -->
+
+<!-- Patch file: `patches/xml/Control-Orbis.xml` -->
+
+<details>
+<summary>Contents of patch file (Click to Expand)</summary>
+
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;Patch&gt;</span>
+    <span class="nt">&lt;TitleID&gt;</span>
+        <span class="nt">&lt;ID&gt;</span>CUSA11454<span class="nt">&lt;/ID&gt;</span>
+    <span class="nt">&lt;/TitleID&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Control"</span>
+              <span class="na">Name=</span><span class="s">"Logo Videos Skip"</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.12"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x0066829a"</span> <span class="na">Value=</span><span class="s">"c6803b01000001"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x006682a1"</span> <span class="na">Value=</span><span class="s">"c6803901000001"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x006682a8"</span> <span class="na">Value=</span><span class="s">"e92a010000"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+    <span class="nt">&lt;Metadata</span> <span class="na">Title=</span><span class="s">"Control"</span>
+              <span class="na">Name=</span><span class="s">"Dev Menu Restore"</span>
+              <span class="na">Note=</span><span class="s">"L3 to open menu\nR3 when menu is opened to toggle debug camera, freeze camera but allow player movement.\nL1/R1 to cycle through menus\nX to select menu items.\n\n(These are custom button binds, not original!!)"</span>
+              <span class="na">Author=</span><span class="s">"illusion"</span>
+              <span class="na">PatchVer=</span><span class="s">"1.0"</span>
+              <span class="na">AppVer=</span><span class="s">"01.12"</span>
+              <span class="na">AppElf=</span><span class="s">"eboot.bin"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;PatchList&gt;</span>
+            <span class="c">&lt;!-- store every frame, yuck! --&gt;</span>
+            <span class="c">&lt;!-- this enables mission select + restart checkpoint in pause menu --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x00b9c97b"</span> <span class="na">Value=</span><span class="s">"c6803001000001"</span><span class="nt">/&gt;</span>
+            <span class="c">&lt;!-- entry point --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x00a04823"</span> <span class="na">Value=</span><span class="s">"e834201c01"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- render start --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x00a04c30"</span> <span class="na">Value=</span><span class="s">"e92c1c1c01"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- gamepad start --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x009e3357"</span> <span class="na">Value=</span><span class="s">"e80a351e01"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- debug camera start --&gt;</span>
+            <span class="c">&lt;!-- input is a bit limited here --&gt;</span>
+            <span class="c">&lt;!-- because input::InputManager::buttonPressed only allows one button, a combination isn't possible --&gt;</span>
+            <span class="c">&lt;!-- so to get around this, debug camera can only be started when MenuOpen() and buttonPressed(R3) returns true --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc685c"</span> <span class="na">Value=</span><span class="s">"e9f6010000"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- jmp 0x1bc6a57 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6861"</span> <span class="na">Value=</span><span class="s">"e96a010000"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- jmp 0x1bc69d0 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6866"</span> <span class="na">Value=</span><span class="s">"e9c5010000"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- jmp 0x1bc6a30 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc686b"</span> <span class="na">Value=</span><span class="s">"488d05a2978300"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- lea rax, [rip + 0x8397a2] --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6872"</span> <span class="na">Value=</span><span class="s">"488938"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- mov qword ptr [rax], rdi --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6875"</span> <span class="na">Value=</span><span class="s">"c3"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- ret  --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6876"</span> <span class="na">Value=</span><span class="s">"488d0597978300"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- lea rax, [rip + 0x839797] --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc687d"</span> <span class="na">Value=</span><span class="s">"488b00"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- mov rax, qword ptr [rax] --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6880"</span> <span class="na">Value=</span><span class="s">"c3"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- ret  --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6881"</span> <span class="na">Value=</span><span class="s">"488d058c978300"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- lea rax, [rip + 0x83978c] --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6888"</span> <span class="na">Value=</span><span class="s">"c3"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- ret  --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6889"</span> <span class="na">Value=</span><span class="s">"488d0574978300"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- lea rax, [rip + 0x839774] --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6890"</span> <span class="na">Value=</span><span class="s">"408838"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- mov byte ptr [rax], dil --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6893"</span> <span class="na">Value=</span><span class="s">"c3"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- ret  --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6894"</span> <span class="na">Value=</span><span class="s">"488d0569978300"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- lea rax, [rip + 0x839769] --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc689b"</span> <span class="na">Value=</span><span class="s">"8a00"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- mov al, byte ptr [rax] --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc689d"</span> <span class="na">Value=</span><span class="s">"c3"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- ret  --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc689e"</span> <span class="na">Value=</span><span class="s">"488d05535b8600"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- lea rax, [rip + 0x865b53] --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc68a5"</span> <span class="na">Value=</span><span class="s">"488b00"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- mov rax, qword ptr [rax] --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc68a8"</span> <span class="na">Value=</span><span class="s">"c3"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- ret  --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc68a9"</span> <span class="na">Value=</span><span class="s">"488d05b02d7500"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- lea rax, [rip + 0x752db0] --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc68b0"</span> <span class="na">Value=</span><span class="s">"488b00"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- mov rax, qword ptr [rax] --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc68b3"</span> <span class="na">Value=</span><span class="s">"488b00"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- mov rax, qword ptr [rax] --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc68b6"</span> <span class="na">Value=</span><span class="s">"c3"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- ret  --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc68b7"</span> <span class="na">Value=</span><span class="s">"55"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- push rbp --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc68b8"</span> <span class="na">Value=</span><span class="s">"4889e5"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- mov rbp, rsp --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc68bb"</span> <span class="na">Value=</span><span class="s">"4156"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- push r14 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc68bd"</span> <span class="na">Value=</span><span class="s">"53"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- push rbx --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc68be"</span> <span class="na">Value=</span><span class="s">"488d0572e3e3fe"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- lea rax, [rip - 0x11c1c8e] --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc68c5"</span> <span class="na">Value=</span><span class="s">"ffe0"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- jmp rax --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc68c7"</span> <span class="na">Value=</span><span class="s">"488d05820be9ff"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- lea rax, [rip - 0x16f47e] --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc68ce"</span> <span class="na">Value=</span><span class="s">"ffe0"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- jmp rax --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc68d0"</span> <span class="na">Value=</span><span class="s">"488d05890be9ff"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- lea rax, [rip - 0x16f477] --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc68d7"</span> <span class="na">Value=</span><span class="s">"ffe0"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- jmp rax --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc68d9"</span> <span class="na">Value=</span><span class="s">"488d0520dfe8ff"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- lea rax, [rip - 0x1720e0] --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc68e0"</span> <span class="na">Value=</span><span class="s">"ffe0"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- jmp rax --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc68e2"</span> <span class="na">Value=</span><span class="s">"4156"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- push r14 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc68e4"</span> <span class="na">Value=</span><span class="s">"53"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- push rbx --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc68e5"</span> <span class="na">Value=</span><span class="s">"50"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- push rax --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc68e6"</span> <span class="na">Value=</span><span class="s">"89f3"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- mov ebx, esi --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc68e8"</span> <span class="na">Value=</span><span class="s">"e8e3ffffff"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- call 0x1bc68d0 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc68ed"</span> <span class="na">Value=</span><span class="s">"4885c0"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- test rax, rax --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc68f0"</span> <span class="na">Value=</span><span class="s">"741a"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- je 0x1bc690c --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc68f2"</span> <span class="na">Value=</span><span class="s">"4989c6"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- mov r14, rax --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc68f5"</span> <span class="na">Value=</span><span class="s">"e89affffff"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- call 0x1bc6894 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc68fa"</span> <span class="na">Value=</span><span class="s">"84c0"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- test al, al --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc68fc"</span> <span class="na">Value=</span><span class="s">"740e"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- je 0x1bc690c --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc68fe"</span> <span class="na">Value=</span><span class="s">"4c89f7"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- mov rdi, r14 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6901"</span> <span class="na">Value=</span><span class="s">"89de"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- mov esi, ebx --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6903"</span> <span class="na">Value=</span><span class="s">"4883c408"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- add rsp, 8 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6907"</span> <span class="na">Value=</span><span class="s">"5b"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- pop rbx --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6908"</span> <span class="na">Value=</span><span class="s">"415e"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- pop r14 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc690a"</span> <span class="na">Value=</span><span class="s">"ebbb"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- jmp 0x1bc68c7 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc690c"</span> <span class="na">Value=</span><span class="s">"31c0"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- xor eax, eax --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc690e"</span> <span class="na">Value=</span><span class="s">"4883c408"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- add rsp, 8 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6912"</span> <span class="na">Value=</span><span class="s">"5b"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- pop rbx --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6913"</span> <span class="na">Value=</span><span class="s">"415e"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- pop r14 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6915"</span> <span class="na">Value=</span><span class="s">"c3"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- ret  --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6916"</span> <span class="na">Value=</span><span class="s">"4157"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- push r15 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6918"</span> <span class="na">Value=</span><span class="s">"4156"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- push r14 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc691a"</span> <span class="na">Value=</span><span class="s">"53"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- push rbx --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc691b"</span> <span class="na">Value=</span><span class="s">"4889f3"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- mov rbx, rsi --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc691e"</span> <span class="na">Value=</span><span class="s">"4989ff"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- mov r15, rdi --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6921"</span> <span class="na">Value=</span><span class="s">"e85bffffff"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- call 0x1bc6881 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6926"</span> <span class="na">Value=</span><span class="s">"4989c6"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- mov r14, rax --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6929"</span> <span class="na">Value=</span><span class="s">"4c89ff"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- mov rdi, r15 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc692c"</span> <span class="na">Value=</span><span class="s">"be09000000"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- mov esi, 9 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6931"</span> <span class="na">Value=</span><span class="s">"e8acffffff"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- call 0x1bc68e2 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6936"</span> <span class="na">Value=</span><span class="s">"84c0"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- test al, al --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6938"</span> <span class="na">Value=</span><span class="s">"740e"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- je 0x1bc6948 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc693a"</span> <span class="na">Value=</span><span class="s">"498b3e"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- mov rdi, qword ptr [r14] --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc693d"</span> <span class="na">Value=</span><span class="s">"48ffc7"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- inc rdi --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6940"</span> <span class="na">Value=</span><span class="s">"49893e"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- mov qword ptr [r14], rdi --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6943"</span> <span class="na">Value=</span><span class="s">"e823ffffff"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- call 0x1bc686b --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6948"</span> <span class="na">Value=</span><span class="s">"4c89ff"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- mov rdi, r15 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc694b"</span> <span class="na">Value=</span><span class="s">"be08000000"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- mov esi, 8 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6950"</span> <span class="na">Value=</span><span class="s">"e88dffffff"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- call 0x1bc68e2 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6955"</span> <span class="na">Value=</span><span class="s">"84c0"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- test al, al --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6957"</span> <span class="na">Value=</span><span class="s">"740e"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- je 0x1bc6967 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6959"</span> <span class="na">Value=</span><span class="s">"498b3e"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- mov rdi, qword ptr [r14] --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc695c"</span> <span class="na">Value=</span><span class="s">"48ffcf"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- dec rdi --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc695f"</span> <span class="na">Value=</span><span class="s">"49893e"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- mov qword ptr [r14], rdi --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6962"</span> <span class="na">Value=</span><span class="s">"e804ffffff"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- call 0x1bc686b --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6967"</span> <span class="na">Value=</span><span class="s">"e80affffff"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- call 0x1bc6876 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc696c"</span> <span class="na">Value=</span><span class="s">"4883f80e"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- cmp rax, 0xe --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6970"</span> <span class="na">Value=</span><span class="s">"7e04"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- jle 0x1bc6976 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6972"</span> <span class="na">Value=</span><span class="s">"31ff"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- xor edi, edi --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6974"</span> <span class="na">Value=</span><span class="s">"eb0a"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- jmp 0x1bc6980 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6976"</span> <span class="na">Value=</span><span class="s">"4885c0"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- test rax, rax --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6979"</span> <span class="na">Value=</span><span class="s">"790a"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- jns 0x1bc6985 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc697b"</span> <span class="na">Value=</span><span class="s">"bf0e000000"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- mov edi, 0xe --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6980"</span> <span class="na">Value=</span><span class="s">"e8e6feffff"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- call 0x1bc686b --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6985"</span> <span class="na">Value=</span><span class="s">"e814ffffff"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- call 0x1bc689e --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc698a"</span> <span class="na">Value=</span><span class="s">"4885c0"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- test rax, rax --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc698d"</span> <span class="na">Value=</span><span class="s">"741e"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- je 0x1bc69ad --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc698f"</span> <span class="na">Value=</span><span class="s">"4c8b7008"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- mov r14, qword ptr [rax + 8] --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6993"</span> <span class="na">Value=</span><span class="s">"e8defeffff"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- call 0x1bc6876 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6998"</span> <span class="na">Value=</span><span class="s">"498b3cc6"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- mov rdi, qword ptr [r14 + rax*8] --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc699c"</span> <span class="na">Value=</span><span class="s">"488b07"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- mov rax, qword ptr [rdi] --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc699f"</span> <span class="na">Value=</span><span class="s">"488b4010"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- mov rax, qword ptr [rax + 0x10] --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc69a3"</span> <span class="na">Value=</span><span class="s">"4889de"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- mov rsi, rbx --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc69a6"</span> <span class="na">Value=</span><span class="s">"5b"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- pop rbx --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc69a7"</span> <span class="na">Value=</span><span class="s">"415e"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- pop r14 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc69a9"</span> <span class="na">Value=</span><span class="s">"415f"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- pop r15 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc69ab"</span> <span class="na">Value=</span><span class="s">"ffe0"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- jmp rax --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc69ad"</span> <span class="na">Value=</span><span class="s">"5b"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- pop rbx --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc69ae"</span> <span class="na">Value=</span><span class="s">"415e"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- pop r14 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc69b0"</span> <span class="na">Value=</span><span class="s">"415f"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- pop r15 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc69b2"</span> <span class="na">Value=</span><span class="s">"c3"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- ret  --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc69b3"</span> <span class="na">Value=</span><span class="s">"50"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- push rax --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc69b4"</span> <span class="na">Value=</span><span class="s">"e817ffffff"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- call 0x1bc68d0 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc69b9"</span> <span class="na">Value=</span><span class="s">"4885c0"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- test rax, rax --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc69bc"</span> <span class="na">Value=</span><span class="s">"740e"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- je 0x1bc69cc --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc69be"</span> <span class="na">Value=</span><span class="s">"4889c7"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- mov rdi, rax --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc69c1"</span> <span class="na">Value=</span><span class="s">"be06000000"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- mov esi, 6 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc69c6"</span> <span class="na">Value=</span><span class="s">"58"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- pop rax --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc69c7"</span> <span class="na">Value=</span><span class="s">"e9fbfeffff"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- jmp 0x1bc68c7 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc69cc"</span> <span class="na">Value=</span><span class="s">"31c0"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- xor eax, eax --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc69ce"</span> <span class="na">Value=</span><span class="s">"59"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- pop rcx --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc69cf"</span> <span class="na">Value=</span><span class="s">"c3"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- ret  --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc69d0"</span> <span class="na">Value=</span><span class="s">"4156"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- push r14 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc69d2"</span> <span class="na">Value=</span><span class="s">"53"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- push rbx --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc69d3"</span> <span class="na">Value=</span><span class="s">"50"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- push rax --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc69d4"</span> <span class="na">Value=</span><span class="s">"4889f3"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- mov rbx, rsi --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc69d7"</span> <span class="na">Value=</span><span class="s">"e8dbfeffff"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- call 0x1bc68b7 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc69dc"</span> <span class="na">Value=</span><span class="s">"e8c8feffff"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- call 0x1bc68a9 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc69e1"</span> <span class="na">Value=</span><span class="s">"4885c0"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- test rax, rax --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc69e4"</span> <span class="na">Value=</span><span class="s">"7442"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- je 0x1bc6a28 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc69e6"</span> <span class="na">Value=</span><span class="s">"4989c6"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- mov r14, rax --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc69e9"</span> <span class="na">Value=</span><span class="s">"4889c7"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- mov rdi, rax --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc69ec"</span> <span class="na">Value=</span><span class="s">"e8c2ffffff"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- call 0x1bc69b3 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc69f1"</span> <span class="na">Value=</span><span class="s">"84c0"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- test al, al --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc69f3"</span> <span class="na">Value=</span><span class="s">"7418"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- je 0x1bc6a0d --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc69f5"</span> <span class="na">Value=</span><span class="s">"e89afeffff"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- call 0x1bc6894 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc69fa"</span> <span class="na">Value=</span><span class="s">"3401"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- xor al, 1 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc69fc"</span> <span class="na">Value=</span><span class="s">"0fb6f8"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- movzx edi, al --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc69ff"</span> <span class="na">Value=</span><span class="s">"e885feffff"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- call 0x1bc6889 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6a04"</span> <span class="na">Value=</span><span class="s">"e88bfeffff"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- call 0x1bc6894 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6a09"</span> <span class="na">Value=</span><span class="s">"4188467a"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- mov byte ptr [r14 + 0x7a], al --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6a0d"</span> <span class="na">Value=</span><span class="s">"e882feffff"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- call 0x1bc6894 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6a12"</span> <span class="na">Value=</span><span class="s">"84c0"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- test al, al --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6a14"</span> <span class="na">Value=</span><span class="s">"7412"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- je 0x1bc6a28 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6a16"</span> <span class="na">Value=</span><span class="s">"4c89f7"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- mov rdi, r14 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6a19"</span> <span class="na">Value=</span><span class="s">"4889de"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- mov rsi, rbx --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6a1c"</span> <span class="na">Value=</span><span class="s">"4883c408"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- add rsp, 8 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6a20"</span> <span class="na">Value=</span><span class="s">"5b"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- pop rbx --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6a21"</span> <span class="na">Value=</span><span class="s">"415e"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- pop r14 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6a23"</span> <span class="na">Value=</span><span class="s">"e9eefeffff"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- jmp 0x1bc6916 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6a28"</span> <span class="na">Value=</span><span class="s">"4883c408"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- add rsp, 8 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6a2c"</span> <span class="na">Value=</span><span class="s">"5b"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- pop rbx --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6a2d"</span> <span class="na">Value=</span><span class="s">"415e"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- pop r14 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6a2f"</span> <span class="na">Value=</span><span class="s">"c3"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- ret  --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6a30"</span> <span class="na">Value=</span><span class="s">"be07000000"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- mov esi, 7 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6a35"</span> <span class="na">Value=</span><span class="s">"e9a8feffff"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- jmp 0x1bc68e2 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6a3a"</span> <span class="na">Value=</span><span class="s">"53"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- push rbx --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6a3b"</span> <span class="na">Value=</span><span class="s">"e85efeffff"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- call 0x1bc689e --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6a40"</span> <span class="na">Value=</span><span class="s">"488b5808"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- mov rbx, qword ptr [rax + 8] --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6a44"</span> <span class="na">Value=</span><span class="s">"e82dfeffff"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- call 0x1bc6876 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6a49"</span> <span class="na">Value=</span><span class="s">"488b3cc3"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- mov rdi, qword ptr [rbx + rax*8] --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6a4d"</span> <span class="na">Value=</span><span class="s">"488b07"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- mov rax, qword ptr [rdi] --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6a50"</span> <span class="na">Value=</span><span class="s">"5b"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- pop rbx --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6a51"</span> <span class="na">Value=</span><span class="s">"ffa0e0000000"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- jmp qword ptr [rax + 0xe0] --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6a57"</span> <span class="na">Value=</span><span class="s">"50"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- push rax --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6a58"</span> <span class="na">Value=</span><span class="s">"e837feffff"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- call 0x1bc6894 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6a5d"</span> <span class="na">Value=</span><span class="s">"84c0"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- test al, al --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6a5f"</span> <span class="na">Value=</span><span class="s">"7403"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- je 0x1bc6a64 --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6a61"</span> <span class="na">Value=</span><span class="s">"58"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- pop rax --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6a62"</span> <span class="na">Value=</span><span class="s">"ebd6"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- jmp 0x1bc6a3a --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6a64"</span> <span class="na">Value=</span><span class="s">"58"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- pop rax --&gt;</span>
+            <span class="nt">&lt;Line</span> <span class="na">Type=</span><span class="s">"bytes"</span> <span class="na">Address=</span><span class="s">"0x1bc6a65"</span> <span class="na">Value=</span><span class="s">"c3"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- ret  --&gt;</span>
+        <span class="nt">&lt;/PatchList&gt;</span>
+    <span class="nt">&lt;/Metadata&gt;</span>
+<span class="nt">&lt;/Patch&gt;</span></code></pre></figure>
+
+
+</details>
+</div>
+      </section>
+      <footer>
+  <p>&copy; 2021 - 2025 | illusion's Blog</br>Theme <a href="https://github.com/sharadcodes/jekyll-theme-material-you"> Jekyll Theme Material You</a></p>
+</footer>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

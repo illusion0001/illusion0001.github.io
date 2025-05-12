@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>illusion's Blog | Graphics Patches for God of War 3 and Ascension for RPCS3</title>
+  
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+  <!-- Twemoji -->
+  <!-- src https://github.com/SebastianAigner/twemoji-amazing -->
+  <link rel="stylesheet" href="/assets/css/twemoji-amazing.css">
+</head>
+
+  <body>
+    <main class="blogfeed">
+      
+<header>
+  <a class="site-title article-page" href="/">illusion's Blog</a>
+</header>
+
+
+
+
+      <section id="social-links1">
+  
+    <a href="/contact" target="_blank"> Contact</a>
+  
+    <a href="/patch" target="_blank"> Patches</a>
+  
+</section>
+
+<section id="social-links">
+
+  <a href="https://github.com/illusion0001" target="_blank">
+    <img src="/assets/icons/github.svg" alt="" />
+  </a>
+
+  <a href="mailto:illusion3185@gmail.com" target="_blank">
+    <img src="/assets/icons/email.svg" alt="" />
+  </a>
+
+</section>
+
+      <section id="article">
+        
+        <!--  -->
+        
+        <!--  -->
+        
+        
+        <div
+          class="article-thumbnail"
+          style="
+            background-image: url('https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img-feature2.png');
+          "
+        >
+        
+          <h1 class="article-title">Graphics Patches for God of War 3 and Ascension for RPCS3</h1>
+          <div class="article-bottom">
+            <small class="article-date">16 Jul 2021</small>
+            <div class="article-categories">
+              
+              <a href="#!" class="article-category">patches</a>
+              
+            </div>
+          </div>
+        </div>
+        <div class="article-content"><h1 id="intro">Intro</h1>
+
+<p>Another blast from the past, This time we will be looking into the improving the graphics of the God of War titles on PlayStation 3.</p>
+
+<p>Specifically the things you would find when playing a PC game like running at any resolution and optional motion blur and depth of field to name a few.</p>
+
+<h2 id="part-1---brightness-options-came-to-the-rescue">Part 1 - Brightness Options Came To The Rescue</h2>
+
+<p>Starting with God of War 3, I went into the game display options to look for clues.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img0.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img0.png" />
+</a></div>
+
+<div align="center">
+<em>In-Game Brightness Menu</em>
+</div>
+
+<p>Moving this silder around and searching for values I narrowed it down to 4 byte int.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img1.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img1.png" />
+</a></div>
+
+<div align="center">
+<em>In-Game Brightness Menu</em>
+</div>
+
+<p>Max of <code class="language-plaintext highlighter-rouge">100</code> and Min of <code class="language-plaintext highlighter-rouge">0</code>.</p>
+
+<p>Peeking into memory reveals something interesting.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img2.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img2.png" />
+</a></div>
+
+<div align="center">
+<em>Highlighted is Brightness Value</em>
+</div>
+
+<p>There is a toggle, in 4 byte int. <code class="language-plaintext highlighter-rouge">0x52BF2C</code></p>
+
+<p>Setting it to 0 gives us this.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img3.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img3.png" />
+</a></div>
+
+<div align="center">
+<em>Strange colors.</em>
+</div>
+
+<p>Hmm, it gives strange results. Let’s try patching this to 0 at startup.</p>
+
+<p><code class="language-plaintext highlighter-rouge">- [ byte, 0x52BF2F, 0 ]</code></p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img4.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img4.png" />
+</a></div>
+
+<div align="center">
+<em>2560x1440 Internal Resolution</em>
+</div>
+
+<p>Woah, a crisp clean image. How about in-game?</p>
+
+<p><strong>Right Click and View Image to see detailed image.</strong></p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img5.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img5.png" />
+</a></div>
+
+<div align="center">
+<em>Absolutely Stunning!</em>
+</div>
+
+<p>How about God of War Ascension?</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img6.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img6.png" />
+</a></div>
+
+<div align="center">
+<em>In-Game Settings Menu</em>
+</div>
+
+<p>Oh, a value number next to the brightness setting, how curious.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img7.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img7.png" />
+</a></div>
+
+<div align="center">
+<em>GOWA Memory View</em>
+</div>
+
+<p>No toggle next to brightness, there is some toggle at the bottom.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img8.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img8.png" />
+</a></div>
+
+<div align="center">
+<em>GOWA Mysterious toggle disabled</em>
+</div>
+
+<p>Another one with strange graphical issues.</p>
+
+<p><code class="language-plaintext highlighter-rouge">- [ byte, 0x83ce77, 0 ]</code></p>
+
+<p>Let’s try the same method I used for God of War 3.</p>
+
+<p><strong>Right Click and View Image to see detailed image.</strong></p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img9.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img9.png" />
+</a></div>
+
+<div align="center">
+<em>2560x1440 Internal Resolution</em>
+</div>
+
+<p>This seem to be MLAA as well, job done right?</p>
+
+<h2 id="part-2---more-graphics-improvemnts">Part 2 - More Graphics Improvemnts</h2>
+
+<p>After a few weeks of letting my friend <a href="https://www.youtube.com/user/ZEROx2085/">ZEROx</a> know about my findings, he decided to look into the more of the game internal Grahpics Options.</p>
+
+<p>First was that he was able to improve more of the game performance by looking at the code.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>00390724 4b ff fc b5     bl         FUN_003903d8
+00390728 3c 60 00 9b     lis        param_1,0x9b
+...
+00390750 38 c0 00 00     li         param_4,0x0
+00390754 4b ff fc 85     bl         FUN_003903d8
+00390758 3c 60 00 84     lis        param_1,0x84
+0039075c 80 63 ce 74     lwz        param_1,-0x318c(param_1)=&gt;DAT_0083ce74
+</code></pre></div></div>
+
+<p>Nop on <code class="language-plaintext highlighter-rouge">branch link</code> to call the functions skipped it.</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="pi">-</span> <span class="pi">[</span> <span class="nv">be32</span><span class="pi">,</span> <span class="nv">0x00390724</span><span class="pi">,</span> <span class="nv">0x60000000</span> <span class="pi">]</span>
+<span class="pi">-</span> <span class="pi">[</span> <span class="nv">be32</span><span class="pi">,</span> <span class="nv">0x00390754</span><span class="pi">,</span> <span class="nv">0x60000000</span> <span class="pi">]</span>
+</code></pre></div></div>
+
+<p>Searching for the text <code class="language-plaintext highlighter-rouge">DepthOfField</code> leads us here.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>00433ef8 93 fd 00 08     stw        r31=&gt;s_DepthOfField_0067b638,0x8(r29)
+...
+00434080 41 82 01 98     beq        LAB_00434218
+...
+00434250 41 82 00 50     beq        LAB_004342a0
+...
+                     LAB_004342a0 XREF[1]:     00434250(j)  
+004342a0 3b c0 00 01     li         r30,0x1
+004342a4 30 7f 00 10     addic      r3,r31,0x10
+004342a8 78 63 00 20     rldicl     r3,r3,0x0,0x20
+004342ac 4b f7 b6 dd     bl         FUN_003af988
+004342b0 60 00 00 00     ori        r0,r0,0x0
+004342b4 80 9f 00 1c     lwz        r4,0x1c(r31)
+004342b8 38 60 00 00     li         r3,0x0
+004342bc 80 bf 00 20     lwz        r5,0x20(r31)
+</code></pre></div></div>
+
+<p>Following the branching leads to the last one in the list.</p>
+
+<p>A few testing with <code class="language-plaintext highlighter-rouge">li</code> and register of <code class="language-plaintext highlighter-rouge">0</code> comes down to <code class="language-plaintext highlighter-rouge">lwz r5,0x20(r31)</code></p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img10.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img10.png" />
+</a></div>
+
+<div align="center">
+<em>Depth of Field: Enabled</em>
+</div>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img11.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img11.png" />
+</a></div>
+
+<div align="center">
+<em>Depth of Field: Disabled</em>
+</div>
+
+<p>Same can be done for Motion Blur.</p>
+
+<h2 id="part-3---backporting-to-god-of-war-3">Part 3 - Backporting to God of War 3</h2>
+
+<p>MLAA Patch Performance Improvement</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0023128c 80 1e 00 00     lwz        r0,0x0(r30)=&gt;DAT_0052bf2c
+002312b4 4b ff f9 99     bl         FUN_00230c4c
+002312c8 4b ff f9 85     bl         FUN_00230c4c
+...
+0023137c 4b ff f8 d1     bl         FUN_00230c4c
+</code></pre></div></div>
+
+<p>A few nop to the call <code class="language-plaintext highlighter-rouge">0x230c4c</code> narrowed down to  <code class="language-plaintext highlighter-rouge">0x0023137c</code>.</p>
+
+<p>However, Graphics Options is a little more involed.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/ghidra-gow-img0.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/ghidra-gow-img0.png" />
+</a></div>
+
+<p>String refernce and a reverse branch. Hmm.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/ghidra-gow-img1.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/ghidra-gow-img1.png" />
+</a></div>
+
+<p>Setting a breakpoint on <code class="language-plaintext highlighter-rouge">001c65b8 bl FUN_001b61e0</code> lead us somewhere.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img12.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img12.png" />
+</a></div>
+
+<div align="center">
+<em>Take notice of Register 3</em>
+</div>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img13.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/rpcs3-img13.png" />
+</a></div>
+
+<p>Setting byte <code class="language-plaintext highlighter-rouge">0x321ACA6B</code> to 0 disables motion blur.</p>
+
+<p>This method can also be used for Depth of field.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/ghidra-gow-img2.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/GOW-MLAA-RPCS3-Patch/ghidra-gow-img2.png" />
+</a></div>
+
+<h1 id="results">Results</h1>
+
+<div align="center" class="responsive-video-container">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/J-rf0FcXpLw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</div>
+
+<div align="center" class="responsive-video-container">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/p_gvO2jBWwI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</div>
+
+<h1 id="patch">Patch</h1>
+
+<p>Patch was made available back in August 2020. You can download through the emulator built-in Patch Manager.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_patch_example.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_patch_example.png" />
+</a></div>
+
+<h2 id="supporters">Supporters</h2>
+
+<p>Thanks to the patrons who supported me on various platforms! You guys are awesome!</p>
+
+<h3 id="monthly-supporters">Monthly supporters:</h3>
+<ul>
+  <li>
+    <p><a href="https://www.patreon.com/illusion0001">Patreon</a>:</p>
+
+    <ul>
+      <li>ac2pic</li>
+      <li>Alexa</li>
+      <li>Brett</li>
+      <li>Ciril</li>
+      <li>GarnetSunset</li>
+      <li>Mmmmmhno</li>
+      <li>Paul</li>
+      <li>PlayStation5Mods</li>
+      <li>RazzySxPB</li>
+      <li>Ryan</li>
+      <li>Voredy</li>
+      <li>YveltalGriffin</li>
+      <li>Zackery</li>
+      <li>alessaro92</li>
+      <li>ashenC</li>
+      <li>embee</li>
+      <li>erdosadam24</li>
+      <li>faith</li>
+      <li>maplemiyazaki</li>
+      <li>patrick</li>
+      <li>rudi</li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="https://github.com/sponsors/illusion0001">Github Sponsors</a>:</p>
+
+    <ul>
+      <li>VIPO777</li>
+      <li>WardFail</li>
+      <li>Whitehawkx</li>
+      <li>gorshco</li>
+      <li>jrson83</li>
+      <li>regal.</li>
+      <li>suwagawaki</li>
+    </ul>
+  </li>
+</ul>
+
+</div>
+      </section>
+      <footer>
+  <p>&copy; 2021 - 2025 | illusion's Blog</br>Theme <a href="https://github.com/sharadcodes/jekyll-theme-material-you"> Jekyll Theme Material You</a></p>
+</footer>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

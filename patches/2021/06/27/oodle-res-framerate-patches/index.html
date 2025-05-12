@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>illusion's Blog | Patches for The Order 1886 60FPS, 16:9 Aspect Ratio and More</title>
+  
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+  <!-- Twemoji -->
+  <!-- src https://github.com/SebastianAigner/twemoji-amazing -->
+  <link rel="stylesheet" href="/assets/css/twemoji-amazing.css">
+</head>
+
+  <body>
+    <main class="blogfeed">
+      
+<header>
+  <a class="site-title article-page" href="/">illusion's Blog</a>
+</header>
+
+
+
+
+      <section id="social-links1">
+  
+    <a href="/contact" target="_blank"> Contact</a>
+  
+    <a href="/patch" target="_blank"> Patches</a>
+  
+</section>
+
+<section id="social-links">
+
+  <a href="https://github.com/illusion0001" target="_blank">
+    <img src="/assets/icons/github.svg" alt="" />
+  </a>
+
+  <a href="mailto:illusion3185@gmail.com" target="_blank">
+    <img src="/assets/icons/email.svg" alt="" />
+  </a>
+
+</section>
+
+      <section id="article">
+        
+        <!--  -->
+        
+        <!--  -->
+        
+        
+        <div
+          class="article-thumbnail"
+          style="
+            background-image: url('https://img-assets.illusion0001.workers.dev/assets/images/oodle-res-framerate-patches/oddle-res-thumbnail-2.png');
+          "
+        >
+        
+          <h1 class="article-title">Patches for The Order 1886 60FPS, 16:9 Aspect Ratio and More</h1>
+          <div class="article-bottom">
+            <small class="article-date">27 Jun 2021</small>
+            <div class="article-categories">
+              
+              <a href="#!" class="article-category">patches</a>
+              
+            </div>
+          </div>
+        </div>
+        <div class="article-content"><h1 id="intro">Intro</h1>
+
+<p>Another short post but I find the process leading up to this fascinating! So let’s get to it.</p>
+
+<h2 id="part-1---the-easy-stuff">Part 1 - The Easy Stuff</h2>
+
+<p>Using common searching technique for resolution and framerate came up quite easy, or so I thought.</p>
+
+<p>For framerate, it’s easy enough; a simple search for kernel function <code class="language-plaintext highlighter-rouge">sceVideoOutSetFlipRate</code> lands us here:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>01878214 8b 1d 3a        MOV        EBX,dword ptr [DAT_025c0d54]
+         8b d4 00
+0187821a 4c 8b b0        MOV        R14,qword ptr [RAX + 0x98]
+         98 00 00 00
+01878221 ba 02 00        MOV        param_3,0x2
+         00 00
+01878226 85 db           TEST       EBX,EBX
+01878228 74 1c           JZ         LAB_01878246
+0187822a 39 1d 68        CMP        dword ptr [DAT_0270fe98],EBX
+         7c e9 00
+01878230 74 11           JZ         LAB_01878243
+01878232 8d 73 ff        LEA        param_2,[RBX + -0x1]
+01878235 44 89 e7        MOV        param_1,R12D
+01878238 e8 83 c2        CALL       sceVideoOutSetFlipRate
+         67 00
+0187823d 89 1d 55        MOV        dword ptr [DAT_0270fe98],EBX
+         7c e9 00
+</code></pre></div></div>
+
+<p>It’s moving value from <code class="language-plaintext highlighter-rouge">0x25c0d54</code> into EBX, tests it against condition of <code class="language-plaintext highlighter-rouge">if not 0</code> then skips.</p>
+
+<p>Not sure what’s going with the compare below but I simply mov <code class="language-plaintext highlighter-rouge">0x1</code> into <code class="language-plaintext highlighter-rouge">EBX</code> and it worked.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>01878214 c7 c3 01        MOV        EBX,0x1
+         00 00 00
+</code></pre></div></div>
+
+<h2 id="part-2---the-not-so-easy-stuff">Part 2 - The (not so) Easy Stuff</h2>
+
+<p>I ran a search for 1920 in 4 byte int and clicked around and found this.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>025c0d40 80 07 00 00     undefined4 00000780h
+025c0d44 00              ??         00h
+025c0d45 00              ??         00h
+025c0d46 00              ??         00h
+025c0d47 00              ??         00h
+025c0d48 38 04 00        undefined8 0000000000000438h
+         00 00 00 
+         00 00
+</code></pre></div></div>
+
+<p>A qword? That doesn’t seem right.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>018a1286 41 8b 84        MOV        EAX,dword ptr [R12 + 0x14c]
+         24 4c 01 
+         00 00
+018a128e 41 8b 8c        MOV        ECX,dword ptr [R12 + 0x150]
+         24 50 01 
+         00 00
+018a1296 48 89 05        MOV        qword ptr [DAT_025c0d40],RAX             = 00000780h
+         a3 fa d1 00
+018a129d 48 89 0d        MOV        qword ptr [DAT_025c0d48],RCX             = 0000000000000438h
+         a4 fa d1 00
+</code></pre></div></div>
+
+<p>I could try moving a custom value into EAX and ECX.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>018a1296 48 c7 c0        MOV        RAX,0x780
+         80 07 00 00
+018a129d 48 c7 c1        MOV        RCX,0x438
+         38 04 00 00
+</code></pre></div></div>
+
+<p>But.. the game didn’t boot when I lowered the resolution..</p>
+
+<p>After digging for a while, I found these two.</p>
+
+<p>One is a launch parameter and another is resolution values.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                     s_Use_720p_resolution_in_fullscree_0248a513     XREF[1]:     FUN_01449a10:0144a0bd(*)  
+0248a513 55 73 65        ds         "Use 720p resolution in fullscreen mode"
+         20 37 32 
+         30 70 20 
+                     s_Use_1080p_resolution_in_fullscre_0248a53a     XREF[1]:     FUN_01449a10:0144a0e8(*)  
+0248a53a 55 73 65        ds         "Use 1080p resolution in fullscreen mode"
+         20 31 30 
+         38 30 70 
+                     s_Use_4K_resolution_in_fullscreen_m_0248a562    XREF[1]:     FUN_01449a10:0144a113(*)  
+0248a562 55 73 65        ds         "Use 4K resolution in fullscreen mode"
+         20 34 4b 
+         20 72 65 
+...
+0248ae3a 75 73 65        ds         "use4K"
+         34 4b 00
+0248ae41 75 73 65        ds         "use1080p"
+         31 30 38 
+         30 70 00
+0248ae4b 75 73 65        ds         "use720p"
+         37 32 30 
+         70 00
+...
+01444cef3 a8 80           TEST       AL,0x80
+01444cef5 74 41           JZ         LAB_0144cf38
+01444cef7 c7 85 84        MOV        dword ptr [RBP + local_384],0x500
+          fc ff ff 
+          00 05 00 00
+01444cf01 c7 85 88        MOV        dword ptr [RBP + local_380],0x2d0
+          fc ff ff 
+          d0 02 00 00
+</code></pre></div></div>
+
+<p>I think I found it!</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/oodle-res-framerate-patches/oddle-res0.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/oodle-res-framerate-patches/oddle-res0.png" />
+</a></div>
+
+<div align="center">
+<em>1920x1080 Letterboxed</em>
+</div>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/oodle-res-framerate-patches/oddle-res1.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/oodle-res-framerate-patches/oddle-res1.png" />
+</a></div>
+
+<div align="center">
+<em>1280x720 Letterboxed</em>
+</div>
+
+<p>A simple jump switch did the trick.</p>
+
+<p>Since it is letterboxed, it will have to push out less pixels than actual 720p.</p>
+
+<p>Affective resolution is <code class="language-plaintext highlighter-rouge">1280x535</code> approximately.</p>
+
+<p>Also, if you haven’t noticed already, there’s 4K mode. Not sure if it works so I included a code to enable this path. if anyone who has a PS4 Pro can give it a try.</p>
+
+<p>Another curiosty piece of mine is the letterboxing the game has, let’s see what I can do about it.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Width: 1920 Height: 1080
+Ratio: 1.778
+2.07 megapixels (2073600 pixels)
+</code></pre></div></div>
+
+<p>Initally, I thought it would be <code class="language-plaintext highlighter-rouge">1.778</code> or <code class="language-plaintext highlighter-rouge">39 8E E3 3F</code> in Hex, but no results.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Width: 1920 Height: 800
+Ratio: 2.4
+1.54 megapixels (1536000 pixels)
+</code></pre></div></div>
+
+<p>However, <code class="language-plaintext highlighter-rouge">2.4</code> came up with some promising results.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>01444ce86 c7 85 18        MOV        dword ptr [RBP + local_3f0],0x4019999a
+          fc ff ff 
+          9a 99 19 40
+</code></pre></div></div>
+
+<p>Around resolution code too. let’s give it <code class="language-plaintext highlighter-rouge">1.778</code> and see what the game will do about it.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/oodle-res-framerate-patches/oddle-res2.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/oodle-res-framerate-patches/oddle-res2.png" />
+</a></div>
+
+<div align="center">
+<em>Letterbox Removed</em>
+</div>
+
+<p>Not so cinematic anymore huh?</p>
+
+<p>Well, the letterbox is removed but it ran worse? That is because it has to push more pixels to the screen.</p>
+
+<p>A full 1280x720 image and not 1280x535 as we saw before.</p>
+
+<p>It seem to also crop in the image, I tried looking for an FOV scale but no luck, maybe someone could? If so open a pull request and make the game better!</p>
+
+<h1 id="results">Results</h1>
+
+<div align="center" class="responsive-video-container">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/MRnD9XCb1tY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</div>
+
+<h1 id="patch">Patch</h1>
+
+<p><a href="/_patch/TheOrder1886-Orbis" class="button" role="button"><i class="fas fa-download"></i> Patch Code</a></p>
+
+<h2 id="supporters">Supporters</h2>
+
+<p>Thanks to the patrons who supported me on various platforms! You guys are awesome!</p>
+
+<h3 id="monthly-supporters">Monthly supporters:</h3>
+<ul>
+  <li>
+    <p><a href="https://www.patreon.com/illusion0001">Patreon</a>:</p>
+
+    <ul>
+      <li>ac2pic</li>
+      <li>Alexa</li>
+      <li>Brett</li>
+      <li>Ciril</li>
+      <li>GarnetSunset</li>
+      <li>Mmmmmhno</li>
+      <li>Paul</li>
+      <li>PlayStation5Mods</li>
+      <li>RazzySxPB</li>
+      <li>Ryan</li>
+      <li>Voredy</li>
+      <li>YveltalGriffin</li>
+      <li>Zackery</li>
+      <li>alessaro92</li>
+      <li>ashenC</li>
+      <li>embee</li>
+      <li>erdosadam24</li>
+      <li>faith</li>
+      <li>maplemiyazaki</li>
+      <li>patrick</li>
+      <li>rudi</li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="https://github.com/sponsors/illusion0001">Github Sponsors</a>:</p>
+
+    <ul>
+      <li>VIPO777</li>
+      <li>WardFail</li>
+      <li>Whitehawkx</li>
+      <li>gorshco</li>
+      <li>jrson83</li>
+      <li>regal.</li>
+      <li>suwagawaki</li>
+    </ul>
+  </li>
+</ul>
+
+</div>
+      </section>
+      <footer>
+  <p>&copy; 2021 - 2025 | illusion's Blog</br>Theme <a href="https://github.com/sharadcodes/jekyll-theme-material-you"> Jekyll Theme Material You</a></p>
+</footer>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

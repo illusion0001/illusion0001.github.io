@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>illusion's Blog | Uncharted 3 Multiplayer Beta Now Playable Without PSN (PS3)</title>
+  
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+  <!-- Twemoji -->
+  <!-- src https://github.com/SebastianAigner/twemoji-amazing -->
+  <link rel="stylesheet" href="/assets/css/twemoji-amazing.css">
+</head>
+
+  <body>
+    <main class="blogfeed">
+      
+<header>
+  <a class="site-title article-page" href="/">illusion's Blog</a>
+</header>
+
+
+
+
+      <section id="social-links1">
+  
+    <a href="/contact" target="_blank"> Contact</a>
+  
+    <a href="/patch" target="_blank"> Patches</a>
+  
+</section>
+
+<section id="social-links">
+
+  <a href="https://github.com/illusion0001" target="_blank">
+    <img src="/assets/icons/github.svg" alt="" />
+  </a>
+
+  <a href="mailto:illusion3185@gmail.com" target="_blank">
+    <img src="/assets/icons/email.svg" alt="" />
+  </a>
+
+</section>
+
+      <section id="article">
+        
+        <!--  -->
+        
+        <!--  -->
+        
+        
+        <div
+          class="article-thumbnail"
+          style="
+            background-image: url('https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/big3-pic0.png');
+          "
+        >
+        
+          <h1 class="article-title">Uncharted 3 Multiplayer Beta Now Playable Without PSN (PS3)</h1>
+          <div class="article-bottom">
+            <small class="article-date">09 Mar 2022</small>
+            <div class="article-categories">
+              
+              <a href="#!" class="article-category">patches</a>
+              
+            </div>
+          </div>
+        </div>
+        <div class="article-content"><h1 id="intro">Intro</h1>
+
+<p>It is no secret that I have been on the Uncharted Reloaded team for a while, a group of dedicated and talented individuals in an attempt to revive the multiplayer servers that was offline since it’s closure in 2019.</p>
+
+<h2 id="the-problem">The Problem</h2>
+
+<p>Recently I was tasked with solving a crash in one of the multiplayer public beta upon entering a secret LAN mode.</p>
+
+<p>Yes, this is the same beta that was ran during June 28th to July 14th back in 2011. More details <a href="https://blog.playstation.com/2011/06/28/uncharted-3-multiplayer-beta-details/">here</a>.</p>
+
+<p>Normally it is not possible to access this mode because on the start screen, you’ll be prompted to sign in to PlayStation Network.</p>
+
+<div align="center">
+<video width="100%" controls="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/GameOS-XMB-0c.mp4" type="video/mp4" />
+</video>
+</div>
+
+<p>It is possible to have access to the menus that was previous locked behind a PSN sign in prompt. Before you ask, this <strong>does not</strong> get rid of PSN authentication, it simply unlocks the menu. The code probably goes something like this.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="n">sku</span> <span class="o">==</span> <span class="n">NPUA07618</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">LockMenuFeature</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="n">LockMenuFeature</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+<p>The game has a so called blacklist of titleIDs that will restrict access to certain features, such as gore, violence and others, there is a simple trick to get around this but first let me show you something special.</p>
+
+<div align="center">
+<video width="100%" controls="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/Cell-XMB-0b.mp4" type="video/mp4" />
+</video>
+</div>
+
+<p>That’s right, Yours truly (finally) got a PlayStation 3!</p>
+
+<p>Special thanks goes to the <a href="https://www.patreon.com/illusion0001">Patrons</a>, Vampyre, a member of the team and <em>you</em> for supporting me to be able to get a hold of such not-so rare piece of hardware.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/DiscPhoto-1-Scaled.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/DiscPhoto-1-Scaled.png" />
+</a></div>
+
+<p>It is a Slim model PS3, check it out, quite a beauty isn’t it? This will become useful later on.</p>
+
+<p>Now back to the task at hand.</p>
+
+<h2 id="infinite-solutions-infinite-possibility">Infinite Solutions, Infinite Possibility</h2>
+
+<p>What is this simple trick you may ask? Well it is quite simple, by changing the SKU ID, which consists of the Game’s Title ID that you can find printed on the spine of the case or disc.</p>
+
+<figure class="half ">
+  
+    
+      <a href="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/DiscPhoto-2-Scaled.png">
+          <img src="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/DiscPhoto-2-Scaled.png" alt="" />
+      </a>
+    
+  
+    
+      <a href="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/DiscPhoto-3-Scaled.png">
+          <img src="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/DiscPhoto-3-Scaled.png" alt="" />
+      </a>
+    
+  
+  
+</figure>
+
+<p>Oh wait, is that too small? Let me zoom in.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/DiscPhoto-4-Scaled.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/DiscPhoto-4-Scaled.png" />
+</a></div>
+
+<div align="center">
+<em>I apologize if I ruin the illusion that printed material are full color but they are not. <i class="twa thinkhappy"></i></em>
+</div>
+
+<p>For SKU blacklist, in this case it only restricts the use of the main menu.</p>
+
+<p>What will happen if the SKU is changed?</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/GameOS-XMB-11stack.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/GameOS-XMB-11stack.png" />
+</a></div>
+
+<p>With this one simple trick, we can have access to the whole menu, which includes but not limited to: Online Mode used during the beta, a Local Multiplayer mode and a options menu with a blank controller page. Will get back to that in a moment.</p>
+
+<p>The funny thing about this SKU check code is it will fallback to whatever the default is set to (in this case its <code class="language-plaintext highlighter-rouge">UP9000-BCUS98233_00</code>) if the string does not match. Hot singles in your <code class="language-plaintext highlighter-rouge">strcmp</code> (string compare)? With that knowledge the SKU can be anything but the blacklisted ID of the game.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/CE-0b.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/CE-0b.png" />
+</a></div>
+
+<div align="center">
+<em><a href="https://www.youtube.com/user/ZEROx2085">ZEROx</a> says hi! Part of the code was written by him. :)</em>
+</div>
+
+<p>As for LAN mode, why is it a curiosity? Because upon entering a local username, it crashes with an assertion.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{PPU[0x100200e] Thread (NetInit) [0x008eaebc]} SIG: Thread terminated due to fatal error.
+
+LookupSymbolValue: Symbol '0x6f1c3f87' ("") not found!
+(consider the alternate LookupSymbol)
+</code></pre></div></div>
+
+<p>A script file cannot be found, how strange. such is life I suppose.</p>
+
+<p>So I had a brilliant idea, mess around in the game’s memory in the area where the SKU is located.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/CE-0c.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/CE-0c.png" />
+</a></div>
+
+<p>At first I thought I was out of luck but fear not, with a little bit of trial and error of changing true to false, there is a solution.</p>
+
+<p>You may have already noticed there is some <code class="language-plaintext highlighter-rouge">01</code> at the top. If you guess correctly that it should be <code class="language-plaintext highlighter-rouge">00</code> you would be correct!</p>
+
+<div align="center">
+<video width="100%" controls="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/RPCS3-login.mp4" type="video/mp4" />
+</video>
+</div>
+
+<p>The crash is solved! But it doesn’t go anywhere, or does it?</p>
+
+<div align="center">
+ <audio controls="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/misc/JakeChudnowMoonMen.mp3" type="audio/mpeg" />
+Your browser does not support the audio element.
+</audio>
+</div>
+
+<div align="center">
+<em>Jake Chudnow  - Moon Men (<a href="https://youtu.be/sIN3gRV2T7A">Unreleased</a>)</em>
+</div>
+
+<p>Let’s try it on a real PS3.</p>
+
+<div align="center">
+<video width="100%" controls="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/GameOS-XMB-011.mp4" type="video/mp4" />
+</video>
+</div>
+
+<p>Oh my. It works? What’s with the poor performance on the menu?</p>
+
+<p>Here, let’s put some numbers on the screen.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/GameOS-XMB-0f.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/GameOS-XMB-0f.png" />
+</a></div>
+
+<p>It turns out you were never supposed to be able to enter this menu, and Uncharted TV is setup for an online only environment. The rapid flicker and slowdowns are caused by the game trying to do the following:</p>
+
+<p>Spawn video decoding threads -&gt; tries to find video files on a non existent server (they were shutdown a while ago) -&gt; despawn threads -&gt; cycle repeat indefinitely.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://d2i32rosu1so9x.cloudfront.net/1.mp4
+http://d2i32rosu1so9x.cloudfront.net/2.mp4
+http://d2i32rosu1so9x.cloudfront.net/u3-reveal.mp4
+http://d2i32rosu1so9x.cloudfront.net/u3-e32011-trailer.mp4
+http://d2i32rosu1so9x.cloudfront.net/5.mp4
+http://d2i32rosu1so9x.cloudfront.net/6.mp4
+</code></pre></div></div>
+
+<p>Some of the URLs the game tries to access for videos.</p>
+
+<p>A solution to this would be to outright get rid of Uncharted TV and stop the game from spawning video threads and causing slow down or if we do eventually get the online functionality working, host our own videos instead.</p>
+
+<p>Alright, where do we begin?</p>
+
+<p>Luckily the video panel goes away when you enter the options menu and comes back when the user returns, with a little bit of back and forth scanning. I narrowed it down to this address. <code class="language-plaintext highlighter-rouge">1224C60</code> setting this byte to 0 will temporary turn off the video panel but the video threads are still being spawned in. Time for a breakpoint. There are two write addresses, let’s have a look.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>00700834
+0070158C
+</code></pre></div></div>
+
+<p>Oh wow, check this out, this is exactly what we are after. It even has text reference to the thread name and the relevant calls to spawn a new ppu thread.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)(</span><span class="n">DAT_01224d18</span> <span class="o">+</span> <span class="mh">0x2124</span><span class="p">)</span> <span class="o">==</span> <span class="sc">'\0'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">FUN_00700804</span><span class="p">(</span><span class="n">param_1</span><span class="p">);</span>
+    <span class="n">FUN_00c93f28</span><span class="p">(</span><span class="n">param_1</span><span class="p">,</span><span class="n">param_2</span><span class="p">);</span>
+    <span class="n">iVar12</span> <span class="o">=</span> <span class="n">FUN_0070015c</span><span class="p">(</span><span class="n">param_1</span><span class="p">,</span><span class="mh">0x1e</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">iVar12</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="o">*</span><span class="p">(</span><span class="n">undefined4</span> <span class="o">*</span><span class="p">)((</span><span class="kt">int</span><span class="p">)</span><span class="n">puVar7</span> <span class="o">+</span> <span class="mh">0x84</span><span class="p">)</span> <span class="o">=</span> <span class="mh">0x21</span><span class="p">;</span>
+      <span class="p">...</span>
+      <span class="o">*</span><span class="p">(</span><span class="n">undefined</span> <span class="o">*</span><span class="p">)(</span><span class="n">param_1</span> <span class="o">+</span> <span class="mh">0x120</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// enable uctv byte</span>
+      <span class="o">**</span><span class="p">(</span><span class="n">undefined</span> <span class="o">*</span><span class="p">)(</span><span class="n">param_1</span> <span class="o">+</span> <span class="mh">0x1bc</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="n">sys_ppu_thread_create</span><span class="p">(</span><span class="n">param_1</span> <span class="o">+</span> <span class="mh">0x98</span><span class="p">,</span><span class="o">&amp;</span><span class="n">PTR_FUN_010ae048</span><span class="p">,</span><span class="n">param_1</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mh">0x8000</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s">"YouTubeStream"</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Since the code turns it on, let’s turn it off.</p>
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/GameOS-XMB-0e.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/GameOS-XMB-0e.png" />
+</a></div>
+
+<div align="center">
+<em>That doesn't look good. <i class="twa-2x twa-eyes"></i></em>
+</div>
+
+<p>It’s worse than before and the video panel is not even shown, well something must have went wrong in the code. Should we take another look?</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      <span class="k">if</span> <span class="p">(((</span><span class="o">*</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)(</span><span class="n">param_1</span> <span class="o">+</span> <span class="mh">0xb0</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)(</span><span class="n">param_1</span> <span class="o">+</span> <span class="mh">0xa4</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">))</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">iVar12</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">uVar15</span> <span class="o">=</span> <span class="mh">0xffffffff</span><span class="p">;</span> <span class="c1">// -1</span>
+        <span class="n">FUN_00c97c30</span><span class="p">(</span><span class="n">iVar12</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mh">0xe1000</span><span class="p">);</span>
+        <span class="p">...</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Ah, it could have been that if that byte was 0 it could have return -1 which is <code class="language-plaintext highlighter-rouge">ffffffff</code> in hex and caused it to run into the issue we were having earlier, let’s return 0 and skip the code that tries to spawn the threads and accompanying video panel.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/GameOS-XMB-010.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/GameOS-XMB-010.png" />
+</a></div>
+
+<div align="center">
+<em>Hella yes! We got our performance back, and no mosh pit of slowdowns, shaka brah!</em>
+</div>
+
+<p>Here comes the moment of truth, will other players be able to connect after the various patches has been applied?</p>
+
+<figure class="third ">
+  
+    
+      <a href="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/GameOS-XMB-12.png">
+          <img src="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/GameOS-XMB-12.png" alt="" />
+      </a>
+    
+  
+    
+      <a href="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/GameOS-XMB-13.png">
+          <img src="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/GameOS-XMB-13.png" alt="" />
+      </a>
+    
+  
+    
+      <a href="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/GameOS-XMB-15.png">
+          <img src="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/GameOS-XMB-15.png" alt="" />
+      </a>
+    
+  
+  
+</figure>
+
+<div align="center">
+<em>Hooray! <i class="twa twa-party-popper"></i> (You can click on the images to view them bigger now.)</em>
+</div>
+
+<p>What about the blank controller page I mentioned earlier? After loading into the multiplayer menu, the assets necessary for it is also loaded.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/GameOS-XMB-14.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/UC3-MP-BetaPlayableLan/GameOS-XMB-14.png" />
+</a></div>
+
+<h2 id="closing-words">Closing Words</h2>
+
+<p>Well that’s all for this post, below is where you can find the patch and support me as a independent patch creator. Have a good rest of your day! I’ll catch you next time.</p>
+
+<h1 id="credits">Credits</h1>
+
+<p><a href="https://discord.gg/qr6SjGM4gH">Uncharted Reloaded</a> and Vampyre for their support.</p>
+
+<p><a href="https://www.youtube.com/user/ZEROx2085">ZEROx</a> for help with some of the written code.</p>
+
+<h1 id="patch">Patch</h1>
+
+<p><a href="https://github.com/illusion0001/console-game-patches/blob/main/_patch0/cell/Uncharted3MultiplayerBeta-Cell.yml" class="button" role="button"><i class="fas fa-download"></i> Patch Source Code</a></p>
+
+<h2 id="supporters">Supporters</h2>
+
+<p>Thanks to the patrons who supported me on various platforms! You guys are awesome!</p>
+
+<h3 id="monthly-supporters">Monthly supporters:</h3>
+<ul>
+  <li>
+    <p><a href="https://www.patreon.com/illusion0001">Patreon</a>:</p>
+
+    <ul>
+      <li>ac2pic</li>
+      <li>Alexa</li>
+      <li>Brett</li>
+      <li>Ciril</li>
+      <li>GarnetSunset</li>
+      <li>Mmmmmhno</li>
+      <li>Paul</li>
+      <li>PlayStation5Mods</li>
+      <li>RazzySxPB</li>
+      <li>Ryan</li>
+      <li>Voredy</li>
+      <li>YveltalGriffin</li>
+      <li>Zackery</li>
+      <li>alessaro92</li>
+      <li>ashenC</li>
+      <li>embee</li>
+      <li>erdosadam24</li>
+      <li>faith</li>
+      <li>maplemiyazaki</li>
+      <li>patrick</li>
+      <li>rudi</li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="https://github.com/sponsors/illusion0001">Github Sponsors</a>:</p>
+
+    <ul>
+      <li>VIPO777</li>
+      <li>WardFail</li>
+      <li>Whitehawkx</li>
+      <li>gorshco</li>
+      <li>jrson83</li>
+      <li>regal.</li>
+      <li>suwagawaki</li>
+    </ul>
+  </li>
+</ul>
+
+</div>
+      </section>
+      <footer>
+  <p>&copy; 2021 - 2025 | illusion's Blog</br>Theme <a href="https://github.com/sharadcodes/jekyll-theme-material-you"> Jekyll Theme Material You</a></p>
+</footer>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

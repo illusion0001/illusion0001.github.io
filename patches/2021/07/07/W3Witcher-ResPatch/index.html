@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>illusion's Blog | The Witcher 3 60FPS and Grahpics Settings Research for PS4</title>
+  
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+  <!-- Twemoji -->
+  <!-- src https://github.com/SebastianAigner/twemoji-amazing -->
+  <link rel="stylesheet" href="/assets/css/twemoji-amazing.css">
+</head>
+
+  <body>
+    <main class="blogfeed">
+      
+<header>
+  <a class="site-title article-page" href="/">illusion's Blog</a>
+</header>
+
+
+
+
+      <section id="social-links1">
+  
+    <a href="/contact" target="_blank"> Contact</a>
+  
+    <a href="/patch" target="_blank"> Patches</a>
+  
+</section>
+
+<section id="social-links">
+
+  <a href="https://github.com/illusion0001" target="_blank">
+    <img src="/assets/icons/github.svg" alt="" />
+  </a>
+
+  <a href="mailto:illusion3185@gmail.com" target="_blank">
+    <img src="/assets/icons/email.svg" alt="" />
+  </a>
+
+</section>
+
+      <section id="article">
+        
+        <!--  -->
+        
+        <!--  -->
+        
+        
+        <div
+          class="article-thumbnail"
+          style="
+            background-image: url('https://img-assets.illusion0001.workers.dev/assets/images/W3Witcher-ResPatch/W3Witcher-Banner.png');
+          "
+        >
+        
+          <h1 class="article-title">The Witcher 3 60FPS and Grahpics Settings Research for PS4</h1>
+          <div class="article-bottom">
+            <small class="article-date">07 Jul 2021</small>
+            <div class="article-categories">
+              
+              <a href="#!" class="article-category">patches</a>
+              
+            </div>
+          </div>
+        </div>
+        <div class="article-content"><p>Please note that you are required to have a <a href="https://wololo.net/2021/12/14/ps4-how-to-run-the-ps4-9-00-jailbreak-full-guide-with-goldhen-payload/">exploited PlayStation 4</a> console on firmware <strong>9.00</strong> or lower to run the patches mentioned in this article.</p>
+
+<h1 id="intro">Intro</h1>
+
+<p>I recently saw a <a href="https://youtu.be/sPViMidRJxY">video</a> from Digital Foundry where they covered a <a href="https://wololo.net/2021/06/14/how-to-hack-your-nintendo-switch-in-2021-hwfly-and-sx-clones-sx-rcm-unpatched-vs-patched-trying-to-clear-it-up-for-you/">Modded Nintendo Switch</a> running the Witcher 3 at up to 60FPS. Albeit with compermise of course. And the fact that no one up to this point has ported the patch to PlayStation 4 it’s my time to shine!</p>
+
+<h2 id="part-1---resolution-and-framerate-unlocking">Part 1 - Resolution and Framerate Unlocking</h2>
+
+<p>Let’s get this out of the way first, since it’s all basic stuff by this point for those following my blog for the last few months.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                LAB_01e88385 XREF[1]:     01e88250(j)
+01e883ad b9 80 07        MOV        ECX,0x780 ; 1920
+         00 00
+01e883b2 41 b8 38        MOV        R8D,0x438 ; 1080
+         04 00 00
+</code></pre></div></div>
+
+<p>Base console resolution setup.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>01e8823c e8 7f 7d        CALL       sceKernelIsNeoMode
+         fb 00
+01e8824e 84 c0           TEST       AL,AL
+01e88250 0f 84 2f        JZ         LAB_01e88385
+         01 00 00
+...
+01e8828b b9 80 07        MOV        ECX,0x780 ; 1920
+         00 00
+01e88290 41 b8 70        MOV        R8D,0x870 ; 2160
+         08 00 00
+</code></pre></div></div>
+
+<p>PS4 Pro resolution setup.</p>
+
+<p>A simple change to 1280x720 on Base does the trick nicely, although I have not tested much of the game. So issues may crop up.</p>
+
+<p>You may be wondering why PS4 Pro is using 1920x2160 for its back buffer resolutio. It’s likely for Checkerboarding, halving it’s Horizontal resolution and keeping Vertical resolution native.</p>
+
+<p>Framerate? Same story.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0227361c be 01 00        MOV        ESI,0x1
+         00 00
+02273621 e8 7a e2        CALL       sceVideoOutSetFlipRate
+         bc 00
+</code></pre></div></div>
+
+<p>MOV ESI with 0x0 gives us an unlocked framerate with triple buffered VSync.</p>
+
+<h2 id="part-2---additional-graphics-options-and-framerate-stats">Part 2 - Additional Graphics Options and Framerate Stats</h2>
+
+<p>A few things I noticed that is, there’s native In-Game Frame Statistics and additional Graphics Options.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/W3Witcher-ResPatch/W3Witcher-DF-Snapshot.jpg">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/W3Witcher-ResPatch/W3Witcher-DF-Snapshot.jpg" />
+</a></div>
+
+<div align="center">
+<em>In-Game Frame Statistics with FPSGui Overlay</em>
+</div>
+
+<p><code class="language-plaintext highlighter-rouge">FPS</code> String search comes up with.. no results but in Unicode, it does.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                u_FPS:_%1.3f_(longest_frame:_%1.3f_030141b4     XREF[1]:     FUN_01f1a860:01f1ab0f(*)  
+030141b4 46 00 50        unicode    u"FPS: %1.3f (longest frame: %1.3f ms) VSync: 
+         00 53 00 
+         3a 00 20 
+...
+01f1aa4a 41 80 bd        CMP        byte ptr [R13 + 0xb319],0x0
+         19 b3 00 
+         00 00
+01f1aa55 0f 84 33        JZ         LAB_01f1ab8e
+         01 00 00
+...
+01f1aab4 eb 3c           JMP        LAB_01f1aaf2
+...
+                LAB_01f1aaf2                                    XREF[1]:     01f1aab4(j)  
+01f1aaf2 48 8d 05        LEA        RAX,[DAT_03b21fe0]
+         e7 74 c0 01
+01f1ab0f 48 8d 35        LEA        RSI,[u_FPS:_%1.3f_(longest_frame:_%1.3f_030141
+         9e 96 0f 01
+</code></pre></div></div>
+
+<p>A simple change from <code class="language-plaintext highlighter-rouge">Jump Zero</code> to <code class="language-plaintext highlighter-rouge">Jump not Zero</code> gives us framerate stats.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/W3Witcher-ResPatch/W3Witcher-ShowFPS.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/W3Witcher-ResPatch/W3Witcher-ShowFPS.png" />
+</a></div>
+
+<div align="center">
+<em>In-Game Frame Statistics on PS4</em>
+</div>
+
+<p>What about Graphics Options? A simple drop in of the <code class="language-plaintext highlighter-rouge">rendering.xml</code> file from <a href="https://gbatemp.net/">GBAtemp</a> Switch Modding Section gives us Grahpical Options seen in various Witcher 3 Switch Modded Videos.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/W3Witcher-ResPatch/W3Witcher-RenderingXML.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/W3Witcher-ResPatch/W3Witcher-RenderingXML.png" />
+</a></div>
+
+<div align="center">
+<em>Additional Graphics Options</em>
+</div>
+
+<h2 id="part-3---experimental-graphics-patches-through-executable-patching">Part 3 - Experimental Graphics Patches through Executable Patching</h2>
+
+<p>This is mostly my own findings before I discovered the modified XML file described above.</p>
+
+<p>I started toggling the motion blur option found in the settings menu and landed at <code class="language-plaintext highlighter-rouge">0x3b21e89</code> memory address.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                             DAT_03b21e89 XREF[4]:     FUN_015b53c0:015b74b0(*), 
+                                                       FUN_015b53c0:015b74b7(*), 
+                                                       FUN_015b53c0:015b74ca(W), 
+                                                       FUN_01f61d80:01f62344(R)  
+        03b21e89 00              undefined1 00h
+</code></pre></div></div>
+
+<p>A read and write reference, hmm.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>015b7489 4c 8d 25        LEA        R12,[s_PostProcess_02ee8903]
+         73 14 93 01
+015b7490 48 8d 15        LEA        RDX,[s_AllowMotionBlur_02ee89cd]
+         36 15 93 01
+...
+015b74ca c6 43 29 01     MOV        byte ptr [RBX + 0x29]=&gt;DAT_03b21e89,0x1
+</code></pre></div></div>
+
+<p>How curious, A text ref next to the actual byte. At least it makes my life easier.</p>
+
+<p>What about the read?</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>01f62344 44 0f b6        MOVZX      R15D,byte ptr [RSI + 0x29]=&gt;DAT_03b21e89
+         7e 29
+</code></pre></div></div>
+
+<p>It reads from <code class="language-plaintext highlighter-rouge">RSI + 0x29</code> to get the final address in memory.</p>
+
+<p>As a test, <code class="language-plaintext highlighter-rouge">MOV</code> with <code class="language-plaintext highlighter-rouge">0x0</code> to <code class="language-plaintext highlighter-rouge">R15W</code> permanently disables motion blur.</p>
+
+<p>Completely pointless but hey, at least we know how the RED Engine lays out it’s graphics settings in the executable.</p>
+
+<h1 id="patch">Patch</h1>
+
+<p><a href="/_patch/TheWitcher3-Orbis" class="button" role="button"><i class="fas fa-download"></i> Patch Code</a></p>
+
+<h2 id="supporters">Supporters</h2>
+
+<p>Thanks to the patrons who supported me on various platforms! You guys are awesome!</p>
+
+<h3 id="monthly-supporters">Monthly supporters:</h3>
+<ul>
+  <li>
+    <p><a href="https://www.patreon.com/illusion0001">Patreon</a>:</p>
+
+    <ul>
+      <li>ac2pic</li>
+      <li>Alexa</li>
+      <li>Brett</li>
+      <li>Ciril</li>
+      <li>GarnetSunset</li>
+      <li>Mmmmmhno</li>
+      <li>Paul</li>
+      <li>PlayStation5Mods</li>
+      <li>RazzySxPB</li>
+      <li>Ryan</li>
+      <li>Voredy</li>
+      <li>YveltalGriffin</li>
+      <li>Zackery</li>
+      <li>alessaro92</li>
+      <li>ashenC</li>
+      <li>embee</li>
+      <li>erdosadam24</li>
+      <li>faith</li>
+      <li>maplemiyazaki</li>
+      <li>patrick</li>
+      <li>rudi</li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="https://github.com/sponsors/illusion0001">Github Sponsors</a>:</p>
+
+    <ul>
+      <li>VIPO777</li>
+      <li>WardFail</li>
+      <li>Whitehawkx</li>
+      <li>gorshco</li>
+      <li>jrson83</li>
+      <li>regal.</li>
+      <li>suwagawaki</li>
+    </ul>
+  </li>
+</ul>
+
+</div>
+      </section>
+      <footer>
+  <p>&copy; 2021 - 2025 | illusion's Blog</br>Theme <a href="https://github.com/sharadcodes/jekyll-theme-material-you"> Jekyll Theme Material You</a></p>
+</footer>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

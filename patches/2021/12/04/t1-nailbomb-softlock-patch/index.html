@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>illusion's Blog | University Nailbomb Softlock Fix for The Last of Us (PS3, PS4)</title>
+  
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+  <!-- Twemoji -->
+  <!-- src https://github.com/SebastianAigner/twemoji-amazing -->
+  <link rel="stylesheet" href="/assets/css/twemoji-amazing.css">
+</head>
+
+  <body>
+    <main class="blogfeed">
+      
+<header>
+  <a class="site-title article-page" href="/">illusion's Blog</a>
+</header>
+
+
+
+
+      <section id="social-links1">
+  
+    <a href="/contact" target="_blank"> Contact</a>
+  
+    <a href="/patch" target="_blank"> Patches</a>
+  
+</section>
+
+<section id="social-links">
+
+  <a href="https://github.com/illusion0001" target="_blank">
+    <img src="/assets/icons/github.svg" alt="" />
+  </a>
+
+  <a href="mailto:illusion3185@gmail.com" target="_blank">
+    <img src="/assets/icons/email.svg" alt="" />
+  </a>
+
+</section>
+
+      <section id="article">
+        
+        <!--  -->
+        
+        <!--  -->
+        
+        
+        <div
+          class="article-thumbnail"
+          style="
+            background-image: url('https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/t1-nailbomb-feature-image.png');
+          "
+        >
+        
+          <h1 class="article-title">University Nailbomb Softlock Fix for The Last of Us (PS3, PS4)</h1>
+          <div class="article-bottom">
+            <small class="article-date">04 Dec 2021</small>
+            <div class="article-categories">
+              
+              <a href="#!" class="article-category">patches</a>
+              
+            </div>
+          </div>
+        </div>
+        <div class="article-content"><p><i class="twa twa-warning"></i> <i class="twa twa-warning"></i> <strong>Warning: This post contains spoilers for the video game, The Last of Us. If you have not yet completed the game, you should do so or if you simply don’t care, you can read through. You have been warned.</strong> <i class="twa twa-warning"></i> <i class="twa twa-warning"></i></p>
+
+<hr />
+
+<h1 id="intro">Intro</h1>
+
+<p>A few weeks back I was browsing through <a href="https://www.youtube.com/channel/UC4PlYBhe8mzGFW4lmIkIQsg">AnthonyCaliber</a> videos. Showcasing various glitches in The Last of Us Remastered. Most of the glitches in the video are out of bounds and does not prevent progressing through the game but there is one glitch that caught my eye.</p>
+
+<div align="center">
+<video width="100%" controls="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/T1-AC-nailbomb-section-trimmed.mp4" type="video/mp4" />
+</video>
+<em>(Credit: <a href="https://www.youtube.com/channel/UC4PlYBhe8mzGFW4lmIkIQsg">AnthonyCaliber</a>) <a href="https://youtu.be/L_JrpN96uBg?t=6482">Original Video (Timestamped 01:48:02)</a></em>
+</div>
+
+<p>Once I saw this, a great idea popped into my head. Either to give the player infinite health during this section or making the nailbomb ineffective. I went with the latter option as the former caused issues. As you might’ve seen from the video, if the two hunters die then the camera will freeze but the player can still move so that is a no go. My plan is to research into the weapons, which in this case the nailbomb and how the game knows what task or level it’s currently on.</p>
+
+<h2 id="part-1---research">Part 1 - Research</h2>
+
+<p>Let’s start by seeing how the game keeps track of what level or task we are on. Thanks to the work of Freako and HereisMe. Some of this has already been worked out and is published. 
+In the <a href="https://discord.com/invite/VWEbKZsTNb">Naughty Dog Modding</a> server, Freako has kindly provided all the info that he knows about the game in an archive which will become very useful as this post goes on. So let’s have a look at it.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/nd-task-research-folder.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/nd-task-research-folder.png" />
+</a></div>
+
+<div align="center">
+<em>TLOU Research folder</em>
+</div>
+
+<p>A few folders, the ones we’re interested in are <code class="language-plaintext highlighter-rouge">tasks</code> and <code class="language-plaintext highlighter-rouge">weapon-loadout</code>.
+Inside the task folder is a text file and some example files. This text file list where things are, what’s been discovered, etc.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/t1-task-struct-2.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/t1-task-struct-2.png" />
+</a></div>
+
+<div align="center">
+<em>Basic Task.bin data structure. (Credit: <a href="https://www.youtube.com/c/Freako/">Freako</a>)</em>
+</div>
+
+<p>The image is barebones but enough for us to understand. From the text file on how to find a given task is as follows: get string address, find string offset as address. The identifier is found right next to the string. Obviously this is for the ps3 version soo, give me a moment while I extract the PS4 version. Alright here’s the list of task we’ll need to keep track and to later patch.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>uni-4-lab-rebar-ambush
+uni-4-lab-rebar-aiming
+uni-4-lab-help-off-rebar
+uni-4-lab-injured-escape-start
+uni-4-lab-injured-escape-vault
+</code></pre></div></div>
+
+<p>Since we’re on x86_amd64 (PlayStation4), the CPU architecture is little funny. You see there’s this thing called a little or big endian and it gets confusing if you’re new, like me. Say you have a value, <code class="language-plaintext highlighter-rouge">09 87 65 43 21 00 00 00</code> this is how it would be represented on big endian, which is what the PlayStation 3 uses. But on x86, it’s little endian which means, these bytes are swapped. Now it is <code class="language-plaintext highlighter-rouge">43 65 87 09 00 00 00 21</code>. Wrap your head around that when you have to keep track of things, worse of all, hexadecimal data displayed via printf is byte swapped! So what’s the point?</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/Jackie-Chan-confused-be-le-meme.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/Jackie-Chan-confused-be-le-meme.png" />
+</a></div>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/t1-taskid-0.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/t1-taskid-0.png" />
+</a></div>
+
+<div align="center">
+<em>Real thinking hours. <i class="twa thinkhappy"></i></em>
+</div>
+
+<p>Anyways, here’s the task ids</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>uni-4-lab-rebar-ambush          // F0 8E BC 40
+uni-4-lab-rebar-aiming          // CF F0 66 A4
+uni-4-lab-help-off-rebar        // 6A 60 B6 9A
+uni-4-lab-injured-escape-start  // 5C 5D 81 11
+uni-4-lab-injured-escape-vault  // C8 5F D3 4A
+</code></pre></div></div>
+
+<p>Alright, now for the weapons, fortunately, there’s only one we need to know what the ID is and that is the nailbomb, already figured out by the legend that is HereisMe.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0x18A76844 == WeaponIdNailBomb()
+</code></pre></div></div>
+
+<p>Reverse that and that’s what our id is on ps4.</p>
+
+<h2 id="part-2---reproducing-the-issue">Part 2 - Reproducing the issue</h2>
+
+<p>Now to the reproduction steps. Following what Anthony did, got us the same result, the hunter dies and the camera is stuck. Or the nailbomb explodes and the player is put into an indefinite loop. A softlock.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/t1-camera-stuck-1.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/t1-camera-stuck-1.png" />
+</a></div>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/t1-camera-stuck-1a.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/t1-camera-stuck-1a.png" />
+</a></div>
+
+<div align="center">
+<em>This camera is not moving</em>
+</div>
+
+<div align="center">
+<video width="100%" controls="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/t1-nailbomb-softlock-demo1.mp4" type="video/mp4" />
+</video>
+<em>Indefinite respawns and nailbomb exploding.</em>
+</div>
+
+<p><em><strong>InCase</strong> anyone is wondering, yes I do know that you can restart encounters to “resolve” these issues but it should not even happen in the first place.</em> <i class="twa twa-eyes"></i></p>
+
+<h2 id="part-3---patching">Part 3 - Patching</h2>
+
+<p>I made the decision to get rid of the explosion but left the nailbomb intact. The player can shoot and it will do absolutely nothing.</p>
+
+<p>Searching for the string of nailbomb, nada. what about bomb?</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/t1-ghidra-smokeb-search-4.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/t1-ghidra-smokeb-search-4.png" />
+</a></div>
+
+<div align="center">
+<em>...a smoke bomb string reference</em>
+</div>
+
+<p>Welp, that was a disappointment alright.</p>
+
+<p>Hey, what about that weapon ID earlier? This yielded some results. I will now introduce you, to the method of lazy reversing. Look for a branch and skip it or put a return from subroutine at the beginning of the function.</p>
+
+<p>Alright, let’s have a look at some of these references.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/t1-ghidra-weaponid-search-3.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/t1-ghidra-weaponid-search-3.png" />
+</a></div>
+
+<div align="center">
+<em>That's a lotta results</em>
+</div>
+
+<p>Most of these don’t do anything interesting and there’s only one reference that did do something.</p>
+
+<p>This reference disables the damage output.</p>
+
+<div align="center">
+<video width="100%" controls="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/t1-nailbomb-damage-demo-0.mp4" type="video/mp4" />
+</video>
+<em>That does something.</em>
+</div>
+
+<p>Okay, now what? if we use this code for our fix, it could work but the explosions particles would still go off. Looks a little distracting, don’t you think?</p>
+
+<p>Oh look, there’s an error message that I missed. <code class="language-plaintext highlighter-rouge">Explosion Missing Parameters</code> these unfortunately doesn’t print anything on to the screen but it gives us a clue. the word explosion can be used to find other references.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">if</span> <span class="p">(</span><span class="n">local_2b0</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">FUN_01c84620</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
+    <span class="n">FUN_01c84a80</span><span class="p">(</span><span class="s">"Explosion Missing Parameters"</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="c1">// ...</span>
+    <span class="k">if</span> <span class="p">((</span><span class="kt">bool</span><span class="p">)</span><span class="n">uVar31</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">uVar30</span> <span class="o">=</span> <span class="n">uVar2</span> <span class="o">&lt;</span> <span class="mh">0x18a76844</span><span class="p">;</span>
+</code></pre></div></div>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/t1-ghidra-explode-strings-7.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/t1-ghidra-explode-strings-7.png" />
+</a></div>
+
+<div align="center">
+<em>That is a lot of results</em>
+</div>
+
+<p>The refernce that disables the particles is around <code class="language-plaintext highlighter-rouge">SpawnExplosionEffects - no explosion settings</code> string.</p>
+
+<p>Let’s give it a try.</p>
+
+<div align="center">
+<video width="100%" controls="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/t1-nailbomb-oneline-demo-2.mp4" type="video/mp4" />
+</video>
+</div>
+
+<p>Hmm, it still blows up. even if there is no particles. that’s distracting if you ask me.</p>
+
+<p>Wait a minute, there’s two <code class="language-plaintext highlighter-rouge">SpawnExplosion</code> strings.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/t1-ghidra-spawnexplode-search-5.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/t1-ghidra-spawnexplode-search-5.png" />
+</a></div>
+
+<p><code class="language-plaintext highlighter-rouge">SpawnExplosion - can't find explosion settings</code> sounds interesting.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/t1-ghidra-explode-calls-6.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/t1-ghidra-explode-calls-6.png" />
+</a></div>
+
+<div align="center">
+<em>Related function calls</em>
+</div>
+
+<p>Hmm, let’s have a look at the call references to this function. Alright time to bisect what does what. Some of these did what we saw before and some even crashed the game outright, so that’s not good. How do I test this you may ask?</p>
+
+<p>Removing the call. using the no operation instruction.</p>
+
+<p>There is one call that stood out. <code class="language-plaintext highlighter-rouge">0x016a299a</code></p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">if</span> <span class="p">((</span><span class="n">param_1</span> <span class="o">+</span> <span class="mh">0x40</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// ...</span>
+    <span class="n">FUN_01a7f5c0</span><span class="p">(</span><span class="n">param_1</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">return</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Close to a return.. hmm, what could that mean?</p>
+
+<p>There’s a branch up here, let’s skip it.</p>
+
+<div align="center">
+<video width="100%" controls="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/t1-nailbomb-processing-demo-3.mp4" type="video/mp4" />
+</video>
+<em>Ahh-yes!</em>
+</div>
+
+<p>Not only does this not blow-up, it does absolutely nothing when an npc goes near it!</p>
+
+<p>Time for the patch.</p>
+
+<p>Keep in mind that this is my interpretation of the code I wrote in assembly but the pseudocode should be readable enough to your average amateur programmers.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">if</span> <span class="p">(</span><span class="n">task</span> <span class="o">==</span> <span class="mh">0x40bc8ef0</span> <span class="o">||</span> <span class="mh">0xa466f0cf</span> <span class="o">||</span> <span class="mh">0x9ab6606a</span> <span class="o">||</span> <span class="mh">0x11815d5c</span> <span class="o">||</span> <span class="mh">0x4ad35fc8</span> <span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">// uni-4-lab-rebar-ambush         40bc8ef0</span>
+    <span class="c1">// uni-4-lab-rebar-aiming         a466f0cf</span>
+    <span class="c1">// uni-4-lab-help-off-rebar       9ab6066a</span>
+    <span class="c1">// uni-4-lab-injured-escape-start 11815d5c</span>
+    <span class="c1">// uni-4-lab-injured-vault        4ad35fc8</span>
+            <span class="c1">// </span>
+    <span class="k">return</span><span class="p">;</span> <span class="c1">// disable nailbomb explosion output</span>
+  <span class="p">}</span>
+  <span class="c1">// enable nailbomb explosion, normal path</span>
+  <span class="n">SpawnExplosion</span><span class="p">();</span>
+  <span class="n">SpawnExplosionEffects</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>Looks good! time to try it out.</p>
+
+<div align="center">
+<video width="100%" controls="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/TLOU-Nailbomb-Softlock/t1-nailbomb-typo.mp4" type="video/mp4" />
+</video>
+</div>
+
+<p>Oh no, what happened?</p>
+
+<p>As it turns out, I made a minor typo. I was comparing against 0x9ab6<strong>60</strong>6a and not the supposed 0x9ab6<strong>06</strong>6a. A simple fix solved this.</p>
+
+<p>If you enjoyed reading and would like to support, you can do so by supporting me my <a href="https://www.patreon.com/illusion0001">Patreon</a> page or follow my <a href="https://www.youtube.com/c/illusion0001/featured">YouTube</a> channel and <a href="https://illusion0001.github.io/">Blog</a> for more content like this.</p>
+
+<p>As always, I hope you learned something from these posts, catch you next time!</p>
+
+<p>Enjoy your one-less bug video game!</p>
+
+<h1 id="result">Result</h1>
+
+<div align="center" class="responsive-video-container">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/wDJmLgw2oF4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</div>
+
+<h1 id="credits">Credits</h1>
+
+<p>Special thanks to:</p>
+
+<p><a href="https://www.youtube.com/user/ZEROx2085">ZEROx</a> for porting to the PS3 version.</p>
+
+<p><a href="https://www.youtube.com/c/Freako/">Freako</a> and <a href="https://www.youtube.com/user/HdHereidme">HereisMe</a> for publishing their knowledge about reversing Naughty Dog Titles.</p>
+
+<h1 id="patch">Patch</h1>
+
+<p>This patch is available for PS3 (RPCS3), and PS4.</p>
+
+<p>For those looking to use the patch on the RPCS3 emulator, you can head over to the patch manager, click on the “<strong>Download Latest Patches</strong>” button and find the patch you wanted to use with your game Title ID and version, click on the checkbox to enable the patch and save changes.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_patch_example.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_patch_example.png" />
+</a></div>
+
+<p><a href="https://wiki.rpcs3.net/index.php?title=The_Last_of_Us#Patches" class="button" role="button"><i class="fas fa-download"></i> Patch Source Code (RPCS3)</a></p>
+
+<p><a href="/_patch/TheLastOfUs1-Orbis" class="button" role="button"><i class="fas fa-download"></i> Patch (PS4)</a></p>
+
+<p>PlayStation 4 users, can follow this guide on how to install the patch <a href="/install-instructions">here</a>. (the following tutorial <strong>does not</strong> cover how to build the update package. only to install the patch into the binary.)</p>
+
+<h2 id="supporters">Supporters</h2>
+
+<p>Thanks to the patrons who supported me on various platforms! You guys are awesome!</p>
+
+<h3 id="monthly-supporters">Monthly supporters:</h3>
+<ul>
+  <li>
+    <p><a href="https://www.patreon.com/illusion0001">Patreon</a>:</p>
+
+    <ul>
+      <li>ac2pic</li>
+      <li>Alexa</li>
+      <li>Brett</li>
+      <li>Ciril</li>
+      <li>GarnetSunset</li>
+      <li>Mmmmmhno</li>
+      <li>Paul</li>
+      <li>PlayStation5Mods</li>
+      <li>RazzySxPB</li>
+      <li>Ryan</li>
+      <li>Voredy</li>
+      <li>YveltalGriffin</li>
+      <li>Zackery</li>
+      <li>alessaro92</li>
+      <li>ashenC</li>
+      <li>embee</li>
+      <li>erdosadam24</li>
+      <li>faith</li>
+      <li>maplemiyazaki</li>
+      <li>patrick</li>
+      <li>rudi</li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="https://github.com/sponsors/illusion0001">Github Sponsors</a>:</p>
+
+    <ul>
+      <li>VIPO777</li>
+      <li>WardFail</li>
+      <li>Whitehawkx</li>
+      <li>gorshco</li>
+      <li>jrson83</li>
+      <li>regal.</li>
+      <li>suwagawaki</li>
+    </ul>
+  </li>
+</ul>
+
+</div>
+      </section>
+      <footer>
+  <p>&copy; 2021 - 2025 | illusion's Blog</br>Theme <a href="https://github.com/sharadcodes/jekyll-theme-material-you"> Jekyll Theme Material You</a></p>
+</footer>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

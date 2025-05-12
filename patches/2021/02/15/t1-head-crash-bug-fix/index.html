@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>illusion's Blog | Solving the Infected's Severed Head Crash Bug in The Last of Us (PlayStation 3)</title>
+  
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+  <!-- Twemoji -->
+  <!-- src https://github.com/SebastianAigner/twemoji-amazing -->
+  <link rel="stylesheet" href="/assets/css/twemoji-amazing.css">
+</head>
+
+  <body>
+    <main class="blogfeed">
+      
+<header>
+  <a class="site-title article-page" href="/">illusion's Blog</a>
+</header>
+
+
+
+
+      <section id="social-links1">
+  
+    <a href="/contact" target="_blank"> Contact</a>
+  
+    <a href="/patch" target="_blank"> Patches</a>
+  
+</section>
+
+<section id="social-links">
+
+  <a href="https://github.com/illusion0001" target="_blank">
+    <img src="/assets/icons/github.svg" alt="" />
+  </a>
+
+  <a href="mailto:illusion3185@gmail.com" target="_blank">
+    <img src="/assets/icons/email.svg" alt="" />
+  </a>
+
+</section>
+
+      <section id="article">
+        
+        <!--  -->
+        
+        <!--  -->
+        
+        
+          <h1 class="article-title">Solving the Infected's Severed Head Crash Bug in The Last of Us (PlayStation 3)</h1>
+          <div class="article-bottom">
+            <small class="article-date">15 Feb 2021</small>
+            <div class="article-categories">
+              
+              <a href="#!" class="article-category">patches</a>
+              
+            </div>
+          </div>
+        </div>
+        <div class="article-content"><h1 id="intro">Intro</h1>
+
+<p>Usually, when an NPC, actor, or Player’s buddies does an action where they would cut Infected’s Head off, they leave behind a severed head.</p>
+
+<p>If a Player decided to throw an object, let’s say a brick or bottle. The game would crash. Why’s that?</p>
+
+<p>Affected Consoles:</p>
+
+<ul>
+  <li>
+    <p><del>PlayStation 3</del> <a href="/patches/2021/02/15/t1-head-crash-bug-fix/">Unofficially Patched</a></p>
+  </li>
+  <li>
+    <p><del>PlayStation 4</del> <a href="/patches/2021/02/16/t1r-head-crash-bug-fix/">Unofficially Patched</a></p>
+  </li>
+  <li>
+    <p>PlayStation 5 <a href="https://youtu.be/HQ7oOmx4mmg?t=127">Video</a></p>
+  </li>
+  <li>
+    <p>PS4/PS5 versions issue still persists on latest patch 1.11</p>
+  </li>
+</ul>
+
+<div align="center">
+<video width="100%" controls="" autoplay="" muted="">
+  <source src="https://img-assets.illusion0001.workers.dev/assets/images/t1-ps3-head-crash/t1-head-crash-before.mp4" type="video/mp4" />
+</video>
+</div>
+
+<h2 id="finding-what-caused-the-crash">Finding what caused the crash</h2>
+
+<p>When the game crashed, using an emulator we can see that it gives an access violation as well as the address it stopped.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/t1-ps3-head-crash/t1-head-acess-violation.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/t1-ps3-head-crash/t1-head-acess-violation.png" />
+</a></div>
+
+<p>Going to this location in Ghidra gives us some clues.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/t1-ps3-head-crash/ghidra-head-crash-hint.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/t1-ps3-head-crash/ghidra-head-crash-hint.png" />
+</a></div>
+
+<p>The game does checks if:</p>
+
+<ul>
+  <li>
+    <p>Object is throwable</p>
+  </li>
+  <li>
+    <p>Object collided with is enemy</p>
+  </li>
+</ul>
+
+<p>We can check using a Debugger with a breakpoint set on the crash address.</p>
+
+<p>Hit on the Head.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/t1-ps3-head-crash/t1-head-debug0.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/t1-ps3-head-crash/t1-head-debug0.png" />
+</a></div>
+
+<p>Hit on an Enemy.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/t1-ps3-head-crash/t1-head-debug-spu-data.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/t1-ps3-head-crash/t1-head-debug-spu-data.png" />
+</a></div>
+
+<p>In Register 10 and 29, there’s some data here. It seems to be collision data.</p>
+
+<p>Our best guess is that the game thinks the object collied is an enemy and no data generated.</p>
+
+<h2 id="solution">Solution</h2>
+
+<p>We can add some data into Register 10 and additional check to prevent crashing.</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="pi">-</span> <span class="pi">[</span> <span class="nv">be32</span><span class="pi">,</span> <span class="nv">0x006d9368</span><span class="pi">,</span> <span class="nv">0x483aa7ed</span> <span class="pi">]</span> <span class="c1">#Branch</span>
+ <span class="pi">-</span> <span class="pi">[</span> <span class="nv">be32</span><span class="pi">,</span> <span class="nv">0x00a83b54</span><span class="pi">,</span> <span class="nv">0x3d400001</span> <span class="pi">]</span> <span class="c1">#lis r10 = 0x10000</span>
+ <span class="pi">-</span> <span class="pi">[</span> <span class="nv">be32</span><span class="pi">,</span> <span class="nv">0x00a83b58</span><span class="pi">,</span> <span class="nv">0x7f9d5000</span> <span class="pi">]</span> <span class="c1">#cmp r29 vs r10</span>
+ <span class="pi">-</span> <span class="pi">[</span> <span class="nv">be32</span><span class="pi">,</span> <span class="nv">0x00a83b5c</span><span class="pi">,</span> <span class="nv">0x409d0008</span> <span class="pi">]</span> <span class="c1">#Skip if r29&lt;=r10 // If r29 less or equal to r10 then do nothing</span>
+ <span class="pi">-</span> <span class="pi">[</span> <span class="nv">be32</span><span class="pi">,</span> <span class="nv">0x00a83b60</span><span class="pi">,</span> <span class="nv">0x813d0040</span> <span class="pi">]</span> <span class="c1">#lwz r9,0x40(r29) // load as normal</span>
+ <span class="pi">-</span> <span class="pi">[</span> <span class="nv">be32</span><span class="pi">,</span> <span class="nv">0x00a83b64</span><span class="pi">,</span> <span class="nv">0x4e800020</span> <span class="pi">]</span> <span class="c1">#Return</span>
+</code></pre></div></div>
+
+<p>Let’s implement this fix and see the results!</p>
+
+<div align="center" class="responsive-video-container">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/yDHUPHUYr1w?start=17" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</div>
+
+<p>Success! No longer crashes when throwing an object.</p>
+
+<h1 id="patch">Patch</h1>
+
+<p>For those looking to use the patch on the emulator, you can head over to the patch manager, click on the “Download Latest Patches” and find the patch you wanted to use with your game Title ID and version, click on the checkbox to enable the patch and save changes.</p>
+
+<div align="center" class="">
+  <a href="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_patch_example.png">
+  <img src="https://img-assets.illusion0001.workers.dev/assets/images/RatchetPS3-FPSUnlock/rpcs3_patch_example.png" />
+</a></div>
+
+<h2 id="credits">Credits</h2>
+
+<p>Thank you to <a href="https://www.youtube.com/user/ZEROx2085">ZEROx</a> for improving over my inital patch.</p>
+
+<p>And <a href="https://www.youtube.com/c/AphelionGamingTV/">Aphelion</a> for allowing me to use his footage in the post.</p>
+</div>
+      </section>
+      <footer>
+  <p>&copy; 2021 - 2025 | illusion's Blog</br>Theme <a href="https://github.com/sharadcodes/jekyll-theme-material-you"> Jekyll Theme Material You</a></p>
+</footer>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

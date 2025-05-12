@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>illusion's Blog | Dishonored 2</title>
+  
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+  <!-- Twemoji -->
+  <!-- src https://github.com/SebastianAigner/twemoji-amazing -->
+  <link rel="stylesheet" href="/assets/css/twemoji-amazing.css">
+</head>
+
+  <body>
+    <main class="blogfeed">
+      
+<header>
+  <a class="site-title article-page" href="/">illusion's Blog</a>
+</header>
+
+
+
+
+      <section id="social-links1">
+  
+    <a href="/contact" target="_blank"> Contact</a>
+  
+    <a href="/patch" target="_blank"> Patches</a>
+  
+</section>
+
+<section id="social-links">
+
+  <a href="https://github.com/illusion0001" target="_blank">
+    <img src="/assets/icons/github.svg" alt="" />
+  </a>
+
+  <a href="mailto:illusion3185@gmail.com" target="_blank">
+    <img src="/assets/icons/email.svg" alt="" />
+  </a>
+
+</section>
+
+      <section id="article">
+        
+        <!--  -->
+        
+        <!--  -->
+        
+        
+          <h1 class="article-title">Dishonored 2</h1>
+          <div class="article-bottom">
+            <small class="article-date"></small>
+            <div class="article-categories">
+              
+            </div>
+          </div>
+        </div>
+        <div class="article-content"><!-- # Dishonored 2 -->
+
+<p><a href="/patch/#patches">Game Index</a></p>
+
+<p><a href="/install-instructions/">Installation Guide</a></p>
+
+<h2 id="60-fps-unlock">60 FPS Unlock</h2>
+
+<p>Author: <a href="https://twitter.com/illusion0002">illusion</a></p>
+
+<p>In file <code class="language-plaintext highlighter-rouge">eboot.bin</code></p>
+
+<details>
+<summary>Code 1.05 (Click to Expand)</summary>
+
+
+<figure class="highlight"><pre><code class="language-none" data-lang="none">BE 01 00 00 00 E8 42 CC 9C 01
+
+BE 00 00 00 00 E8 42 CC 9C 01</code></pre></figure>
+
+
+</details>
+
+<h2 id="resolution-patch">Resolution Patch</h2>
+
+<p>Author: <a href="https://twitter.com/illusion0002">illusion</a></p>
+
+<p>In file <code class="language-plaintext highlighter-rouge">eboot.bin</code></p>
+
+<details>
+<summary>Code 1.05 (Click to Expand)</summary>
+
+
+<figure class="highlight"><pre><code class="language-none" data-lang="none"># Call
+
+C5 FA 10 1D 67 C4 65 03
+
+E8 7F 09 64 FF EB 09 03
+
+# Res adjustment code
+# 67% of 1920x1080
+
+55 48 89 E5 41 57 41 56 53 48 81 EC 28 02 00 00 4C 8B 3D C1 14 D5 02 48 8D 9D C0 FD FF FF 4C 8D B5 E0
+
+C3 C7 05 11 BB 01 04 1F 85 2B 3F C5 FA 10 1D 09 BB 01 04 C5 FA 10 15 01 BB 01 04 C3 FF FF 4C 8D B5 E0
+
+# Some notes
+# I hardcoded horizontal scale to vertical
+# to remove 
+# C5 FA 10 15 01 BB 01 04
+# C1 14 D5 02 48 8D 9D C3
+# Neo will need adjustments.
+# Line to change
+# C7 05 11 BB 01 04 1F 85 2B 3F
+# highlight 1F 85 2B 3F to get float value.
+# 0.67f</code></pre></figure>
+
+
+</details>
+
+<h2 id="fov-patch">FOV Patch</h2>
+
+<p>Author: <a href="https://twitter.com/illusion0002">illusion</a></p>
+
+<p>In file <code class="language-plaintext highlighter-rouge">eboot.bin</code></p>
+
+<details>
+<summary>Code 1.05 (Click to Expand)</summary>
+
+
+<figure class="highlight"><pre><code class="language-none" data-lang="none"># call
+
+C5 FA 10 05 7E 6C C5 03
+
+67 67 E8 0C 7D 51 FF 90
+
+# main code
+
+55 48 89 E5 41 57 41 56 53 48 81 EC 28 02 00 00 4C 8B 3D 61 15 D5 02
+
+C3 C7 05 69 EF 73 04 00 00 F0 42 C5 FA 10 05 61 EF 73 04 C3 15 D5 02
+
+# hardcoded to 120f
+# line to change
+# C7 05 69 EF 73 04 00 00 F0 42
+# highlight 00 00 F0 42 to get float value.</code></pre></figure>
+
+
+</details>
+</div>
+      </section>
+      <footer>
+  <p>&copy; 2021 - 2025 | illusion's Blog</br>Theme <a href="https://github.com/sharadcodes/jekyll-theme-material-you"> Jekyll Theme Material You</a></p>
+</footer>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>
